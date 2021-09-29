@@ -1,29 +1,24 @@
 const Sequelize = require('sequelize');
-const env = process.env.NODE_ENV || 'development';  // 2. NODE_ENV 를 따로 설정하지 않으면, config 안의 development 를 가져온다.
-const config = require('../config/config')[env];  // 1. config 안의 config 설정 파일을 가져온다.
-/* 앞으로 만들 모델 들 */
-const User = require('./user');
-const Post = require('./post');
-const Hashtag = require('./hashtag');
-/* 앞으로 만들 모델 들 */
+////디비형식 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
+// const User = require('./user');
 
+///////////////////////////////////////////
+
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config')[env];
 const db = {};
-const sequelize = new Sequelize(    // new Sequelize 해서 설정들 넣으면 연결 객체가 됨.
-  config.database, config.username, config.password, config,
-);
 
-// 연결 객체 활용
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+
 db.sequelize = sequelize;
-db.User = User;
-db.Post = Post;
-db.Hashtag = Hashtag;
+db.Sequelize = Sequelize;
+////디비형식 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
+// db.User = User;
 
-User.init(sequelize);
-Post.init(sequelize);
-Hashtag.init(sequelize);
+// User.init(sequelize);
 
-User.associate(db);
-Post.associate(db);
-Hashtag.associate(db);
-
+// User.associate(db);
+///////////////////////////////////////////
 module.exports = db;
+
+
