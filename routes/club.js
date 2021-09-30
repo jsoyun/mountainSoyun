@@ -60,13 +60,13 @@ const upload = multer({
 //   }
 // });
 
-router.post("/img", upload.single("img"), (req, res) => {
+router.club("/img", upload.single("img"), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
 const upload2 = multer();
-router.post("/", upload2.none(), async (req, res, next) => {
+router.club("/", upload2.none(), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
