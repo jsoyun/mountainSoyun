@@ -176,3 +176,55 @@ textarea {
 footer {
   text-align: center;
 }
+:root {
+    --main-bg-color: cornsilk;
+    --nav-hover-color: green;
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+/* login */
+.hello {
+    position: absolute;
+    right: 1.7em;
+    font-size: 0.8vw;
+    height: 1em;
+}
+.hello-item.logout:hover {
+    text-decoration: underline;
+}
+
+/* nav-all */
+.nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding-top: 1.3vw;
+}
+
+/* nav-item */
+.nav-item {
+    flex: 0 1 auto;
+    list-style: none;
+    font-family: CookieRunOTF-Bold, sans-serif;
+    font-size: 2vw;
+    text-align: center;
+    padding: 0.7em 0;
+}
+.nav-item:hover {
+    background-color: var(--nav-hover-color);
+}
+
+/* nav-item-child */
+.nav-item:nth-child(1) {
+    flex-grow: 1;
+    margin-left: 15vw;
+}
+.nav-item:nth-child(2) {
+    flex-grow: 1;
+}
+.nav-item:nth-child(3) {
+    flex-grow: 1;
+}
