@@ -36,10 +36,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 app.use("/", indexRouter);
+app.use("/club", clubRouter);
 
-app.get("/club-upload", (req, res) => {
-  res.render("club-upload", { title: "도전클럽" });
-});
+
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler
