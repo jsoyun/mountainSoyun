@@ -9,8 +9,8 @@ const { Club } = require("../models");
 const router = express.Router();
 
 /* GET page. */
-router.get('/', (req, res) => {
-  res.render('clubupload');
+router.get("/", (req, res) => {
+  res.render("clubupload");
 });
 
 try {
@@ -32,6 +32,60 @@ const upload = multer({
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
+
+// Check File Type
+function checkFileType(file, cb) {
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("인증 사진만 업로드 가능합니다.");
+  }
+}
+
+router.post("/img", upload.single("img"), (req, res) => {
+  console.log(req.file);
+  res.json({ url: `/img/${req.file.filename}` });
+});
+
+const upload2 = multer();
+router.post("/", upload2.none(), async (req, res, next) => {
+  try {
+    const club = await Club.create({
+      content: req.body.content,
+      img: req.body.url,
+      // UserId: req.user.id,
+    });
+    res.redirect("/clubupload");
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+// Check File Type
+function checkFileType(file, cb) {
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("인증 사진만 업로드 가능합니다.");
+  }
+
+
+module.exports = router;
 
 // router.club("/img", isLoggedIn, upload.single("img"), (req, res) => {
 //   console.log(req.file);
@@ -64,25 +118,3 @@ const upload = multer({
 //     next(error);
 //   }
 // });
-
-router.post("/img", upload.single("img"), (req, res) => {
-  console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
-});
-
-const upload2 = multer();
-router.post("/", upload2.none(), async (req, res, next) => {
-  try {
-    const club = await Club.create({
-      content: req.body.content,
-      img: req.body.url,
-      UserId: req.user.id,
-    });
-    res.redirect("/clubupload");
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
-
-module.exports = router;
