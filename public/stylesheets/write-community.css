@@ -1,0 +1,47 @@
+:root {
+    --upload-font-size: 1.7vw;
+    --upload-font-family: SpoqaHanSansNeo-Regular;
+    --btn-border-color: #dadada;
+    --btn-size: 1.4vw;
+    --btn-border-radius : 10px;
+    --btn-bg-color : white;
+}
+
+/* 게시글 입력란 */
+.community{
+    text-align: center;
+}
+
+.upload-text{
+    border-radius: var(--btn-border-radius);
+    border-color: var(--btn-border-color);
+    font-size: var(--upload-font-size);
+    padding: 0.8vw;
+    font-family: var(--upload-font-family), sans-serif;
+}
+
+.upload-title-text{
+    margin: 5vw 0 0.8vw 0;
+}
+
+/*  게시글 버튼 */
+.submit-btn{
+    font-family: var(--upload-font-family), sans-serif;
+    font-size: var(--btn-size);
+    border-radius: 10px;
+    border: 1px solid #dadada;;
+    padding: 0.4em;
+}
+
+.submit-btn:hover{
+    background-color: var(--btn-border-color);
+}
+
+.submit-btn{    /* 등록 */
+    border-radius: var(--btn-border-radius);
+    margin: 1px;
+}
+
+.submit-file{   /* 첨부파일 */
+    background-color: var(--btn-bg-color);
+}

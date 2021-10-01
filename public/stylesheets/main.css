@@ -1,10 +1,13 @@
 :root {
-    --main-bg-color: cornsilk;
-    --nav-hover-color: green;
+    --main-bg-color: #A9C9FF;
+    /* --main-bg-img: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%); */
+    --nav-hover-color: #fff;
+    --nav-font-family: SpoqaHanSansNeo-Regular;
 }
 
 body {
     background-color: var(--main-bg-color);
+    /* background-image: var(--main-bg-img) cover; */
 }
 
 /* login */
@@ -16,6 +19,12 @@ body {
 }
 .hello-item.logout:hover {
     text-decoration: underline;
+}
+
+/* logo-img */
+.logo {
+    position: absolute;
+    width: 200vw;
 }
 
 /* nav-all */
@@ -30,7 +39,7 @@ body {
 .nav-item {
     flex: 0 1 auto;
     list-style: none;
-    font-family: CookieRunOTF-Bold, sans-serif;
+    font-family: var(--nav-font-family), sans-serif;
     font-size: 2vw;
     text-align: center;
     padding: 0.7em 0;

@@ -16,6 +16,8 @@ const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
 const mypageRouter = require("./routes/mypage");
 const findInfoRouter = require("./routes/findinfo");
+const postRouter = require("./routes/post");
+const communityRouter = require("./routes/community");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -52,6 +54,13 @@ app.use("/signup", signupRouter);
 app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
 
+app.use("/", indexRouter);
+app.use("/post", postRouter);
+app.use("/community", communityRouter);
+
+app.get("/post", (req, res, next) => {
+  res.render('write-community', { title: "업로드" });
+});
 
 
 ////////////////////////////////////////////////////////////////
