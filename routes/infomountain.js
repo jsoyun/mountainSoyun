@@ -12,12 +12,13 @@ router.get('/', (req, res) => {
 
   request(fullurl, (error, response, body) => {
     if (!error && response.statusCode == 200) {
+      // for (let i = 1; i < 50; i++) {
 
       const url = 'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI';
       var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + servicekey; /* Service Key*/
       queryParams += '&' + encodeURIComponent('searchWrd') + '='; /* */
       queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100'); /* */
-      queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('10'); /* */
+      queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent(1); /* */
       const fullurl = url + queryParams;
       console.log(fullurl);
 
@@ -25,6 +26,7 @@ router.get('/', (req, res) => {
       data = JSON.parse(convert.xml2json(body, { compact: true, spaces: 4 }));
       mountaindata = data.response.body.items.item
       res.render('infomountain', { mountaindata });
+      // }
     }
   });
 
