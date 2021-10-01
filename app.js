@@ -11,13 +11,12 @@ const mainRouter = require("./routes/main");
 const clubRouter = require("./routes/club");
 const clubUploadRouter = require("./routes/clubupload");
 const infoMountainRouter = require("./routes/infomountain");
-const boardRouter = require("./routes/board");
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
 const mypageRouter = require("./routes/mypage");
 const findInfoRouter = require("./routes/findinfo");
-const postRouter = require("./routes/post");
 const communityRouter = require("./routes/community");
+const writeRouter = require("./routes/write");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -48,19 +47,17 @@ app.use("/", mainRouter);
 app.use("/club", clubRouter);
 app.use("/clubupload", clubUploadRouter);
 app.use("/infomountain", infoMountainRouter);
-app.use("/board", boardRouter);
+
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
 app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
 
-app.use("/", indexRouter);
-app.use("/post", postRouter);
 app.use("/community", communityRouter);
-
-app.get("/post", (req, res, next) => {
-  res.render('write-community', { title: "업로드" });
-});
+// app.get("/post", (req, res, next) => {
+//   res.render('write-community', { title: "업로드" });
+// }); 아래 라우터로 교체
+app.use("/write", writeRouter);
 
 
 ////////////////////////////////////////////////////////////////

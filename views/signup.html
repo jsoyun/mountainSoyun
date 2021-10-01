@@ -1,4 +1,8 @@
 {% extends "layout.html" %}
+
+{% block css %}
+{% endblock %}
+
 {% block content %}
 <div id="join-form-body">
     <div class="join-form-title">Resistration</div>
@@ -48,6 +52,9 @@
         </fieldset>
         <input type="button" value="Sign Up" id="signUp" onclick="">
     </form>
-    <script src="javascripts/signupcheck.js"></script>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="javascripts/signupcheck.js"></script>
 {% endblock %}

@@ -4,6 +4,7 @@ const Sequelize = require("sequelize");
 const Club = require("./club");
 const CommunityPost = require('./communitypost');
 const CommunityHashtag = require("./communityhashtag");
+const User = require('./user')
 
 ///////////////////////////////////////////
 
@@ -25,11 +26,13 @@ db.Sequelize = Sequelize;
 db.Club = Club;
 db.CommunityPost = CommunityPost;
 db.CommunityHashtag = CommunityHashtag;
+db.User = User;
 
 // User.init(sequelize);
 Club.init(sequelize);
 CommunityPost.init(sequelize);
 CommunityHashtag.init(sequelize);
+User.init(sequelize);
 
 // User.associate(db);
 // CommunityPost.associate(db);

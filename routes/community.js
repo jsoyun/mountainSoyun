@@ -9,22 +9,28 @@ router.use((req, res, next) => {
 
 /* 커뮤니티 메인 */
 router.get('/', async (req, res, next) => {
-    try {
-      const posts = await Post.findAll({
-        include: {
-          model: User,
-          attribute: ['id', 'nick'],
-        },
-        order: [['createAt', 'DESC']],
-      });
-      res.render('main-community', { 
-        title: 'mountain 커뮤니티',
-        twits: posts,
-     });
-    } catch (error) {
-      console.error(error);
-      next(error);
-    }
+  try {
+    // const posts = await Post.findAll({
+    //   include: {
+    //     model: User,
+    //     attribute: ['id', 'nick'],
+    //   },
+    //   order: [['createAt', 'DESC']],
+    // });
+    res.render('main-community', {
+      title: 'mountain 커뮤니티',
+      // twits: posts,
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+// app.get("/post", (req, res, next) => {
+//   res.render('write-community', { title: "업로드" });
+// });
+router.post("/", (req, res, next) => {
+  res.render('write-community', { title: "업로드" });
 });
 
 module.exports = router;
