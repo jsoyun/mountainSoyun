@@ -54,9 +54,6 @@ app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
 
 app.use("/community", communityRouter);
-// app.get("/post", (req, res, next) => {
-//   res.render('write-community', { title: "업로드" });
-// }); 아래 라우터로 교체
 app.use("/write", writeRouter);
 
 

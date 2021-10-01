@@ -3,7 +3,7 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 
-const { Post, Hashtag } = require('../models');
+const { CommunityPost, Hashtag } = require('../models');
 
 const router = express.Router();
 
@@ -43,7 +43,7 @@ router.post('/img', upload.single('img'), (req, res) => {
 router.post('/', upload.none(), async (req, res, next) => {
   try {
     console.log(req.user);
-    const post = await Post.create({
+    const post = await CommunityPost.create({
       content: req.body.content,
       img: req.body.url,
       UserId: req.user.id,

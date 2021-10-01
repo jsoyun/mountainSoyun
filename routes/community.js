@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Post, User } = require('../models');
+const { CommunityPost, User } = require('../models');
 
 router.use((req, res, next) => {
   // req.locals.user = req.user;
@@ -10,7 +10,7 @@ router.use((req, res, next) => {
 /* 커뮤니티 메인 */
 router.get('/', async (req, res, next) => {
   try {
-    // const posts = await Post.findAll({
+    // const posts = await CommunityPost.findAll({
     //   include: {
     //     model: User,
     //     attribute: ['id', 'nick'],
@@ -26,9 +26,6 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-// app.get("/post", (req, res, next) => {
-//   res.render('write-community', { title: "업로드" });
-// });
 router.post("/", (req, res, next) => {
   res.render('write-community', { title: "업로드" });
 });

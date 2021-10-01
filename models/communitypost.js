@@ -15,7 +15,7 @@ module.exports = class CommunityPost extends Sequelize.Model {
             sequelize,
             timestamps: true,
             underscored: false,
-            modelName: 'Post',
+            modelName: 'CommunityPost',
             tableName: 'posts',
             paranoid: false,
             charset: 'utf8mb4',
