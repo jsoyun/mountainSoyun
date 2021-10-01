@@ -7,8 +7,15 @@ const logger = require("morgan");
 const nunjucks = require("nunjucks");
 const { sequelize } = require("./models");
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
-const indexRouter = require("./routes");
+const mainRouter = require("./routes/main");
 const clubRouter = require("./routes/club");
+const clubUploadRouter = require("./routes/clubupload");
+const infoMountainRouter = require("./routes/infomountain");
+const boardRouter = require("./routes/board");
+const loginRouter = require("./routes/login");
+const signupRouter = require("./routes/signup");
+const mypageRouter = require("./routes/mypage");
+const findInfoRouter = require("./routes/findinfo");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -35,8 +42,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
-app.use("/", indexRouter);
+app.use("/", mainRouter);
 app.use("/club", clubRouter);
+app.use("/clubupload", clubUploadRouter);
+app.use("/infomountain", infoMountainRouter);
+app.use("/board", boardRouter);
+app.use("/login", loginRouter);
+app.use("/signup", signupRouter);
+app.use("/mypage", mypageRouter);
+app.use("/findinfo", findInfoRouter);
 
 
 

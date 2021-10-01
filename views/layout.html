@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+</html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="../public/stylesheets/reset.css">
+  <link rel='stylesheet' href='/stylesheets/main.css' />
+  <link rel='stylesheet' href='/stylesheets/font.css' />
+</head>
+
+<body>
+  <header>
+    <div id="header-container">
+      <div id="header-menu-container">
+        <div id="header-logo"><a href="/">컴백홈</a></div>
+        <p class="hello">
+          <span class="hello-item">어서오세요 홍길동님</span>
+          <span class="hello-item"><a href="/login">로그인</a></span>
+          <span class="hello-item logout">[로그아웃]<i class="fas fa-sign-out-alt"></i></span>
+        </p>
+        <li class="nav">
+          <ul class="nav-item"><a href="/club">도전클럽</a></ul>
+          <ul class="nav-item"><a href="/infomountain">100대 명산 정보</a></ul>
+          <ul class="nav-item"><a href="/board">게시판</a></ul>
+        </li>
+      </div>
+    </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+  <footer>
+    <div id="footer-container">
+      <div id="footer-logo"></div>
+      <div id="footer-menu-container">
+
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
