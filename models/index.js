@@ -34,9 +34,9 @@ CommunityPost.init(sequelize);
 CommunityHashtag.init(sequelize);
 User.init(sequelize);
 
-// User.associate(db);
-// CommunityPost.associate(db);
-// CommunityHashtag.associate(db);
+User.associate(db);
+CommunityPost.associate(db);
+CommunityHashtag.associate(db);
 
 ///////////////////////////////////////////
 module.exports = db;
