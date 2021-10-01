@@ -83,7 +83,7 @@ function checkFileType(file, cb) {
   } else {
     cb("인증 사진만 업로드 가능합니다.");
   }
-
+}
 
 module.exports = router;
 
