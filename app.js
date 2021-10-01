@@ -7,8 +7,16 @@ const logger = require("morgan");
 const nunjucks = require("nunjucks");
 const { sequelize } = require("./models");
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
-const indexRouter = require("./routes");
+const mainRouter = require("./routes/main");
 const clubRouter = require("./routes/club");
+const clubUploadRouter = require("./routes/clubupload");
+const infoMountainRouter = require("./routes/infomountain");
+const loginRouter = require("./routes/login");
+const signupRouter = require("./routes/signup");
+const mypageRouter = require("./routes/mypage");
+const findInfoRouter = require("./routes/findinfo");
+const communityRouter = require("./routes/community");
+const writeRouter = require("./routes/write");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -35,11 +43,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
-app.use("/", indexRouter);
+app.use("/", mainRouter);
+app.use("/club", clubRouter);
+app.use("/clubupload", clubUploadRouter);
+app.use("/infomountain", infoMountainRouter);
 
-app.get("/club-upload", (req, res) => {
-  res.render("club-upload", { title: "도전클럽" });
-});
+app.use("/login", loginRouter);
+app.use("/signup", signupRouter);
+app.use("/mypage", mypageRouter);
+app.use("/findinfo", findInfoRouter);
+
+app.use("/community", communityRouter);
+// app.get("/post", (req, res, next) => {
+//   res.render('write-community', { title: "업로드" });
+// }); 아래 라우터로 교체
+app.use("/write", writeRouter);
+
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Hashtag extends Sequelize.Model {
+module.exports = class CommunityHashtag extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             title: {
@@ -19,4 +19,8 @@ module.exports = class Hashtag extends Sequelize.Model {
             collate: 'utf8mb4_general_ci',
         });
     }
+
+    // static associate(db) {
+    //     db.CommunityHashtag.belongsToMany(db.CommunityPost, { through: 'PostHashtag' });
+    // }    
 }
