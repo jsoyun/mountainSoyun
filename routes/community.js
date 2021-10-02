@@ -7,27 +7,25 @@ router.use((req, res, next) => {
   next();
 });
 
-/* 커뮤니티 메인 */
+/* 커뮤니티 목록 */
 router.get('/', async (req, res, next) => {
   try {
-    // const posts = await CommunityPost.findAll({
-    //   include: {
-    //     model: User,
-    //     attribute: ['id', 'nick'],
-    //   },
-    //   order: [['createAt', 'DESC']],
-    // });
+    const posts = await CommunityPost.findAll({
+      include: { 
+        model: User, 
+        attribute: ['id', 'nick'],
+      },
+      // order: ['createAt', 'DESC'],
+    });
     res.render('main-community', {
       title: 'mountain 커뮤니티',
-      // twits: posts,
+      communityTwits: posts,
     });
+    console.log(posts);
   } catch (error) {
     console.error(error);
     next(error);
   }
-});
-router.post("/", (req, res, next) => {
-  res.render('write-community', { title: "업로드" });
 });
 
 module.exports = router;
