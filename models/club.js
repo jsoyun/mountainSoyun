@@ -16,11 +16,11 @@ module.exports = class Club extends Sequelize.Model {
           type: Sequelize.INTEGER(5),
           allowNull: false,
         },
-        created_at: {
-          type: Sequelize.DATE,
-          allowNull: true,
-          defaultValue: Sequelize.NOW,
-        },
+        // created_at: {
+        //   type: Sequelize.DATE,
+        //   allowNull: true,
+        //   defaultValue: Sequelize.NOW,
+        // },
       },
       {
         sequelize,
