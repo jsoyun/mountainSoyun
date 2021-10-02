@@ -1,0 +1,14 @@
+:root {
+    --tb-font-family: SpoqaHanSansNeo-Regular;
+}
+
+/* table 전체 임시 */
+.community-box {
+    font-family: var(--tb-font-family), sans-serif;
+    text-align: center;
+}
+
+h1, thead, tbody, tr, th {
+    width: 150px;
+    height: 70px;
+}

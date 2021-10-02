@@ -15,7 +15,7 @@ module.exports = class CommunityPost extends Sequelize.Model {
             sequelize,
             timestamps: true,
             underscored: false,
-            modelName: 'Post',
+            modelName: 'CommunityPost',
             tableName: 'posts',
             paranoid: false,
             charset: 'utf8mb4',
@@ -23,8 +23,8 @@ module.exports = class CommunityPost extends Sequelize.Model {
         });
     }
 
-    // static associate(db) {
-    //     db.CommunityPost.belongsTo(db.User);
-    //     db.CommunityPost.belongsToMany(db.CommunityHashtag, { through: 'PostHashtag' });
-    // }    
+    static associate(db) {
+        db.CommunityPost.belongsTo(db.User);
+        db.CommunityPost.belongsToMany(db.CommunityHashtag, { through: 'PostHashtag' });
+    }    
 };

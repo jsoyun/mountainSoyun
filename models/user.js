@@ -8,12 +8,16 @@ module.exports = class User extends Sequelize.Model {
         allowNull: true,
         unique: true,
       },
-      nick: {
-        type: Sequelize.STRING(15),
-        allowNull: false,
-      },
       password: {
         type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      nick: {
+        type: Sequelize.STRING(15),
+        allowNull: true,
+      },
+      birth: {
+        type: Sequelize.DATE,
         allowNull: true,
       },
       provider: {
@@ -37,17 +41,17 @@ module.exports = class User extends Sequelize.Model {
     });
   }
 
-  // static associate(db) {
-  //   db.User.hasMany(db.CommunityPost);
-  //   db.User.belongsToMany(db.User, {
-  //     foreignKey: 'followingId',
-  //     as: 'Followers',
-  //     through: 'Follow',
-  //   });
-  //   db.User.belongsToMany(db.User, {
-  //     foreignKey: 'followingId',
-  //     as: 'Followings',
-  //     through: 'Follow',
-  //   });
-  // }
+  static associate(db) {
+    db.User.hasMany(db.CommunityPost);
+    db.User.belongsToMany(db.User, {
+      foreignKey: 'followingId',
+      as: 'Followers',
+      through: 'Follow',
+    });
+    db.User.belongsToMany(db.User, {
+      foreignKey: 'followingId',
+      as: 'Followings',
+      through: 'Follow',
+    });
+  }
 };

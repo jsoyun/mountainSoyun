@@ -1,15 +1,11 @@
-function checkId() { //아이디 유효성 검사
-    const regExpId = /^[A-Za-z0-9]{4,10}$/;
-    let id = document.getElementById("user-id").value;
-    if (!regExpId.test(id)) {
-        document.getElementById("wrongid").innerHTML = "형식에 맞지 않는 아이디 입니다."
-
-    } else {
-        document.getElementById("wrongid").innerHTML = "";
-        return true;
+function checkMail() { //메일 유효성 검사
+    const regExpMail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3})$/;
+    let mail = document.getElementById("user-email").value;
+    if (!regExpMail.test(mail)) {
+        document.getElementById("usereMail").innerHTML = "형식에 맞지 않는 이메일 입니다."
     }
+    else { document.getElementById("usereMail").innerHTML = "" }
 }
-
 function checkPw() { //비밀번호 유효성 검사
     const regExpPwd = /^(?=.*?[a-zA-Z])(?=.*?[0-9]).{4,20}$/;
     let pw = document.getElementById("user-pw").value;
@@ -33,8 +29,8 @@ function reCheckPw() { //비밀번호 재확인
 }
 
 function checkName() { //이름 유효성 검사
-    const regExpName = /^[가-힣]{2,6}$/;;
-    let name = document.getElementById("user-name").value;
+    const regExpName = /^[A-Za-z0-9가-힣]{2,10}$/;;
+    let name = document.getElementById("user-nickname").value;
     if (!regExpName.test(name)) {
         document.getElementById("wrongName").innerHTML = "형식에 맞지 않는 이름입니다."
     } else {
@@ -43,14 +39,6 @@ function checkName() { //이름 유효성 검사
     }
 }
 
-function checkMail() { //메일 유효성 검사
-    const regExpMail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3})$/;
-    let mail = document.getElementById("user-email").value;
-    if (!regExpMail.test(mail)) {
-        document.getElementById("usereMail").innerHTML = "형식에 맞지 않는 이메일 입니다."
-    }
-    else { document.getElementById("usereMail").innerHTML = "" }
-}
 
 //회원가입시 입력란 정규식 체크
 function checkForm() {
