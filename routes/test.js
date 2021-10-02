@@ -1,10 +1,10 @@
 const express = require('express');
 const request = require('request');
-const APIkey = require('../public/javascripts/APIkey')
+const APIkey = require('../public/javascripts/APIkey');
 const convert = require('xml-js');
 const router = express.Router();
 
-const servicekey = APIkey.servicekeyen
+const servicekey = APIkey.servicekeyen;
 
 const url = 'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI';
 var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + servicekey; /* Service Key*/
