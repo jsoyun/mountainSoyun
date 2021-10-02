@@ -29,11 +29,13 @@ const upload = multer({
       const ext = path.extname(file.originalname);
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
+    fileFilter: function (req, file, cb) {
+      checkFileType(file, cb);
+    },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-// Check File Type
 function checkFileType(file, cb) {
   // Allowed ext
   const filetypes = /jpeg|jpg|png|gif/;
@@ -60,30 +62,14 @@ router.post("/", upload2.none(), async (req, res, next) => {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
-      // UserId: req.user.id,
+      UserId: req.user.id,
     });
-    res.redirect("/clubupload");
+    res.redirect("/club");
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
-
-// Check File Type
-function checkFileType(file, cb) {
-  // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
-  // check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // check mime
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("인증 사진만 업로드 가능합니다.");
-  }
-}
 
 module.exports = router;
 
