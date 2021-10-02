@@ -13,13 +13,11 @@ router.get('/:id', async (req, res, next) => {
       where: { id: `${req.params.id}` },
     }) 
     console.log(texts);
-    // .then(CommunityPost => {
-        res.render('view-community', {
-            title: 'mountain 커뮤니티',
-            communityTwits: texts,
-            num: `${req.params.id}`,
-        });
-    // })
+    res.render('view-community', {
+        title: 'mountain 커뮤니티',
+        communityTwits: texts,
+        // num: `${req.params.id}`,
+    });
     
   } catch (error) {
     console.error(error);

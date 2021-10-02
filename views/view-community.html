@@ -7,13 +7,25 @@
 <section class="community-view-box">
     <header>
         <h1>커뮤니티</h1>
-        <!-- <h2>{{communityTwit.User.id}}</h2> -->
-        <!-- <h6>{{communityTwit.createdAt}}</h6> -->
+        <a href="/community">뒤로가기</a>
     </header>
     <body>
-        
+        <div>
+            <p><p>{{communityTwits.id}}</p></p> <!-- 확인 차 넣은 수 -->
+            <p><p>{{communityTwits.title}}</p></p>
+            <p><div class="board-nick">{{communityTwits.User.nick}}</div></p>
+            <p><div class="board-createdAt">{{communityTwits.createdAt}}</div></p>
+            <p>조회수</p>
+        </div>
+        <div>
+            <p><div class="board-content">{{communityTwits.content}}</div></p>
+            <img style="width: 200px;" src="{{ communityTwits.img }}" alt="섬네일">
+        </div>
     </body>
-    <footer></footer>
+    <footer>
+        <p>댓글 수</p>
+        <p>댓글 들</p>
+    </footer>
 </section>
 {% endblock %}
 
