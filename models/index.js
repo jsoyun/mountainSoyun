@@ -1,4 +1,6 @@
 const Sequelize = require("sequelize");
+const env = process.env.NODE_ENV || "development";
+const config = require("../config/config")[env];
 ////디비형식 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 // const User = require('./user');
 const Club = require("./club");
@@ -8,8 +10,6 @@ const User = require('./user')
 
 ///////////////////////////////////////////
 
-const env = process.env.NODE_ENV || "development";
-const config = require("../config/config")[env];
 const db = {};
 
 const sequelize = new Sequelize(

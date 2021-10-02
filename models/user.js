@@ -8,12 +8,16 @@ module.exports = class User extends Sequelize.Model {
         allowNull: true,
         unique: true,
       },
-      nick: {
-        type: Sequelize.STRING(15),
-        allowNull: false,
-      },
       password: {
         type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      nick: {
+        type: Sequelize.STRING(15),
+        allowNull: true,
+      },
+      birth: {
+        type: Sequelize.DATE,
         allowNull: true,
       },
       provider: {

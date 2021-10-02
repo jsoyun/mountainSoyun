@@ -18,11 +18,16 @@
     <div id="header-container">
       <div id="header-menu-container">
         <div id="header-logo"><a href="/">컴백홈</a></div>
+        {% if user and user.id %}
         <p class="hello">
-          <span class="hello-item">어서오세요 홍길동님</span>
-          <span class="hello-item"><a href="/login">로그인</a></span>
-          <span class="hello-item logout">[로그아웃]<i class="fas fa-sign-out-alt"></i></span>
+          <span class="hello-item">{{'안녕하세요! ' + user.nick + '님'}}</span>
+          <span class="hello-item logout"><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i></span>
         </p>
+        {% else %}
+        <p class="hello">
+          <span class="hello-item"><a href="/login">로그인</a></span>
+        </p>
+        {% endif %}
         <li class="nav">
           <ul class="nav-item"><a href="/club">도전클럽</a></ul>
           <ul class="nav-item"><a href="/infomountain">100대 명산 정보</a></ul>
