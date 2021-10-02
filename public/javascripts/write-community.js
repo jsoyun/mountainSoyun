@@ -9,12 +9,12 @@ const formData = new FormData();
 formData.append('img', this.files[0]);
 axios.post('/write/img', formData)
     .then((res) => {
-    imageUrl.value = res.data.url;
-    imagePreview.src = res.data.url;
-    imagePreview.style.display = 'inline';
+        imageUrl.value = res.data.url;
+        imagePreview.src = res.data.url;
+        imagePreview.style.display = 'inline';
     })
     .catch((err) => {
-    console.error(err);
+        console.error(err);
     });
 });
 }

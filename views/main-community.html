@@ -7,6 +7,7 @@
 {% block content %}
 <section class="community-box">
     <header><h1>커뮤니티</h1></header>
+    <a href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
     <form id="hashtag-form" action="/hashtag">
         <input type="text" name="hashtag" placeholder="태그 검색">
         <button class="btn">검색</button>
@@ -15,8 +16,8 @@
         <thead>
             <tr>
                 <th>번호</th>
-                <th>글쓴이</th>
                 <th>제목</th>
+                <th>작성자</th>
                 <th>날짜</th>
                 <th>조회</th>
                 <th>댓글 수</th>
@@ -27,18 +28,31 @@
             <!-- <tr>
                 <td>글이 없습니다.</td>
             </tr> -->
-            {% for twit in twits %}
-            <tr class="twit">
-                <td><input type="hidden" value="{{twit.id}}" class="twit-id"></td>
-                <td><div class="twit-content">{{twit.content}}</div></td>
-                <td><div class="twit-author">{{twit.User.nick}}</div></td>
-                <td>글</td>
+            {% for communityTwit in communityTwits %}
+            <tr class="post">
+                <td><div class="posts-CommunityPost-title">{{communityTwit.id}}</div></td>
+                <td><a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p><img style="width: 100px;" src="{{communityTwit.img}}" alt="섬네일"></a></td>
+                <td><div class="posts-User-nick">{{communityTwit.User.nick}}</div></td>
+                <td><div class="posts-CommunityPost-createAt">{{communityTwit.createdAt}}</div></td>
                 <td>10.21</td>
                 <td>21</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    <!-- <ul>
+        {% set offset = 10 %}
+        {% set current = '{currentPage}' %}
+        {% set last = '{maxPage}' %}
+        
+        {% if 1<=last %}
+            {% for offset in last %}
+                {% if last==1 or last==maxPage %}
+                    <li><a href="#">왜 안나오니</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </ul> -->
 </section>
 {% endblock %}
 <!-- 

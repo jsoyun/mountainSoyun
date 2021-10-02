@@ -4,6 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 
 const { CommunityPost, Hashtag } = require('../models');
+const { isLoggedIn } = require("./middlewares");
 
 const router = express.Router();
 
@@ -22,37 +23,36 @@ try {
 /* multer 기본 설정 */
 const upload = multer({
   storage: multer.diskStorage({
-    destination(req, file, cb) {
-      cb(null, 'uploads/');
+    destination(req, file, done) {
+      done(null, 'uploads/');
     },
-    filename(req, file, cb) {
+    filename(req, file, done) {
       const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
   limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
 /* 이미지 */
-router.post('/img', upload.single('img'), (req, res) => {
+router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
-/* 게시글 */
-router.post('/', upload.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
-    console.log(req.user);
-    const post = await CommunityPost.create({
+    const mContent = await CommunityPost.create({
+      title: req.body.title,
       content: req.body.content,
       img: req.body.url,
       UserId: req.user.id,
     });
-    res.redirect('/community');
+    res.redirect("/community");
   } catch (error) {
     console.error(error);
     next(error);
-  };
+  }
 });
 
 module.exports = router;

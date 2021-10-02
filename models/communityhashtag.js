@@ -12,7 +12,7 @@ module.exports = class CommunityHashtag extends Sequelize.Model {
             sequelize,
             timestamps: true,
             underscored: false,
-            modelName: 'Communityhashtag',
+            modelName: 'CommunityHashtag',
             tableName: 'communityhashtags',
             paranoid: false,
             charset: 'utf8mb4',
