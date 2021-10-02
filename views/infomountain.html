@@ -4,6 +4,10 @@
 
 {% block content %}
 <h1>100대명산게시판</h1>
+{% for item in mountaindata %}
+<p>{{item.mntiname._text}}</p>
+{% endfor %}
+
 {% endblock %}
 
 {% block script %}

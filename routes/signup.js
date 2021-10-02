@@ -2,13 +2,16 @@
 const express = require("express");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
+const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const User = require("../models/user");
 
 //라우터
 const router = express.Router();
 
 //회원가입 창띄우기(get)
 router.get("/", (req, res, next) => {
-  res.render("signup");
+  res.render("signup", { title: "회원가입" });
 });
 
 //회원가입 데이터 입력한거 전송하는 코드
@@ -25,6 +28,15 @@ router.post("/signup", async (req, res, next) => {
     }
     const hash = await bcrypt.hash(password, 12);
     User.create({
+      // router.post('/', isNotLoggedIn, async (req, res, next) => {
+      //   const { email, password, nick } = req.body;
+      //   try {
+      //     const exUser = await User.findOne({ where: { email } });
+      //     if (exUser) {
+      //       return res.redirect('/join?error=exist');
+      //     }
+      //     const hash = await bcrypt.hash(password, 12);
+      //     await User.create({
       email,
       nick,
       password: hash,

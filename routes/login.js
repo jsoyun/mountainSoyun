@@ -7,7 +7,11 @@ const User = require("../models/user");
 const router = express.Router();
 //로그인창 띄우기
 router.get("/", (req, res, next) => {
-  res.render("login");
+  const twits = [];
+  res.render("login", {
+    title: "mountain",
+    twits,
+  });
 });
 
 //회원가입 라우터

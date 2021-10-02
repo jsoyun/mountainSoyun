@@ -20,7 +20,7 @@ module.exports = class CommunityHashtag extends Sequelize.Model {
         });
     }
 
-    // static associate(db) {
-    //     db.CommunityHashtag.belongsToMany(db.CommunityPost, { through: 'PostHashtag' });
-    // }    
+    static associate(db) {
+        db.CommunityHashtag.belongsToMany(db.CommunityPost, { through: 'PostHashtag' });
+    }    
 }

@@ -1,11 +1,38 @@
 {% extends 'layout.html' %}
-<!-- 
+
 {% block css %}
-{% endblock %} -->
+<link rel="stylesheet" href="/stylesheets/main-community.css">
+{% endblock %}
 
 {% block content %}
-<h1>dd</h1>
-<a href="/write">글쓰기</a>
+<section class="community-box">
+    <header><h1>커뮤니티</h1></header>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <!-- <th>구분</th> -->
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>날짜</th>
+                <th>조회</th>
+                <!-- <th>추천</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>글이 없습니다.</td>
+            </tr> -->
+            <tr>
+                <td>1</td>
+                <td>제에목</td>
+                <td>글</td>
+                <td>10.21</td>
+                <td>21</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 {% endblock %}
 <!-- 
 {% block script %}

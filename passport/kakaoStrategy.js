@@ -10,7 +10,7 @@ module.exports = () => {
         //카카오에서 발급해주는 ID. 노출되면 안돼서 process.env.KAKAO_ID로 설정. 나중에 아이디를 발급받아 .env파일에 넣을 것임
         clientID: process.env.KAKAO_ID,
         //카카오로부터 인증결과를 받을 라우터 주소. 아래에서 라우터 작성할 때 이주소 사용
-        callbackURL: "/auth/kakao/callback",
+        callbackURL: "/login/kakao/callback",
       },
       //기존에 카카오를 통해 .
       async (accessToken, refreshToken, profile, done) => {
