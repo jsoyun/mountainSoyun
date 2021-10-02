@@ -3,6 +3,10 @@ const Sequelize = require('sequelize');
 module.exports = class CommunityPost extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
+            title: {
+                type: Sequelize.STRING(30),
+                allowNull: false,
+            },
             content: {
                 type: Sequelize.STRING(140),
                 allowNull: false,
@@ -15,8 +19,8 @@ module.exports = class CommunityPost extends Sequelize.Model {
             sequelize,
             timestamps: true,
             underscored: false,
-            modelName: 'CommunityPost',
-            tableName: 'posts',
+            modelName: 'Communitypost',
+            tableName: 'communityposts',
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
