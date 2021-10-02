@@ -42,6 +42,7 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
+    db.User.hasMany(db.Club);
     db.User.hasMany(db.CommunityPost);
     db.User.belongsToMany(db.User, {
       foreignKey: 'followingId',

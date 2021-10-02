@@ -35,6 +35,7 @@ CommunityHashtag.init(sequelize);
 User.init(sequelize);
 
 User.associate(db);
+Club.associate(db);
 CommunityPost.associate(db);
 CommunityHashtag.associate(db);
 

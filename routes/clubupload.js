@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 
 const { Club } = require("../models");
-// const { isLoggedIn } = require("./middlewares");
+const { isLoggedIn } = require("./middlewares");
 
 const router = express.Router();
 
@@ -51,13 +51,13 @@ function checkFileType(file, cb) {
   }
 }
 
-router.post("/img", upload.single("img"), (req, res) => {
+router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
 const upload2 = multer();
-router.post("/", upload2.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
