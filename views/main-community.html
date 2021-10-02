@@ -7,15 +7,19 @@
 {% block content %}
 <section class="community-box">
     <header><h1>커뮤니티</h1></header>
+    <form id="hashtag-form" action="/hashtag">
+        <input type="text" name="hashtag" placeholder="태그 검색">
+        <button class="btn">검색</button>
+      </form>
     <table>
         <thead>
             <tr>
                 <th>번호</th>
-                <!-- <th>구분</th> -->
-                <th>제목</th>
                 <th>글쓴이</th>
+                <th>제목</th>
                 <th>날짜</th>
                 <th>조회</th>
+                <th>댓글 수</th>
                 <!-- <th>추천</th> -->
             </tr>
         </thead>
@@ -23,13 +27,16 @@
             <!-- <tr>
                 <td>글이 없습니다.</td>
             </tr> -->
-            <tr>
-                <td>1</td>
-                <td>제에목</td>
+            {% for twit in twits %}
+            <tr class="twit">
+                <td><input type="hidden" value="{{twit.id}}" class="twit-id"></td>
+                <td><div class="twit-content">{{twit.content}}</div></td>
+                <td><div class="twit-author">{{twit.User.nick}}</div></td>
                 <td>글</td>
                 <td>10.21</td>
                 <td>21</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </section>

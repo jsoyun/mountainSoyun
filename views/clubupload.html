@@ -1,27 +1,75 @@
 {% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+<link rel="stylesheet" href="../public/stylesheets/club.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+/>
 <div class="container">
-  <h3>신규 등록</h3>
+  <h3>인증 신규 등록</h3>
 
   <form id="twit-form" method="post" enctype="multipart/form-data">
     <legend>명산100 [북한산]</legend>
     <h5>지금 등록 가능한 인증지 입니다.</h5>
 
+    <label id="img-label" for="img">사진 업로드</label>
     <div class="img-preview">
       <img
         id="img-preview"
         src=""
         style="display: none"
-        width="250"
+        width="200"
         alt="미리보기"
       />
-      <input id="img-url" type="hidden" name="url" />
-      <div>
-        <label id="img-label" for="img">사진 업로드</label>
-        <input id="img" type="file" accept="image/*" /><br />
-        <button id="twit-btn" type="submit" class="btn">사진 등록</button>
-      </div>
+      <input id="img-url" type="hidden" name="url" /><br />
+      <input id="img" type="file" accept="image/*" /><br />
       <p>인증지 평가</p>
-      <!-- <div class="rating">-->
+      <div class="rating-wrap">
+        <div class="center">
+          <fieldset class="rating">
+            <input type="radio" id="star5" name="rating" value="5" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star4.5" name="rating" value="4.5" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star4" name="rating" value="4" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star3.5" name="rating" value="3.5" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star3" name="rating" value="3" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star2.5" name="rating" value="2.5" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star2" name="rating" value="2" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star1.5" name="rating" value="1.5" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star1" name="rating" value="1" /><label
+              for="star5"
+              class="full"
+            ></label>
+            <input type="radio" id="star0.5" name="rating" value="0.5" /><label
+              for="star5"
+              class="full"
+            ></label>
+          </fieldset>
+        </div>
+        <h4 id="rating-values"></h4>
+      </div>
       <p>도전내용</p>
       <div class="input-group">
         <textarea
@@ -30,8 +78,8 @@
           maxlength="100"
           placeholder="도전내용을 작성해주세요"
         >
-100자 이내로 작성가능
-        </textarea>
+100자 이내로 작성가능</textarea
+        >
       </div>
       <p>카테고리</p>
       <button id="twit-btn" type="submit" class="btn">인증하기</button>
@@ -40,6 +88,9 @@
 </div>
 {% endblock %} {% block script %}
 <script>
+  const container = document.querySelector(".rating");
+  const items = container.querySelectorAll(".rating-item");
+
   if (document.getElementById("img")) {
     document.getElementById("img").addEventListener("change", function (e) {
       const formData = new FormData();
@@ -55,6 +106,19 @@
         .catch((err) => {
           console.error(err);
         });
+    });
+  }
+</script>
+<script>
+  let star = document.querySelectorAll("input");
+
+  let showValue = document.querySelector("#rating-value");
+
+  for (let i = 0; i < star.length; i++) {
+    star[i].addEventListener("click", function () {
+      i = this.value;
+
+      showValue.innerHTML = i + " out of 5 ";
     });
   }
 </script>

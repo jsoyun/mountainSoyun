@@ -12,15 +12,10 @@ module.exports = class Club extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
-        start: {
-          type: Sequelize.INTEGER(5),
-          allowNull: false,
-        },
-        created_at: {
-          type: Sequelize.DATE,
-          allowNull: true,
-          defaultValue: Sequelize.NOW,
-        },
+        // start: {
+        //   type: Sequelize.INTEGER(5),
+        //   allowNull: false,
+        // },
       },
       {
         sequelize,
@@ -35,8 +30,8 @@ module.exports = class Club extends Sequelize.Model {
     );
   }
 
-  // static associate(db) {
-  //   db.Post.belongsTo(db.User);
-  //   db.Post.belongsToMany(db.Hashtag, { through: "PostHashtag" });
-  // }
+  static associate(db) {
+    db.Club.belongsTo(db.User);
+    //   db.Post.belongsToMany(db.Hashtag, { through: "PostHashtag" });
+  }
 };
