@@ -6,10 +6,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const nunjucks = require("nunjucks");
 const { sequelize } = require("./models");
-const dotenv = require('dotenv');
-const passport = require('passport');
-const session = require('express-session');
-const passportConfig = require('./passport');
+const dotenv = require("dotenv");
+const passport = require("passport");
+const session = require("express-session");
+const passportConfig = require("./passport");
 dotenv.config();
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 const mainRouter = require("./routes/main");
@@ -24,6 +24,7 @@ const communityRouter = require("./routes/community");
 const writeRouter = require("./routes/write");
 const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
+const userRouter = require("./routes/user");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -50,15 +51,17 @@ app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(session({
-  resave: false,
-  saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-  },
-}));
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false,
+    },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
@@ -72,6 +75,7 @@ app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
 app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
+app.use("/user", userRouter);
 
 app.use("/community", communityRouter);
 app.use("/write", writeRouter);
