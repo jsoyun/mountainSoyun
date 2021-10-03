@@ -1,9 +1,13 @@
-{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+{% extends "layout.html" %}{% block css %}{% endblock %} {% block content %}
 <link rel="stylesheet" href="../public/stylesheets/club.css" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
 />
+<!-- <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/> -->
 <div class="container">
   <h3>인증 신규 등록</h3>
 
@@ -17,58 +21,29 @@
         id="img-preview"
         src=""
         style="display: none"
-        width="200"
+        width="250"
         alt="미리보기"
       />
-      <input id="img-url" type="hidden" name="url" /><br />
-      <input id="img" type="file" accept="image/*" /><br />
+      <input id="img-url" type="hidden" name="url" />
+      <input class="btn" id="img" type="file" accept="image/*"><br />
+        <p>인증 이미지 추가</p>
+        <canvas id="imageCanvas"></canvas>
+      </div>
+
       <p>인증지 평가</p>
-      <div class="rating-wrap">
-        <div class="center">
-          <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star4.5" name="rating" value="4.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star3.5" name="rating" value="3.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star2.5" name="rating" value="2.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star1.5" name="rating" value="1.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star1" name="rating" value="1" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star0.5" name="rating" value="0.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-          </fieldset>
+      <div class="container">
+        <div class="star-widget">
+          <input type="radio" name="rate" id="rate-5" />
+          <label for="rate-5" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-4" />
+          <label for="rate-4" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-3" />
+          <label for="rate-3" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-2" />
+          <label for="rate-2" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="rate-1" />
+          <label for="rate-1" class="fas fa-star"></label>
         </div>
-        <h4 id="rating-values"></h4>
       </div>
       <p>도전내용</p>
       <div class="input-group">
@@ -81,21 +56,27 @@
 100자 이내로 작성가능</textarea
         >
       </div>
-      <p>카테고리</p>
+      <p>해시태그</p>
+      <div class="twits">
+        <form id="hashtag-form" action="/hashtag">
+          <textarea type="text" name="hashtag" name="content" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다.
+#태그명 을 통해서 검색 태그를 등록할 수 있습니다."></textarea>
+          <button class="btn">검색</button>
+      </div><br />
       <button id="twit-btn" type="submit" class="btn">인증하기</button>
     </div>
   </form>
 </div>
 {% endblock %} {% block script %}
 <script>
-  const container = document.querySelector(".rating");
-  const items = container.querySelectorAll(".rating-item");
+  // const container = document.querySelector(".rating");
+  // const items = container.querySelectorAll(".rating-item");
 
   if (document.getElementById("img")) {
     document.getElementById("img").addEventListener("change", function (e) {
       const formData = new FormData();
-      console.log(this, this.files);
-      formData.append("img", this.files[0]);
+      console.log(this, this.file);
+      formData.append("img", this.file[0]);
       axios
         .post("/clubupload/img", formData)
         .then((res) => {
@@ -106,19 +87,6 @@
         .catch((err) => {
           console.error(err);
         });
-    });
-  }
-</script>
-<script>
-  let star = document.querySelectorAll("input");
-
-  let showValue = document.querySelector("#rating-value");
-
-  for (let i = 0; i < star.length; i++) {
-    star[i].addEventListener("click", function () {
-      i = this.value;
-
-      showValue.innerHTML = i + " out of 5 ";
     });
   }
 </script>
