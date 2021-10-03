@@ -24,6 +24,7 @@ const communityRouter = require("./routes/community");
 const writeRouter = require("./routes/write");
 const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
+const editRouter = require("./routes/edit");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -76,6 +77,7 @@ app.use("/findinfo", findInfoRouter);
 app.use("/community", communityRouter);
 app.use("/write", writeRouter);
 app.use("/view", viewRouter);
+app.use("/edit", editRouter);
 
 
 ////////////////////////////////////////////////////////////////
