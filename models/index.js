@@ -7,6 +7,7 @@ const Club = require("./club");
 const CommunityPost = require('./communitypost');
 const CommunityHashtag = require("./communityhashtag");
 const User = require('./user')
+const Mountain = require('./mountain')
 
 ///////////////////////////////////////////
 
@@ -27,12 +28,14 @@ db.Club = Club;
 db.CommunityPost = CommunityPost;
 db.CommunityHashtag = CommunityHashtag;
 db.User = User;
+db.Mountain = Mountain;
 
 // User.init(sequelize);
 Club.init(sequelize);
 CommunityPost.init(sequelize);
 CommunityHashtag.init(sequelize);
 User.init(sequelize);
+Mountain.init(sequelize);
 
 User.associate(db);
 Club.associate(db);

@@ -37,7 +37,7 @@ nunjucks.configure("views", {
   watch: true,
 });
 sequelize
-  .sync({ focus: true })
+  .sync({ focus: false })
   .then(() => {
     console.log("db 연결 성공");
   })
