@@ -34,12 +34,13 @@ const upload = multer({
   limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
-/* 이미지 */
+/* 게시글 IMG CREATE */
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
+/* 게시글 TEXT CREATE */
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const mContent = await CommunityPost.create({
