@@ -21,11 +21,5 @@ router.get('/', async (req, res, next) => {
     next(error);
   };
 });
-/* 페이지 표시 */
-// models.CommunityPost.findAll({
-//   offset: 0,
-//   limit: 100,
-//   order: "createdAt desc",
-// })
 
 module.exports = router;
