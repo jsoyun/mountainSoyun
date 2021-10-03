@@ -55,6 +55,7 @@ router.post('/:id', async (req, res, next) => {
                 content:req.body.content},
             {where:{id:`${req.params.id}`}}
         );
+        res.redirect('/community');
     } catch (error) {
       console.error(error);
       next(error);

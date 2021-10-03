@@ -6,7 +6,7 @@ const config = require("../config/config")[env];
 const Club = require("./club");
 const CommunityPost = require('./communitypost');
 const CommunityHashtag = require("./communityhashtag");
-const User = require('./user')
+const User = require('./user');
 
 ///////////////////////////////////////////
 
