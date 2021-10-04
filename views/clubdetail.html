@@ -1,0 +1,86 @@
+{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+<style>
+  .b_inner .contents_box {
+    float: none;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+<div class="title">상세페이지</div>
+<section id="container">
+  <div id="main_container">
+    <section class="b_inner">
+      <div class="contents_box">
+        <article class="contents cont01">
+          <header class="top">
+            <div class="user_container">
+              <div class="profile_img"></div>
+              <div class="user_name">
+                <div class="nick_name"></div>
+              </div>
+            </div>
+            <div class="sprite_more_icon"></div>
+          </header>
+
+          <div class="img_section">
+            <div class="trans_inner">
+              <div>
+                <input id="img-url" type="hidden" name="url" /><br />
+              </div>
+              <p>{{twit.img}}</p>
+              <img style="width: 200px" src="{{ twit.img }}" alt="섬네일" />
+            </div>
+          </div>
+
+          <div class="bottom_icons">
+            <div class="left_icons">
+              <div class="heart_btn">
+                <div
+                  class="sprite_heart_icon_outline"
+                  data-name="heartbeat"
+                ></div>
+              </div>
+              <div>
+                <div class="sprite_bubble_icon"></div>
+              </div>
+              <div>
+                <div class="sprite_share_icon"></div>
+              </div>
+            </div>
+
+            <div class="right_icon">
+              <div class="sprite_bookmark_outline"></div>
+            </div>
+          </div>
+
+          <div class="count_likes">
+            좋아요
+            <span class="count">10</span>
+            개
+          </div>
+
+          <div class="commet_container">
+            <div class="commet">
+              <div class="nick_name">{{twit.User.nick}}</div>
+            </div>
+
+            <div class="small_heart">
+              <div class="sprite_small_heart_icon_outline"></div>
+            </div>
+          </div>
+
+          <div class="commit_field">
+            <input type="text" placeholder="댓글달기.." />
+
+            <div class="upload_btn">게시</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+</body>
+</html>
+{% endblock %} {% block script %} {% endblock %}
