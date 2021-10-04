@@ -1,21 +1,11 @@
 const $select = document.getElementById('select');
-
+const selectData = document.getElementById('select-data');
 let value = 'title';    // default 값
 
 $select.addEventListener('change', () => {
     if($select.value == 'content') {
-        value = 'content';
-        console.log(1);
+        selectData.name = 'content';
     } else {
-        value = 'user';
+        selectData.name = 'user';
     };
 });
-
-if (value == 'title') {
-    
-} else if (value == 'content') {
-
-} else {
-    
-}
-

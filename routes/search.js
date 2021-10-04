@@ -10,12 +10,22 @@ router.get('/', async (req, res, next) => {
     try {
         let queryData = url.parse(req.url, true).query;
         let search = queryData.search;
+        let select = queryData.select;
 
         const texts = await CommunityPost.findAll({
             where: {
-                title: {
-                    [Op.like]: "%" + search + "%"
-                }
+                [Op.or]: [
+                    {
+                        content : {
+                        [Op.like]: "%" + search + "%"
+                        }
+                    }, 
+                    {
+                        title : {
+                            [Op.like]: "%" + search + "%"
+                        }
+                    },
+                ]
             },
             order: [['createdAt', 'DESC']],
         });
