@@ -11,7 +11,7 @@ const passport = require("passport");
 const session = require("express-session");
 const passportConfig = require("./passport");
 dotenv.config();
-////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
+////라우터 추가할때마다 여기도 추가합니다합니다추가합니다.//////////////////////////////////////////////////////////
 const mainRouter = require("./routes/main");
 const clubRouter = require("./routes/club");
 const clubUploadRouter = require("./routes/clubupload");
