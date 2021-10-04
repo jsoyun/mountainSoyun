@@ -7,8 +7,8 @@
 {% block content %}
 <section class="community-edit-box">
     <header>
-        <h1>게시판 수정</h1>
-        <a href="/view/{{communityTwits.id}}">수정취소</a>
+      <h1>게시판 수정</h1>
+      <a href="/view/{{communityTwits.id}}">수정취소</a>
     </header>
     <body>
         <form class="community" method="POST" action="">
@@ -23,7 +23,7 @@
               </div>
               <div class="community-upload-content upload-text">
                 <div class="img-preview">
-                  <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+                  <img id="img-preview" src="{{communityTwits.img}}" width="100px" alt="미리보기">
                   <input id="img-url" type="hidden" name="url">
                 </div>
                 <div>
@@ -42,10 +42,11 @@
               <button class="submit-btn" type="submit">수정 완료</button>
             </div>
         </form>
+      </body>
 </section>
 
 {% endblock %}
 
 {% block script %}
-<script src="/javascripts/edit-community"></script>
+<script src="/javascripts/edit-community.js"></script>
 {% endblock %}

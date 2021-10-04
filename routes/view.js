@@ -17,7 +17,6 @@ router.get('/:id', async (req, res, next) => {
         title: 'mountain 커뮤니티',
         communityTwits: texts,
     });
-    
   } catch (error) {
     console.error(error);
     next(error);
