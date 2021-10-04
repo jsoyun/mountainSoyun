@@ -6,7 +6,7 @@ const router = express.Router();
 
 // router.get("/", isLoggedIn, (req, res, next) => {
 //   console.log("버튼 반응이 있니?");
-//   res.render("user");
+//   res.render("mypage");
 // });
 
 router.post("/:id/follow", isLoggedIn, async (req, res, next) => {

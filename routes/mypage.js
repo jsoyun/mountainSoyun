@@ -14,6 +14,26 @@ router.use((req, res, next) => {
     : [];
   next();
 });
+router.get("/", async (req, res, next) => {
+  try {
+    console.log("id랑 닉네임?");
+    const posts = await User.findAll({
+      //include는 없으면 추가
+      include: {
+        model: User,
+        attributes: ["id", "nick"],
+      },
+      order: [["createdAt", "DESC"]],
+    });
+    res.render("mypage", {
+      title: "NodeBird",
+      twits: posts,
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 //profile 페이지
 router.get("/mypage", (req, res) => {
@@ -42,7 +62,7 @@ router.get("/communityhashtag", async (req, res, next) => {
     if (hashtag) {
       posts = await hashtag.getPosts({ include: [{ model: User }] });
     }
-    return res.render("main", {
+    return res.render("mypage", {
       title: `${query}| mountaindb`,
       twits: posts,
     });
