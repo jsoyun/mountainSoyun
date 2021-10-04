@@ -59,7 +59,6 @@ router.get("/", async (req, res, next) => {
       },
       order: [['createdAt', 'DESC']],
     });
-    console.log(clubs);
     res.render('club', {
       title: 'mountain feed',
       twits: clubs,

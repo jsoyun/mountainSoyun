@@ -37,27 +37,23 @@ const upload = multer({
 });
 
 function checkFileType(file, cb) {
-  // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
-  // check ext
+  const filetypes = jpeg|jpg|png|gif;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // check mime
   const mimetype = filetypes.test(file.mimetype);
 
   if (mimetype && extname) {
     return cb(null, true);
   } else {
     cb("인증 사진만 업로드 가능합니다.");
-  }
-}
+  };
+};
 
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
-const upload2 = multer();
-router.post("/", isLoggedIn, upload2.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
