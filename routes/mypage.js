@@ -1,7 +1,7 @@
 const express = require("express");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 const router = express.Router();
 const { User } = require("../models");
+const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 
 router.use((req, res, next) => {
   console.log("얘가팔로우버튼효시하기위한page.js라는데..");
@@ -13,7 +13,6 @@ router.use((req, res, next) => {
     : [];
   next();
 });
-
 router.get("/", async (req, res, next) => {
   try {
     console.log("id랑 닉네임?");

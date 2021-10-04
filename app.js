@@ -15,6 +15,7 @@ dotenv.config();
 const mainRouter = require("./routes/main");
 const clubRouter = require("./routes/club");
 const clubUploadRouter = require("./routes/clubupload");
+const clubDetailRouter = require("./routes/clubdetail");
 const infoMountainRouter = require("./routes/infomountain");
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
@@ -26,6 +27,7 @@ const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
 const followuserRouter = require("./routes/followuser");
 const editRouter = require("./routes/edit");
+const searchRouter = require("./routes/search");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -38,7 +40,7 @@ nunjucks.configure("views", {
   watch: true,
 });
 sequelize
-  .sync({ focus: true })
+  .sync({ focus: false })
   .then(() => {
     console.log("db 연결 성공");
   })
@@ -69,6 +71,7 @@ app.use(passport.session());
 app.use("/", mainRouter);
 app.use("/club", clubRouter);
 app.use("/clubupload", clubUploadRouter);
+app.use("/clubdetail", clubDetailRouter);
 app.use("/infomountain", infoMountainRouter);
 
 app.use("/login", loginRouter);
@@ -82,6 +85,7 @@ app.use("/community", communityRouter);
 app.use("/write", writeRouter);
 app.use("/view", viewRouter);
 app.use("/edit", editRouter);
+app.use("/search", searchRouter);
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler

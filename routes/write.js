@@ -23,12 +23,12 @@ try {
 /* multer 기본 설정 */
 const upload = multer({
   storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'uploads/');
+    destination(req, file, cb) {
+      cb(null, 'uploads/');
     },
-    filename(req, file, done) {
+    filename(req, file, cb) {
       const ext = path.extname(file.originalname);
-      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
   limits: { fieldSize: 5 * 1024 * 1024 },
@@ -43,7 +43,7 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 /* 게시글 TEXT CREATE */
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
-    const mContent = await CommunityPost.create({
+    await CommunityPost.create({
       title: req.body.title,
       content: req.body.content,
       img: req.body.url,

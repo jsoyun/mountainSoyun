@@ -37,33 +37,40 @@ const upload = multer({
 });
 
 function checkFileType(file, cb) {
-  // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
-  // check ext
+  const filetypes = jpeg|jpg|png|gif;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // check mime
   const mimetype = filetypes.test(file.mimetype);
 
   if (mimetype && extname) {
     return cb(null, true);
   } else {
     cb("인증 사진만 업로드 가능합니다.");
-  }
-}
+  };
+};
 
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
-const upload2 = multer();
-router.post("/", isLoggedIn, upload2.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
       UserId: req.user.id,
     });
+    const hashtags = req.body.content.match(/#[^\s#]*/g);
+    if (hashtags) {
+      const result = await Promise.all(
+        hashtags.map((tag) => {
+          return Hashtag.findOrCreate({
+            where: { title: tag.slice(1).toLowerCase() },
+          });
+        })
+      );
+      await post.addHashtags(result.map((r) => r[0]));
+    }
     res.redirect("/club");
   } catch (error) {
     console.error(error);
@@ -72,35 +79,3 @@ router.post("/", isLoggedIn, upload2.none(), async (req, res, next) => {
 });
 
 module.exports = router;
-
-// router.club("/img", isLoggedIn, upload.single("img"), (req, res) => {
-//   console.log(req.file);
-//   res.json({ url: `/img/${req.file.filename}` });
-// });
-
-// const upload2 = multer();
-// router.club("/", isLoggedIn, upload2.none(), async (req, res, next) => {
-//   try {
-//     console.log(req.user);
-//     const club = await Club.create({
-//       content: req.body.content,
-//       img: req.body.url,
-//       UserId: req.user.id,
-//     });
-//     const hashtags = req.body.content.match(/#[^\s#]*/g);
-//     if (hashtags) {
-//       const result = await Promise.all(
-//         hashtags.map((tag) => {
-//           return Hashtag.findOrCreate({
-//             where: { title: tag.slice(1).toLowerCase() },
-//           });
-//         })
-//       );
-//       await club.addHashtags(result.map((r) => r[0]));
-//     }
-//     res.redirect("/");
-//   } catch (error) {
-//     console.error(error);
-//     next(error);
-//   }
-// });

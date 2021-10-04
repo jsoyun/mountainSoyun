@@ -1,24 +1,59 @@
-{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
-<style></style>
-<h1>club page</h1>
-<h1><a href="/clubupload">업로드</a></h1>
-{% for twit in twits %}
-<div class="twit">
-  <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
-  <input type="hidden" value="{{twit.id}}" class="twit-id" />
-  <div class="twit-author">{{twit.User.nick}}</div>
+{% extends "layout.html" %}
 
-  {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
-  %}
-  <button class="twit-follow">팔로우하기</button>
-  {% endif %}
-  <!-- <div class="twit-content">{{twit.content}}</div> -->
-  {% if twit.img %}
-  <div class="twit-img">
-    <img style="width: 400px" src="{{twit.img}}" alt="섬네일" />
+{% block css %}
+<link rel="stylesheet" href="/stylesheets/club.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" /> -->
+{% endblock %}
+
+{% block content %}
+<div class="search_field">
+  <div class="fake_field">
+    <input class="picture-search" type="text" name="search" placeholder="사진 검색">
+    <button class="picture-btn btn">검색</button>
   </div>
-  {% endif %}
 </div>
+
+<div class="feed-container">
+  <h3>인기 피드</h3>
+  <form id="myFeed">
+    <button id="feed-btn" type="submit" class="black btn">
+      <a class="picture-uploads" href="/clubupload">업로드</a>
+    </button>
+    {% for twit in twits %}
+    <tr class="clubMain">
+      <td>
+        <a href="/">
+          <img style="width: 100px" src="{{twit.img}}" alt="섬네일"/>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </form>
+</div>
+
+<div class="twit">
+  <input type="hidden" value="" class="twit-user-id" />
+  <input type="hidden" value="" class="twit-id" />
+  <div class="twit-author"></div>
+  
+  <button class="twit-follow btn">팔로우하기</button>
+  
+  <button class="twit-unfollow btn">팔로우끊기</button>
+
+    <button class="like btn">좋아요</button>
+
+    <button class="unlike btn">좋아요 취소</button>
+    
+    <div class="twit-content"></div>
+ 
+    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" /></div>
+
+  </div>
+
+</div>
+
+{% endblock %}
+{% block script %}
 <script>
   document.querySelectorAll(".twit-follow").forEach(function (tag) {
     console.log("팔로이있는창");
@@ -43,12 +78,49 @@
               })
               .catch((err) => {
                 console.log("에러");
-                console.error(err);
+                console.error(nperr);
               });
           }
         }
       }
     });
   });
+    //   forEach.call(document.querySelectorAll(".like"), function (tag) {
+    //   tag.addEventListener("click", function () {
+    //     var isLoggedIn = document.querySelector("#my-id");
+    //     var twitId = tag.parentNode.querySelector("#twit-id").value;
+    //     if (idLoggedIn) {
+    //       var xhr = new XMLHttpRequest();
+    //       xhr.onload = function () {
+    //         if (xhr.status === 200) {
+    //           location.reload();
+    //         } else {
+    //           console.error(xhr.responseText);
+    //         }
+    //       };
+    //       xhr.open("POST", "/club/" + twitId + "/like");
+    //       xhr.send();
+    //     }
+    //   });
+    // });
+    // forEach.call(document.querySelectorAll(".unlike"), function (tag) {
+    //   tag.addEventListener("click", function () {
+    //     var isLoggedIn = document.querySelector("#my-id");
+    //     var twitId = tag.parentNode.querySelector("#twit-id").value;
+    //     if (idLoggedIn) {
+    //       var xhr = new XMLHttpRequest();
+    //       xhr.onload = function () {
+    //         if (xhr.status === 200) {
+    //           location.reload();
+    //         } else {
+    //           console.error(xhr.responseText);
+    //         }
+    //       };
+    //       xhr.open("DELETE", "/club/" + twitId + "/like");
+    //       xhr.send();
+    //     }
+    //   });
+    // });
 </script>
-{% endfor %} {% endblock %} {% block script %} {% endblock %}
+
+{% endblock %}
