@@ -25,6 +25,7 @@ const writeRouter = require("./routes/write");
 const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
 const followuserRouter = require("./routes/followuser");
+const editRouter = require("./routes/edit");
 
 ////////////////////////////////////////////////////////////////
 const app = express();
@@ -80,6 +81,7 @@ app.use("/followuser", followuserRouter);
 app.use("/community", communityRouter);
 app.use("/write", writeRouter);
 app.use("/view", viewRouter);
+app.use("/edit", editRouter);
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler
