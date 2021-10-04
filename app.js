@@ -25,6 +25,7 @@ const communityRouter = require("./routes/community");
 const writeRouter = require("./routes/write");
 const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
+const followuserRouter = require("./routes/followuser");
 const editRouter = require("./routes/edit");
 const searchRouter = require("./routes/search");
 
@@ -78,6 +79,7 @@ app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
 app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
+app.use("/followuser", followuserRouter);
 
 app.use("/community", communityRouter);
 app.use("/write", writeRouter);
@@ -86,6 +88,10 @@ app.use("/edit", editRouter);
 app.use("/search", searchRouter);
 
 ////////////////////////////////////////////////////////////////
+// catch 404 and forward to error handler
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 /* 404 처리 */
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
