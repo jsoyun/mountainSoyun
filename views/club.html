@@ -66,7 +66,25 @@
               console.error(xhr.responseText);
             }
           };
-          xhr.open("POST", "/post/" + twitId + "/like");
+          xhr.open("POST", "/club/" + twitId + "/like");
+          xhr.send();
+        }
+      });
+    });
+    forEach.call(document.querySelectorAll(".unlike"), function (tag) {
+      tag.addEventListener("click", function () {
+        var isLoggedIn = document.querySelector("#my-id");
+        var twitId = tag.parentNode.querySelector("#twit-id").value;
+        if (idLoggedIn) {
+          var xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              location.reload();
+            } else {
+              console.error(xhr.responseText);
+            }
+          };
+          xhr.open("DELETE", "/club/" + twitId + "/like");
           xhr.send();
         }
       });

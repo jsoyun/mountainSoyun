@@ -51,8 +51,8 @@ router.get("/", async (req, res, next) => {
 
 router.post("/:id/like", async (req, res, next) => {
   try {
-    const post = await Post.find({ where: { id: req.params.id } });
-    await post.addLiker(req.params.id);
+    const club = await Club.find({ where: { id: req.params.id } });
+    await club.addLiker(req.user.id);
     res.send("OK");
   } catch (error) {
     console.error(error);
@@ -61,8 +61,8 @@ router.post("/:id/like", async (req, res, next) => {
 });
 router.delete("/:id/like", async (req, res, next) => {
   try {
-    const post = await Post.find({ where: { id: req.params.id } });
-    await post.removeLiker(req.user.id);
+    const club = await Club.find({ where: { id: req.params.id } });
+    await club.removeLiker(req.user.id);
     res.send("OK");
   } catch (error) {
     console.error(error);

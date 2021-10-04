@@ -4,14 +4,14 @@ module.exports = class Like extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        followingId: {
-          type: Sequelize.STRING(15),
-          allowNull: false,
-        },
-        followerId: {
-          type: Sequelize.STRING(30),
-          allowNull: true,
-        },
+        //   followingId: {
+        //     type: Sequelize.STRING(15),
+        //     allowNull: false,
+        //   },
+        //   followerId: {
+        //     type: Sequelize.STRING(30),
+        //     allowNull: true,
+        //   },
       },
       {
         sequelize,
@@ -28,6 +28,6 @@ module.exports = class Like extends Sequelize.Model {
 
   static associate(db) {
     db.User.belongsToMany(db.Club, { through: "Like" });
-    db.Like.belongsToMany(db.User, { through: "Like", as: "Liker" });
+    db.Club.belongsToMany(db.User, { through: "Like", as: "Liker" });
   }
 };
