@@ -30,30 +30,29 @@ router.get('/:id', async (req, res, next) => {
 /* multer 기본 설정 */
 const upload = multer({
     storage: multer.diskStorage({
-      destination(req, file, done) {
-        done(null, 'uploads/');
+      destination(req, file, cb) {
+        cb(null, 'uploads/');
       },
-      filename(req, file, done) {
+      filename(req, file, cb) {
         const ext = path.extname(file.originalname);
-        done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+        cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
       },
     }),
     limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
-/* 게시글 IMG CREATE */
-router.post('/img', upload.single('img'), (req, res) => {
-    console.log(req.file);
-    res.json({ url: `/img/${req.file.filename}` });
+router.post('/:id/img', upload.single('img'), (req, res) => {
+  console.log(req.file);
+  res.json({ url: `/img/${req.file.filename}` });
 });
 
 /* 게시글 UPDATE */
 router.post('/:id', async (req, res, next) => {
-    console.log(req.body);
+    console.log(req.body.url);
     try {
         await CommunityPost.update(
             {title:req.body.title,
-              // img:req.body.url,
+              img:req.body.url,
               content:req.body.content},
             {where:{id:`${req.params.id}`}}
         );
