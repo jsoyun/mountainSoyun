@@ -17,7 +17,20 @@ router.get('/:id', async (req, res, next) => {
         title: 'mountain 커뮤니티',
         communityTwits: texts,
     });
-    
+  } catch (error) {
+    console.error(error);
+    next(error);
+  };
+});
+
+/* 게시글 DELETE */
+router.get('/:id/delete', async (req, res, next) => {
+  console.log(req.body);
+  try {
+      await CommunityPost.destroy(
+          {where:{id:`${req.params.id}`}}
+      );
+      res.redirect('/community');
   } catch (error) {
     console.error(error);
     next(error);
