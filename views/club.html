@@ -36,16 +36,41 @@
   {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
   %}
   <button class="twit-follow">팔로우하기</button>
-  {% endif %}
-  <div class="twit-content">{{twit.content}}</div>
-  {% if twit.img %}
-  <div class="twit-img">
-    {{ twits.img }}
-    <img style="width: 200px" src="{{ twit.img }}" alt="섬네일" />
+  {% else if user && user.id !== twit.user.id && follow %}
+  <button class="twit-unfollow">팔로우끊기</button>
+  {% twit-content=twit.content %} {% const like = user && twit &&
+    twit.Liker.map(1 => l.id).includes(req.user.id)%} {% if user && !like %}
+    <button class="like">좋아요</button>
+    {% else if user && like %}
+    <button class="unlike">좋아요 취소</button>
+    {% if twit.img %} {% endif %}
+    <div class="twit-content">{{twit.content}}</div>
+    {% if twit.img %}
+    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" /></div>
+    {% endif %}
   </div>
   {% endif %}
 </div>
 {% endfor %} {% endblock %} {% block script %}
-<script></script>
+<script>
+      forEach.call(document.querySelectorAll(".like"), function (tag) {
+      tag.addEventListener("click", function () {
+        var isLoggedIn = document.querySelector("#my-id");
+        var twitId = tag.parentNode.querySelector("#twit-id").value;
+        if (idLoggedIn) {
+          var xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              location.reload();
+            } else {
+              console.error(xhr.responseText);
+            }
+          };
+          xhr.open("POST", "/post/" + twitId + "/like");
+          xhr.send();
+        }
+      });
+    });
+</script>
 
 {% endblock %}

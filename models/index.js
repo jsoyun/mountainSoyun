@@ -4,9 +4,11 @@ const config = require("../config/config")[env];
 ////디비형식 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 // const User = require('./user');
 const Club = require("./club");
-const CommunityPost = require('./communitypost');
+const Hashtag = require("./clubhashtag");
+const Like = require("./like");
+const CommunityPost = require("./communitypost");
 const CommunityHashtag = require("./communityhashtag");
-const User = require('./user');
+const User = require("./user");
 
 ///////////////////////////////////////////
 
@@ -24,18 +26,24 @@ db.Sequelize = Sequelize;
 ////디비형식 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 // db.User = User;
 db.Club = Club;
+db.Hashtag = Hashtag;
+db.Like = Like;
 db.CommunityPost = CommunityPost;
 db.CommunityHashtag = CommunityHashtag;
 db.User = User;
 
 // User.init(sequelize);
 Club.init(sequelize);
+Hashtag.init(sequelize);
+Like.init(sequelize);
 CommunityPost.init(sequelize);
 CommunityHashtag.init(sequelize);
 User.init(sequelize);
 
 User.associate(db);
 Club.associate(db);
+Hashtag.associate(db);
+Like.associate(db);
 CommunityPost.associate(db);
 CommunityHashtag.associate(db);
 

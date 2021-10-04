@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const { Club, User } = require("../models");
+const { Club, User, clubHashtag } = require("../models");
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {

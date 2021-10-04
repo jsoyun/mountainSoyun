@@ -12,7 +12,7 @@ module.exports = class Club extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
-        // start: {
+        // star: {
         //   type: Sequelize.INTEGER(5),
         //   allowNull: false,
         // },
@@ -32,6 +32,6 @@ module.exports = class Club extends Sequelize.Model {
 
   static associate(db) {
     db.Club.belongsTo(db.User);
-    //   db.Post.belongsToMany(db.Hashtag, { through: "PostHashtag" });
+    db.Club.belongsToMany(db.Hashtag, { through: "clubHashtag" });
   }
 };

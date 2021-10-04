@@ -11,12 +11,12 @@ body {
   height: 100%;
   place-items: center;
   text-align: center;
-  background: #000;
+  background: #fff;
 }
 .container {
   position: relative;
   width: 400px;
-  background: #111;
+  background: rgb(145, 145, 145);
   padding: 20px 30px;
   border: 1px solid #444;
   border-radius: 5px;

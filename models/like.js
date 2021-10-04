@@ -1,21 +1,24 @@
 const Sequelize = require("sequelize");
 
-module.exports = class Hashtag extends Sequelize.Model {
+module.exports = class Like extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        title: {
+        followingId: {
           type: Sequelize.STRING(15),
           allowNull: false,
-          unique: true,
+        },
+        followerId: {
+          type: Sequelize.STRING(30),
+          allowNull: true,
         },
       },
       {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: "Hashtag",
-        tableName: "hashtags",
+        modelName: "Like",
+        tableName: "likes",
         paranoid: false,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
@@ -24,6 +27,7 @@ module.exports = class Hashtag extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Hashtag.belongsToMany(db.Club, { through: "clubHashtag" });
+    db.User.belongsToMany(db.Club, { through: "Like" });
+    db.Like.belongsToMany(db.User, { through: "Like", as: "Liker" });
   }
 };
