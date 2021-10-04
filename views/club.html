@@ -1,14 +1,15 @@
-{% extends "layout.html" %} {% block css %} {% endblock %}
+{% extends "layout.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="/stylesheets/club.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" /> -->
+{% endblock %}
+
 {% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/>
 <div class="search_field">
-  <input type="text" placeholder="검색" tabindex="0" />
   <div class="fake_field">
-    <span class="sprite_small_search_icon"></span>
-    <span>검색</span>
+    <input class="picture-search" type="text" name="search" placeholder="사진 검색">
+    <button class="picture-btn btn">검색</button>
   </div>
 </div>
 
@@ -16,30 +17,32 @@
   <h3>인기 피드</h3>
   <form id="myFeed">
     <button id="feed-btn" type="submit" class="black btn">
-      <a href="/clubupload">업로드</a>
+      <a class="picture-uploads" href="/clubupload">업로드</a>
     </button>
+    {% for twit in twits %}
     <tr class="clubMain">
       <td>
-        <a href="/"
-          ><p></p>
-          <img style="width: 100px" src="" alt="섬네일"
-        /></a>
+        <a href="/">
+          <img style="width: 100px" src="{{twit.img}}}" alt="섬네일"/>
+        </a>
       </td>
     </tr>
+    {% endfor %}
   </form>
 </div>
+
 <div class="twit">
   <input type="hidden" value="" class="twit-user-id" />
   <input type="hidden" value="" class="twit-id" />
   <div class="twit-author"></div>
   
-  <button class="twit-follow">팔로우하기</button>
+  <button class="twit-follow btn">팔로우하기</button>
   
-  <button class="twit-unfollow">팔로우끊기</button>
+  <button class="twit-unfollow btn">팔로우끊기</button>
 
-    <button class="like">좋아요</button>
+    <button class="like btn">좋아요</button>
 
-    <button class="unlike">좋아요 취소</button>
+    <button class="unlike btn">좋아요 취소</button>
     
     <div class="twit-content"></div>
  
@@ -52,42 +55,42 @@
 {% endblock %}
 {% block script %}
 <script>
-      forEach.call(document.querySelectorAll(".like"), function (tag) {
-      tag.addEventListener("click", function () {
-        var isLoggedIn = document.querySelector("#my-id");
-        var twitId = tag.parentNode.querySelector("#twit-id").value;
-        if (idLoggedIn) {
-          var xhr = new XMLHttpRequest();
-          xhr.onload = function () {
-            if (xhr.status === 200) {
-              location.reload();
-            } else {
-              console.error(xhr.responseText);
-            }
-          };
-          xhr.open("POST", "/club/" + twitId + "/like");
-          xhr.send();
-        }
-      });
-    });
-    forEach.call(document.querySelectorAll(".unlike"), function (tag) {
-      tag.addEventListener("click", function () {
-        var isLoggedIn = document.querySelector("#my-id");
-        var twitId = tag.parentNode.querySelector("#twit-id").value;
-        if (idLoggedIn) {
-          var xhr = new XMLHttpRequest();
-          xhr.onload = function () {
-            if (xhr.status === 200) {
-              location.reload();
-            } else {
-              console.error(xhr.responseText);
-            }
-          };
-          xhr.open("DELETE", "/club/" + twitId + "/like");
-          xhr.send();
-        }
-      });
-    });
+    //   forEach.call(document.querySelectorAll(".like"), function (tag) {
+    //   tag.addEventListener("click", function () {
+    //     var isLoggedIn = document.querySelector("#my-id");
+    //     var twitId = tag.parentNode.querySelector("#twit-id").value;
+    //     if (idLoggedIn) {
+    //       var xhr = new XMLHttpRequest();
+    //       xhr.onload = function () {
+    //         if (xhr.status === 200) {
+    //           location.reload();
+    //         } else {
+    //           console.error(xhr.responseText);
+    //         }
+    //       };
+    //       xhr.open("POST", "/club/" + twitId + "/like");
+    //       xhr.send();
+    //     }
+    //   });
+    // });
+    // forEach.call(document.querySelectorAll(".unlike"), function (tag) {
+    //   tag.addEventListener("click", function () {
+    //     var isLoggedIn = document.querySelector("#my-id");
+    //     var twitId = tag.parentNode.querySelector("#twit-id").value;
+    //     if (idLoggedIn) {
+    //       var xhr = new XMLHttpRequest();
+    //       xhr.onload = function () {
+    //         if (xhr.status === 200) {
+    //           location.reload();
+    //         } else {
+    //           console.error(xhr.responseText);
+    //         }
+    //       };
+    //       xhr.open("DELETE", "/club/" + twitId + "/like");
+    //       xhr.send();
+    //     }
+    //   });
+    // });
 </script>
 
 {% endblock %}
