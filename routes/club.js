@@ -1,6 +1,6 @@
-const express = require('express');
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
-const { Club, User } = require('../models');
+const express = require("express");
+const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const { Club, User } = require("../models");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -13,17 +13,17 @@ router.use((req, res, next) => {
 
 /* GET page. */
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const uploads = await Club.findAll({
       include: {
         model: User,
-        attributes: ['id', 'nick'],
+        attributes: ["id", "nick"],
       },
-      order: [['createdAt', 'DESC']],
+      order: [["createdAt", "DESC"]],
     });
-    res.render('club', {
-      title: 'mountain',
+    res.render("club", {
+      title: "mountain",
       twits: uploads,
     });
   } catch (err) {
