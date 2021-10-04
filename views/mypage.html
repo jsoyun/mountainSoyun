@@ -1,13 +1,31 @@
-{% extends "layout.html" %}
-
-{% block css %}
-{% endblock %}
-
-{% block content %}
-<h1>마이페이지</h1>
+{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+<!-- <h1>마이페이지</h1>
 <h1>몽글몽글</h1>
-<h1>하이루</h1>
-{% endblock %}
+<h1>하이루</h1> -->
+<div class="timeline">
+  <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
+  <div class="half">
+    <div>팔로잉</div>
+    <div class="count following-count">{{followingCount}}</div>
+  </div>
+  <div class="half">
+    <div>팔로워</div>
+    <div class="count follower-count">{{followerCount}}</div>
+  </div>
 
-{% block script %}
-{% endblock %}
+  <input id="my-id" type="hidden" value="{{user.id}}" />
+
+  <div class="followings half">
+    <h2>팔로잉 목록</h2>
+    {% if user.Followings %} {% for following in user.Followings %}
+    <div>{{following.nick}}</div>
+    {% endfor %} {% endif %}
+  </div>
+  <div class="followers half">
+    <h2>팔로워 목록</h2>
+    {% if user.Followers %} {% for follower in user.Followers %}
+    <div>{{follower.nick}}</div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %} {% block script %} {% endblock %}

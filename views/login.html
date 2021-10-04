@@ -1,33 +1,53 @@
-{% extends "layout.html" %}
-
-{% block css %}
-{% endblock %}
-
-{% block content %}
+{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
 <section id="login-form">
-    <form method="POST">
-        <div id="int-area">
-            <input type="text" name="email" id="email" autocomplete="off">
-            <label for="email">EMAIL</label>
-        </div>
-        <div id="int-area">
-            <input type="password" name="password" id="password" autocomplete="off">
-            <label for="password">PASSWORD </label>
-        </div>
-        <div id="btn-area">
-            <button type="submit">LOGIN</button>
-        </div>
-    </form>
-    <div id="caption">
-        <p>
-            <a href="/findinfo" onclick="">Forgot password</a><br>
-            <a href="/signup">Sign up</a>
-            <a href="/login/kakao">kakao</a>
-        </p>
+  <form method="POST">
+    <div id="int-area">
+      <input type="text" name="email" id="email" autocomplete="off" />
+      <label for="email">EMAIL</label>
     </div>
+    <div id="int-area">
+      <input type="password" name="password" id="password" autocomplete="off" />
+      <label for="password">PASSWORD </label>
+    </div>
+    <div id="btn-area">
+      <button type="submit">LOGIN</button>
+    </div>
+  </form>
+  <div id="caption">
+    <p>
+      <a href="/findinfo" onclick="">Forgot password</a><br />
+      <a href="/signup">Sign up</a>
+      <a href="/login/kakao">kakao</a>
+    </p>
+  </div>
 </section>
 
-{% endblock %}
-{% block script %}
-
+<section></section>
+<div class="container">
+  <div class="profile-wrap">
+    <div class="profile">
+      <form id="login-form" action="/login" method="post">
+        <div class="input-group">
+          <label for="email">이메일</label>
+          <input id="email" type="email" name="email" required autofocus />
+        </div>
+        <div class="input-group">
+          <label for="password">비밀번호</label>
+          <input id="password" type="password" name="password" required />
+        </div>
+        <a id="join" href="/signup" class="btn">회원가입</a>
+        <button id="login" type="submit" class="btn">로그인</button>
+        <a id="kakao" href="/login/kakao" class="btn">카카오톡</a>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  window.onload = () => {
+    if (new URL(location.href).searchParams.get("loginError")) {
+      alert(new URL(location.href).searchParams.get("loginError"));
+    }
+  };
+</script>
 {% endblock %}
