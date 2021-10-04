@@ -7,7 +7,6 @@ const Club = require("./club");
 const Hashtag = require("./clubhashtag");
 const Like = require("./like");
 const CommunityPost = require("./communitypost");
-const CommunityHashtag = require("./communityhashtag");
 const User = require('./user');
 const Mountain = require('./mountain');
 
