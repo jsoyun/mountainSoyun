@@ -19,55 +19,60 @@ router.use((req, res, next) => {
 
 /* GET page. */
 
-router.get("/", async (req, res, next) => {
-  try {
-    const uploads = await Club.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["id", "nick"],
-        },
-        {
-          model: User,
-          attributes: ["id", "nick"],
-          as: "Liker",
-        },
-      ],
-      order: [["createdAt", "DESC"]],
-    }).then((clubs) => {
-      console.log(clubs);
-      res.render("club", {
-        title: "mountain",
-        twits: uploads,
-        user: req.user,
-        // loginError: req.flash('loginError'),
-      });
-    });
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const uploads = await Club.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["id", "nick"],
+//         },
+//         {
+//           model: User,
+//           attributes: ["id", "nick"],
+//           as: "Liker",
+//         },
+//       ],
+//       order: [["createdAt", "DESC"]],
+//     }).then((clubs) => {
+//       console.log(clubs);
+//       res.render("club", {
+//         title: "mountain",
+//         twits: uploads,
+//         user: req.user,
+//         // loginError: req.flash('loginError'),
+//       });
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     next(err);
+//   }
+// });
+
+// router.post("/:id/like", async (req, res, next) => {
+//   try {
+//     const club = await Club.find({ where: { id: req.params.id } });
+//     await club.addLiker(req.user.id);
+//     res.send("OK");
+//   } catch (error) {
+//     console.error(error);
+//     next(error);
+//   }
+// });
+// router.delete("/:id/like", async (req, res, next) => {
+//   try {
+//     const club = await Club.find({ where: { id: req.params.id } });
+//     await club.removeLiker(req.user.id);
+//     res.send("OK");
+//   } catch (error) {
+//     console.error(error);
+//     next(error);
+//   }
+// });
+
+router.get('/', (req, res) => {
+  res.render('club');
 });
 
-router.post("/:id/like", async (req, res, next) => {
-  try {
-    const club = await Club.find({ where: { id: req.params.id } });
-    await club.addLiker(req.user.id);
-    res.send("OK");
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
-router.delete("/:id/like", async (req, res, next) => {
-  try {
-    const club = await Club.find({ where: { id: req.params.id } });
-    await club.removeLiker(req.user.id);
-    res.send("OK");
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
 
 module.exports = router;
