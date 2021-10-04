@@ -1,10 +1,9 @@
 const express = require("express");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 const router = express.Router();
 const { User } = require("../models");
+const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 
 router.use((req, res, next) => {
-  console.log("얘가팔로우버튼효시하기위한page.js라는데..");
   res.locals.user = req.user;
   res.locals.followerCount = req.user ? req.user.Followers.length : 0;
   res.locals.followingCount = req.user ? req.user.Followings.length : 0;
@@ -16,13 +15,42 @@ router.use((req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
+    const posts = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ["id", "nick"],
+      },
+      order: [["createdAt", "DESC"]],
+    });
+    res.render("main", {
+      title: "NodeBird",
+      twits: posts,
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.use((req, res, next) => {
+  console.log("얘가팔로우버튼효시하기위한page.js라는데..");
+  res.locals.user = req.user;
+  res.locals.followerCount = req.user ? req.user.Followers.length : 0;
+  res.locals.followingCount = req.user ? req.user.Followings.length : 0;
+  res.locals.followerIdList = req.user
+    ? req.user.Followings.map((f) => f.id)
+    : [];
+  next();
+});
+router.get("/", async (req, res, next) => {
+  try {
     console.log("id랑 닉네임?");
     const posts = await User.findAll({
       //include는 없으면 추가
-      // include: {
-      //   model: User,
-      //   attributes: ["id", "nick"],
-      // },
+      include: {
+        model: User,
+        attributes: ["id", "nick"],
+      },
       order: [["createdAt", "DESC"]],
     });
     res.render("mypage", {
