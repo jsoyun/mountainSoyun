@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+/* 클럽 인증 게시글 DB */
 module.exports = class Club extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
