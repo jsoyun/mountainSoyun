@@ -4,65 +4,30 @@ const { Club, User } = require("../models");
 const router = express.Router();
 
 router.use((req, res, next) => {
+  console.log("clubjs 팔로우카운트");
   res.locals.user = req.user;
-  res.locals.followerCount = 0;
-  res.locals.followingCount = 0;
-  res.locals.followerIdList = [];
-  // res.locals.user = req.user;
-  // res.locals.followerCount = req.user ? req.user.Followers.length : 0;
-  // res.locals.followingCount = req.user ? req.user.Followings.length : 0;
-  // res.locals.followerIdList = req.user
-  // ? req.user.Followings.map((f) => f.id)
-  // : [];
+  res.locals.followerCount = req.user ? req.user.Followers.length : 0;
+  res.locals.followingCount = req.user ? req.user.Followings.length : 0;
+  res.locals.followerIdList = req.user
+    ? req.user.Followings.map((f) => f.id)
+    : [];
   next();
 });
 
 /* GET page. */
-
-// router.get("/", async (req, res, next) => {
-//   try {
-//     const uploads = await Club.findAll({
-//       include: [
-//         {
-//           model: Post,
-//           attributes: ["id", "nick"],
-//           as: "Post"
-//         },
-//         {
-//           model: User,
-//           attributes: ["id", "nick"],
-//           as: "Liker",
-//         },
-//       ],
-//       order: [["createdAt", "DESC"]],
-//     }).then((clubs) => {
-//       console.log(clubs);
-//       res.render("club", {
-//         title: "mountain",
-//         twits: uploads,
-//         user: req.user,
-//         // loginError: req.flash('loginError'),
-//       });
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     next(err);
-//   }
-// });
 
 router.get("/", async (req, res, next) => {
   try {
     const clubs = await Club.findAll({ 
       include: { 
         model: User,
-        attribute: ['id', 'nick'],
+        attributes: ["id", "nick"],
       },
-      order: [['createdAt', 'DESC']],
+      order: [["createdAt", "DESC"]],
     });
-    console.log(clubs);
-    res.render('club', {
-      title: 'mountain feed',
-      twits: clubs,
+    res.render("club", {
+      title: "mountain",
+      twits: uploads,
     });
   } catch (error) {
     console.error(error);
