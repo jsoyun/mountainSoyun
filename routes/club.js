@@ -24,8 +24,9 @@ router.use((req, res, next) => {
 //     const uploads = await Club.findAll({
 //       include: [
 //         {
-//           model: User,
+//           model: Post,
 //           attributes: ["id", "nick"],
+//           as: "Post"
 //         },
 //         {
 //           model: User,
@@ -49,16 +50,26 @@ router.use((req, res, next) => {
 //   }
 // });
 
-// router.post("/:id/like", async (req, res, next) => {
-//   try {
-//     const club = await Club.find({ where: { id: req.params.id } });
-//     await club.addLiker(req.user.id);
-//     res.send("OK");
-//   } catch (error) {
-//     console.error(error);
-//     next(error);
-//   }
-// });
+router.get("/", async (req, res, next) => {
+  try {
+    const clubs = await Club.findAll({ 
+      include: { 
+        model: User,
+        attribute: ['id', 'nick'],
+      },
+      order: [['createdAt', 'DESC']],
+    });
+    console.log(clubs);
+    res.render('club', {
+      title: 'mountain feed',
+      twits: clubs,
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  };
+});
+
 // router.delete("/:id/like", async (req, res, next) => {
 //   try {
 //     const club = await Club.find({ where: { id: req.params.id } });
@@ -70,9 +81,8 @@ router.use((req, res, next) => {
 //   }
 // });
 
-router.get('/', (req, res) => {
-  res.render('club');
-});
-
+// router.get('/', (req, res) => {
+//   res.render('club');
+// });
 
 module.exports = router;

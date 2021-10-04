@@ -1,13 +1,16 @@
-{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/>
+{% extends "layout.html" %} 
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <div class="search_field">
   <input type="text" placeholder="검색" tabindex="0" />
   <div class="fake_field">
     <span class="sprite_small_search_icon"></span>
-    <span>검색</span>
+    <button>검색</button>
   </div>
 </div>
 
@@ -17,7 +20,6 @@
     <button id="feed-btn" type="submit" class="black btn">
       <a href="/clubupload">업로드</a>
     </button>
-    <!-- {% for twit in twits %} -->
     <tr class="clubMain">
       <td>
         <a href="/clubdetail/{{twits.img}}"
@@ -33,26 +35,17 @@
   <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
   <input type="hidden" value="{{twit.id}}" class="twit-id" />
   <div class="twit-author"></div>
-  <!-- {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
-  %} -->
   <button class="twit-follow">팔로우하기</button>
-  <!-- {% else if user && user.id !== twit.user.id && follow %} -->
   <button class="twit-unfollow">팔로우끊기</button>
-  <!-- {% twit-content=twit.content %} {% const like = user && twit &&
-    twit.Liker.map(1 => l.id).includes(req.user.id)%} {% if user && !like %} -->
     <button class="like">좋아요</button>
-    <!-- {% else if user && like %} -->
     <button class="unlike">좋아요 취소</button>
-    <!-- {% if twit.img %} {% endif %} -->
     <div class="twit-content"></div>
-    <!-- {% if twit.img %} -->
     <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" /></div>
-    <!-- {% endif %} -->
   </div>
-  <!-- {% endif %} -->
 </div>
-{% endfor %}
-{% endblock %} {% block script %}
+{% endblock %} 
+
+{% block script %}
 <!-- <script>
       forEach.call(document.querySelectorAll(".like"), function (tag) {
       tag.addEventListener("click", function () {
