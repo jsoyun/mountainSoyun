@@ -15,70 +15,48 @@
 
 <div class="feed-container">
   <h3>인기 피드</h3>
-  <form id="myFeed">
-    <button id="feed-btn" type="submit" class="black btn">
-      <a class="picture-uploads" href="/clubupload">업로드</a>
-    </button>
-    {% for twit in twits %}
-    <tr class="clubMain">
-      <td>
-        <a href="/">
-          <img style="width: 100px" src="{{twit.img}}" alt="섬네일"/>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </form>
-</div>
-
-<div class="twit">
-  <input type="hidden" value="" class="twit-user-id" />
-  <input type="hidden" value="" class="twit-id" />
-  <div class="twit-author"></div>
-  
-  <button class="twit-follow btn">팔로우하기</button>
-  
-  <button class="twit-unfollow btn">팔로우끊기</button>
-
+  {% if user and user.id %}
+  <button id="feed-btn" type="submit" class="black btn">
+    <a class="picture-uploads" href="/clubupload">업로드</a>
+  </button>
+  {% endif %}
+  {% for twit in twits %}
+  <div class="twit">
+    <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
+    <input type="hidden" value="{{twit.id}}" class="twit-id" />
+    <div class="twit-author">{{twit.User.nick}}</div>
+    {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
+    <button class="twit-follow btn">팔로우하기</button>
+    {% endif %}
+    <button class="twit-unfollow btn">팔로우끊기</button>
+    <div class="twit-img"><a href="/clubdetail/:id"><img style="width: 100px" src="{{twit.img}}" alt="섬네일"></a></div>
     <button class="like btn">좋아요</button>
-
     <button class="unlike btn">좋아요 취소</button>
-    
     <div class="twit-content"></div>
- 
-    <div class="twit-img"><img src="{{twit.img}}" alt="섬네일" /></div>
-
   </div>
-
+  {% endfor %}
 </div>
 
 {% endblock %}
 {% block script %}
 <script>
   document.querySelectorAll(".twit-follow").forEach(function (tag) {
-    console.log("팔로이있는창");
     tag.addEventListener("click", function () {
-      console.log("팔로우클릭");
       const myId = document.querySelector("#my-id");
+      console.log(myId);
       if (myId) {
-        console.log("myid가져와지니?");
         const userId = tag.parentNode.querySelector(".twit-user-id").value;
-        console.log(userId);
-        //if (userId !== myId.value)원래 이거였음 근데 바꿔도 콘솔에는 찍히네
-
         if (userId !== myId.value) {
           if (confirm("팔로잉하시겠습니까?")) {
             console.log("팔로요청되나?");
-            axios //.post(`/followuser/${userId}/follow`) 원래이거임
-              .post(`/followuser/${userId}/follow`)
-
+            axios.post(`/user/${userId}/follow`)
               .then(() => {
                 console.log("팔로됐나");
-                // location.reload();
+                location.reload();
               })
               .catch((err) => {
                 console.log("에러");
-                console.error(nperr);
+                console.error(err);
               });
           }
         }
