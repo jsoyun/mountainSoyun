@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{title}}</title>
-    <!-- <link rel="stylesheet" href="/main/stylesheets//reset.css"> -->
-    <link rel="stylesheet" href="/main/stylesheets//main.css" />
-    <link rel="stylesheet" href="/main/stylesheets/font.css" />
-    {% block css %} {% endblock %}
-  </head>
-
-  <body>
-    <header>
-      <div id="header-container">
-        <div id="header-menu-container">
-          <div id="header-logo"><a href="/">컴백홈</a></div>
-          {% if user and user.id %}
-          <p class="hello">
-            <span class="hello-item"
-              ><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span
-            >
-            <span class="hello-item logout"
-              ><a href="/logout">[로그아웃]</a
-              ><i class="fas fa-sign-out-alt"></i
-            ></span>
-            <input id="my-id" type="hidden" value="{{user.id}}" />
-          </p>
-          {% else %}
-          <p class="hello">
-            <span class="hello-item"><a href="/login">로그인</a></span>
-          </p>
-          {% endif %}
-          <li class="nav">
-            <ul class="nav-item">
-              <a href="/club">도전클럽</a>
-            </ul>
-            <ul class="nav-item">
-              <a href="/infomountain">100대 명산 정보</a>
-            </ul>
-            <ul class="nav-item">
-              <a href="/community">게시판</a>
-            </ul>
-          </li>
-        </div>
-      </div>
-    </header>
-    {% block content %} {% endblock %}
-    <footer>
-      <div id="footer-container">
-        <div id="footer-logo"></div>
-        <div id="footer-menu-container"></div>
-      </div>
-    </footer>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-      window.onload = () => {
-        if (new URL(location.href).searchParams.get("loginError")) {
-          alert(new URL(location.href).searchParams.get("loginError"));
-        }
-      };
-    </script>
-    {% block script %} {% endblock %}
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <!-- <link rel="stylesheet" href="/mainstylesheets/reset.css"> -->
+  <link rel="stylesheet" href="/main/stylesheets/main.css" />
+  <link rel="stylesheet" href="/main/stylesheets/font.css" />
+  {% block css %} 
+  {% endblock %}
+</head>
+<body>
+  <header>
+    <div id="header-container">
+      <div id="header-logo"><a href="/">컴백홈</a></div>
+      {% if user and user.id %}
+      <p class="hello">
+        <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
+        <span class="hello-item logout"><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i></span>
+        <input id="my-id" type="hidden" value="{{user.id}}" />
+      </p>
+      {% else %}
+      <p class="hello">
+        <span class="hello-item"><a href="/login">로그인</a></span>
+      </p>
+      {% endif %}
+      <li class="nav">
+        <ul class="nav-item">
+          <a href="/club">도전클럽</a>
+        </ul>
+        <ul class="nav-item">
+          <a href="/infomountain">100대 명산 정보</a>
+        </ul>
+        <ul class="nav-item">
+          <a href="/community">게시판</a>
+        </ul>
+      </li>
+    </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+  <footer>
+    <div id="footer-container">
+      <div id="footer-logo"></div>
+      <div id="footer-menu-container"></div>
+    </div>
+  </footer>
+</body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get("loginError")) {
+        alert(new URL(location.href).searchParams.get("loginError"));
+      }
+    };
+  </script>
+  {% block script %}
+  {% endblock %}
 </html>

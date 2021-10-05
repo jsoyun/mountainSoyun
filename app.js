@@ -41,9 +41,7 @@ const infoMountainRouter = require("./routes/mountainInfo/infomountain");
 
 /* mypage 폴더 (마이페이지) */
 const mypageRouter = require("./routes/mypage/mypage");
-
-/* ? */
-const followuserRouter = require("./routes/followuser");
+const userRouter = require("./routes/mypage/user");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const app = express();
@@ -84,24 +82,35 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
-app.use("/", mainRouter);
+
+/* board 폴더 (게시글) */
+app.use("/community", communityRouter);
+app.use("/edit", editRouter);
+app.use("/search", searchRouter);
+app.use("/view", viewRouter);
+app.use("/write", writeRouter);
+
+/* club 폴더 (도전클럽) */
 app.use("/club", clubRouter);
 app.use("/clubupload", clubUploadRouter);
 app.use("/clubdetail", clubDetailRouter);
-app.use("/infomountain", infoMountainRouter);
 
+/* login 폴더 (로그인) */
+app.use("/findinfo", findInfoRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
-app.use("/mypage", mypageRouter);
-app.use("/findinfo", findInfoRouter);
-app.use("/followuser", followuserRouter);
 
-app.use("/community", communityRouter);
-app.use("/write", writeRouter);
-app.use("/view", viewRouter);
-app.use("/edit", editRouter);
-app.use("/search", searchRouter);
+/* main 폴더 (메인화면) */
+app.use("/", mainRouter);
+
+/* mountainInfo 폴더 (100대 명산) */
+app.use("/infomountain", infoMountainRouter);
+
+/* mypage 폴더 (마이페이지) */
+app.use("/mypage", mypageRouter);
+app.use("/user", userRouter);
+
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler
