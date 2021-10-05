@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+/* 클럽 인증 Hashtag DB */
 module.exports = class Hashtag extends Sequelize.Model {
   static init(sequelize) {
     return super.init(

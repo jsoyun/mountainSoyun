@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+/* 명산 정보 DB */
 module.exports = class Mountain extends Sequelize.Model {
   static init(sequelize) {
     return super.init({

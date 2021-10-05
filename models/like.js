@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+/* DB */
 module.exports = class Like extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
