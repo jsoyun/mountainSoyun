@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<section class="community-box">
-  <header>
-    <h1>커뮤니티</h1>
-    <a href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
+<section class="com-box">
+  <header class="com-header">
+    <h1 class="com-title">게시판</h1>
+    <a class="com-write" href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
     <form id="search-form" action="/search">
-      <select name="select" id="select">
+      <select class="com-select" name="select" id="select">
         <option value="titleContent" selected>제목/내용</option>
         <option value="title">제목</option>
         <option value="content">내용</option>
@@ -22,7 +22,7 @@
     </form>
   </header>
   <body>
-    <table>
+    <table class="com-table">
       <thead>
         <tr>
           <th>번호</th>
@@ -41,7 +41,10 @@
         {% for communityTwit in communityTwits %}
         <tr class="post">
           <td><div class="posts-CommunityPost-title">{{communityTwit.id}}</div></td>
-          <td><a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p><img style="width: 100px;" src="{{communityTwit.img}}" alt="섬네일"></a></td>
+          <td>
+            <a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p>
+            <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일"></a>
+          </td>
           <td><div class="posts-User-nick">{{communityTwit.User.nick}}</div></td>
           <td><div class="posts-CommunityPost-createAt">{{communityTwit.createdAt}}</div></td>
           <td>10.21</td>
