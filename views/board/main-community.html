@@ -6,60 +6,62 @@
 
 {% block content %}
 <section class="community-box">
-    <header><h1>커뮤니티</h1></header>
+  <header>
+    <h1>커뮤니티</h1>
     <a href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
     <form id="search-form" action="/search">
-        <select name="select" id="select">
-            <option value="titleContent" selected>제목/내용</option>
-            <option value="title">제목</option>
-            <option value="content">내용</option>
-            <option value="user">작성자</option>
-        </select>
-        <input type="text" name="search" placeholder="제목 검색">
-        <button class="btn">검색</button>
-        <input id="select-data" type="hidden" name="title">
+      <select name="select" id="select">
+        <option value="titleContent" selected>제목/내용</option>
+        <option value="title">제목</option>
+        <option value="content">내용</option>
+        <option value="user">작성자</option>
+      </select>
+      <input type="text" name="search" placeholder="제목 검색">
+      <button class="btn">검색</button>
+      <input id="select-data" type="hidden" name="title">
     </form>
+  </header>
+  <body>
     <table>
-        <thead>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>날짜</th>
-                <th>조회</th>
-                <th>댓글 수</th>
-                <!-- <th>추천</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <tr>
-                <td>글이 없습니다.</td>
-            </tr> -->
-            {% for communityTwit in communityTwits %}
-            <tr class="post">
-                <td><div class="posts-CommunityPost-title">{{communityTwit.id}}</div></td>
-                <td><a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p><img style="width: 100px;" src="{{communityTwit.img}}" alt="섬네일"></a></td>
-                <td><div class="posts-User-nick">{{communityTwit.User.nick}}</div></td>
-                <td><div class="posts-CommunityPost-createAt">{{communityTwit.createdAt}}</div></td>
-                <td>10.21</td>
-                <td>21</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+          <th>조회</th>
+          <th>댓글 수</th>
+          <!-- <th>추천</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+            <td>글이 없습니다.</td>
+        </tr> -->
+        {% for communityTwit in communityTwits %}
+        <tr class="post">
+          <td><div class="posts-CommunityPost-title">{{communityTwit.id}}</div></td>
+          <td><a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p><img style="width: 100px;" src="{{communityTwit.img}}" alt="섬네일"></a></td>
+          <td><div class="posts-User-nick">{{communityTwit.User.nick}}</div></td>
+          <td><div class="posts-CommunityPost-createAt">{{communityTwit.createdAt}}</div></td>
+          <td>10.21</td>
+          <td>21</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
+  </body>
+  <footer>
     <ul>
-        {% set offset = 10 %}
-        {% set current = '{currentPage}' %}
-        {% set last = 1 %}
-        
-        {% if 1<=last %}
-            {% for last in offset %}
-                {% if last==1 or last==maxPage %}
-                    <li><a href="#">왜 안나오니</a></li>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+      {% set offset = 10 %}
+      {% set current = '{currentPage}' %}
+      {% set last = 1 %}
+      <!-- 페이징 수정 중 (링크를 이용??) -->
+      {% if 1<=last %}
+        <li><a href="/community/page?offset=1&limit=10">왜 안나오니</a></li>
+      {% endif %}
     </ul>
+  </footer>
 </section>
 {% endblock %}
 

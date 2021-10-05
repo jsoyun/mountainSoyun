@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
     let search = queryData.search;
     let select = queryData.select;
 
+    /* 제목/내용 검색 */
     const titleContents = await CommunityPost.findAll({
       include: { 
         model: User,
@@ -32,6 +33,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']],
     });
 
+    /* 내용 검색 */
     const contents = await CommunityPost.findAll({
       include: { 
         model: User,
@@ -45,6 +47,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']],
     });
 
+    /* 제목 검색 */
     const titles = await CommunityPost.findAll({
       include: { 
         model: User,
@@ -58,6 +61,7 @@ router.get('/', async (req, res, next) => {
       order: [['createdAt', 'DESC']],
     });
 
+    /* 작성자 검색 */
     const users = await CommunityPost.findAll({
       include: { 
         model: User,
