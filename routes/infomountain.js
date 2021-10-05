@@ -1,6 +1,6 @@
 const express = require('express');
 const request = require('request');
-const APIkey = require('../public/javascripts/APIkey')
+const APIkey = require('../public/mountainInfo/javascripts/APIkey')
 const convert = require('xml-js');
 const Mountain = require('../models/mountain')
 const router = express.Router();
