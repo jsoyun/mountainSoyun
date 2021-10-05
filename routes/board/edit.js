@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
-const { CommunityPost, User } = require('../models');
+const { CommunityPost, User } = require('../../models');
 
 /* 게시글 수정 전 READ */
 router.get('/:id', async (req, res, next) => {

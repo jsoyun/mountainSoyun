@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { User } = require("../models");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const { User } = require("../../models");
+const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
 
 router.use((req, res, next) => {
   console.log("얘가팔로우버튼효시하기위한page.js라는데..");

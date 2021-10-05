@@ -1,9 +1,9 @@
 //모듈
 const express = require("express");
-const User = require("../models/user");
+const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
 
 //라우터
 const router = express.Router();

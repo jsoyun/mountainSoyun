@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { CommunityPost, User } = require('../models');
+const { CommunityPost, User } = require('../../models');
 
 /* 게시글 READ */
 router.get('/:id', async (req, res, next) => {

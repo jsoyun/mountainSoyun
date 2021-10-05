@@ -1,6 +1,6 @@
 const express = require('express');
 const url = require('url');
-const { CommunityPost, Sequelize } = require('../models');
+const { CommunityPost, Sequelize } = require('../../models');
 const router = express.Router();
 
 const Op = Sequelize.Op;    // LIKE

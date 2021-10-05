@@ -3,8 +3,8 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { Club } = require("../models");
-const { isLoggedIn } = require("./middlewares");
+const { Club } = require("../../models");
+const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
 

@@ -10,26 +10,42 @@ const dotenv = require("dotenv");
 const passport = require("passport");
 const session = require("express-session");
 const passportConfig = require("./passport");
-dotenv.config();
-////라우터 추가할때마다 여기도 추가합니다합니다추가합니다.//////////////////////////////////////////////////////////
-const mainRouter = require("./routes/main");
-const clubRouter = require("./routes/club");
-const clubUploadRouter = require("./routes/clubupload");
-const clubDetailRouter = require("./routes/clubdetail");
-const infoMountainRouter = require("./routes/infomountain");
-const loginRouter = require("./routes/login");
-const signupRouter = require("./routes/signup");
-const mypageRouter = require("./routes/mypage");
-const findInfoRouter = require("./routes/findinfo");
-const communityRouter = require("./routes/community");
-const writeRouter = require("./routes/write");
-const logoutRouter = require("./routes/logout");
-const viewRouter = require("./routes/view");
-const followuserRouter = require("./routes/followuser");
-const editRouter = require("./routes/edit");
-const searchRouter = require("./routes/search");
 
-////////////////////////////////////////////////////////////////
+dotenv.config();
+
+////라우터 추가할때마다 여기도 추가합니다합니다추가합니다.//////////////////////////////////////////////////////////
+
+/* board 폴더 (게시글) */
+const communityRouter = require("./routes/board/community");
+const editRouter = require("./routes/board/edit");
+const searchRouter = require("./routes/board/search");
+const viewRouter = require("./routes/board/view");
+const writeRouter = require("./routes/board/write");
+
+/* club 폴더 (도전클럽) */
+const clubRouter = require("./routes/club/club");
+const clubDetailRouter = require("./routes/club/clubdetail");
+const clubUploadRouter = require("./routes/club/clubupload");
+
+/* login 폴더 (로그인) */
+const loginRouter = require("./routes/login/login");
+const logoutRouter = require("./routes/login/logout");
+const signupRouter = require("./routes/login/signup");
+const findInfoRouter = require("./routes/login/findinfo");
+
+/* main 폴더 (메인화면) */
+const mainRouter = require("./routes/main/main");
+
+/* mountainInfo 폴더 (100대 명산) */
+const infoMountainRouter = require("./routes/mountainInfo/infomountain");
+
+/* mypage 폴더 (마이페이지) */
+const mypageRouter = require("./routes/mypage/mypage");
+
+/* ? */
+const followuserRouter = require("./routes/followuser");
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const app = express();
 passportConfig(); // 패스포트 설정
 
