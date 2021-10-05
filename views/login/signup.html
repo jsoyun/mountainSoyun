@@ -1,0 +1,96 @@
+{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+<div id="join-form-body">
+  <div class="join-form-title">Resistration</div>
+  <!-- action에 페이지 주소입력 -->
+  <form method="POST" class="join-form-container">
+    <fieldset class="join-form-field">
+      <div class="input-container">
+        <label for="email">Email<small style="color: red">*</small></label
+        ><br />
+        <input
+          class="input-box"
+          type="email"
+          id="user-email"
+          name="email"
+          placeholder="Enter Your Email"
+          onchange="checkMail()"
+        />
+        <!--유효성 검사 후 잘못되었을때 경고 문자-->
+        <text
+          id="usereMail"
+          class="wrong-message"
+          style="color: red; font-size: small"
+        ></text>
+      </div>
+      <div class="input-container">
+        <label for="password">Password<small style="color: red">*</small></label
+        ><br />
+        <input
+          class="input-box"
+          type="password"
+          id="user-pw"
+          name="password"
+          placeholder="Enter Your Password"
+          onchange="checkPw()"
+          required
+        />
+        <!--유효성 검사 후 잘못되었을때 경고 문자-->
+        <text
+          id="wrongPw"
+          class="wrong-message"
+          style="color: red; font-size: small"
+        ></text>
+      </div>
+      <div class="input-container">
+        <input
+          class="input-box"
+          type="password"
+          id="user-pw-confirm"
+          name="reUserpw"
+          placeholder="Confirm Password"
+          onchange="reCheckPw()"
+          required
+        /><br />
+        <!--유효성 검사 후 잘못되었을때 경고 문자-->
+        <text
+          id="wrongRePw"
+          class="wrong-message"
+          style="color: red; font-size: small"
+        ></text>
+      </div>
+      <div class="input-container">
+        <label for="nick">Nickname<small style="color: red">*</small></label
+        ><br />
+        <input
+          class="input-box"
+          type="text"
+          id="user-nickname"
+          name="nick"
+          placeholder="Enter Your Nickname"
+          onchange="checkId()"
+          required
+        />
+        <!--유효성 검사 후 잘못되었을때 경고 문자-->
+        <text
+          id="wrongid"
+          class="wrong-message"
+          style="color: red; font-size: small"
+        ></text>
+      </div>
+      <div class="input-container">
+        <label for="birthdate">Date of Birth</label><br />
+        <input
+          class="input-box"
+          type="date"
+          id="user-birth"
+          name="birth"
+        /><br />
+      </div>
+    </fieldset>
+    <input type="submit" value="Sign Up" id="signUp" />
+  </form>
+  >>>>>>> main
+</div>
+{% endblock %} {% block script %}
+<script src="/login/javascripts/signupcheck.js"></script>
+{% endblock %}

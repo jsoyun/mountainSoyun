@@ -16,14 +16,15 @@ module.exports = () => {
     //serializeUser에서 세션에 저장한 아이디를 받아 데이터베이스에서 사용자정보를 조회.
     User.findOne({
       where: { id },
-      include: [
-        { model: User, attributes: ["id", "nick"], as: "Followers" },
-        {
+      include: [{
           model: User,
           attributes: ["id", "nick"],
-          as: "Followings",
-        },
-      ],
+          as: "Followers",
+        }, {
+          model: User,
+          attributes: ['id', 'nick'],
+          as: 'Followings',
+        }],
     })
       //조회한 정보를 req.user에 저장.앞으로 req.user를 통해 로그인한 사용자의 정보가져올 수있음
       .then((user) => done(null, user))
