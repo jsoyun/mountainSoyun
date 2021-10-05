@@ -10,9 +10,10 @@
     <a href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
     <form id="search-form" action="/search">
         <select name="select" id="select">
-            <option value="title" selected>제목</option>
+            <option value="titleContent" selected>제목/내용</option>
+            <option value="title">제목</option>
             <option value="content">내용</option>
-            <!-- <option value="user">작성자</option> -->
+            <option value="user">작성자</option>
         </select>
         <input type="text" name="search" placeholder="제목 검색">
         <button class="btn">검색</button>
@@ -46,19 +47,19 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- <ul>
+    <ul>
         {% set offset = 10 %}
         {% set current = '{currentPage}' %}
-        {% set last = '{maxPage}' %}
+        {% set last = 1 %}
         
         {% if 1<=last %}
-            {% for offset in last %}
+            {% for last in offset %}
                 {% if last==1 or last==maxPage %}
                     <li><a href="#">왜 안나오니</a></li>
                 {% endif %}
             {% endfor %}
         {% endif %}
-    </ul> -->
+    </ul>
 </section>
 {% endblock %}
 
