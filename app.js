@@ -25,7 +25,7 @@ const communityRouter = require("./routes/community");
 const writeRouter = require("./routes/write");
 const logoutRouter = require("./routes/logout");
 const viewRouter = require("./routes/view");
-const userRouter = require("./routes/user");
+const followuserRouter = require("./routes/followuser");
 const editRouter = require("./routes/edit");
 const searchRouter = require("./routes/search");
 
@@ -79,7 +79,7 @@ app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
 app.use("/mypage", mypageRouter);
 app.use("/findinfo", findInfoRouter);
-app.use("/user", userRouter);
+app.use("/followuser", followuserRouter);
 
 app.use("/community", communityRouter);
 app.use("/write", writeRouter);

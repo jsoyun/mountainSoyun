@@ -1,19 +1,17 @@
-const express = require('express');
-
-const { isLoggedIn } = require('./middlewares');
-const User = require('../models/user');
-
+const express = require("express");
+const { isLoggedIn } = require("./middlewares");
+const User = require("../models/user");
 const router = express.Router();
 
-router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
+router.post("/:id/follow", isLoggedIn, async (req, res, next) => {
+  console.log("라우터유저 언제옴?");
   try {
-    console.log("/////////////////////////////////////////" + req.user.id)
     const user = await User.findOne({ where: { id: req.user.id } });
     if (user) {
       await user.addFollowing(parseInt(req.params.id, 10));
-      res.send('success');
+      res.send("success");
     } else {
-      res.status(404).send('no user');
+      res.status(404).send("no user");
     }
   } catch (error) {
     console.error(error);
