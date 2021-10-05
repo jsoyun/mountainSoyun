@@ -23,10 +23,3 @@
 # main : 메인 화면
 # mountainInfo : 100대 명산 정보
 #
-
-
-# < 설명 파일 >
-# models/communitypost.js - 시퀄라이즈 설명 (공식 문서에 있는 내용)
-# 
-# 
-# 
