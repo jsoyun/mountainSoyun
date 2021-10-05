@@ -24,11 +24,14 @@
     <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
     <input type="hidden" value="{{twit.id}}" class="twit-id" />
     <div class="twit-author">{{twit.User.nick}}</div>
+
     {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
     %}
     <button class="twit-follow btn">팔로우하기</button>
-    {% endif %}
+    {% else%}
     <button class="twit-unfollow btn">팔로우끊기</button>
+    {% endif %}
+
     <div class="twit-img">
       <a href="/clubdetail/:id"
         ><img style="width: 100px" src="{{twit.img}}" alt="섬네일"
