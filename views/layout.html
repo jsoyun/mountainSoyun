@@ -5,16 +5,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{title}}</title>
-  <!-- <link rel="stylesheet" href="/mainstylesheets/reset.css"> -->
+  <link rel="shortcut icon" href="/images/logo.png">
+  <link rel="stylesheet" href="/main/stylesheets/reset.css">
   <link rel="stylesheet" href="/main/stylesheets/main.css" />
   <link rel="stylesheet" href="/main/stylesheets/font.css" />
   {% block css %} 
   {% endblock %}
 </head>
 <body>
-  <header>
+  <header class="header">
     <div id="header-container">
-      <div id="header-logo"><a href="/">컴백홈</a></div>
+      <div id="header-logo"><a href="/"><img class="logo-img" src="/images/logo.png" alt=""></a></div>
       {% if user and user.id %}
       <p class="hello">
         <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
@@ -23,18 +24,20 @@
       </p>
       {% else %}
       <p class="hello">
-        <span class="hello-item"><a href="/login">로그인</a></span>
+        <span class="hello-item">
+          <a class="login-link link" href="/login">로그인</a>
+        </span>
       </p>
       {% endif %}
       <li class="nav">
         <ul class="nav-item">
-          <a href="/club">도전클럽</a>
+          <a class="nav-link link" href="/club">도전클럽</a>
         </ul>
         <ul class="nav-item">
-          <a href="/infomountain">100대 명산 정보</a>
+          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
         </ul>
         <ul class="nav-item">
-          <a href="/community">게시판</a>
+          <a class="nav-link link" href="/community">게시판</a>
         </ul>
       </li>
     </div>
