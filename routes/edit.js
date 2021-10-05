@@ -16,7 +16,7 @@ router.get('/:id', async (req, res, next) => {
             where: { id: `${req.params.id}` },
         });
         console.log(editTexts);
-        res.render('edit-community', {
+        res.render('board/edit-community', {
             title: 'mountain 커뮤니티 수정하기',
             communityTwits: editTexts,
         });

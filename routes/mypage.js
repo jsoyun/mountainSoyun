@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
       // },
       order: [["createdAt", "DESC"]],
     });
-    res.render("mypage", {
+    res.render("mypage/mypage", {
       title: "NodeBird",
       twits: posts,
     });
@@ -36,17 +36,17 @@ router.get("/", async (req, res, next) => {
 
 //profile 페이지
 router.get("/mypage", (req, res) => {
-  res.render("mypage", { title: "내 정보-NodeBird" });
+  res.render("mypage/mypage", { title: "내 정보-NodeBird" });
 });
 
 //join페이지 로그인 한 페이지인가?
 router.get("/login", (req, res) => {
-  res.render("login", { title: "회원가입-NodeBird" });
+  res.render("login/login", { title: "회원가입-NodeBird" });
 });
 
 /* GET page. */
 router.get("/", (req, res) => {
-  res.render("mypage", { title: "내 정보" });
+  res.render("mypage/mypage", { title: "내 정보" });
 });
 
 //
@@ -61,7 +61,7 @@ router.get("/communityhashtag", async (req, res, next) => {
     if (hashtag) {
       posts = await hashtag.getPosts({ include: [{ model: User }] });
     }
-    return res.render("mypage", {
+    return res.render("mypage/mypage", {
       title: `${query}| mountaindb`,
       twits: posts,
     });

@@ -3,13 +3,13 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 
-const { CommunityPost, Hashtag } = require('../models');
+const { CommunityPost } = require('../models');
 const { isLoggedIn } = require("./middlewares");
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('write-community');
+  res.render('board/write-community');
 });
 
 /* uploads 폴더 */

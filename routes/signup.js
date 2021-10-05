@@ -10,7 +10,7 @@ const router = express.Router();
 
 //회원가입 창띄우기(get)
 router.get("/", (req, res, next) => {
-  res.render("signup", { title: "회원가입" });
+  res.render("login/signup", { title: "회원가입" });
 });
 
 //회원가입 데이터 입력한거 전송하는 코드

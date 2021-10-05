@@ -13,7 +13,7 @@ router.get('/:id', async (req, res, next) => {
       where: { id: `${req.params.id}` },
     }) 
     console.log(texts);
-    res.render('view-community', {
+    res.render('board/view-community', {
         title: 'mountain 커뮤니티',
         communityTwits: texts,
     });

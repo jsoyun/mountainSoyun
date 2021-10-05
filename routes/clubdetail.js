@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
       },
       order: [["createdAt", "DESC"]],
     });
-    res.render("clubdetail", {
+    res.render("club/clubdetail", {
       title: "mountain",
       twits: uploads,
     });

@@ -8,7 +8,7 @@ const router = express.Router();
 //로그인창 띄우기
 router.get("/", (req, res, next) => {
   const twits = [];
-  res.render("login", {
+  res.render("login/login", {
     title: "mountain",
     twits,
   });

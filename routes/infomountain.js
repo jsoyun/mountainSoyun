@@ -38,7 +38,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-  res.render('infomountain');
+  res.render('mountainInfo/infomountain');
 });
 
 module.exports = router;

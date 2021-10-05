@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
       },
       order: [['createdAt', 'DESC']],
     });
-    res.render('main-community', {
+    res.render('/board/main-community', {
       title: `mountain - ${search} 검색 결과`,
       communityTwits: texts,
     });

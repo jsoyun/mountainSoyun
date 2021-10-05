@@ -10,7 +10,7 @@ const router = express.Router();
 
 /* GET page. */
 router.get("/", (req, res) => {
-  res.render("clubupload");
+  res.render("club/clubupload");
 });
 
 try {
