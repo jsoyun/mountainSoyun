@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 
 /* GET page. */
 router.get('/', (req, res) => {
-  res.render('main/main');
+  res.render('main/main', { title: 'into the mountain' } );
 });
 
 module.exports = router;
