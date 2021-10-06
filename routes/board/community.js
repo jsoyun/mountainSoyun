@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const url = require('url');
 const { CommunityPost, User } = require('../../models');
 
 /* 커뮤니티 목록 */
@@ -28,9 +29,9 @@ router.get('/', async (req, res, next) => {
 router.get('/page', async (req, res, next) => {
   try {
     let queryData = url.parse(req.url, true).query;
-    let offset = Math.max(1, parseInt(queryData.offset));  // 표시될 게시물 수
-    let limit = Math.max(1, parseInt(queryData.limit));   // 보여줄 페이지
-    offset = !isNaN(page)?page:1;
+    let offset = Math.max(1, parseInt(queryData.offset));  // 시작 지점
+    let limit = Math.max(1, parseInt(queryData.limit));   // 표시될 게시물 수
+    offset = !isNaN(offset)?offset:0;
     limit = !isNaN(limit)?limit:10;
     
     const posts = await CommunityPost.findAll({
