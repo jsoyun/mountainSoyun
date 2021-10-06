@@ -56,15 +56,33 @@
   </body>
   <footer>
     <ul>
-      <li><a href="/community/page?limit=5">첫페이지 : 1</a></li>
-
-      <!-- 페이징 수정 중 (링크를 이용??) -->
-        <li><a href="/community/page?offset=5&limit=5">2</a></li>
-        <li><a href="/community/page?offset=10&limit=5">3</a></li>
-        <li><a href="/community/page?offset=15&limit=5">4</a></li>
-        <li><a href="/community/page?offset={{nowPage*5}}&limit=5"> 현재 페이지 : {{nowPage + 1}}</a></li>
-
-        <li><a href="/community/page?offset={{ (maxPage-1)*5 }}&limit=5">마지막 페이지 : {{ maxPage }}</a></li>
+      {% if allBoard < 1 %}
+        <h1>현재 게시글이 없습니다.</h1>
+      {% else %}
+        <li class="page-num"><a class="page-link" href="/community/page?offset=0&limit=2">첫 페이지</a></li>
+        {% if nowPage < 3 %}
+          {% for i in range(2, 5) -%}
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
+          {%- endfor %}
+          ......
+        {% elseif nowPage < (maxPage-3) %}
+          {% if nowPage >= 3 or maxPage < 6 %}
+            ......
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage - 1}}</a></li>
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage}}</a></li>
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{nowPage*2}}&limit=2">{{nowPage + 1}}</a></li>
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage+1)*2}}&limit=2">{{nowPage + 2}}</a></li>
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage+2)*2}}&limit=2">{{nowPage + 3}}</a></li>
+            ......
+          {% endif %}
+        {% elseif nowPage >= (maxPage-3) %}
+          ......
+          {% for i in range((maxPage-3), maxPage) -%}
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
+          {%- endfor %}
+        {% endif %}
+          <li class="page-num"><a class="page-link" href="/community/page?offset={{(maxPage-1)*2}}&limit=2">마지막 페이지</a></li>
+      {% endif %}
     </ul>
   </footer>
 </section>

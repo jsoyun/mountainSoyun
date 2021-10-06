@@ -34,3 +34,14 @@ h1, thead, tbody, tr, th {
 .tb-img {
     width: 9vw;
 }
+
+.page-num {
+    list-style: none;
+    display: inline-block;
+    padding-left: 2em;
+    font-size: 1.7vw;
+}
+
+.page-link{
+    text-decoration-line: none;
+}
