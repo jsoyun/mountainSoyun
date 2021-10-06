@@ -55,16 +55,30 @@
     </table>
   </body>
   <footer>
+    {% if allBoard < 1 %}
+    {% else %}
+      <select name="select-page" id="select-page">
+        <option value="5-page">5</option>
+        <option value="10-page">10</option>
+        <option value="15-page">15</option>
+      </select>
+    {% endif %}
     <ul>
       {% if allBoard < 1 %}
         <h1>현재 게시글이 없습니다.</h1>
       {% else %}
         <li class="page-num"><a class="page-link" href="/community/page?offset=0&limit=2">첫 페이지</a></li>
         {% if nowPage < 3 %}
-          {% for i in range(2, 5) -%}
-            <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
-          {%- endfor %}
-          ......
+          {% if maxPage < 5 %}
+            {% for i in range(2, maxPage) -%}
+              <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
+            {%- endfor %}
+          {% else %}
+            {% for i in range(2, 5) -%}
+              <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
+            {%- endfor %}
+            ......
+          {% endif %}
         {% elseif nowPage < (maxPage-3) %}
           {% if nowPage >= 3 or maxPage < 6 %}
             ......
@@ -76,10 +90,16 @@
             ......
           {% endif %}
         {% elseif nowPage >= (maxPage-3) %}
+          {% if maxPage < 5 %}
+            {% for i in range(2, maxPage) -%}
+              <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
+            {%- endfor %}
+          {% else %}
           ......
-          {% for i in range((maxPage-3), maxPage) -%}
-            <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
-          {%- endfor %}
+            {% for i in range((maxPage-3), maxPage) -%}
+              <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
+            {%- endfor %}
+          {% endif %}
         {% endif %}
           <li class="page-num"><a class="page-link" href="/community/page?offset={{(maxPage-1)*2}}&limit=2">마지막 페이지</a></li>
       {% endif %}
