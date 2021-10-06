@@ -56,17 +56,15 @@
   </body>
   <footer>
     <ul>
-      {% set offset = 10 %}
-      {% set current = '{currentPage}' %}
-      {% set last = 1 %}
+      <li><a href="/community/page?limit=5">첫페이지 : 1</a></li>
+
       <!-- 페이징 수정 중 (링크를 이용??) -->
-      {% if 1<=last %}
-        <li><a href="/community/page?&limit=5">1</a></li>
         <li><a href="/community/page?offset=5&limit=5">2</a></li>
         <li><a href="/community/page?offset=10&limit=5">3</a></li>
         <li><a href="/community/page?offset=15&limit=5">4</a></li>
-        <li><a href="/community/page?offset=20&limit=5">5</a></li>
-      {% endif %}
+        <li><a href="/community/page?offset={{nowPage*5}}&limit=5"> 현재 페이지 : {{nowPage + 1}}</a></li>
+
+        <li><a href="/community/page?offset={{ (maxPage-1)*5 }}&limit=5">마지막 페이지 : {{ maxPage }}</a></li>
     </ul>
   </footer>
 </section>
