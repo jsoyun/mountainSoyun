@@ -5,9 +5,14 @@ const router = express.Router();
 
 router.use((req, res, next) => {
   res.locals.user = req.user;
-  res.locals.followerCount = 0;
-  res.locals.followingCount = 0;
-  res.locals.followerIdList = [];
+  // res.locals.followerCount = 0;
+  // res.locals.followingCount = 0;
+  // res.locals.followerIdList = [];
+  res.locals.followerCount = req.user ? req.user.Followers.length : 0;
+  res.locals.followingCount = req.user ? req.user.Followings.length : 0;
+  res.locals.followerIdList = req.user
+    ? req.user.Followings.map((f) => f.id)
+    : [];
   next();
 });
 
@@ -49,18 +54,18 @@ router.get("/", async (req, res, next) => {
     const clubs = await Club.findAll({
       include: {
         model: User,
-        attribute: ['id', 'nick'],
+        attribute: ["id", "nick"],
       },
-      order: [['createdAt', 'DESC']],
+      order: [["createdAt", "DESC"]],
     });
-    res.render('club/club', {
-      title: 'mountain feed',
+    res.render("club/club", {
+      title: "mountain feed",
       twits: clubs,
     });
   } catch (error) {
     console.error(error);
     next(error);
-  };
+  }
 });
 
 // router.delete("/:id/like", async (req, res, next) => {
