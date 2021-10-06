@@ -43,7 +43,7 @@
     {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
     %}
     <button class="twit-follow btn">팔로우하기</button>
-    {% else%}
+    {% elif twit.User.id !== user.id%}
     <button class="twit-unfollow btn">팔로우끊기</button>
     {% endif %}
 
@@ -82,7 +82,7 @@
               .post(`/user/${userId}/follow`)
               .then(() => {
                 console.log("팔로됐나");
-                // location.reload();
+                location.reload();
               })
               .catch((err) => {
                 console.log("에러");
