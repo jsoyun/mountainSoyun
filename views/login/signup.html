@@ -6,7 +6,8 @@
     method="POST"
     class="join-form-container"
     id="user-id"
-    onsubmit="return checkForm()"
+    onsubmit="return true"
+    action="signup"
   >
     <fieldset class="join-form-field">
       <div class="input-container">
@@ -14,16 +15,12 @@
         ><br />
         <input
           class="input-box"
+          type="email"
           id="user-email"
           name="email"
           placeholder="Enter Your Email"
           onchange="checkMail()"
-        />@<select name="emailSelect" id="email-select">
-          <option value="gmail">gmail.com</option>
-          <option value="naver">naver.com</option>
-          <option value="hanmail">hanmail.com</option>
-          <option value="yahoo">yahoo.com</option>
-        </select>
+        />
         <!--유효성 검사 후 잘못되었을때 경고 문자-->
         <text
           id="usereMail"
@@ -96,7 +93,7 @@
         /><br />
       </div>
     </fieldset>
-    <input type="submit" value="Sign Up" id="signUp" />
+    <input type="submit" value="Sign Up" id="signUp" onclick="checkForm()" />
   </form>
 </div>
 {% endblock %} {% block script %}

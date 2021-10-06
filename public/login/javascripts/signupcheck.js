@@ -1,14 +1,16 @@
 function checkMail() {
   //메일 유효성 검사
-  const regExpMail = /^[a-zA-Z0-9-_][a-zA-Z0-9-_]*$/;
+  const regExpMail =
+    /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
   let mail = document.getElementById("user-email").value;
   if (!regExpMail.test(mail)) {
     document.getElementById("usereMail").innerHTML =
-      "4~10자의 영문대소문자,숫자와 특수기호는(-)(_)만 사용가능합니다.";
+      "메일주소를 다시 기입해주세요.";
     alert("메일주소 기입오류");
   } else {
     document.getElementById("usereMail").innerHTML = "";
-    return true;
+    // return true;
   }
 }
 
@@ -23,7 +25,7 @@ function checkPw() {
     alert("비밀번호 기입오류");
   } else {
     document.getElementById("wrongPw").innerHTML = "";
-    return true;
+    // return true;
   }
 }
 
@@ -36,7 +38,7 @@ function reCheckPw() {
     alert("비밀번호 재확인 기입오류");
   } else {
     document.getElementById("wrongRePw").innerHTML = "";
-    return true;
+    // return true;
   }
 }
 
@@ -49,17 +51,21 @@ function checkId() {
       "형식에 맞지 않는 이름입니다.";
   } else {
     document.getElementById("wrongid").innerHTML = "";
-    return true;
+    // return true;
   }
 }
 
 //회원가입시 입력란 정규식 체크
 function checkForm() {
-  const regExp1 = /^[A-Za-z0-9]{4,10}$/;
-  let id = document.getElementById("user-id").value;
+  console.log("회원가입정규식");
+  // const regExp1 = /^[A-Za-z0-9]{4,10}$/;
+
+  // let id = document.getElementById("user-id").value;
   if (!regExp1.test(id)) {
+    console.log("에러냐");
     alert("형식이 맞지 않습니다.");
-    return false;
+    // return false;
   }
-  return true;
+  // console.log("리턴은돼?");
+  // return true;
 }
