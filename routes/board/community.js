@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
         attribute: ['id', 'nick'],
       },
       order: [['createdAt', 'DESC']],
+      limit: 5,    // 페이지에 표시될 게시물 수
     });
     res.render('board/main-community', {
       title: 'mountain 커뮤니티',
@@ -33,6 +34,10 @@ router.get('/page', async (req, res, next) => {
     let limit = Math.max(1, parseInt(queryData.limit));   // 표시될 게시물 수
     offset = !isNaN(offset)?offset:0;
     limit = !isNaN(limit)?limit:10;
+    let count = await CommunityPost.findAll();
+    let allBoard = count.length;                    // 전체 게시글 수
+    let maxPage = Math.ceil(allBoard/limit);           // 전체 / 보여줄 페이지 = 마지막 페이지
+    let nowPage = Math.ceil(offset/limit) + 1;          // 현재 페이지
     
     const posts = await CommunityPost.findAll({
       include: { 
@@ -46,9 +51,11 @@ router.get('/page', async (req, res, next) => {
     res.render('board/main-community', {
       title: 'mountain 커뮤니티',
       communityTwits: posts,
+      maxPage: maxPage,   // 마지막 페이지
+      nowPage: nowPage,     // 현재 페이지
     });
     
-    console.log('출력결과 : ', posts);
+    // console.log('출력결과 : ', posts);
   } catch (error) {
     console.error(error);
     next(error);
