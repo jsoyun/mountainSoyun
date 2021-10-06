@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) => {
 router.get('/page', async (req, res, next) => {
   try {
     let queryData = url.parse(req.url, true).query;
-    let offset = Math.max(1, parseInt(queryData.offset));  // 시작 지점
+    let offset = Math.max(0, parseInt(queryData.offset));  // 시작 지점
     let limit = Math.max(1, parseInt(queryData.limit));   // 표시될 게시물 수
     let count = await CommunityPost.findAll();
     let allBoard = count.length;                    // 전체 게시글 수
@@ -53,6 +53,7 @@ router.get('/page', async (req, res, next) => {
       communityTwits: posts,
       maxPage: maxPage,   // 마지막 페이지
       nowPage: nowPage,     // 현재 페이지
+      allBoard: allBoard,   // 전체 게시글 수
     });
     
     // console.log('출력결과 : ', posts);
