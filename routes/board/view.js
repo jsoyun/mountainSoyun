@@ -30,7 +30,7 @@ router.get('/:id/delete', async (req, res, next) => {
       await CommunityPost.destroy(
           {where:{id:`${req.params.id}`}}
       );
-      res.redirect('/community');
+      res.redirect('/community/page?offset=0&limit=2');
   } catch (error) {
     console.error(error);
     next(error);

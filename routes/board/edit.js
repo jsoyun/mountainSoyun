@@ -56,7 +56,7 @@ router.post('/:id', async (req, res, next) => {
               content:req.body.content},
             {where:{id:`${req.params.id}`}}
         );
-        res.redirect('/community');
+        res.redirect('/community/page?offset=0&limit=2');
     } catch (error) {
       console.error(error);
       next(error);
