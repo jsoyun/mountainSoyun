@@ -32,12 +32,12 @@ router.get('/page', async (req, res, next) => {
     let queryData = url.parse(req.url, true).query;
     let offset = Math.max(1, parseInt(queryData.offset));  // 시작 지점
     let limit = Math.max(1, parseInt(queryData.limit));   // 표시될 게시물 수
-    offset = !isNaN(offset)?offset:0;
-    limit = !isNaN(limit)?limit:10;
     let count = await CommunityPost.findAll();
     let allBoard = count.length;                    // 전체 게시글 수
     let maxPage = Math.ceil(allBoard/limit);           // 전체 / 보여줄 페이지 = 마지막 페이지
-    let nowPage = Math.ceil(offset/limit) + 1;          // 현재 페이지
+    let nowPage = Math.ceil(offset/limit);          // 현재 페이지
+    offset = !isNaN(offset)?offset:0;
+    limit = !isNaN(limit)?limit:10;
     
     const posts = await CommunityPost.findAll({
       include: { 
