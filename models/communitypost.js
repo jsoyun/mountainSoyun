@@ -49,11 +49,6 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
   }
 
   static associate(db) {  // 이 범위(associate)를 index.js 에서 사용해서 부른다.
-    db.CommunityPost.belongsTo(db.User);
+    db.CommunityPost.belongsToMany(db.User, {through: 'Like'});  // 좋아요
   }
-  // 1대다 관계(user의 반대 경우) - (ex) 댓글 (나) 은 어떤 사용자 (남) 에게 속해있다.
-  // belongsTo 의 경우에는 sourceKey 가 아니라, targetKey (남) 이다.
-  // << 사용법 >> db.댓글.belongsTo(db.사용자);
-  // foreignKey 는 동일하다. (간단하게 belongsTo 를 지정하는 곳이 foreignKey 라고 봐도 된다.)
-  // << 사용법 >> db.Comment.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id' });
 };

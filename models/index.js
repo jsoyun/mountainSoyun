@@ -5,7 +5,6 @@ const config = require("../config/config")[env];      // ../config/config 안의
 /* 해당 경로의 DataBase 정보를 변수에 저장 */
 const Club = require("./club");
 const Hashtag = require("./clubhashtag");
-const Like = require("./like");
 const CommunityPost = require("./communitypost");
 const User = require('./user');
 const Mountain = require('./mountain');
@@ -29,7 +28,6 @@ db.Sequelize = Sequelize;
 /* db 객체에 5번째 줄부터 선언된 변수를 각각 db 객체 각각에 저장 */
 db.Club = Club;
 db.Hashtag = Hashtag;
-db.Like = Like;
 db.CommunityPost = CommunityPost;
 db.User = User;
 db.Mountain = Mountain;
@@ -37,7 +35,6 @@ db.Mountain = Mountain;
 /* 해당 DB 안의 init 불러서 넣기 (여기서 sequelize 는 연결 객체, 말그대로 모델이랑 MySQL 이랑 연결한 것) */
 Club.init(sequelize);
 Hashtag.init(sequelize);
-Like.init(sequelize);
 CommunityPost.init(sequelize);
 User.init(sequelize);
 Mountain.init(sequelize);
@@ -46,7 +43,6 @@ Mountain.init(sequelize);
 User.associate(db);
 Club.associate(db);
 Hashtag.associate(db);
-Like.associate(db);
 CommunityPost.associate(db);
 
 /* module.exports 에 넣기 */
