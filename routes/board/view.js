@@ -12,10 +12,21 @@ router.get('/:id', async (req, res, next) => {
       },
       where: { id: `${req.params.id}` },
     }) 
-    console.log(texts);
+    const likes = CommunityPost.findAll({
+      include: [{
+        model: User,
+        attributes: ['id', 'nick'],
+      }, {
+        model: User,
+        attributes: ['id', 'nick'],
+        as: 'Liker',
+      }],
+    })
+    console.log(likes);
     res.render('board/view-community', {
         title: 'mountain 커뮤니티',
         communityTwits: texts,
+        likes,
     });
   } catch (error) {
     console.error(error);
@@ -35,6 +46,30 @@ router.get('/:id/delete', async (req, res, next) => {
     console.error(error);
     next(error);
   };
+});
+
+/* 게시글 좋아요 */
+router.post('/:id/like', async(req, res, next) => {
+    try {
+        const post = await CommunityPost.find({ where: { id: req.params.id }});
+        await post.addLiker(parseInt(req.user.id));
+        res.send("좋아요");
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+});
+
+/* 게시글 좋아요 취소 */
+router.post('/:id/unlike', async(req, res, next) => {
+    try {
+        const post = await CommunityPost.find({ where: { id: req.params.id }});
+        await post.removeLiker(parseInt(req.user.id));
+        res.send('취소');
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
 });
 
 module.exports = router;

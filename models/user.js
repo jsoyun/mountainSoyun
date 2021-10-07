@@ -67,5 +67,6 @@ module.exports = class User extends Sequelize.Model {
     // 다대다 관계가 되면 데이터베이스 정규화 원칙을 지키기위해 어쩔 수 없이 테이블을 하나 더 생성해야한다.({ through: 'PostHashtag' } 이부분이 어쩔 수 없이 셍성한 테이블)
     // << 사용법 >> db.Post.belongsToMany*(db.Hashtag, { through: 'PostHashtag' });
     // << 이어서 >> db.Hashtag.belongsToMany*(db.Post, { through: 'PostHashtag' });
+    db.User.belongsToMany(db.CommunityPost, { through: 'Like' });
   }
 };

@@ -27,15 +27,6 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
     }
     const hash = await bcrypt.hash(password, 12);
     User.create({
-      // router.post('/', isNotLoggedIn, async (req, res, next) => {
-      //   const { email, password, nick } = req.body;
-      //   try {
-      //     const exUser = await User.findOne({ where: { email } });
-      //     if (exUser) {
-      //       return res.redirect('/join?error=exist');
-      //     }
-      //     const hash = await bcrypt.hash(password, 12);
-      //     await User.create({
       email,
       nick,
       password: hash,
