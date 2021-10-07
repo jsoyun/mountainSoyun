@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
         model: User,
         attribute: ['id', 'nick'],
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
       limit: 5,    // 페이지에 표시될 게시물 수
     });
     res.render('board/main-community', {
@@ -44,7 +44,7 @@ router.get('/page', async (req, res, next) => {
         model: User,
         attribute: ['id', 'nick'],
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
       limit: limit,    // 페이지에 표시될 게시물 수
       offset: offset,    // 시작 지점
     });

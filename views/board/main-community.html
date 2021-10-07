@@ -35,18 +35,19 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr>
-            <td>글이 없습니다.</td>
-        </tr> -->
         {% for communityTwit in communityTwits %}
         <tr class="post">
-          <td><div class="posts-CommunityPost-title">{{communityTwit.id}}</div></td>
+          <td><div class="CommunityPost-title">{{communityTwit.id}}</div></td>
           <td>
             <a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p>
-            <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일"></a>
+            {% if communityTwit.img != false %}   <!-- 사진이 없으면 보여주지 않는다. -->
+              <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일"></a>
+            {% endif %}
           </td>
-          <td><div class="posts-User-nick">{{communityTwit.User.nick}}</div></td>
-          <td><div class="posts-CommunityPost-createAt">{{communityTwit.createdAt}}</div></td>
+          <td><div class="user-nick">{{communityTwit.User.nick}}</div></td>
+          <td>
+            <div id="com-creatAt" class="communityPost-createAt">{{communityTwit.createdAt}}</div>
+          </td>
           <td>10.21</td>
           <td>21</td>
         </tr>
@@ -64,23 +65,23 @@
       </select>
     {% endif %}
     <ul>
-      {% if allBoard < 1 %}
+      {% if allBoard < 1 %}     <!-- DB 에 없을 경우 -->
         <h1>현재 게시글이 없습니다.</h1>
-      {% else %}
-        <li class="page-num"><a class="page-link" href="/community/page?offset=0&limit=2">첫 페이지</a></li>
+      {% else %}     <!-- DB 에 있을 경우 -->
+        <li class="page-num"><a class="page-link" href="/community/page?offset=0&limit=2">1</a></li>
         {% if nowPage < 3 %}
-          {% if maxPage < 5 %}
+          {% if maxPage < 5 %}     <!-- 5 페이지 보다 적을 경우 1 2 3 4 5 까지 표기할 수 있게 아래 for 문 반복 -->
             {% for i in range(2, maxPage) -%}
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
             {%- endfor %}
-          {% else %}
+          {% else %}     <!-- 5 페이지 보다 많을 경우 1 2 3 4 ... 표기할 수 있게 아래 for 문 반복 -->
             {% for i in range(2, 5) -%}
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
             {%- endfor %}
             ......
           {% endif %}
         {% elseif nowPage < (maxPage-3) %}
-          {% if nowPage >= 3 or maxPage < 6 %}
+          {% if nowPage >= 3 or maxPage < 6 %}     <!-- 5페이지 보다 많고 현재페이지가 4를 넘어갈시 ... 2 3 4 5 6 ... 표기 -->
             ......
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage - 1}}</a></li>
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage}}</a></li>
@@ -89,7 +90,7 @@
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage+2)*2}}&limit=2">{{nowPage + 3}}</a></li>
             ......
           {% endif %}
-        {% elseif nowPage >= (maxPage-3) %}
+        {% elseif nowPage >= (maxPage-3) %}     <!-- 현재페이지가 마지막 페이지의 3번째 전에 왔을 때 ... (n-2) (n-1) (n) 표기 -->
           {% if maxPage < 5 %}
             {% for i in range(2, maxPage) -%}
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
@@ -101,7 +102,9 @@
             {%- endfor %}
           {% endif %}
         {% endif %}
-          <li class="page-num"><a class="page-link" href="/community/page?offset={{(maxPage-1)*2}}&limit=2">마지막 페이지</a></li>
+          {% if maxPage > 1 %}
+            <li class="page-num"><a class="page-link" href="/community/page?offset={{(maxPage-1)*2}}&limit=2">{{ maxPage }}</a></li>
+          {% endif %}
       {% endif %}
     </ul>
   </footer>

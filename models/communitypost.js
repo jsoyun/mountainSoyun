@@ -24,15 +24,20 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
           type: Sequelize.STRING(200),
           allowNull: true,
         },
-        created_at: {
-          type: Sequelize.DATE,         // DATE 는 DateOnly
+        createdAt: {
+          type: Sequelize.DATEONLY,         // DATE 는 DateOnly
           allowNull: false,
           defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
         }, 
+        updatedAt: {
+          type: Sequelize.DATE,         // DATE 는 DateOnly
+          allowNull: false,
+          defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
+        }
       },
       {
         sequelize,                // sequelize 적어주고, 
-        timestamps: true,         // true 이면, 자동으로 createdAt , updatedAt 을 넣어준다.
+        timestamps: false,         // true 이면, 자동으로 createdAt , updatedAt 을 넣어준다.
         underscored: false,       // 시퀄라이즈의 자동으로 만들어주는 글자들을 createdAt 으로 할지(false, 카멜 표기법), created_at 으로 할지(true, 언더바) 물어보는 설정이다.
         modelName: "CommunityPost",        // 모델명은 javascript 에서 쓰이는 이름
         tableName: "communityposts",       // 테이블명은 SQL 에서 쓰이는 이름 (기본적으로 모델명을 소문자화 복수형으로 정한다.)

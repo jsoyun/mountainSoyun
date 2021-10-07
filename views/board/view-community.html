@@ -21,7 +21,9 @@
         </div>
         <div>
             <p><div class="board-content">{{communityTwits.content}}</div></p>
-            <img style="width: 200px;" src="{{ communityTwits.img }}" alt="섬네일">
+            {% if communityTwits.img != false %}   <!-- 사진이 없으면 보여주지 않는다. -->
+                <img style="width: 200px;" src="{{ communityTwits.img }}" alt="섬네일">
+            {% endif %}
         </div>
     </body>
     <footer>
