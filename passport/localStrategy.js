@@ -14,6 +14,7 @@ module.exports = () => {
       },
       //실제 전략을 수행하는 async함수. LocalStrategy생성자의 두번째 인수로 들어감. 첫번째 인수에서 넣어준 email,password는 각각 async함수의 첫번째와두번째 매개변수가됨. 세번째 매개변수인 done함수는 passport.authenticate의 콜백함수임
       async (email, password, done) => {
+
         try {
           const exUser = await User.findOne({ where: { email } });
           if (exUser) {
@@ -26,9 +27,11 @@ module.exports = () => {
           } else {
             done(null, false, { message: "가입되지 않은 회원입니다" });
           }
-        } catch(error) {
+        } catch (error) {
           console.log(error);
           done(error);
+        }
       }
-  }));
+    )
+  );
 };

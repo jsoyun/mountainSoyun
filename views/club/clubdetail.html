@@ -1,86 +1,251 @@
-{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
+{% extends "layout.html" %} {% block css %} {% endblock %}
+{% block content %}
 <style>
-  .b_inner .contents_box {
-    float: none;
-    display: flex;
-    justify-content: center;
-  }
+    .b_inner .contents_box {
+        float: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .contents {
+        max-width: 933px;
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, .0975);
+        border-radius: 3px;
+        background: #fff;
+    }
+
+    .contents .img_section {
+        overflow: hidden;
+        max-width: 598px;
+        border-right: 1px solid rgba(0, 0, 0, .0975);
+
+    }
+
+    .contents .img_section .trans_inner {
+        /*width: 2448px;*/
+        font-size: 0;
+    }
+
+    .contents .img_section .trans_inner>div {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .contents .img_section .trans_inner img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .sprite_more_icon.on .more_detail {
+        /*display: block;*/
+        transform: scale(1);
+
+
+    }
+
+    .top .more_detail>li {
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .top .more_detail>li:hover {
+        background: gray;
+    }
+
+    .user_container .country {
+        font-size: 12px;
+    }
+
+    .contents .img_section {
+        overflow: hidden;
+    }
+
+    .contents .img_section .trans_inner {
+        /*width: 2448px;*/
+        font-size: 0;
+    }
+
+    .contents .img_section .trans_inner>div {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .contents .img_section .trans_inner img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .detail--right_box {
+        max-width: 335px;
+        width: 100%;
+    }
+
+
+    .detail--right_box .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 17px;
+        position: relative;
+
+        border-bottom: 1px solid rgba(0, 0, 0, .0975);
+    }
+
+    .detail--right_box .top .sprite_more_icon {
+        cursor: pointer;
+        padding: 5px 5px;
+    }
+
+    .post_form {
+        padding: 40px;
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
+        margin: 0 0 10px;
+    }
+
+    .post_form .title {
+        margin: 0 10px 40px;
+        font-weight: 400;
+        font-size: 30px;
+        text-align: center;
+    }
+
+
+    .post_form .preview {
+        margin-bottom: 30px;
+    }
+
+    .post_form .preview .upload {
+        max-width: 300px;
+        height: 300px;
+        border: 1px solid #e6e6e6;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .plus_icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+        border: 1px solid dodgerblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .plus_icon span {
+        position: absolute;
+        display: block;
+        width: 2px;
+        height: 30px;
+        background: dodgerblue;
+
+    }
+
+    .plus_icon span:nth-child(2) {
+        transform: rotate(90deg);
+    }
+
+    .post_form p {
+        margin-bottom: 20px;
+    }
+
+    .post_form input[type=file] {
+        width: 100%;
+        background: 0 0;
+        border: 1px solid #efefef;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #262626;
+        font-size: 14px;
+        padding: 7px 8px 7px;
+    }
+
+
+    .post_form textarea {
+        width: 100%;
+        background: 0 0;
+        border: 1px solid #efefef;
+        border-radius: 3px;
+        box-sizing: border-box;
+        color: #262626;
+        font-size: 14px;
+        padding: 7px 8px 7px;
+    }
+
+
+
+    .submit_btn {
+        background: #3897f0;
+        border-color: #3897f0;
+        color: #fff;
+        border-radius: 3px;
+        border-style: solid;
+        border-width: 1px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 28px;
+        outline: none;
+        width: 100%;
+        padding: 0;
+        margin-top: 10px;
+    }
 </style>
-</head>
-<body>
-<div class="title">상세페이지</div>
-<section id="container">
-  <div id="main_container">
-    <section class="b_inner">
-      <div class="contents_box">
-        <article class="contents cont01">
-          <header class="top">
-            <div class="user_container">
-              <div class="profile_img"></div>
-              <div class="user_name">
-                <div class="nick_name"></div>
-              </div>
-            </div>
-            <div class="sprite_more_icon"></div>
-          </header>
+<section class="community-view-box">
+    <header>
+        <div class="title">상세페이지</div>
+    </header>
 
-          <div class="img_section">
+    <body>
+        {% for twit in twits %}
+        <div class="img_section">
             <div class="trans_inner">
-              <div>
-                <input id="img-url" type="hidden" name="url" /><br />
-              </div>
-              <p>{{twit.img}}</p>
-              <img style="width: 200px" src="{{ twit.img }}" alt="섬네일" />
+                <div>
+                    <p>{{twit.id}}</p>
+                    <p>{{twit.User.nick}}</p>
+                    <p>
+                    <div class="club-createdAt">{{twit.createdAt}}</div>
+                    </p>
+                </div>
+                <div>
+                    <img style="width: 250px" src="{{twit.img}}" alt="상세이미지" />
+                    <p>
+                    <div class="club-content">{{twit.content}}</div>
+                    </p>
+                </div>
             </div>
-          </div>
-
-          <div class="bottom_icons">
-            <div class="left_icons">
-              <div class="heart_btn">
-                <div
-                  class="sprite_heart_icon_outline"
-                  data-name="heartbeat"
-                ></div>
-              </div>
-              <div>
-                <div class="sprite_bubble_icon"></div>
-              </div>
-              <div>
-                <div class="sprite_share_icon"></div>
-              </div>
-            </div>
-
-            <div class="right_icon">
-              <div class="sprite_bookmark_outline"></div>
-            </div>
-          </div>
-
-          <div class="count_likes">
-            좋아요
-            <span class="count">10</span>
-            개
-          </div>
-
-          <div class="commet_container">
-            <div class="commet">
-              <div class="nick_name">{{twit.User.nick}}</div>
-            </div>
-
-            <div class="small_heart">
-              <div class="sprite_small_heart_icon_outline"></div>
-            </div>
-          </div>
-
-          <div class="commit_field">
-            <input type="text" placeholder="댓글달기.." />
-
-            <div class="upload_btn">게시</div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
+        </div>
+        <form class="comment-form" method="post">
+            <fieldset>
+                <legend>댓글 등록</legend>
+                <div>
+                    <input class="listNum" name="clubId" type="text" value="{{twit.id}}" readonly>
+                    <input name="comment" type="text" placeholder="댓글">
+                    <button class="submit_reply" type="submit">등록</button>
+                </div>
+            </fieldset>
+        </form>
+        <table class="comment-list{{twit.id}}">
+            <thead>
+                <tr>
+                  <th>아이디</th>
+                  <th>댓글</th>
+                </tr>
+                </thead>
+            <tbody>
+            </tbody>
+        </table>
+        {% endfor %}
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </body>
 </section>
-</body>
-</html>
-{% endblock %} {% block script %} {% endblock %}
+{% endblock %}
+{% block script %}
+<script src="/club/javascripts/sequelize.js"></script>
+{% endblock %}

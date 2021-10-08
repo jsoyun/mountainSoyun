@@ -29,9 +29,24 @@ const upload = multer({
       const ext = path.extname(file.originalname);
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
+    fileFilter: function (req, file, cb) {
+      checkFileType(file, cb);
+    },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
+
+function checkFileType(file, cb) {
+  const filetypes = jpeg|jpg|png|gif;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb("인증 사진만 업로드 가능합니다.");
+  };
+};
 
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -43,7 +58,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
-      UserId: req.user.id,
+      userId: req.user.id,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
     console.log(hashtags);

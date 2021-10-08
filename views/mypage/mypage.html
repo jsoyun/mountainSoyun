@@ -25,5 +25,12 @@
     <div>{{follower.nick}}</div>
     {% endfor %} {% endif %}
   </div>
+  <a id="modify"  href="/modify" class="btn">정보 수정</a>
+  <body>
+  <div>
+    <p><div class="mypage-img">{{signupImages.content}}</div></p>
+    <img style="width: 200px;" src="{{signupImages.img}}" alt="섬네일">
+</div>
+</body>
 </div>
 {% endblock %} {% block script %} {% endblock %}

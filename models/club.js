@@ -13,6 +13,10 @@ module.exports = class Club extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        userId: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
         // star: {
         //   type: Sequelize.INTEGER(5),
         //   allowNull: false,
@@ -24,7 +28,7 @@ module.exports = class Club extends Sequelize.Model {
         underscored: false,
         modelName: "Club",
         tableName: "clubs",
-        paranoid: false,
+        paranoid: true,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
       }
@@ -32,7 +36,8 @@ module.exports = class Club extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Club.belongsTo(db.User);
+    db.Club.belongsTo(db.User, { foreignKey: 'userId', targetKey: 'id' });
     db.Club.belongsToMany(db.Hashtag, {through: 'postHashtag'});
+    db.Club.hasMany(db.ClubComment, { foreignKey: "clubId", sourceKey: "id" });
   }
 };
