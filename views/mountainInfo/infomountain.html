@@ -4,8 +4,14 @@
 
 {% block content %}
 <h1>100대명산게시판</h1>
-{% for item in mountaindata %}
-<p>{{item.mntiname._text}}</p>
+<img src="https://www.forest.go.kr/images/data/down/mountain/20000009_2.jpg" width="100px" height="100px">
+{% for item in APIdata %}
+<p>{{item.name}}</p>
+<p>{{item.height}}</p>
+<p>{{item.address}}</p>
+<p>{{item.details}}</p>
+<p>{{item.topdetails}}</p>
+<img src="https://{{item.imgurl}}" width="100px" height="100px">
 {% endfor %}
 
 {% endblock %}
