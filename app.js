@@ -42,6 +42,7 @@ const infoMountainRouter = require("./routes/mountainInfo/infomountain");
 /* mypage 폴더 (마이페이지) */
 const mypageRouter = require("./routes/mypage/mypage");
 const userRouter = require("./routes/mypage/user");
+const modifyRouter = require("./routes/mypage/modify");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const app = express();
@@ -110,7 +111,7 @@ app.use("/infomountain", infoMountainRouter);
 /* mypage 폴더 (마이페이지) */
 app.use("/mypage", mypageRouter);
 app.use("/user", userRouter);
-
+app.use("/modify", modifyRouter);
 
 ////////////////////////////////////////////////////////////////
 // catch 404 and forward to error handler

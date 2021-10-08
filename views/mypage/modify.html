@@ -1,0 +1,25 @@
+{%extends "layout.html" %} {% block css %} {%endblock%} {%block content%}
+<div class="timeline">
+  <form id="modify-form" action="modify" method="POST">
+    <div class="input-group">
+      <label for="modify-email">이메일</label>
+      <input
+        id="modify-email"
+        type="email"
+        name="email"
+        value="{{user.email}}"
+        readonly
+      />
+    </div>
+    <div class="input-group">
+      <label for="modify-nick">닉네임</label>
+      <input id="modify-nick" type="text" name="nick" />
+    </div>
+    <div class="input-group">
+      <label for="modify-password">비밀번호</label>
+      <input id="modify-password" type="password" name="password" />
+    </div>
+    <button id="modify-form" type="submit" class="btn">변경</button>
+  </form>
+</div>
+{%endblock%} {%block script%}{%endblock%}
