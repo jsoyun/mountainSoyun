@@ -11,24 +11,24 @@ router.use((req, res, next) => {
   res.locals.followerIdList = req.user
     ? req.user.Followings.map((f) => f.id)
     : [];
-  // res.locals.followingIdList = req.user
-  //   ? req.user.Followers.map((f) => f.id)
-  //   : [];
   next();
 });
 
-//profile 페이지
-router.get("/", (req, res) => {
-  res.render("mypage/mypage", { title: "내 정보-NodeBird" });
-});
-
-//join페이지 로그인 한 페이지인가?
-router.get("/login", (req, res) => {
-  res.render("login/login", { title: "회원가입-NodeBird" });
-});
-
-router.get("/", (req, res) => {
-  res.render("mypage", { title: "내 정보-NodeBird" });
+//프로필 사진 읽기
+router.get("/", async (req, res, next) => {
+  try {
+    const getImage = await User.findOne({
+      where: { id: req.user.id },
+    });
+    console.log(getImage);
+    res.render("mypage/mypage", {
+      title: "mountain 커뮤니티",
+      signupImages: getImage,
+    });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 });
 
 module.exports = router;

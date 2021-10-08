@@ -14,7 +14,7 @@ module.exports = () => {
       },
       //기존에 카카오를 통해 .
       async (accessToken, refreshToken, profile, done) => {
-        console.log("kakao profile", profile);
+
         try {
           //회원가입한 사용자가 있는지 조회
           const exUser = await User.findOne({

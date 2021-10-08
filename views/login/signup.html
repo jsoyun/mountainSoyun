@@ -92,10 +92,30 @@
           name="birth"
         /><br />
       </div>
+      <div class="profile-upload-content upload-img">
+        <div class="img-preview">
+          <img
+            id="img-preview"
+            src=""
+            style="display: none"
+            width="250"
+            alt="미리보기"
+          />
+          <input id="img-url" type="hidden" name="url" />
+        </div>
+      </div>
+      <div class="profile-img">
+        <label class="img-btn img-file" id="img-label" for="img"
+          >첨부 파일</label
+        >
+        <input id="img" type="file" accept="image/*" style="display: none" />
+      </div>
     </fieldset>
     <input type="submit" value="Sign Up" id="signUp" onclick="checkForm()" />
   </form>
+  <!-- 이미지테스트 -->
 </div>
 {% endblock %} {% block script %}
 <script src="/login/javascripts/signupcheck.js"></script>
+<script src="/login/javascripts/signup-myimg.js"></script>
 {% endblock %}

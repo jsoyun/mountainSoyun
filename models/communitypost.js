@@ -24,15 +24,20 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
           type: Sequelize.STRING(200),
           allowNull: true,
         },
-        created_at: {
-          type: Sequelize.DATE,         // DATE 는 DateOnly
+        createdAt: {
+          type: Sequelize.DATEONLY,         // DATE 는 DateOnly
           allowNull: false,
           defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
         }, 
+        updatedAt: {
+          type: Sequelize.DATE,         // DATE 는 DateOnly
+          allowNull: false,
+          defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
+        }
       },
       {
         sequelize,                // sequelize 적어주고, 
-        timestamps: true,         // true 이면, 자동으로 createdAt , updatedAt 을 넣어준다.
+        timestamps: false,         // true 이면, 자동으로 createdAt , updatedAt 을 넣어준다.
         underscored: false,       // 시퀄라이즈의 자동으로 만들어주는 글자들을 createdAt 으로 할지(false, 카멜 표기법), created_at 으로 할지(true, 언더바) 물어보는 설정이다.
         modelName: "CommunityPost",        // 모델명은 javascript 에서 쓰이는 이름
         tableName: "communityposts",       // 테이블명은 SQL 에서 쓰이는 이름 (기본적으로 모델명을 소문자화 복수형으로 정한다.)
@@ -44,11 +49,6 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
   }
 
   static associate(db) {  // 이 범위(associate)를 index.js 에서 사용해서 부른다.
-    db.CommunityPost.belongsTo(db.User);
+    db.CommunityPost.belongsToMany(db.User, {through: 'Like'});  // 좋아요
   }
-  // 1대다 관계(user의 반대 경우) - (ex) 댓글 (나) 은 어떤 사용자 (남) 에게 속해있다.
-  // belongsTo 의 경우에는 sourceKey 가 아니라, targetKey (남) 이다.
-  // << 사용법 >> db.댓글.belongsTo(db.사용자);
-  // foreignKey 는 동일하다. (간단하게 belongsTo 를 지정하는 곳이 foreignKey 라고 봐도 된다.)
-  // << 사용법 >> db.Comment.belongsTo(db.User, { foreignKey: 'commenter', targetKey: 'id' });
 };

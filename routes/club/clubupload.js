@@ -58,7 +58,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
-      UserId: req.user.id,
+      userId: req.user.id,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
     if (hashtags) {

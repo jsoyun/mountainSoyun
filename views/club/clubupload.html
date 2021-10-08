@@ -1,96 +1,181 @@
 {% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
-<link rel="stylesheet" href="../public/stylesheets/club.css" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-/>
-<div class="container">
+<!-- <link rel="stylesheet" href="../public/stylesheets/club.css" /> -->
+<style>
+  .post_form_container {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .post_form {
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin: 0 0 10px;
+  }
+
+  .post_form .title {
+    margin: 0 10px 40px;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .post_form .preview {
+    margin-bottom: 30px;
+  }
+
+  .post_form .preview .upload {
+    max-width: 300px;
+    height: 300px;
+    border: 1px solid #e6e6e6;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .plus_icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 1px solid dodgerblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .plus_icon span {
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 30px;
+    background: dodgerblue;
+  }
+
+  .plus_icon span:nth-child(2) {
+    transform: rotate(90deg);
+  }
+
+  .click_file p {
+    /* width: 200px;
+    height: 200px;
+    margin: 500px; */
+    justify-content: center;
+    align-items: center;
+    margin-left: 30%;
+    margin-top: 100%;
+  }
+  .post_form p {
+    margin-bottom: 20px;
+  }
+
+  .post_form_container #img {
+    width: 300px;
+    height: 300px;
+    margin-right: 5%;
+    margin-top: 500px;
+    display: block;
+    align-items: center;
+  }
+</style>
+<div id="main_container">
   <h3>인증 신규 등록</h3>
 
   <form id="twit-form" method="post" enctype="multipart/form-data">
     <legend>명산100 [북한산]</legend>
     <h5>지금 등록 가능한 인증지 입니다.</h5>
 
-    <label id="img-label" for="img">사진 업로드</label>
-    <div class="img-preview">
-      <img
-        id="img-preview"
-        src=""
-        style="display: none"
-        width="200"
-        alt="미리보기"
-      />
-      <input id="img-url" type="hidden" name="url" /><br />
-      <input id="img" type="file" accept="image/*" /><br />
-      <p>인증지 평가</p>
+    <div class="post_form_container">
+      <div action="#" class="post_form">
+        <div class="title">
+          NEW POST
+          <br />
+          <div class="img-preview">
+            <div class="upload">
+              <div id="img-upLoadBtn" for="img">
+                <div class="post_btn" for="img">
+                  <br />
+                  <br />
+                  <div class="plus_icon" for="img">
+                    <sapn></sapn>
+                    <span></span>
+                  <img
+                  id="img-preview"
+                  src=""
+                  style="display: none"
+                  width="200"
+                  alt="미리보기"
+                />
+                <input id="img" type="file" accept="image/*" /><br />
+                <sapn></sapn>
+                <span></span>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <input id="img-url" type="hidden" name="url" /><br />
+        </div>
+
+
       <div class="rating-wrap">
+        <p>인증지 평가</p>
         <div class="center">
           <fieldset class="rating">
-            <input type="radio" id="star5" name="rating" value="5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star4.5" name="rating" value="4.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star4" name="rating" value="4" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star3.5" name="rating" value="3.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star3" name="rating" value="3" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star2.5" name="rating" value="2.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star2" name="rating" value="2" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star1.5" name="rating" value="1.5" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star1" name="rating" value="1" /><label
-              for="star5"
-              class="full"
-            ></label>
-            <input type="radio" id="star0.5" name="rating" value="0.5" /><label
-              for="star5"
-              class="full"
-            ></label>
+            <div class="star-widget">
+              <input type="radio" name="rate" id="rate-5" />
+              <label for="rate-5" class="fas fa-star"></label>
+              <input type="radio" name="rate" id="rate-4" />
+              <label for="rate-4" class="fas fa-star"></label>
+              <input type="radio" name="rate" id="rate-3" />
+              <label for="rate-3" class="fas fa-star"></label>
+              <input type="radio" name="rate" id="rate-2" />
+              <label for="rate-2" class="fas fa-star"></label>
+              <input type="radio" name="rate" id="rate-1" />
+              <label for="rate-1" class="fas fa-star"></label>
+            </div>
           </fieldset>
         </div>
         <h4 id="rating-values"></h4>
       </div>
-      <p>도전내용</p>
+
       <div class="input-group">
+        <p>도전내용</p>
         <textarea
           id="twit"
           name="content"
           maxlength="100"
-          placeholder="도전내용을 작성해주세요"
-        >
-100자 이내로 작성가능</textarea
-        >
+          cols="50"
+          rows="5"
+          placeholder="100자 내 도전내용을 작성해주세요."
+        ></textarea>
       </div>
-      <p>카테고리</p>
       <button id="twit-btn" type="submit" class="btn">인증하기</button>
+    </form>
+    <p>해시태그&nbsp&nbsp<button class="btn">검색</button></p>
+    <div class="twits">
+      <form id="hashtag-form" action="/hashtag">
+        <textarea
+          type="text"
+          name="hashtag"
+          id="text_field"
+          cols="50"
+          rows="5"
+          placeholder="#태그명을 통해서 검색 태그를 등록 할 수 있습니다.   예시: #북한산 #뷰맛집 #등린이"
+        ></textarea>
+      </form>
     </div>
-  </form>
+
+  </div>
+</div>
+      <br />
+    </div>
+
 </div>
 {% endblock %} {% block script %}
 <script>
-  const container = document.querySelector(".rating");
-  const items = container.querySelectorAll(".rating-item");
-
   if (document.getElementById("img")) {
     document.getElementById("img").addEventListener("change", function (e) {
       const formData = new FormData();
