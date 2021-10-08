@@ -1,9 +1,9 @@
 //모듈
 const express = require("express");
-const User = require("../../models/user");
+const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
-const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
+const { isNotLoggedIn } = require("../middlewares");
 
 //라우터
 const router = express.Router();
@@ -17,7 +17,6 @@ router.get("/", (req, res, next) => {
 //여기로 이동! signUp 들어왔을때 뒤에 실행
 //post 데이터들 있어서(post데이터 전송)
 router.post("/", isNotLoggedIn, async (req, res, next) => {
-  console.log("1");
   const { email, nick, password } = req.body;
   //User는 데이터베이스!거기에서 email 가져옴(기존 email확인하려고! 그전 유저exUser)
   try {

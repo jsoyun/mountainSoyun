@@ -1,6 +1,16 @@
 const express = require('express');
-const router = express.Router();
 const { CommunityPost, User } = require('../../models');
+const fs = require('fs');
+const fs2 = require('fs').promises;
+
+const router = express.Router();
+
+try {
+  fs.readdirSync('uploads');
+} catch(err) {
+  console.error('uploads 폴더 생성');
+  fs.mkdirSync('uploads');
+}
 
 /* 게시글 READ */
 router.get('/:id', async (req, res, next) => {
@@ -36,11 +46,15 @@ router.get('/:id', async (req, res, next) => {
 
 /* 게시글 DELETE */
 router.get('/:id/delete', async (req, res, next) => {
-  console.log(req.body);
-  try {
-      await CommunityPost.destroy(
-          {where:{id:`${req.params.id}`}}
-      );
+  try { // 저장된 사진 DELETE
+    const {img} = await CommunityPost.findOne({where: {id: parseInt(req.params.id, 10)}});
+    const file = await fs2.readFile(img.replace('/img', './uploads'))
+    if(file){
+        await fs2.unlink(img.replace('/img', './uploads'));
+    } 
+    await CommunityPost.destroy({
+        where: {id: parseInt(req.params.id, 10)},
+    });
       res.redirect('/community/page?offset=0&limit=2');
   } catch (error) {
     console.error(error);
