@@ -1,5 +1,5 @@
 const express = require("express");
-const { Club, User, Hashtag } = require("../../models");
+const { Club, User } = require("../../models");
 const { isLoggedIn } = require('../middlewares');
 
 const router = express.Router();

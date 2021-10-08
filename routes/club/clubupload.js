@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { Club } = require("../../models");
+const { Club, Hashtag, CommunityPost } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
@@ -46,6 +46,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       UserId: req.user.id,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
+    console.log(hashtags);
     if (hashtags) {
       const result = await Promise.all(
         hashtags.map((tag) => {
@@ -54,7 +55,8 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
           });
         })
       );
-      await post.addHashtags(result.map((r) => r[0]));
+      console.log(result);
+      await club.addHashtag(result.map((r) => r[0]));
     }
     res.redirect("/club");
   } catch (error) {
@@ -62,28 +64,5 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     next(error);
   }
 });
-
-// router.get('/hashtag', isLoggedIn, async (req, res, next) => {
-//   const query = req.query.hashtag;
-
-//   if(!query) {
-//       res.redirect('/');
-//   }
-//   try {
-//       const hashtag = await Hashtag.findOne({where: {title: query}});
-//       let posts = [];
-//       if(hashtag) {
-//         posts = await hashtag.getPosts({include: [{model: User}]});
-//       }
-
-//       return res.render('club/club', {
-//         title: `${query} | mountain`,
-//         twits: posts,
-//       });
-//   } catch (err) {
-//       console.error(err);
-//       return next(err);
-//   }
-// });
 
 module.exports = router;

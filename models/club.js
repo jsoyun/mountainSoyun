@@ -33,6 +33,6 @@ module.exports = class Club extends Sequelize.Model {
 
   static associate(db) {
     db.Club.belongsTo(db.User);
-    db.Club.belongsToMany(db.Hashtag, {through: 'clubHashtag'});
+    db.Club.belongsToMany(db.Hashtag, {through: 'postHashtag'});
   }
 };

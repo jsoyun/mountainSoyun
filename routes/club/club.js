@@ -1,6 +1,6 @@
 const express = require("express");
 const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
-const { Club, User } = require("../../models");
+const { Club, User, Hashtag } = require("../../models");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -27,6 +27,28 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     console.error(error);
     next(error);
+  }
+});
+
+router.get('/hashtag', isLoggedIn, async (req, res, next) => {
+  const query = req.query.hashtag;
+
+  if(!query) {
+    res.redirect('/');
+  }
+  try {
+    const hashtag = await Hashtag.findOne({where: {title: query}});
+    let posts = [];
+    if(hashtag) {
+      posts = await hashtag.getPosts({include: [{model: User}]});
+    }
+    return res.render('club/club', {
+      title: `${query} | mountain`,
+      twits: posts,
+    });
+  } catch (err) {
+    console.error(err);
+    return next(err);
   }
 });
 
