@@ -18,7 +18,8 @@ router.use((req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const getImage = await User.findOne({
-      where: { id: req.user.id },
+      // where: { id: req.user.id }, // 여기서 id 에러창뜨고 로그인됨
+      where: { id: `${req.user.id}` }, // 문자로 바꿈. 아마도. 암튼 개선함
     });
     console.log(getImage);
     res.render("mypage/mypage", {
