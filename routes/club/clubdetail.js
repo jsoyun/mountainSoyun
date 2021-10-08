@@ -18,18 +18,21 @@ router.use((req, res, next) => {
 router.get("/", async (req, res, next) => {
   try {
     const uploads = await Club.findAll({
-      include: {
+      include: [{
         model: User,
         attributes: ["id", "nick"],
       },
+      {
+        model: ClubComment,
+        attributes: ["id", "clubId","writerId","comment","createdAt"],
+      },],
       order: [["createdAt", "DESC"]],
     });
-    // res.status(201).json(comments);
+    // res.status(201).json(uploads);
     res.render("club/clubdetail", {
       title: "feed detail",
       twits: uploads,
     });
-    // res.status(201).json(req.body);
   } catch (err) {
     console.error(err);
     next(err);
@@ -56,6 +59,47 @@ router.get("/comment", async (req, res, next) => {
     next(err);
   }
 });
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const uploads = await Club.findAll({
+//       include: {
+//         model: User,
+//         attributes: ["id", "nick"],
+//       },
+//       order: [["createdAt", "DESC"]],
+//     });
+//     // res.status(201).json(comments);
+//     res.render("club/clubdetail", {
+//       title: "feed detail",
+//       twits: uploads,
+//     });
+//     // res.status(201).json(req.body);
+//   } catch (err) {
+//     console.error(err);
+//     next(err);
+//   }
+// });
+
+// router.get("/comment", async (req, res, next) => {
+//   try {
+//     const coments = await ClubComment.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["id", "nick"],
+//         },
+//         {
+//           model: Club,
+//           attributes: ["id", "userId"],
+//         },
+//       ],
+//     });
+//     res.json(coments);
+//   } catch (err) {
+//     console.error(err);
+//     next(err);
+//   }
+// });
 
 /* 댓글 */
 router.post("/", isLoggedIn, async (req, res, next) => {
