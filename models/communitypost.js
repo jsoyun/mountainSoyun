@@ -49,7 +49,7 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
   }
 
   static associate(db) {  // 이 범위(associate)를 index.js 에서 사용해서 부른다. 
-    db.CommunityPost.belongsTo(db.User, { foreignKey: 'clubId', targetKey: 'id' });
+    db.CommunityPost.belongsTo(db.User);
     db.CommunityPost.belongsToMany(db.User, { through: 'Recommends' });  // 좋아요
   }
 };
