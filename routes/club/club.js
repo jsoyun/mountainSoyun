@@ -21,6 +21,7 @@ router.get("/", async (req, res, next) => {
       },
       order: [["createdAt", "DESC"]],
     });
+
     res.render("club/club", {
       title: "mountain feed",
       twits: clubs,
@@ -31,17 +32,16 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/* # 태그 검색 */
 router.get('/hashtag', async (req, res, next) => {
   let queryData = url.parse(req.url, true).query;
   let search = queryData.hashtag;
 
-  /* # 태그 검색 */
   if(!search) {
     res.redirect('/');
   }
   try {
     const hashtags = await Hashtag.findOne({where: {title: search}});
-    console.log(hashtags);
     let posts = [];    
     if(hashtags) {
       posts = await hashtags.getClubs({
@@ -60,6 +60,45 @@ router.get('/hashtag', async (req, res, next) => {
   } catch (err) {
     console.error(err);
     return next(err);
+  }
+});
+
+router.post('/:id/like', isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.user.id },
+    });
+    console.log(user);
+    console.log(req.user.id);
+    if(user){
+      await user.addLiker(parseInt(req.params.id, 10));
+      res.send('success');
+    }else{
+      res.status(404).send('no user');
+    }
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.delete('/:id/unlike', isLoggedIn, async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {id: req.user.id},
+    });
+    const post = await Club.findOne({
+      where: {id: parseInt(req.params.id, 10)},
+    });
+    if(user){
+      await user.removeLiker(post);
+      res.send('success');
+    }else{
+      res.status(404).send('no user');
+    }
+  } catch(err) {
+    console.error(err);
+    next(err);
   }
 });
 

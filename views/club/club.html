@@ -12,21 +12,6 @@
 
 <div class="feed-container">
   <h3>인기 피드</h3>
-
-  <!-- <form id="myFeed">
-    <button id="feed-btn" type="submit" class="black btn">
-      <a class="picture-uploads" href="/clubupload">업로드</a>
-    </button>
-    {% for twit in twits %}
-    <tr class="clubMain">
-      <td>
-        <a href="/">
-          <img style="width: 100px" src="{{twit.img}}" alt="섬네일"/>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </form> -->
   {% if user and user.id %}
   <button id="feed-btn" type="submit" class="black btn">
     <a class="picture-uploads" href="/clubupload">업로드</a>
@@ -37,49 +22,41 @@
     <input type="hidden" value="{{twit.id}}" class="twit-id" />
     <div class="twit-author">{{twit.User.nick}}</div>
 
-    {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id
-    %}
+    {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
     <button class="twit-follow btn">팔로우하기</button>
     {% elif twit.User.id !== user.id%}
     <button class="twit-unfollow btn">팔로우끊기</button>
     {% endif %}
+    <button class="like">좋아요</button>
+    <button class="unlike">좋아요 취소</button>
 
     <div class="twit-img">
-      <a href="/clubdetail"
-        ><img style="width: 100px" src="{{twit.img}}" alt="섬네일"
-      /></a>
+      <a href="/clubdetail">
+        <img style="width: 100px" src="{{twit.img}}" alt="섬네일"/>
+      </a>
     </div>
-    <button class="like btn">좋아요</button>
-    <button class="unlike btn">좋아요 취소</button>
+
     <div class="twit-content"></div>
   </div>
   {% endfor %}
 </div>
 {% endblock %} {% block script %}
+<script src="/club/javascripts/clublike.js"></script>
 <script>
   //팔로우
   document.querySelectorAll(".twit-follow").forEach(function (tag) {
-    console.log("팔로이있는창");
     tag.addEventListener("click", function () {
-      console.log("팔로우클릭");
       const myId = document.querySelector("#my-id");
       if (myId) {
-        console.log("myid가져와지니?");
         const userId = tag.parentNode.querySelector(".twit-user-id").value;
-        console.log(userId);
-        //if (userId !== myId.value)원래 이거였음 근데 바꿔도 콘솔에는 찍히네
-
         if (userId !== myId.value) {
           if (confirm("팔로잉하시겠습니까?")) {
-            console.log("팔로요청되나?");
             axios
               .post(`/user/${userId}/follow`)
               .then(() => {
-                console.log("팔로됐나");
                 location.reload();
               })
               .catch((err) => {
-                console.log("에러");
                 console.error(nperr);
               });
           }
@@ -91,21 +68,16 @@
   document.querySelectorAll(".twit-unfollow").forEach(function (tag) {
     tag.addEventListener("click", function () {
       const myId = document.querySelector("#my-id");
-      console.log(myId);
       if (myId) {
         const userId = tag.parentNode.querySelector(".twit-user-id").value;
-
         if (userId !== myId.value) {
           if (confirm("팔로잉끊으시겠습니까?")) {
-            console.log("팔로요청되나?");
             axios
               .post(`/user/${userId}/unfollow`)
               .then(() => {
-                console.log("팔로됐나");
                 location.reload();
               })
               .catch((err) => {
-                console.log("에러");
                 console.error(err);
               });
           }
@@ -113,43 +85,6 @@
       }
     });
   });
-
-  //   forEach.call(document.querySelectorAll(".like"), function (tag) {
-  //   tag.addEventListener("click", function () {
-  //     var isLoggedIn = document.querySelector("#my-id");
-  //     var twitId = tag.parentNode.querySelector("#twit-id").value;
-  //     if (idLoggedIn) {
-  //       var xhr = new XMLHttpRequest();
-  //       xhr.onload = function () {
-  //         if (xhr.status === 200) {
-  //           location.reload();
-  //         } else {
-  //           console.error(xhr.responseText);
-  //         }
-  //       };
-  //       xhr.open("POST", "/club/" + twitId + "/like");
-  //       xhr.send();
-  //     }
-  //   });
-  // });
-  // forEach.call(document.querySelectorAll(".unlike"), function (tag) {
-  //   tag.addEventListener("click", function () {
-  //     var isLoggedIn = document.querySelector("#my-id");
-  //     var twitId = tag.parentNode.querySelector("#twit-id").value;
-  //     if (idLoggedIn) {
-  //       var xhr = new XMLHttpRequest();
-  //       xhr.onload = function () {
-  //         if (xhr.status === 200) {
-  //           location.reload();
-  //         } else {
-  //           console.error(xhr.responseText);
-  //         }
-  //       };
-  //       xhr.open("DELETE", "/club/" + twitId + "/like");
-  //       xhr.send();
-  //     }
-  //   });
-  // });
 </script>
 
 {% endblock %}

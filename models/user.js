@@ -50,8 +50,8 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.Club, { foreignKey: 'userId', sourceKey: 'id' });
-    db.User.hasMany(db.CommunityPost);
+    db.User.hasMany(db.Club, { foreignKey: 'clubId', sourceKey: 'id' });
+    db.User.hasMany(db.CommunityPost, { foreignKey: 'postId', sourceKey: 'id' });
     // 1대다 관계 - (ex) 사용자 1명은 댓글 여러개를 작성할 수 있다. 반대로 댓글 1개에 사용자 여러명은 안된다.
     // << 사용법 >> db.사용자.hasMany(db.댓글);
     // ++ User(사용자) 입장에서 남은 Comment(댓글) 이라 foreignKey(외래키) -> [[Comment(남) 의 commenter 컬럼이 User(나) 의 id 를 참조하고 있다는 의미]]
@@ -67,7 +67,8 @@ module.exports = class User extends Sequelize.Model {
       as: "Followings",
       through: "Follow",
     });
-    db.User.belongsToMany(db.CommunityPost, {through: 'Like', as: 'Likes'});  // 좋아요
+    db.User.belongsToMany(db.CommunityPost, {through: 'Recommends', as: 'recommenders'});  // 좋아요
+    db.User.belongsToMany(db.Club, {through: 'Likes', as: 'Likers'});  // 좋아요
     db.User.hasMany(db.ClubComment, {
       foreignKey: "writerId",
       sourceKey: "id",

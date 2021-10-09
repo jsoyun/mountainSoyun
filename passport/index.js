@@ -1,8 +1,7 @@
 const passport = require('passport');
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
-const { User } = require('../models');
-const { CommunityPost } = require('../models');
+const { User, Club, CommunityPost } = require('../models');
 
 module.exports = () => {
   passport.serializeUser((user, done) => {
@@ -23,7 +22,11 @@ module.exports = () => {
         }, {
           model: CommunityPost,
           attributes: ['id'],
-          as: 'Likes',
+          as: 'recommenders',
+        }, { 
+          model: Club,
+          attributes: ['id'],
+          as: 'Likers',
       }],
     })
       .then((user) => done(null, user))
