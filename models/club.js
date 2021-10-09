@@ -13,6 +13,10 @@ module.exports = class Club extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        hash: {
+          type: Sequelize.STRING(100),
+          allowNull: false,
+        },
         userId: {
           type: Sequelize.INTEGER,
           allowNull: false,

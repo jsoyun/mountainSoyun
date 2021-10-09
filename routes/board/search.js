@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) => {
         },
       ]
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 내용 검색 */
@@ -44,7 +44,7 @@ router.get('/', async (req, res, next) => {
           [Op.like]: "%" + search + "%"
         },
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 제목 검색 */
@@ -58,7 +58,7 @@ router.get('/', async (req, res, next) => {
           [Op.like]: "%" + search + "%"
         },
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 작성자 검색 */
@@ -72,10 +72,9 @@ router.get('/', async (req, res, next) => {
           },
         }
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
-    console.log(select);
     if (select == 'titleContent') {
       texts = titleContents;
     } else if (select == 'content') {

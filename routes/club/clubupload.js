@@ -58,9 +58,10 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
+      hash: req.body.hashtag,
       userId: req.user.id,
     });
-    const hashtags = req.body.content.match(/#[^\s#]*/g);
+    const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
     console.log(hashtags);
     if (hashtags) {
       const result = await Promise.all(

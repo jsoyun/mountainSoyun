@@ -1,5 +1,6 @@
 const express = require("express");
 const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
+const url = require('url');
 const { Club, User, Hashtag } = require("../../models");
 const router = express.Router();
 
@@ -30,20 +31,30 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get('/hashtag', isLoggedIn, async (req, res, next) => {
-  const query = req.query.hashtag;
+router.get('/hashtag', async (req, res, next) => {
+  let queryData = url.parse(req.url, true).query;
+  let search = queryData.hashtag;
 
-  if(!query) {
+  /* # 태그 검색 */
+  if(!search) {
     res.redirect('/');
   }
   try {
-    const hashtag = await Hashtag.findOne({where: {title: query}});
-    let posts = [];
-    if(hashtag) {
-      posts = await hashtag.getPosts({include: [{model: User}]});
-    }
+    const hashtags = await Hashtag.findOne({where: {title: search}});
+    console.log(hashtags);
+    let posts = [];    
+    if(hashtags) {
+      posts = await hashtags.getClubs({
+        include: [{
+          model: User,
+          attribute: ['id', 'nick'],
+        }],
+          order: [['id', 'DESC']],
+        },
+      );
+    };
     return res.render('club/club', {
-      title: `${query} | mountain`,
+      title: `mountain - ${search} 검색 결과`,
       twits: posts,
     });
   } catch (err) {

@@ -3,13 +3,10 @@
 {% endblock %} {% block content %}
 <div class="search_field">
   <div class="fake_field">
-    <input
-      class="picture-search"
-      type="text"
-      name="search"
-      placeholder="사진 검색"
-    />
-    <button class="picture-btn btn">검색</button>
+    <form id="hashtag-form" action="/club/hashtag">
+      <input type="text" name="hashtag" placeholder="태그 검색">
+      <button class="btn" type="submit">검색</button>
+  </form>
   </div>
 </div>
 
@@ -52,11 +49,8 @@
         ><img style="width: 100px" src="{{twit.img}}" alt="섬네일"
       /></a>
     </div>
-
     <button class="like btn">좋아요</button>
-
     <button class="unlike btn">좋아요 취소</button>
-
     <div class="twit-content"></div>
   </div>
   {% endfor %}
