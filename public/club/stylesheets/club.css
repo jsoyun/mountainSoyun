@@ -9,6 +9,12 @@
   --search-width: 15vw;
   --search-btn-width: 2vw;
   --search-bg-width: 10vw;
+  /* 게시물 */
+  --pg-border-color: #bababa;
+  /* --pg-width-sz: 10vw;
+  --pg-hight-sz: 10vw; */
+  --pg-margin-sz: 3vw;
+  --pg-padding-sz: 4em;
 }
 
 /* 버튼 공통 */
@@ -63,10 +69,15 @@ input:focus {
   height: var(--btn-height);
   font-size: 0.9vw;
 }
+
 .tag-search-btn {
   position: relative;
   background-color: var(--search-bg-color);
   right: 0.01em;
+}
+
+.tag-search-btn:hover {
+  cursor: pointer;
 }
 
 /* 본문 */
@@ -74,41 +85,45 @@ input:focus {
   text-align: center;
 }
 
-.feed-container {
-  position: relative;
-}
-
+/* 사진 업로드 아이콘 */
 .picture-uploads {
-    text-align: none;
-    position: fixed;
-    right: 2em;
-    bottom: 3em;
-    font-size: 2em;
-    background-color: white;
-    padding: 0.8em;
-    border-radius: 50%;
+  text-align: none;
+  position: fixed;
+  right: 2em;
+  bottom: 3em;
+  font-size: 2em;
+  background-color: white;
+  padding: 0.8em;
+  border-radius: 50%;
 }
 
 .picture-uploads:hover {
-    color: black;
+  color: black;
 } 
 
 .uploads-btn {
-    background-color: transparent;
-    padding: 1em;
-    font-size: 1.2vw;
-    display: block;
-    border-color: transparent;
+  background-color: transparent;
+  padding: 1em;
+  font-size: 1.2vw;
+  display: block;
+  border-color: transparent;
 }
 
 .black {
-    display: block;
+  display: block;
 }
 
+/* 사진 게시물 */
 .twit {
-    border: 1px solid black;
-    width: 15vw;
-    margin: 3vw;
-    padding: 3vw;
-    display: inline-block;
+  border: 1px solid var(--pg-border-color);
+  width: var(--pg-width-sz);
+  height: var(--pg-height-sz);
+  margin: var(--pg-margin-sz);
+  padding: var(--pg-padding-sz);
+  display: inline-block;
+  border-radius: 7px;
+}
+
+.twit-author {
+  background: #000;
 }

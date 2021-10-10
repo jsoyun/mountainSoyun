@@ -20,12 +20,12 @@
     <button id="feed-btn" class="uploads-btn" type="submit" class="black btn">
       <a class="picture-uploads" href="/clubupload"><i class="fas fa-file-upload"></i></a>
     </button>
-    {% endif %} {% for twit in twits %}
+    {% endif %}
+    {% for twit in twits %}
     <div class="twit">
       <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
       <input type="hidden" value="{{twit.id}}" class="twit-id" />
       <div class="twit-author">{{twit.User.nick}}</div>
-  
       {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
       <button class="twit-follow btn">팔로우</button>
       {% elif twit.User.id !== user.id%}

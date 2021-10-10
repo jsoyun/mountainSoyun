@@ -9,21 +9,23 @@
   <header class="com-header">
     <h1 class="com-title">게시판</h1>
     <a class="com-write" href="/write"><i class="fas fa-user-edit"></i></a>
-    <form id="search-form" action="/search">
-      <select class="com-select" name="select" id="select">
-        <option value="titleContent" selected>제목/내용</option>
-        <option value="title">제목</option>
-        <option value="content">내용</option>
-        <option value="user">작성자</option>
-      </select>
-      <input type="text" name="search" placeholder="제목 검색">
-      <button class="btn"><i class="fas fa-search"></i></button>
-      <input id="select-data" type="hidden" name="title">
-    </form>
+    <div class="field">
+      <form id="search-form" action="/search">
+        <select class="com-select" name="select" id="select">
+          <option value="titleContent" selected>제목/내용</option>
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+          <option value="user">작성자</option>
+        </select>
+        <input class="text-search" type="text" name="search" placeholder="검색">
+        <button class="text-search-btn btn"><i class="fas fa-search"></i></button>
+        <input id="select-data" type="hidden" name="title">
+      </form>
+    </div>
   </header>
-  <body>
+  <div class="table-body">
     <table class="com-table">
-      <thead>
+      <thead class="table-head" >
         <tr>
           <th>번호</th>
           <th>제목</th>
@@ -54,7 +56,7 @@
         {% endfor %}
       </tbody>
     </table>
-  </body>
+  </div>
   <footer>
     {% if allBoard < 1 %}
     {% else %}
