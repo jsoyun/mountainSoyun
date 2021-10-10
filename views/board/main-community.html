@@ -8,62 +8,62 @@
 <section class="com-box">
   <header class="com-header">
     <h1 class="com-title">게시판</h1>
-    <a class="com-write" href="/write">임시 글쓰기란 (꼭! 로그인할 것)</a>
-    <form id="search-form" action="/search">
-      <select class="com-select" name="select" id="select">
-        <option value="titleContent" selected>제목/내용</option>
-        <option value="title">제목</option>
-        <option value="content">내용</option>
-        <option value="user">작성자</option>
-      </select>
-      <input type="text" name="search" placeholder="제목 검색">
-      <button class="btn">검색</button>
-      <input id="select-data" type="hidden" name="title">
-    </form>
+    <a class="com-write" href="/write"><i class="fas fa-user-edit"></i></a>
+    <div class="field">
+      <form id="search-form" action="/search">
+        <select class="com-select" name="select" id="select">
+          <option value="titleContent" selected>제목/내용</option>
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+          <option value="user">작성자</option>
+        </select>
+        <input class="text-search" type="text" name="search" placeholder="검색">
+        <button class="text-search-btn btn"><i class="fas fa-search"></i></button>
+        <input id="select-data" type="hidden" name="title">
+      </form>
+    </div>
   </header>
-  <body>
+  <div class="table-body">
     <table class="com-table">
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>작성자</th>
+      <thead class="table-head" >
+        <tr class="table-item-box">
+          <th class="item-num">번호</th>
+          <th class="item-title">제목</th>
+          <th class="item-nick" >작성자</th>
           <th>날짜</th>
-          <th>조회</th>
-          <th>댓글 수</th>
+          <th class="item-num">조회</th>
+          <th class="item-num">댓글</th>
           <!-- <th>추천</th> -->
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table-body" >
         {% for communityTwit in communityTwits %}
-        <tr class="post">
-          <td><div class="CommunityPost-title">{{communityTwit.id}}</div></td>
+        <tr class="post table-item-box">
           <td>
-            <a href="/view/{{communityTwit.id}}"><p>{{communityTwit.title}}</p>
-            {% if communityTwit.img != false %}   <!-- 사진이 없으면 보여주지 않는다. -->
-              <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일"></a>
-            {% endif %}
+            <div class="CommunityPost-title">{{communityTwit.id}}</div>
           </td>
-          <td><div class="user-nick">{{communityTwit.User.nick}}</div></td>
+          <td>
+            <a class="tb-text" href="/view/{{communityTwit.id}}">
+              <p class="tb-text-item">{{communityTwit.title}}</p>
+              {% if communityTwit.img != false %}   <!-- 사진이 없으면 보여주지 않는다. -->
+              <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일">
+              {% endif %}
+            </a>
+          </td>
+          <td>
+            <div class="user-nick">{{communityTwit.User.nick}}</div>
+          </td>
           <td>
             <div id="com-creatAt" class="communityPost-createAt">{{communityTwit.createdAt}}</div>
           </td>
-          <td>10.21</td>
-          <td>21</td>
+          <td>0</td>
+          <td>2</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-  </body>
+  </div>
   <footer>
-    {% if allBoard < 1 %}
-    {% else %}
-      <select name="select-page" id="select-page">
-        <option value="5-page">5</option>
-        <option value="10-page">10</option>
-        <option value="15-page">15</option>
-      </select>
-    {% endif %}
     <ul>
       {% if allBoard < 1 %}     <!-- DB 에 없을 경우 -->
         <h1>현재 게시글이 없습니다.</h1>
@@ -78,17 +78,17 @@
             {% for i in range(2, 5) -%}
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{i}}</a></li>
             {%- endfor %}
-            ......
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
           {% endif %}
         {% elseif nowPage < (maxPage-3) %}
           {% if nowPage >= 3 or maxPage < 6 %}     <!-- 5페이지 보다 많고 현재페이지가 4를 넘어갈시 ... 2 3 4 5 6 ... 표기 -->
-            ......
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage - 1}}</a></li>
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage}}</a></li>
             <li class="page-num"><a class="page-link" href="/community/page?offset={{nowPage*2}}&limit=2">{{nowPage + 1}}</a></li>
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage+1)*2}}&limit=2">{{nowPage + 2}}</a></li>
             <li class="page-num"><a class="page-link" href="/community/page?offset={{(nowPage+2)*2}}&limit=2">{{nowPage + 3}}</a></li>
-            ......
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
           {% endif %}
         {% elseif nowPage >= (maxPage-3) %}     <!-- 현재페이지가 마지막 페이지의 3번째 전에 왔을 때 ... (n-2) (n-1) (n) 표기 -->
           {% if maxPage < 5 %}
@@ -96,7 +96,7 @@
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
             {%- endfor %}
           {% else %}
-          ......
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
             {% for i in range((maxPage-3), maxPage) -%}
               <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
             {%- endfor %}

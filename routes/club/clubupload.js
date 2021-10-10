@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { Club } = require("../../models");
+const { Club, Hashtag } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
@@ -29,24 +29,9 @@ const upload = multer({
       const ext = path.extname(file.originalname);
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
-    fileFilter: function (req, file, cb) {
-      checkFileType(file, cb);
-    },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
-
-function checkFileType(file, cb) {
-  const filetypes = jpeg|jpg|png|gif;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("인증 사진만 업로드 가능합니다.");
-  };
-};
 
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
@@ -58,9 +43,11 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
+      hash: req.body.hashtag,
       userId: req.user.id,
     });
-    const hashtags = req.body.content.match(/#[^\s#]*/g);
+    const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
+    console.log(hashtags);
     if (hashtags) {
       const result = await Promise.all(
         hashtags.map((tag) => {
@@ -69,7 +56,8 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
           });
         })
       );
-      await post.addHashtags(result.map((r) => r[0]));
+      console.log(result);
+      await club.addHashtag(result.map((r) => r[0]));
     }
     res.redirect("/club");
   } catch (error) {

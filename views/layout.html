@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <link rel="shortcut icon" href="/images/logo.png" />
-    <!-- <link rel="stylesheet" href="/main/stylesheets/reset.css"> -->
-    <link rel="stylesheet" href="/main/stylesheets/main.css" />
+    <link rel="stylesheet" href="/main/stylesheets/reset.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="stylesheet" href="/main/stylesheets/font.css" />
+    <link rel="stylesheet" href="/main/stylesheets/main.css" />
     {% block css %} {% endblock %}
   </head>
   <body>
@@ -23,7 +24,7 @@
             ><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span
           >
           <span class="hello-item logout"
-            ><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i
+            ><a href="/logout">[로그아웃]</a></i
           ></span>
           <input id="my-id" type="hidden" value="{{user.id}}" />
         </p>
