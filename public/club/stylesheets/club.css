@@ -57,7 +57,7 @@
   width: var(--search-width);
   border-radius: 8px;
   position: absolute;
-  right: 2vw;
+  right: 13vw;
 }
 
 input:focus {
@@ -85,9 +85,9 @@ input:focus {
 .picture-uploads {
   text-align: none;
   position: fixed;
-  right: 2em;
-  bottom: 3em;
-  font-size: 2em;
+  right: 6vw;
+  bottom: 9vw;
+  font-size: 2.5vw;
   background-color: white;
   padding: 0.8em;
   border-radius: 50%;

@@ -6,7 +6,7 @@
   --btn-height: 1vw;
   --btn-bg-height: 2.5vw;
   --search-width: 21vw;
-  --search-btn-width: 2svw;
+  --search-btn-width: 1vw;
   --search-bg-width: 10vw;
   --select-border-color: #bababa;
   --select-width: 6vw; 
@@ -27,9 +27,9 @@
 .com-write {
   text-align: none;
   position: fixed;
-  right: 2em;
-  bottom: 3em;
-  font-size: 2em;
+  right: 6vw;
+  bottom: 9vw;
+  font-size: 2.5vw;
   background-color: white;
   padding: 0.8em;
   border-radius: 50%;
@@ -143,6 +143,10 @@ h1, thead, tbody, tr, th {
 
 .com-table {
   margin: 2vw auto;
+}
+
+.not-table {
+  margin: 0 auto;
 }
 
 /* 번호란 */
