@@ -9,6 +9,7 @@
   --search-btn-width: 2svw;
   --search-bg-width: 10vw;
   --select-border-color: #bababa;
+  --select-width: 6vw; 
   --tb-font-family: SpoqaHanSansNeo-Regular;
 }
 
@@ -85,6 +86,9 @@ input:focus {
 .com-select {
   border-color: var(--select-border-color);
   font-family: var(--btn-font-family);
+  width: var(--select-width);
+  height: var(--btn-bg-height)-1vw;
+  font-size: 0.9vw;
 }
 
 .com-select:hover {
@@ -115,7 +119,12 @@ select:focus {
 }
 
 .table-head {
-  border: 1px solid var(--select-border-color);
+  border-top: 1px solid var(--select-border-color);
+  border-bottom: 1px solid var(--select-border-color);
+}
+
+.table-item-box {
+  border-bottom: 1px solid var(--select-border-color);
 }
 
 h1, thead, tbody, tr, th {
@@ -144,11 +153,17 @@ h1, thead, tbody, tr, th {
 /* 제목란 */
 .tb-text {
   display: inline-block;
+  align-items: center;
+  text-decoration: none;
+}
+
+.tb-text-item {
+  display: inline-block;
 }
 
 .tb-img {
   display: inline-block;
-  width: 1vw;
+  width: 4vw;
 }
 
 .item-title {

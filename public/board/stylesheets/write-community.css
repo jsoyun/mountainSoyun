@@ -47,3 +47,12 @@
   /* 첨부파일 */
   background-color: var(--btn-bg-color);
 }
+
+.cancel-btn {
+  text-decoration-line: none;
+  color: silver;
+}
+
+.submit-btn:hover .cancel-btn {
+  color: #000;
+}

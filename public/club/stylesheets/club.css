@@ -81,10 +81,6 @@ input:focus {
 }
 
 /* 본문 */
-.feed-body {
-  /* text-align: center; */
-}
-
 /* 사진 업로드 아이콘 */
 .picture-uploads {
   text-align: none;

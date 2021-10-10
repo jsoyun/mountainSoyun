@@ -35,16 +35,10 @@ const upload = multer({
 
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
-  let urlArr = new Array();
-  for (let i = 0; i < req.files.length; i++) { 
-    urlArr.push(`/img/${req.files[i].filename}`); 
-    console.log(urlArr[i]); 
-  } 
-  let jsonUrl = JSON.stringify(urlArr); 
-  res.json(jsonUrl);
+  res.json({ url: `/img/${req.file.filename}` });
 });
 
-router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
