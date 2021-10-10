@@ -7,21 +7,32 @@ const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const { isNotLoggedIn } = require("../middlewares");
+const { body, validationResult } = require('express-validator');
 
 //라우터
 const router = express.Router();
+
+const check = [
+  body("nick", "이름을 적어주세요.").notEmpty().isLength({ min:2, max:7 }),
+  body("email", "이메일란을 확인해주세요.").isEmail().notEmpty(),
+];
+
+const errorCheck = (req, res, next) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    console.log(errors);
+    return res.status(400).json(errors);
+  }
+  next();
+}
 
 //회원가입 창띄우기(get)
 router.get("/", (req, res, next) => {
   res.render("login/signup", { title: "회원가입" });
 });
 
-// 회원가입 데이터 입력한거 전송하는 코드
-// 여기로 이동! signUp 들어왔을때 뒤에 실행
-// post 데이터들 있어서(post데이터 전송)
-router.post("/",isNotLoggedIn, async (req, res, next) => {
+router.post("/", isNotLoggedIn, check, errorCheck, async (req, res, next) => {
   const { email, nick, password, img } = req.body;
-  //User는 데이터베이스!거기에서 email 가져옴(기존 email확인하려고! 그전 유저exUser)
   try {
     const exUser = await User.findOne({ where: { email } });
     if (exUser) {
@@ -34,12 +45,9 @@ router.post("/",isNotLoggedIn, async (req, res, next) => {
       password: hash,
       img: req.body.url,
     });
-    //로그인 완료 메인으로~
     return res.redirect("/");
   } catch (error) {
-    //여기 안에서 에러나면 catch로
     console.error(error);
-    //app.js로 되돌림 얘를 호출한 데로 부르는거. return 되돌려~
     return next(error);
   }
 });
