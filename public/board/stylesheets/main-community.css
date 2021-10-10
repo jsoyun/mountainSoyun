@@ -58,7 +58,7 @@
   width: var(--search-width);
   border-radius: 8px;
   position: absolute;
-  right: 2vw;
+  right: 13vw;
 }
 
 input:focus {
@@ -100,6 +100,14 @@ select:focus {
   margin-top: 7vw;
 }
 
+.table-item-box th {
+  padding: 1em;
+}
+
+.table-item-box td {
+  padding: 1em;
+}
+
 .com-box {
   font-family: var(--tb-font-family), sans-serif;
   text-align: center;
@@ -113,7 +121,7 @@ select:focus {
 h1, thead, tbody, tr, th {
   font-size: 1.5vw;
   width: 8em;
-  height: 4em;
+  height: 3em;
 }
 
 .com-title {
@@ -124,18 +132,35 @@ h1, thead, tbody, tr, th {
   height: auto;
 }
 
-/* .com-write {
-  position: sticky;
-} */
-
 .com-table {
   margin: 2vw auto;
 }
 
-.tb-img {
-  width: 9vw;
+/* 번호란 */
+.item-num {
+  width: 6vw;
 }
 
+/* 제목란 */
+.tb-text {
+  display: inline-block;
+}
+
+.tb-img {
+  display: inline-block;
+  width: 1vw;
+}
+
+.item-title {
+  width: 30vw;
+}
+
+/* 작성자란 */
+.item-nick {
+  width: 15vw;
+}
+
+/* 페이지 */
 .page-num {
   list-style: none;
   display: inline-block;

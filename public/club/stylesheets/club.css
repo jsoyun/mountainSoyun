@@ -82,7 +82,7 @@ input:focus {
 
 /* 본문 */
 .feed-body {
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* 사진 업로드 아이콘 */
@@ -126,4 +126,11 @@ input:focus {
 
 .twit-author {
   background: #000;
+}
+
+.like,
+.unlike {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 15px;
 }

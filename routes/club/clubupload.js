@@ -29,31 +29,22 @@ const upload = multer({
       const ext = path.extname(file.originalname);
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
-    fileFilter: function (req, file, cb) {
-      checkFileType(file, cb);
-    },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-function checkFileType(file, cb) {
-  const filetypes = jpeg|jpg|png|gif;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb("인증 사진만 업로드 가능합니다.");
-  };
-};
-
 router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
   console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
+  let urlArr = new Array();
+  for (let i = 0; i < req.files.length; i++) { 
+    urlArr.push(`/img/${req.files[i].filename}`); 
+    console.log(urlArr[i]); 
+  } 
+  let jsonUrl = JSON.stringify(urlArr); 
+  res.json(jsonUrl);
 });
 
-router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
   try {
     const club = await Club.create({
       content: req.body.content,
