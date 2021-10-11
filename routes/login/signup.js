@@ -1,49 +1,41 @@
-//모듈
 const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
-const passport = require("passport");
 const { isNotLoggedIn } = require("../middlewares");
-const { body, validationResult } = require('express-validator');
 
-//라우터
 const router = express.Router();
 
-const check = [
-  body("nick", "이름을 적어주세요.").notEmpty().isLength({ min: 2, max: 7 }),
-  body("email", "이메일란을 확인해주세요.").isEmail().notEmpty(),
-];
-
-const errorCheck = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    console.log(errors);
-    return res.status(400).json(errors);
-  }
-  next();
-}
-
-//회원가입 창띄우기(get)
 router.get("/", (req, res, next) => {
   res.render("login/signup", { title: "회원가입" });
 });
 
-router.post("/", isNotLoggedIn, check, errorCheck, async (req, res, next) => {
-  const { email, nick, password, img } = req.body;
+router.post("/", isNotLoggedIn, async (req, res, next) => {
+  console.log(req.body);
+  const { nick, email, pwd, url, pwdcheck, agreeCheck } = req.body;
   try {
     const exUser = await User.findOne({ where: { email } });
+
     if (exUser) {
-      return res.redirect("/signUp?error=exist");
+      return res.send("<script>alert('이미 가입한 이메일 입니다.'); location.href='/signup';</script>");
     }
-    const hash = await bcrypt.hash(password, 12);
+    if (pwd != pwdcheck) {
+      return res.send("<script>alert('비밀번호를 확인해주세요.'); location.href='/signup';</script>");
+    }
+
+    // 수정 중
+    // if (agreeCheck != 'Y') {
+    //   return res.send("<script>alert('약관에 체크해주세요.'); location.href='/signup';</script>");
+    // }
+
+    const hash = await bcrypt.hash(pwd, 12);
     User.create({
-      email,
       nick,
+      email,
       password: hash,
-      img: req.body.url,
+      img: url,
     });
     return res.redirect("/");
   } catch (error) {
@@ -95,5 +87,4 @@ router.post("/", upload.none(), async (req, res, next) => {
   }
 });
 
-//모듈 전체 라우터 사용하려고
 module.exports = router;
