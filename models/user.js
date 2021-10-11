@@ -46,7 +46,7 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.Club, { foreignKey: 'userId', sourceKey: 'id' });
+    db.User.hasMany(db.Club, { foreignKey: 'clubId', sourceKey: 'id' });
     db.User.hasMany(db.CommunityPost);
     // 1대다 관계 - (ex) 사용자 1명은 댓글 여러개를 작성할 수 있다. 반대로 댓글 1개에 사용자 여러명은 안된다.
     // << 사용법 >> db.사용자.hasMany(db.댓글);

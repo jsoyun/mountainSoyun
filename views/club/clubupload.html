@@ -22,7 +22,6 @@
               </div>
             </div>
           </div>
-          <input id="img-url" type="hidden" name="url" /><br />
         </div>
       </div>
       <div class="rating-wrap">
@@ -42,7 +41,7 @@
         </div>
         <h4 id="rating-values"></h4>
       </div>
-
+      <h4 id="rating-values"></h4>
       <div class="input-group">
         <p>도전내용</p>
         <textarea id="twit" name="content" maxlength="100" cols="50" rows="5"
@@ -54,51 +53,5 @@
       <button id="twit-btn" type="submit" class="btn">인증하기</button>
   </form>
   {% endblock %} {% block script %}
-  <script>
-    if (document.getElementById("img")) {
-      document.getElementById("img").addEventListener("change", function (e) {
-        const formData = new FormData();
-        console.log(this, this.files);
-        formData.append("img", this.files[0]);
-        axios
-          .post("/clubupload/img", formData)
-          .then((res) => {
-            document.getElementById("img-url").value = res.data.url;
-            document.getElementById("img-preview").src = res.data.url;
-            document.getElementById("img-preview").style.display = "inline";
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-    }
-  </script>
-  <script>
-    //별점 마킹 모듈 프로토타입으로 생성
-    function Rating() { };
-    Rating.prototype.rate = 0;
-    Rating.prototype.setRate = function (newrate) {
-      //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
-      this.rate = newrate;
-      let items = document.querySelectorAll('.rate_radio');
-      items.forEach(function (item, idx) {
-        if (idx < newrate) {
-          item.checked = true;
-        } else {
-          item.checked = false;
-        }
-      });
-    }
-    let rating = new Rating();//별점 인스턴스 생성
-
-    document.addEventListener('DOMContentLoaded', function () {
-      //별점선택 이벤트 리스너
-      document.querySelector('.rating').addEventListener('click', function (e) {
-        let elem = e.target;
-        if (elem.classList.contains('rate_radio')) {
-          rating.setRate(parseInt(elem.value));
-        }
-      })
-    });
-  </script>
+  <script src="/club/javascripts/clubupload.js"></script>
   {% endblock %}

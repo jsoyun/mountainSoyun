@@ -114,7 +114,42 @@
                 <li class="page-num"><a class="page-link" href="/community/page?offset={{(maxPage-1)*2}}&limit=2">{{
                     maxPage }}</a></li>
                 {% endif %}
-                {% endif %}
+                {% elseif nowPage < (maxPage-3) %} {% if nowPage>= 3 or maxPage < 6 %} <!-- 5페이지 보다 많고 현재페이지가 4를 넘어갈시
+                    ... 2 3 4 5 6 ... 표기 -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
+                    <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage - 1}}</a></li>
+                    <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{(nowPage-1)*2}}&limit=2">{{nowPage}}</a></li>
+                    <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{nowPage*2}}&limit=2">{{nowPage +
+                        1}}</a></li>
+                    <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{(nowPage+1)*2}}&limit=2">{{nowPage + 2}}</a></li>
+                    <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{(nowPage+2)*2}}&limit=2">{{nowPage + 3}}</a></li>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
+                    {% endif %}
+                    {% elseif nowPage >= (maxPage-3) %}
+                    <!-- 현재페이지가 마지막 페이지의 3번째 전에 왔을 때 ... (n-2) (n-1) (n) 표기 -->
+                    {% if maxPage < 5 %} {% for i in range(2, maxPage) -%} <li class="page-num"><a class="page-link"
+                        href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i }}</a></li>
+                      {%- endfor %}
+                      {% else %}
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;......
+                      {% for i in range((maxPage-3), maxPage) -%}
+                      <li class="page-num"><a class="page-link" href="/community/page?offset={{2*(i-1)}}&limit=2">{{ i
+                          }}</a>
+                      </li>
+                      {%- endfor %}
+                      {% endif %}
+                      {% endif %}
+                      {% if maxPage > 1 %}
+                      <li class="page-num"><a class="page-link"
+                          href="/community/page?offset={{(maxPage-1)*2}}&limit=2">{{
+                          maxPage }}</a></li>
+                      {% endif %}
+                      {% endif %}
     </ul>
   </footer>
 </section>
