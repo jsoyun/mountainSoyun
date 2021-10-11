@@ -1,28 +1,31 @@
 const express = require('express');
-const request = require('request');
 const APIkey = require('../../public/mountainInfo/javascripts/APIkey');
-const convert = require('xml-js');
-const Mountain = require('../../models/mountain')
-// const saveApiData = require('../test');
 const router = express.Router();
+const axios = require('axios');
 
-const servicekey = APIkey.servicekeyen
+
 /* GET page. */
-// router.get('/', (req, res) => {
-// res.render('mountainInfo/infomountain');
-// });
+router.get('/', (req, res) => {
+  res.render('mountainInfo/infomountain');
+});
 
-router.get("/", async (req, res, next) => {
+router.post('/location', async function (req, res, next) {
+  console.log("//////////////////////////////////////////////////////");
+  console.log(req.body);
+  console.log("//////////////////////////////////////////////////////");
+  const servicekey = APIkey.servicekeyen;
+  const url1 = 'http://openapi.forest.go.kr/openapi/service/cultureInfoService/gdTrailInfoOpenAPI';
+  var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + servicekey; /* Service Key*/
+  queryParams += '&' + encodeURIComponent('searchArNm') + '=' + encodeURIComponent(req.body.location); /* */
+  queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent("30"); /* */
+  let fullurl1 = url1 + queryParams;
   try {
-    const mountains = await Mountain.findAll({});
-    res.render('mountainInfo/infomountain', {
-      title: 'mountain feed',
-      APIdata: mountains,
-    });
+    const rawdata = await axios.get(fullurl1);
+    const APIdata = rawdata.data.response.body.items.item;
+    res.json(APIdata);
   } catch (error) {
-    console.error(error);
-    next(error);
-  };
+    console.log(error)
+  }
 });
 
 module.exports = router;

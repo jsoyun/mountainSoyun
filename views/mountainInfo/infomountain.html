@@ -4,17 +4,39 @@
 
 {% block content %}
 <h1>100대명산게시판</h1>
-<img src="https://www.forest.go.kr/images/data/down/mountain/20000009_2.jpg" width="100px" height="100px">
-{% for item in APIdata %}
-<p>{{item.name}}</p>
-<p>{{item.height}}</p>
-<p>{{item.address}}</p>
-<p>{{item.details}}</p>
-<p>{{item.topdetails}}</p>
-<img src="https://{{item.imgurl}}" width="100px" height="100px">
-{% endfor %}
+
+<button class="kor-location" type="button">서울/경기</button>
+<button class="kor-location" type="button">충청북도</button>
+<button class="kor-location" type="button">충청남도</button>
+<button class="kor-location" type="button">경상북도</button>
+<button class="kor-location" type="button">경상남도</button>
+<button class="kor-location" type="button">전라북도</button>
+<button class="kor-location" type="button">전라남도</button>
+<button class="kor-location" type="button">제주도</button>
+
 
 {% endblock %}
 
 {% block script %}
+<script>
+    document.querySelectorAll(".kor-location").forEach(element => {
+        element.addEventListener('click', async function () {
+            let location = await this.textContent;
+            if (location == "서울/경기") {
+                location = "경기";
+                const apidata1 = await axios.post("/infomountain/location", { location });
+                location = "인천";
+                const apidata2 = await axios.post("/infomountain/location", { location });
+                arrydata1 = JSON.stringify(apidata1.data);
+                arrydata2 = JSON.stringify(apidata2.data);
+                sumarrydata = arrydata1.slice(0, -1) + "," + arrydata2 + "]";
+                const apidata = JSON.parse(sumarrydata)
+
+            } else {
+                const apidata1 = await axios.post("/infomountain/location", { location });
+                const apidata = apidata1.data
+            }
+        })
+    });
+</script>
 {% endblock %}

@@ -1,210 +1,104 @@
-{% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
-<!-- <link rel="stylesheet" href="../public/stylesheets/club.css" /> -->
-<style>
-  .post_form_container {
-    max-width: 550px;
-    margin: 0 auto;
-  }
-
-  .post_form {
-    padding: 40px;
-    background-color: #fff;
-    border: 1px solid #e6e6e6;
-    margin: 0 0 10px;
-  }
-
-  .post_form .title {
-    margin: 0 10px 40px;
-    font-weight: 400;
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .post_form .preview {
-    margin-bottom: 30px;
-  }
-
-  .post_form .preview .upload {
-    max-width: 300px;
-    height: 300px;
-    border: 1px solid #e6e6e6;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .plus_icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    border: 1px solid dodgerblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .plus_icon span {
-    position: absolute;
-    display: block;
-    width: 2px;
-    height: 30px;
-    background: dodgerblue;
-  }
-
-  .plus_icon span:nth-child(2) {
-    transform: rotate(90deg);
-  }
-
-  .click_file p {
-    /* width: 200px;
-    height: 200px;
-    margin: 500px; */
-    justify-content: center;
-    align-items: center;
-    margin-left: 30%;
-    margin-top: 100%;
-  }
-  .post_form p {
-    margin-bottom: 20px;
-  }
-
-  .post_form_container #img {
-    width: 300px;
-    height: 300px;
-    margin-right: 5%;
-    margin-top: 500px;
-    display: block;
-    align-items: center;
-  }
-</style>
+{% extends "layout.html" %}
+{% block css %}
+<link rel="stylesheet" href="/club/stylesheets/clubupload.css">
+{% endblock %}
+{% block content %}
 <div id="main_container">
   <h3>인증 신규 등록</h3>
-
   <form id="twit-form" method="post" enctype="multipart/form-data">
     <legend>명산100 [북한산]</legend>
     <h5>지금 등록 가능한 인증지 입니다.</h5>
-
     <div class="post_form_container">
       <div action="#" class="post_form">
         <div class="title">
           NEW POST
-          <br />
           <div class="img-preview">
             <div class="upload">
               <div id="img-upLoadBtn" for="img">
                 <div class="post_btn" for="img">
-                  <br />
-                  <br />
-                  <div class="plus_icon" for="img">
-                    <sapn></sapn>
-                    <span></span>
-                  <img
-                  id="img-preview"
-                  src=""
-                  style="display: none"
-                  width="200"
-                  alt="미리보기"
-                />
-                <input id="img" type="file" accept="image/*" /><br />
-                <sapn></sapn>
-                <span></span>
+                  <img id="img-preview" src="" style="display: none" width="200" alt="미리보기" />
+                  <input id="img" type="file" accept="image/*" />
+                </div>
               </div>
-             </div>
             </div>
-           </div>
           </div>
           <input id="img-url" type="hidden" name="url" /><br />
         </div>
-
-
+      </div>
       <div class="rating-wrap">
         <p>인증지 평가</p>
-        <div class="center">
-          <fieldset class="rating">
-            <div class="star-widget">
-              <input type="radio" name="rate" id="rate-5" />
-              <label for="rate-5" class="fas fa-star"></label>
-              <input type="radio" name="rate" id="rate-4" />
-              <label for="rate-4" class="fas fa-star"></label>
-              <input type="radio" name="rate" id="rate-3" />
-              <label for="rate-3" class="fas fa-star"></label>
-              <input type="radio" name="rate" id="rate-2" />
-              <label for="rate-2" class="fas fa-star"></label>
-              <input type="radio" name="rate" id="rate-1" />
-              <label for="rate-1" class="fas fa-star"></label>
-            </div>
-          </fieldset>
+        <div class="rating">
+          <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+          <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
+          <label for="rating1"></label>
+          <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
+          <label for="rating2"></label>
+          <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점">
+          <label for="rating3"></label>
+          <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
+          <label for="rating4"></label>
+          <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
+          <label for="rating5"></label>
         </div>
         <h4 id="rating-values"></h4>
       </div>
 
       <div class="input-group">
         <p>도전내용</p>
-        <textarea
-          id="twit"
-          name="content"
-          maxlength="100"
-          cols="50"
-          rows="5"
-          placeholder="100자 내 도전내용을 작성해주세요."
-        ></textarea>
+        <textarea id="twit" name="content" maxlength="100" cols="50" rows="5"
+          placeholder="100자 내 도전내용을 작성해주세요."></textarea>
       </div>
+      <p>해시태그</p>
+      <textarea type="text" name="hashtag" id="text_field" cols="50" rows="5"
+        placeholder="#태그명을 통해서 검색 태그를 등록 할 수 있습니다.   예시: #북한산 #뷰맛집 #등린이"></textarea>
       <button id="twit-btn" type="submit" class="btn">인증하기</button>
-    </form>
-    <p>해시태그&nbsp&nbsp<button class="btn">검색</button></p>
-    <div class="twits">
-      <form id="hashtag-form" action="/hashtag">
-        <textarea
-          type="text"
-          name="hashtag"
-          id="text_field"
-          cols="50"
-          rows="5"
-          placeholder="#태그명을 통해서 검색 태그를 등록 할 수 있습니다.   예시: #북한산 #뷰맛집 #등린이"
-        ></textarea>
-      </form>
-    </div>
+  </form>
+  {% endblock %} {% block script %}
+  <script>
+    if (document.getElementById("img")) {
+      document.getElementById("img").addEventListener("change", function (e) {
+        const formData = new FormData();
+        console.log(this, this.files);
+        formData.append("img", this.files[0]);
+        axios
+          .post("/clubupload/img", formData)
+          .then((res) => {
+            document.getElementById("img-url").value = res.data.url;
+            document.getElementById("img-preview").src = res.data.url;
+            document.getElementById("img-preview").style.display = "inline";
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
+    }
+  </script>
+  <script>
+    //별점 마킹 모듈 프로토타입으로 생성
+    function Rating() { };
+    Rating.prototype.rate = 0;
+    Rating.prototype.setRate = function (newrate) {
+      //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
+      this.rate = newrate;
+      let items = document.querySelectorAll('.rate_radio');
+      items.forEach(function (item, idx) {
+        if (idx < newrate) {
+          item.checked = true;
+        } else {
+          item.checked = false;
+        }
+      });
+    }
+    let rating = new Rating();//별점 인스턴스 생성
 
-  </div>
-</div>
-      <br />
-    </div>
-
-</div>
-{% endblock %} {% block script %}
-<script>
-  if (document.getElementById("img")) {
-    document.getElementById("img").addEventListener("change", function (e) {
-      const formData = new FormData();
-      console.log(this, this.files);
-      formData.append("img", this.files[0]);
-      axios
-        .post("/clubupload/img", formData)
-        .then((res) => {
-          document.getElementById("img-url").value = res.data.url;
-          document.getElementById("img-preview").src = res.data.url;
-          document.getElementById("img-preview").style.display = "inline";
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+      //별점선택 이벤트 리스너
+      document.querySelector('.rating').addEventListener('click', function (e) {
+        let elem = e.target;
+        if (elem.classList.contains('rate_radio')) {
+          rating.setRate(parseInt(elem.value));
+        }
+      })
     });
-  }
-</script>
-<script>
-  let star = document.querySelectorAll("input");
-
-  let showValue = document.querySelector("#rating-value");
-
-  for (let i = 0; i < star.length; i++) {
-    star[i].addEventListener("click", function () {
-      i = this.value;
-
-      showValue.innerHTML = i + " out of 5 ";
-    });
-  }
-</script>
-{% endblock %}
+  </script>
+  {% endblock %}

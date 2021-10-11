@@ -14,68 +14,67 @@ router.get('/', async (req, res, next) => {
 
     /* 제목/내용 검색 */
     const titleContents = await CommunityPost.findAll({
-      include: { 
+      include: {
         model: User,
         attribute: ['id', 'nick'],
       },
       where: {
-      [Op.or]: [{
-          content : {
+        [Op.or]: [{
+          content: {
             [Op.like]: "%" + search + "%"
           }
         }, {
-          title : {
+          title: {
             [Op.like]: "%" + search + "%"
           }
         },
-      ]
+        ]
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 내용 검색 */
     const contents = await CommunityPost.findAll({
-      include: { 
+      include: {
         model: User,
         attribute: ['id', 'nick'],
       },
       where: {
-        content : {
+        content: {
           [Op.like]: "%" + search + "%"
         },
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 제목 검색 */
     const titles = await CommunityPost.findAll({
-      include: { 
+      include: {
         model: User,
         attribute: ['id', 'nick'],
       },
       where: {
-        title : {
+        title: {
           [Op.like]: "%" + search + "%"
         },
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
     /* 작성자 검색 */
     const users = await CommunityPost.findAll({
-      include: { 
+      include: {
         model: User,
         attribute: ['id', 'nick'],
         where: {
-          nick : {
+          nick: {
             [Op.like]: "%" + search + "%"
           },
         }
       },
-      order: [['createdAt', 'DESC']],
+      order: [['id', 'DESC']],
     });
 
-    console.log(select);
     if (select == 'titleContent') {
       texts = titleContents;
     } else if (select == 'content') {

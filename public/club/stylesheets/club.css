@@ -1,15 +1,132 @@
-.picture-search {
-    border: none;
+:root {
+  --title-font-size: 3em;
+  --btn-main-font: Cafe24SsurroundAir;
+  --btn-font-family: Cafe24SsurroundAir;
+  --search-bg-color: white;
+  --btn-radius: 10px;
+  --btn-height: 1vw;
+  --btn-bg-height: 2.5vw;
+  --search-width: 15vw;
+  --search-btn-width: 2vw;
+  --search-bg-width: 10vw;
+  /* 게시물 */
+  --pg-border-color: #bababa;
+  /* --pg-width-sz: 10vw;
+  --pg-hight-sz: 10vw; */
+  --pg-margin-sz: 3vw;
+  --pg-padding-sz: 4em;
 }
 
+/* 버튼 공통 */
 .btn {
-    border: none;
-    font-family: Cafe24SsurroundAir, sans-serif;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: beige;
+  border: none;
+  font-family: var(--btn-font-family), sans-serif;
+  padding: 0.5vw;
+  border-radius: var(--btn-radius);
+  background-color: beige;
+  height: var(--btn-bg-height);
 }
 
+/* 상단 */
+.feed-header {
+  text-align: center;
+}
+
+.feed-title {
+  font-size: var(--title-font-size);
+  font-weight: bolder;
+  color: var(--btn-main-font), sans-serif;
+}
+
+/* 태그 검색 */
+.tag-search {
+  border: transparent;
+  width: var(--search-bg-width);
+  height: var(--btn-height);
+  border-radius: var(--btn-radius);
+  font-size: 1vw;
+  font-family: var(--btn-font-family), sans-serif;
+  padding-left: 1em;
+  -webkit-box-shadow: 0 0 0px 1000px var(--search-bg-color) inset !important;
+  -webkit-text-fill-color: var(--btn-bg-color) !important;
+}
+
+.fake_field {
+  background-color: var(--search-bg-color);
+  height: var(--btn-bg-height);
+  width: var(--search-width);
+  border-radius: 8px;
+  position: absolute;
+  right: 2vw;
+}
+
+input:focus {
+  outline: none;
+}
+
+.tag-search-btn .fa-search {
+  width: var(--search-btn-width);
+  height: var(--btn-height);
+  font-size: 0.9vw;
+}
+
+.tag-search-btn {
+  position: relative;
+  background-color: var(--search-bg-color);
+  right: 0.01em;
+}
+
+.tag-search-btn:hover {
+  cursor: pointer;
+}
+
+/* 본문 */
+/* 사진 업로드 아이콘 */
 .picture-uploads {
-    text-align: none;
+  text-align: none;
+  position: fixed;
+  right: 2em;
+  bottom: 3em;
+  font-size: 2em;
+  background-color: white;
+  padding: 0.8em;
+  border-radius: 50%;
+}
+
+.picture-uploads:hover {
+  color: black;
+} 
+
+.uploads-btn {
+  background-color: transparent;
+  padding: 1em;
+  font-size: 1.2vw;
+  display: block;
+  border-color: transparent;
+}
+
+.black {
+  display: block;
+}
+
+/* 사진 게시물 */
+.twit {
+  border: 1px solid var(--pg-border-color);
+  width: var(--pg-width-sz);
+  height: var(--pg-height-sz);
+  margin: var(--pg-margin-sz);
+  padding: var(--pg-padding-sz);
+  display: inline-block;
+  border-radius: 7px;
+}
+
+.twit-author {
+  background: #000;
+}
+
+.like,
+.unlike {
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 15px;
 }
