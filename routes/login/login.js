@@ -58,4 +58,26 @@ router.get(
   }
 );
 
+/* 네이버 */
+router.get("/naver", passport.authenticate("naver", { scope: ['profile', 'email'] }));
+
+router.get(
+  "/naver/callback",
+  passport.authenticate("naver", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect("/");
+  }
+);
+
+/* 페이스북 */
+router.get("/facebook", passport.authenticate("facebook", { scope: ['profile', 'email'] }));
+
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/" }),
+  (req, res) => {
+    res.redirect("/");
+  }
+);
+
 module.exports = router;
