@@ -46,7 +46,7 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.Club, { foreignKey: 'clubId', sourceKey: 'id' });
+    db.User.hasMany(db.Club, { foreignKey: "userId", sourceKey: "id" });
     db.User.hasMany(db.CommunityPost);
     // 1대다 관계 - (ex) 사용자 1명은 댓글 여러개를 작성할 수 있다. 반대로 댓글 1개에 사용자 여러명은 안된다.
     // << 사용법 >> db.사용자.hasMany(db.댓글);
@@ -63,9 +63,16 @@ module.exports = class User extends Sequelize.Model {
       as: "Followings",
       through: "Follow",
     });
-    db.User.belongsToMany(db.CommunityPost, { through: 'Recommends', as: 'recommenders' });  // 좋아요
-    db.User.belongsToMany(db.Club, { through: 'Likes', as: 'Likers' });  // 좋아요
-    db.User.hasMany(db.ClubComment, { foreignKey: "writerId", sourceKey: "id" });
+    db.User.belongsToMany(db.CommunityPost, {
+      through: "Recommends",
+      as: "recommenders",
+    }); // 좋아요
+    db.User.belongsToMany(db.Club, { through: "Likes", as: "Likers" }); // 좋아요
+    db.User.belongsToMany(db.Club, { through: "Stars", as: "Start" }); // 별점
+    db.User.hasMany(db.ClubComment, {
+      foreignKey: "writerId",
+      sourceKey: "id",
+    });
     // 다대다 관계 - (ex) 게시글 하나가 여러개의 해시태그를 가질 수 있다. 해시태그 하나도 여러개의 게시글을 가질 수 있다.
     // 다대다 관계가 되면 데이터베이스 정규화 원칙을 지키기위해 어쩔 수 없이 테이블을 하나 더 생성해야한다.({ through: 'PostHashtag' } 이부분이 어쩔 수 없이 셍성한 테이블)
     // << 사용법 >> db.Post.belongsToMany*(db.Hashtag, { through: 'PostHashtag' });

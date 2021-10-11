@@ -7,11 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{title}}</title>
   <link rel="shortcut icon" href="/images/logo.png" />
-  <link rel="stylesheet" href="/main/stylesheets/reset.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-  <link rel="stylesheet" href="/main/stylesheets/font.css" />
+  <link rel="stylesheet" href="/main/stylesheets/common.css" />
+  <link rel="stylesheet" href="/main/stylesheets/reset.css" />
   <link rel="stylesheet" href="/main/stylesheets/main.css" />
+  <link rel="stylesheet" href="/main/stylesheets/font.css" />
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
   {% block css %} {% endblock %}
 </head>
 
@@ -24,27 +25,53 @@
       {% if user and user.id %}
       <p class="hello">
         <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
-        <span class="hello-item logout"><a href="/logout">[로그아웃]</a></span>
+        <span class="hello-item logout"><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i></span>
         <input id="my-id" type="hidden" value="{{user.id}}" />
       </p>
       {% else %}
       <p class="hello">
         <span class="hello-item">
-          <a class="login-link link" href="/login">로그인</a>
+          <!-- <a class="login-link link" href="/login">로그인</a> -->
         </span>
       </p>
       {% endif %}
-      <li class="nav">
-        <ul class="nav-item">
-          <a class="nav-link link" href="/club">도전클럽</a>
+      <section class="inner">
+        <div class="right_icons">
+          <a href="/club">
+            <div class="sprite_camera_icon"></div>
+          </a>
+          <a href="/infomountain">
+            <div class="sprite_compass_icon"></div>
+          </a>
+          <a href="/clubdetail">
+            <div class="sprite_heart_icon_outline"></div>
+          </a>
+          <a href="/login">
+            <div class="sprite_user_icon_outline"></div>
+          </a>
+        </div>
+      </section>
+
+      <nav class="mynav">
+        <ul>
+          <li class="nav-item">
+            <a class="nav-link link" target="_blank" href="/">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" target="_blank" href="/club">도전클럽</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" target="_blank" href="/infomountain">100대 명산 정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" target="_blank" href="/community">게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" target="_blank" href="/">캠페인</a>
+          </li>
         </ul>
-        <ul class="nav-item">
-          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
-        </ul>
-        <ul class="nav-item">
-          <a class="nav-link link" href="/community/page?offset=0&limit=2">게시판</a>
-        </ul>
-      </li>
+      </nav>
+      <span class="target"></span>
     </div>
   </header>
   {% block content %} {% endblock %}
@@ -56,6 +83,7 @@
   </footer>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script src="../public/main/javascript/scrolltrigger.js"></script> -->
 <script>
   window.onload = () => {
     if (new URL(location.href).searchParams.get("loginError")) {
@@ -63,6 +91,66 @@
     }
   };
 </script>
-{% block script %} {% endblock %}
+<script>
+  const target = document.querySelector(".target");
+  const links = document.querySelectorAll(".mynav a");
+  // 배열을 만들어 색지정
+  const colors = ["green", "darkblue", "darkgreen"];
+
+  // 링크들의 색상을 바꾸기 -> active 있을떄와 없을때의 차이를 지정
+  for (let i = 0; i < links.length; i++) {
+    // links[0].addEventListener('click',function(e){e.preventDefault();});
+    // 위내용을 화살표함수로 변경해서 사용
+    links[i].addEventListener("mouseenter", mouseenterFunc);
+    links[i].addEventListener("click", () => {
+      let targetLink = this.getAttribute("href");
+      location.href = targetLink;
+    });
+    //mouseenterFunc 마우스 할일
+  }
+  function mouseenterFunc() {
+    if (!this.parentNode.classList.contains("active")) {
+      for (let i = 0; i < links.length; i++) {
+        if (links[i].parentNode.classList.contains("active")) {
+          links[i].parentNode.classList.remove("active");
+        }
+        links[i].style.opacity = "0.25";
+      } //마우스가 올라가지 않은 다른 메뉴들 마다 할일.
+
+      this.parentNode.classList.add("active");
+      this.style.opacity = "1";
+      // Element.getBoundingClientRect() : 뷰포인트에 상대적인 위치에 대한 정보를 제공 하는 객체를 반환합니다 .
+      const width = this.getBoundingClientRect().width;
+      const height = this.getBoundingClientRect().height;
+      const left = this.getBoundingClientRect().left + window.pageXOffset;
+      const top = this.getBoundingClientRect().top + window.pageYOffset;
+      const color = colors[Math.floor(Math.random() * links.length)]; // 배열의 숫자가 랜덤으로 나와야함.
+      //랜덤으로 난수 만들기
+      // console.log(Math.floor(Math.random() * links.length));
+
+      target.style.width = `${width}px`; // 변수와 문자를 한번에  베틱사용
+      target.style.height = `${height}px`;
+      target.style.left = `${left}px`;
+      target.style.top = `${top}px`;
+      target.style.borderColor = color;
+    }
+  }
+  // Active에 있는 메뉴의 left와 top값을 다시 구하는것 / 브라우저 사이즈가 바뀌면 바뀌는대로
+  function resizeFunc() {
+    const active = document.querySelector(".mynav li .active");
+
+    if (active) {
+      const left = active.getBoundingClientRect().left + window.pageXOffset;
+      const top = active.getBoundingClientRect().top + window.pageYOffset;
+
+      target.style.left = `${left}px`;
+      target.style.top = `${top}px`;
+    }
+  }
+  window.addEventListener("resize", resizeFunc);
+</script>
+{% block script %}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+{% endblock %}
 
 </html>

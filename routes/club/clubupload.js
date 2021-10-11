@@ -49,6 +49,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       content: req.body.content,
       img: req.body.url,
       hash: req.body.hashtag,
+      star: req.body.star,
       userId: req.user.id,
     });
     const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
@@ -70,5 +71,9 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     next(error);
   }
 });
+
+// sequelize.sync({logging: false}).then(() => {
+//   return Model.Rating.findAll
+// })
 
 module.exports = router;

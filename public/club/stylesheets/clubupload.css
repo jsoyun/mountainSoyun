@@ -27,12 +27,15 @@
     background-color: #ff8;
 }
 .post_form_container {
-  max-width: 550px;
+  max-width: 60vw;
+  max-height: 100vw;
   margin: 0 auto;
 }
 
 .post_form {
   padding: 40px;
+  max-width: 75vw;
+  max-height: 100vw;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   margin: 0 0 10px;
@@ -103,4 +106,38 @@
   margin-top: 500px;
   display: block;
   align-items: center;
+}
+/* 별점기능 */
+.rating {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.rating li {
+  list-style-type: none;
+}
+
+.rating-item {
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 2em;
+  color: rgb(255, 166, 0);
+}
+
+/* 초기 꽉찬별 */
+.rating-item::before {
+  content: "\2605";
+}
+
+.rating-item.active ~ .rating-item::before {
+  content: "\2606";
+}
+
+.rating:hover .rating-item::before {
+  content: "\2605";
+}
+
+.rating-item:hover ~ .rating-item::before {
+  content: "\2606";
 }

@@ -1,6 +1,6 @@
 const express = require("express");
 const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
-const url = require('url');
+const url = require("url");
 const { Club, User, Hashtag } = require("../../models");
 const router = express.Router();
 
@@ -8,7 +8,9 @@ router.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.followerCount = req.user ? req.user.Followers.length : 0;
   res.locals.followingCount = req.user ? req.user.Followings.length : 0;
-  res.locals.followerIdList = req.user ? req.user.Followings.map((f) => f.id) : [];
+  res.locals.followerIdList = req.user
+    ? req.user.Followings.map((f) => f.id)
+    : [];
   next();
 });
 
@@ -33,12 +35,12 @@ router.get("/", async (req, res, next) => {
 });
 
 /* # 태그 검색 */
-router.get('/hashtag', async (req, res, next) => {
+router.get("/hashtag", async (req, res, next) => {
   let queryData = url.parse(req.url, true).query;
   let search = queryData.hashtag;
 
   if (!search) {
-    res.redirect('/');
+    res.redirect("/");
   }
   try {
     const hashtags = await Hashtag.findOne({ where: { title: search } });
@@ -63,7 +65,7 @@ router.get('/hashtag', async (req, res, next) => {
   }
 });
 
-router.post('/:id/like', isLoggedIn, async (req, res, next) => {
+router.post("/:id/like", isLoggedIn, async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: { id: req.user.id },
@@ -82,7 +84,7 @@ router.post('/:id/like', isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.delete('/:id/unlike', isLoggedIn, async (req, res, next) => {
+router.delete("/:id/unlike", isLoggedIn, async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: { id: req.user.id },
