@@ -1,172 +1,5 @@
 {% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
-<style>
-  #stories-wrapper {
-    margin: 20px auto;
-    width: 100vw;
-  }
-
-  :root {
-    --bgcolor: #fff;
-  }
-
-  body {
-    background-color: var(--bgcolor);
-  }
-
-  #stories-container {
-    display: flex;
-    border: solid 2px #fff;
-    padding: 4px 0;
-  }
-
-  .story {
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-
-  .story .profile {
-    background: rgb(255, 201, 0);
-    background: linear-gradient(36deg,
-        rgb(255, 201, 0) 13%,
-        rgb(255, 0, 95) 73%,
-        rgb(255, 9, 237) 100%);
-    padding: 5px;
-    box-sizing: border-box;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-  }
-
-  .story .profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    padding: 0;
-    margin: 0;
-    border: solid 5px var(--bgcolor);
-  }
-
-  .story .title {
-    text-align: center;
-    padding: 5px 0;
-  }
-
-  .story.active .profile {
-    animation-duration: 1s;
-    animation-name: story;
-    animation-iteration-count: infinite;
-  }
-
-  .story .profile.empty {
-    background: #ccc;
-  }
-
-  @keyframes story {
-    0% {
-      background: linear-gradient(36deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    10% {
-      background: linear-gradient(72deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    20% {
-      background: linear-gradient(108deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    30% {
-      background: linear-gradient(144deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    40% {
-      background: linear-gradient(180deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    50% {
-      background: linear-gradient(216deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    60% {
-      background: linear-gradient(252deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    70% {
-      background: linear-gradient(288deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    80% {
-      background: linear-gradient(324eg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    90% {
-      background: linear-gradient(360deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-
-    100% {
-      background: linear-gradient(396deg,
-          rgb(255, 255, 255) 0%,
-          rgb(255, 255, 255) 25%,
-          rgb(255, 201, 0) 28%,
-          rgb(255, 0, 95) 73%,
-          rgb(255, 9, 237) 100%);
-    }
-  }
-</style>
-
-<body>
-
+<section>
   <div class="content right illustration_01">
     <h2>너도나도노드 화이팅 !!</h2>
     <p>
@@ -191,7 +24,7 @@
       위해 함께 합니다.
     </p>
   </div>
-  <section class="separator">
+  <div class="separator">
     <div id="stories-wrapper">
       <div id="stories-container">
         <button class="story">
@@ -256,7 +89,7 @@
         </button>
       </div>
     </div>
-  </section>
+  </div>
   <div class="content left illustration_02">
     <h2>Challenge program feed</h2>
     <!-- {% for twit in twits %} -->
@@ -269,9 +102,9 @@
     </div>
     <!-- {% endfor %} -->
   </div>
-  <section class="separator">
+  <div class="separator">
     <h1>도전의 가치를 알며 자연과 함께하는 사람들의 커뮤니티 공간</h1>
-  </section>
+  </div>
   <div class="content right illustration_03">
     <h2>in to the moutine board</h2>
     <div class="table-body">
@@ -328,7 +161,7 @@
       쓰레기를 회수하는 클린마운틴에 참여해 주시기 바랍니다.
     </p>
   </div>
-</body>
+</section>
 {% endblock %} {% block script %}
 <script src="/main/javascripts/weatherAPI.js"></script>
 <script>

@@ -17,11 +17,32 @@
 </head>
 
 <body>
-  <header class="header">
-    <div id="header-container">
-      <div id="header-logo">
-        <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
-      </div>
+  <header id="header">
+    <div id="header-logo">
+      <!-- <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a> -->
+      <img class="logo-img" src="/images/logo.png" alt="" />
+    </div>
+
+    <nav class="mynav">
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link link" href="/">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/club">도전클럽</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/community">게시판</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/">캠페인</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="header-right-container">
       {% if user and user.id %}
       <p class="hello">
         <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
@@ -31,47 +52,24 @@
       {% else %}
       <p class="hello">
         <span class="hello-item">
-          <!-- <a class="login-link link" href="/login">로그인</a> -->
+          <a class="login-link link" href="/login">로그인</a>
         </span>
       </p>
       {% endif %}
-      <section class="inner">
-        <div class="right_icons">
-          <a href="/club">
-            <div class="sprite_camera_icon"></div>
-          </a>
-          <a href="/infomountain">
-            <div class="sprite_compass_icon"></div>
-          </a>
-          <a href="/clubdetail">
-            <div class="sprite_heart_icon_outline"></div>
-          </a>
-          <a href="/login">
-            <div class="sprite_user_icon_outline"></div>
-          </a>
-        </div>
-      </section>
-
-      <nav class="mynav">
-        <ul>
-          <li class="nav-item">
-            <a class="nav-link link" target="_blank" href="/">ABOUT US</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" target="_blank" href="/club">도전클럽</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" target="_blank" href="/infomountain">100대 명산 정보</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" target="_blank" href="/community">게시판</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" target="_blank" href="/">캠페인</a>
-          </li>
-        </ul>
-      </nav>
-      <span class="target"></span>
+      <div class="right_icons">
+        <a href="/club">
+          <div class="sprite_camera_icon"></div>
+        </a>
+        <a href="/infomountain">
+          <div class="sprite_compass_icon"></div>
+        </a>
+        <a href="/clubdetail">
+          <div class="sprite_heart_icon_outline"></div>
+        </a>
+        <a href="/login">
+          <div class="sprite_user_icon_outline"></div>
+        </a>
+      </div>
     </div>
   </header>
   {% block content %} {% endblock %}
@@ -91,7 +89,7 @@
     }
   };
 </script>
-<script>
+<!-- <script>
   const target = document.querySelector(".target");
   const links = document.querySelectorAll(".mynav a");
   // 배열을 만들어 색지정
@@ -102,10 +100,10 @@
     // links[0].addEventListener('click',function(e){e.preventDefault();});
     // 위내용을 화살표함수로 변경해서 사용
     links[i].addEventListener("mouseenter", mouseenterFunc);
-    links[i].addEventListener("click", () => {
-      let targetLink = this.getAttribute("href");
-      location.href = targetLink;
-    });
+    // links[i].addEventListener("click", () => {
+    //   let targetLink = this.getAttribute("href");
+    //   location.href = targetLink;
+    // });
     //mouseenterFunc 마우스 할일
   }
   function mouseenterFunc() {
@@ -148,7 +146,7 @@
     }
   }
   window.addEventListener("resize", resizeFunc);
-</script>
+</script> -->
 {% block script %}
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {% endblock %}
