@@ -1,95 +1,107 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="shortcut icon" href="/images/logo.png" />
+    <link rel="stylesheet" href="/main/stylesheets/common.css" />
+    <link rel="stylesheet" href="/main/stylesheets/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/main/stylesheets/main.css" />
+    <link rel="stylesheet" href="/main/stylesheets/font.css" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
+    {% block css %} {% endblock %}
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
-  <link rel="shortcut icon" href="/images/logo.png" />
-  <link rel="stylesheet" href="/main/stylesheets/common.css" />
-  <link rel="stylesheet" href="/main/stylesheets/reset.css" />
-  <link rel="stylesheet" href="/main/stylesheets/main.css" />
-  <link rel="stylesheet" href="/main/stylesheets/font.css" />
-  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
-  <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
-  {% block css %} {% endblock %}
-</head>
-
-<body>
-  <header id="header">
-    <div id="header-logo">
-      <!-- <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a> -->
-      <img class="logo-img" src="/images/logo.png" alt="" />
-    </div>
-
-    <nav class="mynav">
-      <ul>
-        <li class="nav-item">
-          <a class="nav-link link" href="/">ABOUT US</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/club">도전클럽</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/community">게시판</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/">캠페인</a>
-        </li>
-      </ul>
-    </nav>
-    <div id="header-right-container">
-      {% if user and user.id %}
-      <p class="hello">
-        <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
-        <span class="hello-item logout"><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i></span>
-        <input id="my-id" type="hidden" value="{{user.id}}" />
-      </p>
-      {% else %}
-      <p class="hello">
-        <span class="hello-item">
-          <a class="login-link link" href="/login">로그인</a>
-        </span>
-      </p>
-      {% endif %}
-      <div class="right_icons">
-        <a href="/club">
-          <div class="sprite_camera_icon"></div>
-        </a>
-        <a href="/infomountain">
-          <div class="sprite_compass_icon"></div>
-        </a>
-        <a href="/clubdetail">
-          <div class="sprite_heart_icon_outline"></div>
-        </a>
-        <a href="/login">
-          <div class="sprite_user_icon_outline"></div>
-        </a>
+  <body>
+    <header id="header">
+      <div id="header-logo">
+        <!-- <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a> -->
+        <img class="logo-img" src="/images/logo.png" alt="" />
       </div>
-    </div>
-  </header>
-  {% block content %} {% endblock %}
-  <footer>
-    <div id="footer-container">
-      <div id="footer-logo"></div>
-      <div id="footer-menu-container"></div>
-    </div>
-  </footer>
-</body>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!-- <script src="../public/main/javascript/scrolltrigger.js"></script> -->
-<script>
-  window.onload = () => {
-    if (new URL(location.href).searchParams.get("loginError")) {
-      alert(new URL(location.href).searchParams.get("loginError"));
-    }
-  };
-</script>
-<!-- <script>
+
+      <nav class="mynav">
+        <ul>
+          <li class="nav-item">
+            <a class="nav-link link" href="/">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/club">도전클럽</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/community">게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/">캠페인</a>
+          </li>
+        </ul>
+      </nav>
+      <div id="header-right-container">
+        {% if user and user.id %}
+        <p class="hello">
+          <span class="hello-item"
+            ><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span
+          >
+          <span class="hello-item logout"
+            ><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i
+          ></span>
+          <input id="my-id" type="hidden" value="{{user.id}}" />
+        </p>
+        {% else %}
+        <p class="hello">
+          <span class="hello-item">
+            <a class="login-link link" href="/login">로그인</a>
+          </span>
+        </p>
+        {% endif %}
+        <div class="right_icons">
+          <a href="/club">
+            <div class="sprite_camera_icon"></div>
+          </a>
+          <a href="/infomountain">
+            <div class="sprite_compass_icon"></div>
+          </a>
+          <a href="/clubdetail">
+            <div class="sprite_heart_icon_outline"></div>
+          </a>
+          <a href="/login">
+            <div class="sprite_user_icon_outline"></div>
+          </a>
+        </div>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+    <footer>
+      <div id="footer-container">
+        <div id="footer-logo"></div>
+        <div id="footer-menu-container"></div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- <script src="../public/main/javascript/scrolltrigger.js"></script> -->
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get("loginError")) {
+        alert(new URL(location.href).searchParams.get("loginError"));
+      }
+    };
+  </script>
+  <!-- <script>
   const target = document.querySelector(".target");
   const links = document.querySelectorAll(".mynav a");
   // 배열을 만들어 색지정
@@ -147,8 +159,7 @@
   }
   window.addEventListener("resize", resizeFunc);
 </script> -->
-{% block script %}
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-{% endblock %}
-
+  {% block script %}
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  {% endblock %}
 </html>

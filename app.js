@@ -112,7 +112,7 @@ app.use("/infomountain", infoMountainRouter);
 /* mypage 폴더 (마이페이지) */
 app.use("/mypage", mypageRouter);
 app.use("/user", userRouter);
-
+app.use("/modify", modifyRouter);
 
 ////////////////////////////////////////////////////////////////
 

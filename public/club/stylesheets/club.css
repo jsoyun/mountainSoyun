@@ -157,21 +157,33 @@ input:focus {
 
 /* 사진 게시물 */
 .twit {
-  border: 1px solid #999;
   width: 18vw;
   height: 15vw;
   margin: 3px;
   padding: 2px;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+}
+.con {
+  border: 1px solid #999;
   border-radius: 7px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .twit-author {
-  background: #000;
+  /* background: #000; */
 }
 
+.twit-img {
+  width: 100%;
+  height: 100%;
+}
 .twit-img img {
-  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 .like,
@@ -199,16 +211,12 @@ input:focus {
 /* 위 수정 전 css 아래 수정중 css */
 .feed-container {
   padding: 4.125vw 20vw;
-  max-width: 100vw;
-  height: 100vw;
+  width: 100vw;
+  height: 100vh;
 }
 
 .search_field {
   text-align: center;
-}
-
-.twit {
-  display: inline-block;
 }
 
 #feed-btn a {
