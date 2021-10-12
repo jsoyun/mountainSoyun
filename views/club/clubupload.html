@@ -3,59 +3,73 @@
 <link rel="stylesheet" href="/club/stylesheets/clubupload.css">
 {% endblock %}
 {% block content %}
-<div id="main_container">
-  <h3>인증 신규 등록</h3>
-
-  <form id="twit-form" method="post" enctype="multipart/form-data">
-    <legend>명산100 [북한산]</legend>
-    <h5>지금 등록 가능한 인증지 입니다.</h5>
-
-    <div class="post_form_container">
-      <div action="#" class="post_form">
-        <div class="title">
-          NEW POST
-          <div class="img-preview">
-            <div class="upload">
-              <div id="img-upLoadBtn" for="img">
-                <div class="post_btn" for="img">
-                  <img id="img-preview" src="" style="display: none" width="200" alt="미리보기" />
-                  <input id="img" type="file" accept="image/*" />
+<div class="feed-container">
+  <div id="main_container">
+    <h3>인증 신규 등록</h3>
+  
+    <form id="twit-form" method="post" enctype="multipart/form-data">
+      <legend>명산100</legend>
+      <h5>지금 등록 가능한 인증지 입니다.</h5>
+  
+      <div class="post_form_container">
+        <div action="#" class="post_form">
+          <div class="title">
+            NEW POST
+            <br />
+            <div class="img-preview">
+              <div class="upload">
+                <div id="img-upLoadBtn" for="img">
+                  <div class="post_btn" for="img">
+                    <br />
+                    <br />
+                    <div class="plus_icon" for="img">
+                      <sapn></sapn>
+                      <span></span>
+                      <img id="img-preview" src="" style="display: none" width="200" alt="미리보기" />
+                      <input id="img" type="file" accept="image/*" /><br />
+                  <sapn></sapn>
+                  <span></span>
                 </div>
+               </div>
               </div>
+             </div>
             </div>
+            <input id="img-url" type="hidden" name="url" /><br />
           </div>
+          <br />
+  
+        <div class="rating-wrap">
+          <p>인증지 평가</p>
+          <div class="center">
+            <fieldset class="rating">
+              <ul class="rating">
+                <li class="rating-item" data-rate="1"></li>
+                <li class="rating-item active" data-rate="2"></li>
+                <li class="rating-item" data-rate="3"></li>
+                <li class="rating-item" data-rate="4"></li>
+                <li class="rating-item" data-rate="5"></li>
+                </ul>
+              </div>
+            </fieldset>
+          </div>
+          <h4 id="rating-values"></h4>
+  
+  
+        <div class="input-group">
+          <p>도전내용</p>
+          <textarea id="twit" name="content" maxlength="100" cols="50"
+           rows="5" placeholder="100자 내 도전내용을 작성해주세요."></textarea>
+          <textarea type="text" name="hashtag" id="text_field" cols="50" rows="5"
+            placeholder="#태그명을 통해서 검색 태그를 등록 할 수 있습니다.   예시: #북한산 #뷰맛집 #등린이"
+          ></textarea>
         </div>
+        <button id="twit-btn" type="submit" class="btn">인증하기</button>
+       </div>
       </div>
-      <input id="img-url" type="hidden" name="url" /><br />
+      </form>
     </div>
-</div>
-<div class="rating-wrap">
-  <p>인증지 평가</p>
-  <div class="rating">
-    <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-    <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-    <label for="rating1"></label>
-    <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-    <label for="rating2"></label>
-    <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점">
-    <label for="rating3"></label>
-    <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-    <label for="rating4"></label>
-    <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-    <label for="rating5"></label>
   </div>
-  <h4 id="rating-values"></h4>
-</div>
-<h4 id="rating-values"></h4>
-<div class="input-group">
-  <p>도전내용</p>
-  <textarea id="twit" name="content" maxlength="100" cols="50" rows="5" placeholder="100자 내 도전내용을 작성해주세요."></textarea>
-</div>
-<p>해시태그</p>
-<textarea type="text" name="hashtag" id="text_field" cols="50" rows="5"
-  placeholder="#태그명을 통해서 검색 태그를 등록 할 수 있습니다.   예시: #북한산 #뷰맛집 #등린이"></textarea>
-<button id="twit-btn" type="submit" class="btn">인증하기</button>
-</form>
 {% endblock %} {% block script %}
 <script src="/club/javascripts/clubupload.js"></script>
+<script src="/main/javascripts/weatherAPI.js"></script>
 {% endblock %}

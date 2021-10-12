@@ -45,17 +45,18 @@
           <li class="nav-item">
             <a class="nav-link link" href="/community">게시판</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link link" href="/">캠페인</a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <div id="header-right-container">
         {% if user and user.id %}
         <p class="hello">
           <span class="hello-item"
-            ><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span
-          >
+            ><a href="/mypage" class="sprite_user_icon_outline">
+             </a></span>
+             <div> {{'안녕하세요! ' + user.nick + '님'}}</div>
           <span class="hello-item logout"
             ><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i
           ></span>
@@ -64,23 +65,16 @@
         {% else %}
         <p class="hello">
           <span class="hello-item">
-            <a class="login-link link" href="/login">로그인</a>
+            <a href="/login" class="sprite_user_icon_outline"></a>
           </span>
         </p>
         {% endif %}
-        <div class="right_icons">
-          <a href="/club">
-            <div class="sprite_camera_icon"></div>
-          </a>
-          <a href="/infomountain">
-            <div class="sprite_compass_icon"></div>
-          </a>
-          <a href="/clubdetail">
-            <div class="sprite_heart_icon_outline"></div>
-          </a>
-          <a href="/login">
-            <div class="sprite_user_icon_outline"></div>
-          </a>
+        <div class="icons-box">
+          <div class="weather-api">
+            <h5 id="city-name"></h5>
+            <h5 id="weather"></h5>
+            <img id="weather-img"></img>
+          </div>
         </div>
       </div>
     </header>
@@ -93,6 +87,7 @@
     </footer>
   </body>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../public/main/javascripts/weatherAPI.js"></script>
   <!-- <script src="../public/main/javascript/scrolltrigger.js"></script> -->
   <script>
     window.onload = () => {

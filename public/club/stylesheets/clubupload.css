@@ -1,31 +1,16 @@
-.rating .rate_radio {
-    position: relative;
-    display: inline-block;
-    z-index: 20;
-    opacity: 0.001;
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    cursor: pointer;
-    vertical-align: top;
-    display: none;
+h3 {
+  font-size: 1.2em;
+  margin: 1.125em 0;
 }
-.rating .rate_radio + label {
-    position: relative;
-    display: inline-block;
-    margin-left: -4px;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    background-image: url('/images/starrate.png');
-    background-repeat: no-repeat;
-    background-size: 60px 60px;
-    cursor: pointer;
-    background-color: #f0f0f0;
+
+#twit-form legend {
+  margin-left: 17vw;
 }
-.rating .rate_radio:checked + label {
-    background-color: #ff8;
+#twit-form h5 {
+  font-size: 0.8em;
+  margin-left: 17vw;
 }
+
 .post_form_container {
   max-width: 60vw;
   max-height: 100vw;

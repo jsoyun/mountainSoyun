@@ -18,6 +18,26 @@
   --pg-padding-sz: 4em;
 }
 
+h3 {
+  font-size: 1.2em;
+  margin: 1.125em 0;
+}
+h4 {
+  font-size: 0.9em;
+  margin: 1.313em 0;
+}
+h5 {
+  font-size: 0.8em;
+  margin: 1.313em 0;
+}
+h6 {
+  font-size: 1em;
+  margin: 0.75em 0;
+}
+P {
+  font-size: 0.75em;
+  margin: 0.75em 0;
+}
 /* 상단 */
 .feed-header {
   text-align: center;
@@ -45,7 +65,7 @@
 }
 
 .tag-container .tag {
-  padding: 4px;
+  padding: 5px;
   border: 1px solid rgb(184, 202, 184);
   margin: 1px;
   display: inline-flex;
