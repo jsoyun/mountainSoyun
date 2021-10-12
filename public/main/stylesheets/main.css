@@ -38,23 +38,83 @@ header #header-logo img {
 .mynav ul {
   display: flex;
   flex-flow: row;
+  padding: 0;
 }
+
+.mynav ul li {
+  display: flex;
+  list-style: none;
+  padding: 1.2em;
+  flex-flow: row;
+  padding: 0;
+}
+
 .mynav a {
-  font-size: 1.5vh;
-  color: rgb(0, 0, 0);
+  font-size: 2.75vh;
+  color: rgb(38, 38, 38);
   text-decoration: none;
   margin: 1.1em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.mynav ul li a:before {
+  content: "";
+  width: 0px;
+  height: 3px;
+  background: #2ca573;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  transition: 1s;
+  mix-blend-mode: multiply;
+}
+
+.mynav ul li a:after {
+  content: "";
+  width: 0px;
+  height: 3px;
+  background: #47a6dd;
+  position: absolute;
+  top: 120%;
+  right: 0;
+  transition: 1s;
+  mix-blend-mode: multiply;
+}
+
+.mynav ul li:hover a:before {
+  width: 50%;
+  transform: translateX(100%);
+}
+.mynav ul li:hover a:after {
+  width: 50%;
+  transform: translateX(-100%);
 }
 
 header .hello {
-  font-size: 1.5vh;
-  border: 1px solid red;
+  font-size: 1.9vh;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 2.5em;
+  right: 3.6em;
+}
+
+.hi {
+  font-size: 1.7vh;
+  position: absolute;
+  top: 2.47em;
+  right: 8.8em;
+}
+
+.hello-item-logout {
+  font-size: 1.9vh;
+  position: absolute;
+  top: 3.4em;
+  right: 7.7em;
 }
 
 #header .right_icons {
+  width: 4vw;
+  height: 4vh;
   display: flex;
   flex-flow: row;
 }
@@ -79,6 +139,7 @@ pre {
 .weather-api {
   font-size: 0.752em;
   margin-left: 2vw;
+  margin-top: 5vw;
   display: inlinek;
   display: flex;
   flex-wrap: wrap;
@@ -143,9 +204,9 @@ h6 {
   margin: 0.75em 0;
 }
 P {
-  line-height: 1.25em;
-  /* width: 40vw;
-  height: em; */
+  line-height: 1.27em;
+  font-size: 1em;
+  padding-bottom: 3vh;
 }
 .content {
   font-size: 1.3rem;
@@ -174,7 +235,7 @@ P {
 }
 .illustration_03 {
   background-color: #3d4357;
-  background-image: url(../../images/main2.jpg);
+  background-image: url(../../images/hiking.jpg);
   background-position: 0% 100%;
   width: 97vw;
   height: 50vw;
