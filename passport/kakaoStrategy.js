@@ -32,7 +32,6 @@ module.exports = () => {
               nick: profile.displayName,
               snsId: profile.id,
               provider: "kakao",
-              img: '/img/basic.png',
             });
             //사용자 생성한 뒤 done함수 호출
             done(null, newUser);

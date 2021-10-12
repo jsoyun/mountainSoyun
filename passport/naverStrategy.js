@@ -23,8 +23,7 @@ module.exports = () => {
             provider : profile.provider,
             snsId : profile.id,
             nick : '손님',
-            email : profile.emails[0].value,
-            img: '/img/basic.png',
+            email : profile.emails[0].value
         });
           done(null, newUser);
         }

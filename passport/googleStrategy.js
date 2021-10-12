@@ -25,8 +25,7 @@ module.exports = () => {
           snsId : profile.id,
           // token : accessToken,
           nick : profile.displayName,
-          email : profile.emails[0].value,
-          img: '/img/basic.png',
+          email : profile.emails[0].value
         });
         done(null, newUser);
       }
