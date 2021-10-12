@@ -14,12 +14,8 @@
     <form class="community" method="POST" action="">
       <fieldset class="community-upload">
         <div class="community-upload-title">
-          <textarea 
-              class="upload-title-text upload-text" 
-              name="title" 
-              id="title" 
-              cols="80" 
-              rows="1">{{communityTwits.title}}</textarea>
+          <textarea class="upload-title-text upload-text" name="title" id="title" cols="80" 
+              rows="1" required>{{communityTwits.title}}</textarea>
         </div>
         <div class="community-upload-content upload-text">
           <div class="img-preview"> <!-- 여긴 js로 해야될 듯 -->
@@ -27,12 +23,8 @@
             <input id="img-url" type="hidden" name="url">
           </div>
           <div>
-            <textarea 
-              class="community-upload-text upload-text" 
-              name="content" 
-              id="content" 
-              cols="80" 
-              rows="8">{{communityTwits.content}}</textarea>
+            <textarea class="community-upload-text upload-text" name="content" id="content" cols="80" 
+              rows="8" required>{{communityTwits.content}}</textarea>
           </div>
         </div>
       </fieldset>

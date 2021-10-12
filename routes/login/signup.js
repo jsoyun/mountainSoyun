@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
+const nodemailer = require('nodemailer');
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const { isNotLoggedIn } = require("../middlewares");
@@ -66,14 +67,14 @@ const upload = multer({
   limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
-/* 게시글 IMG CREATE */
+/* 프로필 IMG CREATE */
 router.post("/img", upload.single("img"), (req, res) => {
   console.log(req.file);
 
   res.json({ url: `/img/${req.file.filename}` });
 });
 
-/* 게시글 TEXT CREATE */
+/* 프로필 TEXT CREATE */
 router.post("/", upload.none(), async (req, res, next) => {
   try {
     await User.create({
@@ -86,5 +87,37 @@ router.post("/", upload.none(), async (req, res, next) => {
     next(error);
   }
 });
+
+/* 비밀번호 찾기 이메일 전송 */
+// router.post("/", function(req, res, next){
+//   let email = req.body.email;
+
+//   let transporter = nodemailer.createTransport({
+//     service: 'Naver',
+//     host: 'smtp.naver.com',
+//     auth: {
+//       user: process.env.Node_Email,  // gmail 계정 아이디를 입력
+//       pass: process.env.Node_Pwd,          // gmail 계정의 비밀번호를 입력
+//     }
+//   });
+
+//   let mailOptions = {
+//     from: process.env.Node_Email,    // 발송 메일 주소 (위에서 작성한 gmail 계정 아이디)
+//     to: email ,                     // 수신 메일 주소
+//     subject: 'Sending Email using Node.js',   // 제목
+//     text: 'That was easy!'  // 내용
+//   };
+
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//     }
+//     else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
+
+//   res.redirect("/");
+// })
 
 module.exports = router;

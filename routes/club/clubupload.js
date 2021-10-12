@@ -27,6 +27,11 @@ const upload = multer({
     },
     filename(req, file, cb) {
       const ext = path.extname(file.originalname);
+      console.log(ext);
+      console.log(typeof(ext));
+      if (ext != (".jpg" && ".png" && ".gif" && ".bmp" && ".jpeg" )) {
+        return;
+      }
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
@@ -40,6 +45,9 @@ router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
 
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
+    if (req.body.url == false) {
+      return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
+    }
     const club = await Club.create({
       content: req.body.content,
       img: req.body.url,
