@@ -24,6 +24,6 @@ module.exports = class Img extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Img.belongsToMany(db.Club, { through: 'clubImg' });
+    db.Img.belongsTo(db.Club, { foreignKey: "clubImgId", targetKey: "id"});
   }
 };

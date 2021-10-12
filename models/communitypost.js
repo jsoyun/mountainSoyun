@@ -24,6 +24,10 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
           type: Sequelize.STRING(200),
           allowNull: true,
         },
+        views: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
         createdAt: {
           type: Sequelize.DATEONLY,         // DATE 는 DateOnly
           allowNull: false,

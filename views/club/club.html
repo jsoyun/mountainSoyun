@@ -55,7 +55,9 @@
         <button class="twit-unfollow btn"><i class="fas fa-user"></i></button>
         {% endif %}
         <div class="twit-img">
-          <a href="/clubdetail"><img style="width: 300px; height: 200px;" src="{{twit.img}}" alt="섬네일" /></a>
+          {% for clubImg in clubImgs %}
+          <a href="/clubdetail"><img style="width: 300px; height: 200px;" src="{{clubImg.img}}" alt="섬네일" /></a>
+          {% endfor %}
         </div>
         <button class="like"><i class="far fa-heart"></i></button>
 
