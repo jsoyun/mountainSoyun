@@ -77,17 +77,10 @@
       </div>
     </footer>
   </body>
-  <script>
-    window.onload = () => {
-      if (new URL(location.href).searchParams.get("loginError")) {
-        alert(new URL(location.href).searchParams.get("loginError"));
-      }
-    };
-  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/main/javascripts/weatherAPI.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {% block script %}
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="../public/main/javascripts/weatherAPI.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {% endblock %}
 
 </html>

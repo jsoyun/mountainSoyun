@@ -106,7 +106,6 @@
   </div>
 </section>
 {% endblock %} {% block script %}
-<script src="/main/javascripts/weatherAPI.js"></script>
 <script>
   /* 인스타 캐러셀 구현 */
   const stories = document.querySelectorAll("#stories-container button");
@@ -122,5 +121,12 @@
       story.classList.add("active");
     });
   });
+</script>
+<script>
+  window.onload = () => {
+    if (new URL(location.href).searchParams.get("loginError")) {
+      alert(new URL(location.href).searchParams.get("loginError"));
+    }
+  };
 </script>
 {% endblock %}
