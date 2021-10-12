@@ -39,8 +39,10 @@ router.get("/hashtag", async (req, res, next) => {
   let queryData = url.parse(req.url, true).query;
   let search = queryData.hashtag;
 
+  console.log('///////////////////////');
+  console.log(search)
   if (!search) {
-    res.redirect("/");
+    return res.redirect("/club");
   }
   try {
     const hashtags = await Hashtag.findOne({ where: { title: search } });

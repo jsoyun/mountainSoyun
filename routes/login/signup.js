@@ -26,11 +26,6 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
       return res.send("<script>alert('비밀번호를 확인해주세요.'); location.href='/signup';</script>");
     }
 
-    // 수정 중
-    // if (agreeCheck != 'Y') {
-    //   return res.send("<script>alert('약관에 체크해주세요.'); location.href='/signup';</script>");
-    // }
-
     const hash = await bcrypt.hash(pwd, 12);
     User.create({
       nick,

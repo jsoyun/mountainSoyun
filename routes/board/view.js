@@ -48,14 +48,14 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/delete', async (req, res, next) => {
   try { // 저장된 사진 DELETE
     const {img} = await CommunityPost.findOne({where: {id: parseInt(req.params.id, 10)}});
-    const file = await fs2.readFile(img.replace('/img', './uploads'))
+    const file = await fs2.readFile(img.replace('/img', './uploads'));
     if(file){
-        await fs2.unlink(img.replace('/img', './uploads'));
+      await fs2.unlink(img.replace('/img', './uploads'));
     } 
     await CommunityPost.destroy({
-        where: {id: parseInt(req.params.id, 10)},
+      where: {id: parseInt(req.params.id, 10)},
     });
-      res.redirect('/community/page?offset=0&limit=2');
+      res.redirect("/community/page?offset=0&limit=5");
   } catch (error) {
     console.error(error);
     next(error);
@@ -64,26 +64,26 @@ router.get('/:id/delete', async (req, res, next) => {
 
 /* 게시글 좋아요 */
 router.post('/:id/like', async(req, res, next) => {
-    try {
-        const post = await CommunityPost.find({ where: { id: req.params.id }});
-        await post.addLiker(parseInt(req.user.id));
-        res.send("좋아요");
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
+  try {
+    const post = await CommunityPost.find({ where: { id: req.params.id }});
+    await post.addLiker(parseInt(req.user.id));
+    res.send("좋아요");
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
 });
 
 /* 게시글 좋아요 취소 */
 router.post('/:id/unlike', async(req, res, next) => {
-    try {
-        const post = await CommunityPost.find({ where: { id: req.params.id }});
-        await post.removeLiker(parseInt(req.user.id));
-        res.send('취소');
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
+  try {
+    const post = await CommunityPost.find({ where: { id: req.params.id }});
+    await post.removeLiker(parseInt(req.user.id));
+    res.send('취소');
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
 });
 
 module.exports = router;

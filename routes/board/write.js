@@ -49,7 +49,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       img: req.body.url,
       UserId: req.user.id,
     });
-    res.redirect("/community/page?offset=0&limit=2");
+    res.redirect("/community/page?offset=0&limit=5");
   } catch (error) {
     console.error(error);
     next(error);
