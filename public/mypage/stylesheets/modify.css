@@ -1,0 +1,30 @@
+:root {
+  --btn-main-font: Cafe24SsurroundAir;
+  --btn-font-family: Cafe24SsurroundAir;
+  --search-bg-color: white;
+  --btn-radius: 10px;
+  --btn-height: 1vw;
+  --btn-bg-height: 2.5vw;
+  --search-width: 21vw;
+  --search-btn-width: 1vw;
+  --search-bg-width: 10vw;
+  --select-border-color: #bababa;
+  --select-width: 6vw;
+  --tb-font-family: SpoqaHanSansNeo-Regular;
+}
+
+.modify-timeline {
+  margin: 0;
+  padding: 10%;
+  display: grid;
+
+  /* width: 100vmin; */
+  /* height: 100vmin; */
+  font-family: var(--btn-font-family), sans-serif;
+  color: black;
+  line-height: normal;
+}
+
+h2 {
+  font-family: var(--btn-font-family), sans-serif;
+}

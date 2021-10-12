@@ -1,28 +1,21 @@
 {% extends "layout.html" %} {% block css %} {% endblock %} {% block content %}
 <section>
   <div class="content right illustration_01">
-    <h2>너도나도노드 화이팅 !!</h2>
-    <p>
-      '명산100'은 우리나라의 대표적인 산 100개를 오르는 프로그램 입니다.
-      ‘명산100’ 프로그램은 자신을 찾아 떠나는 여정이자 도전으로, 산과 사람을
-      연결하며 삶을 더욱 가치 있게 만들기 위해 노력하는 산행 프로그램입니다.
-      단순히 등산 프로그램을 넘어 산을 통해 많은 사람이 인간관계를 형성하고
-      소통하며 발전하는 것을 목표로 합니다.
-    </p>
-    <p>******************************</p>
-    <p>** 날씨 api와 다른 요소 넣을 임시공간 **</p>
-    <h1 id="city-name"></h1>
-    <h1 id="weather"></h1>
-    <img id="weather-img"></img>
-    <p>******************************</p>
-    <p>
-      산을 중심으로 뜻 깊은 경험을 선사해줄 다양한 프로그램을 제공하고 있습니다.
-      대한민국을 대표하는 100대 명산을 오르는 ‘명산 100’ 프로그램, 한국의
-      백두대간을 거니는 ‘백두대간‘ 프로그램, 우리나라 대표적인 섬을 여행하는
-      프로젝트인 ‘섬&산‘ 프로그램, 아름다운 산을 우리 손으로 직접 지키는
-      ‘클린마운틴365’ 캠페인까지. 회원과 함께 더욱더 즐겁고 지속가능한 등산을
-      위해 함께 합니다.
-    </p>
+    <!-- <div class="weather-api">
+      <h5 id="city-name"></h5>
+      <h5 id="weather"></h5>
+      <img id="weather-img"></img>
+    </div> -->
+    <div class="content-box_01">
+      <h2>in to the mountain</h2>
+      <p>
+        '명산100'은 우리나라의 대표적인 산 100개를 오르는 프로그램 입니다.
+        ‘명산100’ 프로그램은 자신을 찾아 떠나는 여정이자 도전으로, 산과 사람을
+        연결하며 삶을 더욱 가치 있게 만들기 위해 노력하는 산행 프로그램입니다.
+        단순히 등산 프로그램을 넘어 산을 통해 많은 사람이 인간관계를 형성하고
+        소통하며 발전하는 것을 목표로 합니다.
+      </p>
+    </div>
   </div>
   <div class="separator">
     <div id="stories-wrapper">
@@ -30,60 +23,6 @@
         <button class="story">
           <div class="profile">
             <img src="/public/images/캡처.JPG" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="/public/images/logo.png" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile empty">
-            <img src="" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
-          </div>
-          <div class="tittle">닉넴</div>
-        </button>
-        <button class="story">
-          <div class="profile">
-            <img src="feed1.jpg" alt="" />
           </div>
           <div class="tittle">닉넴</div>
         </button>
@@ -96,7 +35,12 @@
     <div class="img_section">
       <div class="trans_inner">
         <div id="img-layout">
-          <img style="width: 150px" cols="3" src="{{twit.img}}" alt="상세이미지" />
+          <img
+            style="width: 150px"
+            cols="3"
+            src="{{twit.img}}"
+            alt="상세이미지"
+          />
         </div>
       </div>
     </div>
@@ -152,18 +96,16 @@
     </div>
     <br />
     <p>
-      등산을 포함한 아웃도어 활동은 환경을 훼손하거나 오염시킬 우려가 많은
-      활동입니다. 우리는 아웃도어 활동을 하며 손 쉽게 일회용 용기와 팩을
-      사용하며 pet 병에 담긴 물과 음료를 마십니다. 그리고 그 흔적들은 등산하는
-      도중에 손쉽게 발견할 수 있습니다. 클린마운틴은 모든 프로그램에서 가장
-      우선시되는 환경활동입니다. 프로그램 참여자는 일회용품 사용을 줄이고 자신이
-      가져간 쓰레기는 반드시 가져올 의무가 있습니다. 더 나아가 누군가 버린
-      쓰레기를 회수하는 클린마운틴에 참여해 주시기 바랍니다.
+      산을 중심으로 뜻 깊은 경험을 선사해줄 다양한 프로그램을 제공하고 있습니다.
+      대한민국을 대표하는 100대 명산을 오르는 ‘명산 100’ 프로그램, 한국의
+      백두대간을 거니는 ‘백두대간‘ 프로그램, 우리나라 대표적인 섬을 여행하는
+      프로젝트인 ‘섬&산‘ 프로그램, 아름다운 산을 우리 손으로 직접 지키는
+      ‘클린마운틴365’ 캠페인까지. 회원과 함께 더욱더 즐겁고 지속가능한 등산을
+      위해 함께 합니다.
     </p>
   </div>
 </section>
 {% endblock %} {% block script %}
-<script src="/main/javascripts/weatherAPI.js"></script>
 <script>
   /* 인스타 캐러셀 구현 */
   const stories = document.querySelectorAll("#stories-container button");
@@ -179,5 +121,12 @@
       story.classList.add("active");
     });
   });
+</script>
+<script>
+  window.onload = () => {
+    if (new URL(location.href).searchParams.get("loginError")) {
+      alert(new URL(location.href).searchParams.get("loginError"));
+    }
+  };
 </script>
 {% endblock %}

@@ -3,6 +3,11 @@ const router = express.Router();
 const url = require('url');
 const { CommunityPost, User } = require('../../models');
 
+router.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
+
 /* 커뮤니티 목록 */
 router.get('/', async (req, res, next) => {
   res.redirect("/community/page?offset=0&limit=5");

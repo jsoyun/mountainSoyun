@@ -1,5 +1,11 @@
-{%extends "layout.html" %} {% block css %} {%endblock%} {%block content%}
-<div class="timeline">
+{%extends "layout.html" %} {% block css %}<link
+  rel="stylesheet"
+  href="/mypage/stylesheets/modify.css"
+/>
+{%endblock%} {%block content%}
+
+<div class="modify-timeline">
+  <h2>정보 수정하기</h2>
   <form id="modify-form" action="modify" method="POST">
     <div class="input-group">
       <label for="modify-email">이메일</label>
@@ -22,4 +28,5 @@
     <button id="modify-form" type="submit" class="btn">변경</button>
   </form>
 </div>
-{%endblock%} {%block script%}{%endblock%}
+{%endblock%} {%block script%}
+{%endblock%}
