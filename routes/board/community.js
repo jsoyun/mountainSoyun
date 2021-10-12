@@ -5,25 +5,7 @@ const { CommunityPost, User } = require('../../models');
 
 /* 커뮤니티 목록 */
 router.get('/', async (req, res, next) => {
-  try {
-    const posts = await CommunityPost.findAll({
-      include: { 
-        model: User,
-        attribute: ['id', 'nick'],
-      },
-      order: [['id', 'DESC']],
-      limit: 5,    // 페이지에 표시될 게시물 수
-    });
-    res.render('board/main-community', {
-      title: 'mountain 커뮤니티',
-      communityTwits: posts,
-    });
-    
-    console.log();
-  } catch (error) {
-    console.error(error);
-    next(error);
-  };
+  res.redirect("/community/page?offset=0&limit=5");
 });
 
 // 페이지 표기

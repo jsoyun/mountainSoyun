@@ -5,6 +5,7 @@ module.exports = class Club extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        // 아래 주석
         img: {
           type: Sequelize.STRING(200),
           allowNull: true,

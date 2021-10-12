@@ -38,16 +38,26 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
-  console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
+router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
+  console.log("파일" + req.file);
+  let urlArr = new Array(); 
+  for (let i = 0; i < req.files.length; i++) { 
+    urlArr.push(`/img/${req.files[i].filename}`); 
+    console.log(urlArr[i]); 
+  } 
+  let jsonUrl = JSON.stringify(urlArr); 
+  res.json(jsonUrl);
 });
 
-router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
   try {
+    console.log(req.body.url);
+    if (req.body.url == false) {
+      return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
+    }
     const club = await Club.create({
       content: req.body.content,
-      img: req.body.url,
+      // img: req.body.url,
       hash: req.body.hashtag,
       star: req.body.star,
       userId: req.user.id,
@@ -71,9 +81,5 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
     next(error);
   }
 });
-
-// sequelize.sync({logging: false}).then(() => {
-//   return Model.Rating.findAll
-// })
 
 module.exports = router;
