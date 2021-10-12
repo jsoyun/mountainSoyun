@@ -16,80 +16,77 @@
   <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
   {% block css %} {% endblock %}
 </head>
-
-<body>
-  <header id="header">
-    <div id="header-logo">
-      <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
-    </div>
-
-    <nav class="mynav">
-      <ul>
-        <li class="nav-item">
-          <a class="nav-link link" href="/">ABOUT US</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/club">도전클럽</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/community/page?offset=0&limit=5">게시판</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link link" href="/">캠페인</a>
-        </li>
-      </ul>
-    </nav>
-    <div id="header-right-container">
-      {% if user and user.id %}
-      <p class="hello">
-        <span class="hello-item"><a href="/mypage">{{'안녕하세요! ' + user.nick + '님'}}</a></span>
-        <span class="hello-item logout"><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i></span>
-        <input id="my-id" type="hidden" value="{{user.id}}" />
-      </p>
-      {% else %}
-      <p class="hello">
-        <span class="hello-item">
-          <a class="login-link link" href="/login">로그인</a>
-        </span>
-      </p>
-      {% endif %}
-      <div class="right_icons">
-        <a href="/club">
-          <div class="sprite_camera_icon"></div>
-        </a>
-        <a href="/infomountain">
-          <div class="sprite_compass_icon"></div>
-        </a>
-        <a href="/clubdetail">
-          <div class="sprite_heart_icon_outline"></div>
-        </a>
-        <a href="/login">
-          <div class="sprite_user_icon_outline"></div>
-        </a>
+  <body>
+    <header id="header">
+      <div id="header-logo">
+        <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
       </div>
-    </div>
-  </header>
-  {% block content %} {% endblock %}
-  <footer>
-    <div id="footer-container">
-      <div id="footer-logo"></div>
-      <div id="footer-menu-container"></div>
-    </div>
-  </footer>
-</body>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!-- <script src="../public/main/javascript/scrolltrigger.js"></script> -->
-<script>
-  window.onload = () => {
-    if (new URL(location.href).searchParams.get("loginError")) {
-      alert(new URL(location.href).searchParams.get("loginError"));
-    }
-  };
-</script>
+
+      <nav class="mynav">
+        <ul>
+          <li class="nav-item">
+            <a class="nav-link link" href="/">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/club">도전클럽</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link" href="/community">게시판</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link link" href="/">캠페인</a>
+          </li> -->
+        </ul>
+      </nav>
+      <div id="header-right-container">
+        {% if user and user.id %}
+        <p class="hello">
+          <span class="hello-item"
+            ><a href="/mypage" class="sprite_user_icon_outline">
+             </a></span>
+             <div> {{'안녕하세요! ' + user.nick + '님'}}</div>
+          <span class="hello-item logout"
+            ><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i
+          ></span>
+          <input id="my-id" type="hidden" value="{{user.id}}" />
+        </p>
+        {% else %}
+        <p class="hello">
+          <span class="hello-item">
+            <a href="/login" class="sprite_user_icon_outline"></a>
+          </span>
+        </p>
+        {% endif %}
+        <div class="icons-box">
+          <div class="weather-api">
+            <h5 id="city-name"></h5>
+            <h5 id="weather"></h5>
+            <img id="weather-img"></img>
+          </div>
+        </div>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+    <footer>
+      <div id="footer-container">
+        <div id="footer-logo"></div>
+        <div id="footer-menu-container"></div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get("loginError")) {
+        alert(new URL(location.href).searchParams.get("loginError"));
+      }
+    };
+  </script>
 {% block script %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../public/main/javascripts/weatherAPI.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {% endblock %}
 

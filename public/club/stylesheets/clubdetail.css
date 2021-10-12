@@ -1,49 +1,78 @@
-.b_inner .contents_box {
+.community-view-box {
+  max-width: 100vw;
   float: none;
   display: flex;
   justify-content: center;
+  border: 1px solid red;
 }
 
-.contents {
-  max-width: 100vw;
-  display: block;
-  border: 1px solid rgba(0, 0, 0, 0.0975);
-  border-radius: 3px;
-  background: #fff;
-}
-.contents .top {
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 5px;
+#club-list {
+  padding: 4.125vw 20vw;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  border: 1px solid orange;
 }
 
-.contents .top .profile_img {
-  width: 32px;
-  height: 32px;
+.club-table {
+  position: absolute;
+  border: 1px solid green;
+}
+.club-content-container {
+  border: 1px solid blue;
+  display: inline-block;
+}
+
+.user-container {
+  display: block;
+  width: 100%;
+  height: 5vw;
+  border: 1px solid blue;
+}
+
+.user-container img {
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 10px;
+  margin-left: 15px;
+  border: 1px solid blue;
 }
 
-.contents .top .profile_img img {
-  width: 100%;
-  height: 10%;
-}
-.contents .top .user_container {
+.user-container div {
   display: flex;
-  width: 10vw;
+  width: 25vw;
   height: 5vw;
 }
 
-.contents .img_section {
-  overflow: hidden;
-  max-width: 598px;
+.img_section {
+  position: relative;
   border-right: 1px solid rgba(0, 0, 0, 0.0975);
 }
 
+.img_section img {
+  display: flex;
+  position: absolute;
+  margin: auto;
+}
+
+.button-icons {
+  width: 50vw;
+  height: 7vw;
+  border: 1px solid green;
+}
+
+.comment-box {
+  width: 50vw;
+  height: 7vw;
+  border: 1px solid green;
+}
+
+/* 
 .contents .img_section .trans_inner {
-  /*width: 2448px;*/
+  /*width: 2448px;
   font-size: 0;
 }
 
@@ -58,7 +87,7 @@
 }
 
 .sprite_more_icon.on .more_detail {
-  /*display: block;*/
+  /*display: block;
   transform: scale(1);
 }
 
@@ -80,10 +109,10 @@
 }
 
 .contents .img_section .trans_inner {
-  /*width: 2448px;*/
+  /*width: 2448px;
   font-size: 0;
-}
-
+}*/
+/* 
 .contents .img_section .trans_inner > div {
   width: 100%;
   display: inline-block;
@@ -207,3 +236,4 @@
   padding: 0;
   margin-top: 10px;
 }
+*/

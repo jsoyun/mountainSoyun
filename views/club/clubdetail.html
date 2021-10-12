@@ -10,38 +10,13 @@
 <section class="community-view-box">
   <div class="title">상세페이지</div>
   <div id="club-list">
+
   </div>
 </section>
-{% endblock %}
-{% block script %}
+
+{% endblock %} {% block script %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/club/javascripts/clubdetail.js"></script>
+<script src="/main/javascripts/weatherAPI.js"></script>
+
 {% endblock %}
-
-<div class="club-table">
-  <div class="club-content-container">
-  <div class="user-container">
-      <div class="profile-img"></div>
-      <div class="profile-name"></div>
-  </div>
-
-  <div class="img-section">
-    <img src="/img/feed121634009722761.jpg" />
-  </div>
-
-  <div class="button-icons">
-    <!-- 좋아요 ♥ 버튼 -->
-  </div>
-  <div class="comment-box">
-    <!-- 작성글 -->
-  </div>
-</div>
-
-  <div class="comment-form" ">
-  <form class="input-form">
-    <input type="text" name="comment" />
-    <button class="input-button" type="submit">확인</button>
-    <button type="button">취소</button>
-  </form>
-</div>
-</div>
