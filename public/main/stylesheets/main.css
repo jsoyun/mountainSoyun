@@ -163,36 +163,28 @@ P {
 .illustration_01 {
   background-color: #454746;
   background-image: url(../../images/main0.jpg);
-  height: 30vw;
-  background-size: cover;
-  background-position: 0% 50%;
-  /* min-width: 100vw; */
-  min-height: 60vh;
+  background-position: 0 50%;
+  width: 96vw;
+  height: 78vh;
 }
-
-.content-box_01 {
-  text-shadow: 2px 2px 2px gray;
-  font-size: 0.7em;
-  margin-right: 5vw;
-}
-
 .illustration_02 {
   background-color: #3d5745;
-  /* background-image: url(../../images/walking1.jpg); */
+  background-image: url(../../images/walking1.jpg);
   background-position: 100% 50%;
-  background-size: cover;
 }
-
 .illustration_03 {
   background-color: #3d4357;
-  background-image: url();
+  background-image: url(../../images/main2.jpg);
   background-position: 0% 100%;
+  width: 97vw;
+  height: 50vw;
 }
 .separator {
   padding: 1.8em 1.2em;
   text-align: center;
   font-size: 0.715em;
 }
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #stories-wrapper {
