@@ -12,7 +12,7 @@ const router = express.Router();
 
 /* 게시글 수정 전 READ */
 router.get("/", (req, res, next) => {
-  res.render("mypage/modify", { title: '개인정보 수정하기', });
+  res.render("mypage/modify", { title: '개인정보 수정하기' });
 });
 
 /* uploads 폴더 */
