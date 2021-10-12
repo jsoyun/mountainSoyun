@@ -51,6 +51,7 @@ font-size: 1.5vh;
   position: absolute;
   top: 0.5em;
   right: 0.5em;
+  text-decoration: none;
 }
 
 #header .right_icons {
@@ -58,12 +59,19 @@ display: flex;
 flex-flow: row;
 }
 
+#header .right_icons a{
+margin-left: 10px;
+margin-right: 10px;
+}
+
+
+
 
 
 section{
   width: 100%;
   height: 80%;
-  overflow: scroll;
+
 }
 footer {
   width: 100%;
@@ -323,16 +331,19 @@ P {
   background-color: #454746;
   background-image: url(../../images/main0.jpg);
   background-position: 0 50%;
+  background-size: cover;
 }
 .illustration_02 {
   background-color: #3d5745;
   background-image: url(../../images/walking1.jpg);
   background-position: 100% 50%;
+  background-size: cover;
 }
 .illustration_03 {
   background-color: #3d4357;
   background-image: url(../../images/main2.jpg);
   background-position: 0% 100%;
+  background-size: cover;
 }
 .separator {
   padding: 1.8em 1.2em;

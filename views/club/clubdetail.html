@@ -1,105 +1,47 @@
 {% extends "layout.html" %} {% block css %}
 <link rel="stylesheet" href="/club/stylesheets/clubdetail.css" />
+<style>
+  .club-table img{
+    width: 32vw;
+    height: 20vw;
+  }
+</style>
 {% endblock %} {% block content %}
-
-<div class="feed-container">
-  <h3>피드 상세페이지</h3>
-  {% for twit in twits %}
-  <div class="b_inner">
-    <div class="contents_box">
-      <article class="contents cont01">
-        <header class="top">
-          <div class="user_container">
-            <div class="profile_img">
-              <div class="twit">
-                <img src="" alt="" />
-                <p>여기가 프로필 이미지 들어갈곳.</p>
-                <!-- <div class="user_name"> -->
-              </div>
-            </div>
-            <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
-            <input type="hidden" value="{{twit.id}}" class="twit-id" />
-            <!-- <div class="nick_name">userNick</div> -->
-            <div class="twit-author">{{twit.User.nick}}</div>
-          </div>
-          <div class="sprite_more_icon"></div>
-        </header>
-
-        <div class="img_section">
-          <div class="trans_inner">
-            <div class="twit-img">
-              <a href="/clubdetail">
-                <img style="width: 600px; height: 250px" src="{{twit.img}}" alt="상세이미지" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="button_icons">
-          <div class="left_icons">
-            <!-- 좋아요 ♥ 아이콘 -->
-            <div class="heart_btn">
-              <div class="sprite_heart_icon_outline" data-name="heartbeat"></div>
-            </div>
-            <div class="count_likes">
-              좋아요
-              <span class="count">2,351</span>
-              개
-            </div>
-          </div>
-        </div>
-        <div class="comment_container">
-          <div class="comment">
-            <div class="nick_name">
-              <!-- 게시글 사용자 닉 -->
-              <input class="listNum" name="clubId" type="text" value="{{twit.id}}" readonly>
-            </div>
-            <p>
-            <div class="club-content">{{twit.content}}</div>
-            <button class="feed__article-more-button">more</button>
-            </p>
-            <p>
-            <div class="club-createdAt">{{twit.createdAt}}</div>
-            </p>
-          </div>
-
-          <form class="comment-form" method="post">
-            <fieldset>
-              <!-- <legend>댓글 등록</legend> -->
-              <div>
-                <input name="comment" type="text" placeholder="댓글">
-                <button class="submit_reply" type="submit">등록</button>
-              </div>
-            </fieldset>
-          </form>
-          <table class="comment-list{{twit.id}}">
-            <thead>
-              <tr>
-                <th>아이디</th>
-                <th>댓글</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </div>
-        {% endfor %}
-      </article>
-    </div>
+<section class="community-view-box">
+  <div class="title">상세페이지</div>
+  <div id="club-list">
   </div>
-</div>
+</section>
 {% endblock %}
 {% block script %}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/club/javascripts/clubdetail.js"></script>
-<script>
-  //opening an article with more button
-  const openArticle = () => {
-    const article = document.getElementById('.club-content')
-    article.classList.add('open')
-    moreArticleBtn.classList.add('open')
-  }
-
-  //more button event listener
-  moreArticleBtn.addEventListener('click', openArticle)
-</script>
 {% endblock %}
+
+<div class="club-table">
+  <div class="club-content-container">
+  <div class="user-container">
+      <div class="profile-img"></div>
+      <div class="profile-name"></div>
+  </div>
+
+  <div class="img-section">
+    <img src="/img/feed121634009722761.jpg" />
+  </div>
+
+  <div class="button-icons">
+    <!-- 좋아요 ♥ 버튼 -->
+  </div>
+  <div class="comment-box">
+    <!-- 작성글 -->
+  </div>
+</div>
+
+  <div class="comment-form" ">
+  <form class="input-form">
+    <input type="text" name="comment" />
+    <button class="input-button" type="submit">확인</button>
+    <button type="button">취소</button>
+  </form>
+</div>
+</div>
