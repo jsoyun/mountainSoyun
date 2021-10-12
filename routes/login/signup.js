@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const { isNotLoggedIn } = require("../middlewares");
@@ -14,8 +14,8 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", isNotLoggedIn, async (req, res, next) => {
-  console.log(req.body);
-  const { nick, email, pwd, url, pwdcheck, agreeCheck } = req.body;
+  const { nick, email, pwd, pwdcheck } = req.body;
+  let { url } = req.body;
   try {
     const exUser = await User.findOne({ where: { email } });
 
@@ -27,6 +27,12 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
     }
 
     const hash = await bcrypt.hash(pwd, 12);
+    console.log('이미지' + url);
+    if (url == false) {
+      console.log(1);
+      url = '/img/basic.png';
+    }
+    console.log(url);
     User.create({
       nick,
       email,
@@ -70,18 +76,18 @@ router.post("/img", upload.single("img"), (req, res) => {
 });
 
 /* 프로필 TEXT CREATE */
-router.post("/", upload.none(), async (req, res, next) => {
-  try {
-    await User.create({
-      // nick: req.body.nick,
-      img: req.body.url,
-    });
-    res.redirect("/signup");
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
+// router.post("/", upload.none(), async (req, res, next) => {
+//   try {
+//     await User.create({
+//       // nick: req.body.nick,
+//       img: req.body.url,
+//     });
+//     res.redirect("/signup");
+//   } catch (error) {
+//     console.error(error);
+//     next(error);
+//   }
+// });
 
 /* 비밀번호 찾기 이메일 전송 */
 // router.post("/", function(req, res, next){

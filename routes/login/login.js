@@ -69,15 +69,4 @@ router.get(
   }
 );
 
-/* 페이스북 */
-router.get("/facebook", passport.authenticate("facebook", { scope: ['profile', 'email'] }));
-
-router.get(
-  "/facebook/callback",
-  passport.authenticate("facebook", { failureRedirect: "/" }),
-  (req, res) => {
-    res.redirect("/");
-  }
-);
-
 module.exports = router;
