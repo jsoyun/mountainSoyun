@@ -35,4 +35,26 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/* 커뮤니티 목록 */
+router.get("/", async (req, res, next) => {
+  try {
+    const posts = await CommunityPost.findAll({
+      include: {
+        model: User,
+        attribute: ["id", "nick"],
+      },
+      order: [["id", "DESC"]],
+      limit: 5, // 페이지에 표시될 게시물 수
+    });
+    res.render("main/main", {
+      title: "into the mountain",
+      communityTwits: posts,
+    });
+
+    console.log();
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 module.exports = router;

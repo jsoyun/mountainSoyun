@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<section>
 <div class="feed-container">
   <div class="container">
     <div class="tag-container">
@@ -16,9 +17,11 @@
       </div> 
       <form id="hashtag-form" action="/club/hashtag">
         <input class="tag-search" type="text" name="hashtag" placeholder="" />
-        <button class="tag-search-btn btn" type="submit"><i class="fas fa-search"></i></button>
       </form>
+      <button class="tag-search-btn btn" type="submit"><i class="fas fa-search"></i></button>
     </div>
+   
+
   </div>
 
   <h3>인기 피드</h3>
@@ -33,40 +36,41 @@
         인증사진 등록하기
       </a>
     </button>
-    <h4>인증시 ITM 코인 지급</h3>
-      <h5>
-        ITM에서 명산 100 및 기타 도전프로그램 또는 이벤트 인증 완료시
-        ITM코인(2021.10~) 이 산 높이 만큼 지급되며, ITM 제휴 아웃도어 제품 구매시
-        사용이 가능합니다. 사용한도는 멤버십 등급에 따라 다르게 적용이 되며, ITM코인
-        지급 내역 밒 멤버십 관련사항은 ITM 앱 내 [도전자 정보] > [마이페이지] 에서
-        확인이 가능합니다. (혜택사항은 변경 될 시 소급 적용되지 않으며, 운영정책에
-        따라 사전 고지 없이 중단 혹은 축소 될 수 있습니다.)
-      </h5>
+    {% endif %}
 
-      {% endif %} 
+    <h4>인증시 ITM 코인 지급</h3>
+      <p>
+        ITM에서 명산 100 및 기타 도전프로그램 또는 이벤트 인증 완료시 ITM코인(2021.10~) 이 산 높이 만큼 지급되며, ITM 제휴 아웃도어 제품 구매시 사용이 가능합니다. 사용한도는 멤버십 등급에 따라 다르게 적용이 되며, ITM코인
+        지급 내역 밒 멤버십 관련사항은 ITM 앱 내 [도전자 정보] > [마이페이지] 에서 확인이 가능합니다. (혜택사항은 변경 될 시 소급 적용되지 않으며, 운영정책에 따라 사전 고지 없이 중단 혹은 축소 될 수 있습니다.)
+      </p>
+    </div>
       <div class="twit">
         {% for twit in twits %}
-        <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
-        <input type="hidden" value="{{twit.id}}" class="twit-id" />
-        <div class="twit-author">{{twit.User.nick}}</div>
-
-        <button class="like"><i class="far fa-heart"></i></button>
-
-        <button class="unlike"><i class="fas fa-heart"></i></button>
-        {% endfor %}
-        {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
-        <button class="twit-follow btn"><i class="far fa-user"></i></button>
-        {% elif twit.User.id !== user.id%}
-        <button class="twit-unfollow btn"><i class="fas fa-user"></i></button>
-        {% endif %}
-        <div class="twit-img">
-          {% for clubImg in clubImgs %}
-          <a href="/clubdetail"><img style="width: 300px; height: 200px;" src="{{clubImg.img}}" alt="섬네일" /></a>
-          {% endfor %}
+        <div class="con">
+          
+          <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
+          <input type="hidden" value="{{twit.id}}" class="twit-id" />
+          <div class="twit-author">{{twit.User.nick}}</div>
+  
+          {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
+          <button class="twit-follow btn"><i class="far fa-user"></i></button>
+          {% elif twit.User.id !== user.id%}
+          <button class="twit-unfollow btn"><i class="fas fa-user"></i></button>
+          {% endif %}
+          <div class="twit-img">
+            <a href="/clubdetail"><img src="{{twit.img}}" alt="섬네일" /></a>
+          </div>
+          <button class="like"><i class="far fa-heart"></i></button>
+  
+          <button class="unlike"><i class="fas fa-heart"></i></button>
+  
+  
+          <!-- <div class="twit-content"></div> -->
         </div>
+        {% endfor %}
       </div>
-  </div>
 </div>
+</section>
 {% endblock %} {% block script %}
 <script src="/club/javascripts/club.js"></script>
 <script src="/club/javascripts/clublike.js"></script>
