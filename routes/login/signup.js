@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/", isNotLoggedIn, async (req, res, next) => {
   console.log(req.body);
-  const { nick, email, pwd, url, pwdcheck, agreeCheck} = req.body;
+  const { nick, email, pwd, url, pwdcheck, agreeCheck } = req.body;
   try {
     const exUser = await User.findOne({ where: { email } });
 

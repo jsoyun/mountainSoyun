@@ -11,20 +11,28 @@
         <a href="/edit/{{communityTwits.id}}">수정하기</a>
         <a href="/view/{{communityTwits.id}}/delete">삭제하기</a>
     </header>
+
     <body>
         <div>
             <i class="fas fa-thumbs-up"></i>
             <i class="far fa-thumbs-up"></i>
             <p>{{communityTwits.id}}</p> <!-- 확인 차 넣은 수 -->
             <p>{{communityTwits.title}}</p>
-            <p><div class="board-nick">{{communityTwits.User.nick}}</div></p>
-            <p><div class="board-createdAt">{{communityTwits.createdAt}}</div></p>
+            <p>
+            <div class="board-nick">{{communityTwits.User.nick}}</div>
+            </p>
+            <p>
+            <div class="board-createdAt">{{communityTwits.createdAt}}</div>
+            </p>
             <p>조회수</p>
         </div>
         <div>
-            <p><div class="board-content">{{communityTwits.content}}</div></p>
-            {% if communityTwits.img != false %}   <!-- 사진이 없으면 보여주지 않는다. -->
-                <img style="width: 200px;" src="{{ communityTwits.img }}" alt="섬네일">
+            <p>
+            <div class="board-content">{{communityTwits.content}}</div>
+            </p>
+            {% if communityTwits.img != false %}
+            <!-- 사진이 없으면 보여주지 않는다. -->
+            <img style="width: 200px;" src="{{ communityTwits.img }}" alt="섬네일">
             {% endif %}
         </div>
     </body>

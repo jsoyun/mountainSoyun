@@ -28,7 +28,7 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
           type: Sequelize.DATEONLY,         // DATE 는 DateOnly
           allowNull: false,
           defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
-        }, 
+        },
         updatedAt: {
           type: Sequelize.DATE,         // DATE 는 DateOnly
           allowNull: false,

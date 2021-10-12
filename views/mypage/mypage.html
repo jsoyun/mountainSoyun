@@ -25,12 +25,13 @@
     <div>{{follower.nick}}</div>
     {% endfor %} {% endif %}
   </div>
-  <a id="modify"  href="/modify" class="btn">정보 수정</a>
-  <body>
+  <a id="modify" href="/modify" class="btn">정보 수정</a>
   <div>
-    <p><div class="mypage-img">{{signupImages.content}}</div></p>
+    <p>
+    <div class="mypage-img">{{signupImages.content}}</div>
+    </p>
     <img style="width: 200px;" src="{{signupImages.img}}" alt="섬네일">
-</div>
-</body>
+  </div>
+  <a href="/mypage/{{signupImages.id}}/delete">계정 삭제하기</a>
 </div>
 {% endblock %} {% block script %} {% endblock %}

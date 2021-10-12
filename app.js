@@ -26,6 +26,7 @@ const writeRouter = require("./routes/board/write");
 const clubRouter = require("./routes/club/club");
 const clubDetailRouter = require("./routes/club/clubdetail");
 const clubUploadRouter = require("./routes/club/clubupload");
+const clubCommentRouter = require("./routes/club/clubcomments");
 
 /* login 폴더 (로그인) */
 const loginRouter = require("./routes/login/login");
@@ -43,7 +44,6 @@ const infoMountainRouter = require("./routes/mountainInfo/infomountain");
 const mypageRouter = require("./routes/mypage/mypage");
 const userRouter = require("./routes/mypage/user");
 const modifyRouter = require("./routes/mypage/modify");
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const app = express();
 passportConfig(); // 패스포트 설정
@@ -95,6 +95,7 @@ app.use("/write", writeRouter);
 app.use("/club", clubRouter);
 app.use("/clubupload", clubUploadRouter);
 app.use("/clubdetail", clubDetailRouter);
+app.use("/clubcomments", clubCommentRouter);
 
 /* login 폴더 (로그인) */
 app.use("/findinfo", findInfoRouter);
@@ -111,7 +112,7 @@ app.use("/infomountain", infoMountainRouter);
 /* mypage 폴더 (마이페이지) */
 app.use("/mypage", mypageRouter);
 app.use("/user", userRouter);
-app.use("/modify", modifyRouter);
+
 
 ////////////////////////////////////////////////////////////////
 

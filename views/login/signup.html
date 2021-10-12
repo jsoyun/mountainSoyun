@@ -1,9 +1,9 @@
-{% extends "layout.html" %} 
+{% extends "layout.html" %}
 
-{% block css %} 
+{% block css %}
 <link rel="stylesheet" href="/login/stylesheets/signup.css">
 <link rel="stylesheet" href="/login/stylesheets/terms.css">
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 <section class="signup-box">
@@ -14,22 +14,29 @@
       <ul>
         <li>
           <label class="signup-label" for="nick">닉네임</label>
-          <input name="nick" id="nick" class="one-input" type="text" maxlength="15" required autofocus pattern="[가-힣a-zA-Z]+"/>
+          <input name="nick" id="nick" class="one-input" type="text" maxlength="15" required autofocus
+            pattern="[가-힣a-zA-Z]+" />
           <div class="nick-check check-all"></div>
         </li>
         <li class="email">
           <label class="signup-label" for="email">이메일</label>
-          <input type="text" name="email" id="email" class="one-input" required pattern="[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}">
+          <input type="text" name="email" id="email" class="one-input" required
+            pattern="[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}">
           <div class="email-check check-all"></div>
         </li>
-        <li> <!-- 비회원 로그인시 존재 -->
+        <li>
+          <!-- 비회원 로그인시 존재 -->
           <label class="signup-label" for="pwd">비밀번호</label>
-          <input type="password" name="pwd" id="pwd" class="one-input" required pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}">
+          <input type="password" name="pwd" id="pwd" class="one-input" required>
+          <!-- <input type="password" name="pwd" id="pwd" class="one-input" required
+            pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}"> -->
           <div class="pwd-check check-all"></div>
         </li>
         <li>
           <label class="signup-label" for="pwdcheck">비밀번호 확인</label>
-          <input type="password" name="pwdcheck" id="pwdcheck" class="one-input" required pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}">
+          <input type="password" name="pwdcheck" id="pwdcheck" class="one-input" required>
+          <!-- <input type="password" name="pwdcheck" id="pwdcheck" class="one-input" required
+            pattern="(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}"> -->
           <div class="pwdcheck-check check-all"></div>
         </li>
       </ul>
@@ -48,7 +55,7 @@
     <input class="signup-btn" type="submit" value="Sign Up" id="signUp" />
   </form>
 </section>
-{% endblock %} 
+{% endblock %}
 
 {% block script %}
 <script src="/login/javascripts/signupcheck.js"></script>
