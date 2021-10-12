@@ -38,10 +38,10 @@ function addTags() {
 
 input.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
-    // const tag = createTag(input.value);
+    const tag = createTag(input.value);
     tags.push(input.value);
     addTags();
-    // tagContainer.prepend(tag);
+    tagContainer.prepend(tag);
 
     input.value = "";
   }
@@ -50,7 +50,7 @@ input.addEventListener("keyup", function (e) {
 document.addEventListener("click", function (e) {
   if (e.target.tagName === "I") {
     const value = e.target.getAttribute("data-item");
-    // console.log(value);
+    console.log(value);
     const index = tags.indexOf(value);
     tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
     console.log(tags);

@@ -10,17 +10,41 @@ async function clubDetail() {
             // 로우 셀 추가
             const clubTable = document.createElement('div');
             clubTable.setAttribute("class", "club-table");
-            let row = document.createElement('div');
-            row.textContent = club.User.nick;
-            clubTable.appendChild(row);
+            
+            const clubContainer = document.createElement('div');
+            clubContainer.setAttribute("class", "club-content-container")
+            clubTable.appendChild(clubContainer);
 
-            let img = document.createElement('img');
-            img.setAttribute("src", `${club.img}`)
-            clubTable.appendChild(img);
+            const userContainer = document.createElement('div');
+            userContainer.setAttribute("class", "user-container")
+            clubContainer.appendChild(userContainer);
+
+            let row = document.createElement('img');
+            row.setAttribute("class", "profile-img");
+            row.setAttribute("src", `${club.User.img}`);
+            userContainer.appendChild(row);
 
             row = document.createElement('div');
+            row.setAttribute("class", "profile-name");
+            row.textContent = club.User.nick;
+            userContainer.appendChild(row);
+
+            const imgSection = document.createElement('div');
+            imgSection.setAttribute("class", "img-section")
+            clubContainer.appendChild(imgSection);
+
+            const img = document.createElement('img');
+            img.setAttribute("src", `${club.img}`)
+            imgSection.appendChild(img);
+
+            row = document.createElement('div');
+            row.setAttribute("class", "button-icons");
+            clubContainer.appendChild(row);
+
+            row = document.createElement('div');
+            row.setAttribute("class", "comment-box");
             row.textContent = club.content;
-            clubTable.appendChild(row);
+            clubContainer.appendChild(row);
 
             const commentsList = await club.ClubComments;
 
