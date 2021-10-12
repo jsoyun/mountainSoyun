@@ -44,10 +44,7 @@ if (document.getElementById("img")) {
     for (let i = 0; i < length; i++) { 
       console.log(this.files[i]);
       formData.append("img", this.files[i]); 
-      
-      // index++; 
     }
-    // console.log(formData);
     axios.post("/clubupload/img", formData)
       .then((res) => {
         let url = JSON.parse(res.data); 

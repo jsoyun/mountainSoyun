@@ -32,12 +32,17 @@ router.get('/:id', async (req, res, next) => {
         as: 'Liker',
       }],
     })
+    await CommunityPost.update(
+      {views: texts.views + 1},
+      {where:{id:`${req.params.id}`}}
+    );
     console.log(likes);
     res.render('board/view-community', {
         title: 'mountain 커뮤니티',
         communityTwits: texts,
         likes,
     });
+    console.log(texts);
   } catch (error) {
     console.error(error);
     next(error);
@@ -48,10 +53,12 @@ router.get('/:id', async (req, res, next) => {
 router.get('/:id/delete', async (req, res, next) => {
   try { // 저장된 사진 DELETE
     const {img} = await CommunityPost.findOne({where: {id: parseInt(req.params.id, 10)}});
-    const file = await fs2.readFile(img.replace('/img', './uploads'));
-    if(file){
-      await fs2.unlink(img.replace('/img', './uploads'));
-    } 
+    if (img) {
+      const file = await fs2.readFile(img.replace('/img', './uploads'));
+      if(file){
+        await fs2.unlink(img.replace('/img', './uploads'));
+      } 
+    }
     await CommunityPost.destroy({
       where: {id: parseInt(req.params.id, 10)},
     });

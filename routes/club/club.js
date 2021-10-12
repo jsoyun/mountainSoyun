@@ -1,7 +1,7 @@
 const express = require("express");
 const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
 const url = require("url");
-const { Club, User, Hashtag } = require("../../models");
+const { Club, User, Hashtag, Img } = require("../../models");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -23,10 +23,14 @@ router.get("/", async (req, res, next) => {
       },
       order: [["createdAt", "DESC"]],
     });
-
+    const clubImgs = await Img.findAll({
+      order: [["id", "DESC"]],
+    });
+    console.log(clubImgs);
     res.render("club/club", {
       title: "mountain feed",
       twits: clubs,
+      clubImgs,
     });
   } catch (error) {
     console.error(error);

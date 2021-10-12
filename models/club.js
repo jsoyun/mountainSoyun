@@ -6,10 +6,10 @@ module.exports = class Club extends Sequelize.Model {
     return super.init(
       {
         // 아래 주석
-        img: {
-          type: Sequelize.STRING(200),
-          allowNull: true,
-        },
+        // img: {
+        //   type: Sequelize.STRING(200),
+        //   allowNull: true,
+        // },
         content: {
           type: Sequelize.STRING(100),
           allowNull: false,
@@ -46,9 +46,9 @@ module.exports = class Club extends Sequelize.Model {
 
   static associate(db) {
     db.Club.belongsTo(db.User, { foreignKey: 'userId', targetKey: 'id' });
-    db.Club.belongsToMany(db.Hashtag, { through: 'postHashtag' });
     db.Club.belongsToMany(db.User, { through: 'Likes' });  // 좋아요
     db.Club.belongsToMany(db.User, { through: "Stars" }); // 별점
     db.Club.hasMany(db.ClubComment, { foreignKey: "clubId", sourceKey: "id" });
+    db.Club.hasMany(db.Img, { foreignKey: "clubImgId", sourceKey: "id" });
   }
 };

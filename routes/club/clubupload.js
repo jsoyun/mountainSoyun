@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { Club, Hashtag } = require("../../models");
+const { Club, Hashtag, Img } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
@@ -51,17 +51,24 @@ router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
 
 router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
   try {
-    console.log(req.body.url);
     if (req.body.url == false) {
       return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
     }
     const club = await Club.create({
       content: req.body.content,
-      // img: req.body.url,
       hash: req.body.hashtag,
       star: req.body.star,
       userId: req.user.id,
     });
+
+    let URL = req.body.url;
+    for (let i = 0; i < (URL.length); i++) {
+      await Img.create({
+        img: URL[i],
+        clubImgId: club.id,
+      })
+    };
+    
     const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
     console.log(hashtags);
     if (hashtags) {
