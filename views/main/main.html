@@ -15,6 +15,8 @@
         단순히 등산 프로그램을 넘어 산을 통해 많은 사람이 인간관계를 형성하고
         소통하며 발전하는 것을 목표로 합니다.
       </p>
+      <legend>명산100</legend>
+      <pre>총산행횟수 : 2,842,002회</pre>
     </div>
   </div>
   <div class="separator">
@@ -50,51 +52,7 @@
     <h1>도전의 가치를 알며 자연과 함께하는 사람들의 커뮤니티 공간</h1>
   </div>
   <div class="content right illustration_03">
-    <h2>in to the moutine board</h2>
-    <div class="table-body">
-      <table class="com-table">
-        <thead class="table-head">
-          <tr class="table-item-box">
-            <th class="item-num">번호</th>
-            <th class="item-title">제목</th>
-            <th class="item-nick">작성자</th>
-            <th>날짜</th>
-            <th class="item-num">조회</th>
-            <th class="item-num">댓글</th>
-            <!-- <th>추천</th> -->
-          </tr>
-        </thead>
-        <tbody class="table-body">
-          {% for communityTwit in communityTwits %}
-          <tr class="post table-item-box">
-            <td>
-              <div class="CommunityPost-title">{{communityTwit.id}}</div>
-            </td>
-            <td>
-              <a class="tb-text" href="/view/{{communityTwit.id}}">
-                <p class="tb-text-item">{{communityTwit.title}}</p>
-                {% if communityTwit.img != false %}
-                <!-- 사진이 없으면 보여주지 않는다. -->
-                <img class="tb-img" src="{{communityTwit.img}}" alt="섬네일" />
-                {% endif %}
-              </a>
-            </td>
-            <td>
-              <div class="user-nick">{{communityTwit.User.nick}}</div>
-            </td>
-            <td>
-              <div id="com-creatAt" class="communityPost-createAt">
-                {{communityTwit.createdAt}}
-              </div>
-            </td>
-            <td>0</td>
-            <td>2</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    <br />
+    <h1>"Take less Bring More"</h1>
     <p>
       산을 중심으로 뜻 깊은 경험을 선사해줄 다양한 프로그램을 제공하고 있습니다.
       대한민국을 대표하는 100대 명산을 오르는 ‘명산 100’ 프로그램, 한국의
