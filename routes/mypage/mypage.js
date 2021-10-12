@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.use((req, res, next) => {
   res.locals.user = req.user;
+  res.locals.likersCount = req.user ? req.user.length : 0;
   res.locals.followerCount = req.user ? req.user.Followers.length : 0;
   res.locals.followingCount = req.user ? req.user.Followings.length : 0;
   res.locals.followerIdList = req.user
@@ -19,11 +20,20 @@ router.use((req, res, next) => {
 //프로필 사진 읽기
 router.get("/", async (req, res, next) => {
   try {
+    const getLike = await Club.findAll({
+      include: {
+        model : User,
+        attributes:["id"],
+      },
+  });
+
+    console.log("////////////////////////////////////////////////////");
+    console.log(getLike);
+    console.log("////////////////////////////////////////////////////");
     const getImage = await User.findOne({
       // where: { id: req.user.id }, // 여기서 id 에러창뜨고 로그인됨
       where: { id: `${req.user.id}` }, // 문자로 바꿈. 아마도. 암튼 개선함
     });
-    console.log(getImage);
     res.render("mypage/mypage", {
       title: "mountain 커뮤니티",
       signupImages: getImage,
