@@ -1,0 +1,71 @@
+:root {
+  --btn-main-font: Cafe24SsurroundAir;
+  --btn-font-family: Cafe24SsurroundAir;
+  --search-bg-color: white;
+  --btn-radius: 10px;
+  --btn-height: 1vw;
+  --btn-bg-height: 2.5vw;
+  --search-width: 21vw;
+  --search-btn-width: 1vw;
+  --search-bg-width: 10vw;
+  --select-border-color: #bababa;
+  --select-width: 6vw;
+  --tb-font-family: SpoqaHanSansNeo-Regular;
+}
+
+.mountain-list-container {
+  font-family: var(--btn-font-family), sans-serif;
+  /* display: grid;
+  grid-template-columns: 30vw 30vw 30vw; */
+  line-height: normal;
+  padding: 3vw;
+  margin: 3vw;
+  min-width: 5vw;
+}
+
+.mountain-name {
+  text-align: center;
+  font-size: 3vw;
+  color: black;
+  margin: 5vw;
+  text-align: center;
+  /* background-color: cadetblue;
+  padding: 5px 0.5em 0 0.5em;
+  border-radius: 3px; */
+}
+
+.mountain-height {
+  text-align: center;
+  color: grey;
+  margin: 5vw;
+  text-align: center;
+}
+.mountain-address {
+  text-align: center;
+  color: black;
+  margin: 5vw;
+  text-align: center;
+  grid-template-columns: 1;
+}
+.mountain-overview {
+  line-height: 4vh;
+  margin-bottom: 2vh;
+  color: black;
+  background-color: rgba(126, 126, 126, 0.185);
+}
+.mountain-transport {
+  line-height: 4vh;
+  margin-bottom: 2vh;
+  color: black;
+}
+.mountain-tour {
+  line-height: 4vh;
+  margin-bottom: 2vh;
+  color: black;
+}
+.mountain-etctour {
+  line-height: 4vh;
+  margin-bottom: 2vh;
+  color: black;
+  background-color: rgba(126, 126, 126, 0.185);
+}

@@ -1,96 +1,90 @@
-{% extends "layout.html" %}
-{% block css %}
-{% endblock %}
-
-{% block content %}
+{% extends "layout.html" %} {% block css %}
+<link rel="stylesheet" href="mountainInfo\stylesheets\infomountain.css" />
+{% endblock %} {% block content %}
 <style>
-    #kor-img-container {
-        background-image: url("/images/kormap.png");
-        width: 500px;
-        height: 700px;
-        border: 1px solid red;
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        position: relative;
-        margin: 0 auto;
-    }
+  #kor-img-container {
+    background-image: url("/images/kormap.png");
+    width: 500px;
+    height: 700px;
+    border: 1px solid red;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+  }
 
-    #kor-img-container #se {
-        position: absolute;
-        left: 120px;
-        top: 150px;
-    }
+  #kor-img-container #se {
+    position: absolute;
+    left: 120px;
+    top: 150px;
+  }
 
-    #kor-img-container #kw {
-        position: absolute;
-        left: 280px;
-        top: 130px;
-    }
+  #kor-img-container #kw {
+    position: absolute;
+    left: 280px;
+    top: 130px;
+  }
 
-    #kor-img-container #cn {
-        position: absolute;
-        left: 100px;
-        top: 300px;
-    }
+  #kor-img-container #cn {
+    position: absolute;
+    left: 100px;
+    top: 300px;
+  }
 
-    #kor-img-container #cb {
-        position: absolute;
-        left: 200px;
-        top: 230px;
-    }
+  #kor-img-container #cb {
+    position: absolute;
+    left: 200px;
+    top: 230px;
+  }
 
-    #kor-img-container #kb {
-        position: absolute;
-        right: 150px;
-        top: 350px;
-    }
+  #kor-img-container #kb {
+    position: absolute;
+    right: 150px;
+    top: 350px;
+  }
 
-    #kor-img-container #kn {
-        position: absolute;
-        right: 150px;
-        bottom: 200px;
-    }
+  #kor-img-container #kn {
+    position: absolute;
+    right: 150px;
+    bottom: 200px;
+  }
 
-    #kor-img-container #jb {
-        position: absolute;
-        left: 110px;
-        bottom: 260px;
-    }
+  #kor-img-container #jb {
+    position: absolute;
+    left: 110px;
+    bottom: 260px;
+  }
 
-    #kor-img-container #jn {
-        position: absolute;
-        left: 70px;
-        bottom: 170px;
-    }
+  #kor-img-container #jn {
+    position: absolute;
+    left: 70px;
+    bottom: 170px;
+  }
 
-    #kor-img-container #je {
-        position: absolute;
-        left: 70px;
-        bottom: 20px;
-    }
+  #kor-img-container #je {
+    position: absolute;
+    left: 70px;
+    bottom: 20px;
+  }
 </style>
 
 <h1>100대명산게시판</h1>
 
 <div id="kor-img-container">
-    <button class="kor-location" id="se" type="button">서울/경기</button>
-    <button class="kor-location" id="kw" type="button">강원도</button>
-    <button class="kor-location" id="cb" type="button">충청북도</button>
-    <button class="kor-location" id="cn" type="button">충청남도</button>
-    <button class="kor-location" id="kb" type="button">경상북도</button>
-    <button class="kor-location" id="kn" type="button">경상남도</button>
-    <button class="kor-location" id="jb" type="button">전라북도</button>
-    <button class="kor-location" id="jn" type="button">전라남도</button>
-    <button class="kor-location" id="je" type="button">제주도</button>
+  <button class="kor-location" id="se" type="button">서울/경기</button>
+  <button class="kor-location" id="kw" type="button">강원도</button>
+  <button class="kor-location" id="cb" type="button">충청북도</button>
+  <button class="kor-location" id="cn" type="button">충청남도</button>
+  <button class="kor-location" id="kb" type="button">경상북도</button>
+  <button class="kor-location" id="kn" type="button">경상남도</button>
+  <button class="kor-location" id="jb" type="button">전라북도</button>
+  <button class="kor-location" id="jn" type="button">전라남도</button>
+  <button class="kor-location" id="je" type="button">제주도</button>
 </div>
 
-<div id="mountain-list">
-</div>
+<div id="mountain-list"></div>
 
-
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="/mountainInfo/javascripts/APIdata.js"></script>
 {% endblock %}
