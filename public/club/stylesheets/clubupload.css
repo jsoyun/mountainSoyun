@@ -3,6 +3,29 @@ h3 {
   margin: 1.125em 0;
   margin-left: 20px;
 }
+#twit-form fieldset{
+  display: inline-block;
+  direction: rtl; /* 이모지 순서 반전 */
+  border: 0;
+}
+#twit-form input[type=radio]{
+  display: none;
+}
+#twit-form .star-label{
+  font-size: 3em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+#twit-form .star-label:hover{
+  text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+}
+#twit-form .star-label:hover~.star-label{
+  text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+}
+#twit-form input[type=radio]:checked~.star-label{
+  text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
+}
+
 
 #twit-form h4 {
   margin-top: 5vw;

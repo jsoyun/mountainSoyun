@@ -42,6 +42,7 @@ router.get("/comment", async (req, res, next) => {
       }],
       order: [["createdAt", "DESC"]],
     });
+    console.log("//////////////////////////////////////////////////////////////////////////")
     res.json(reply);
   } catch (err) {
     console.error(err);

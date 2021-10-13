@@ -8,7 +8,8 @@
   <title>{{title}}</title>
   <link rel="shortcut icon" href="/images/logo.png" />
   <link rel="stylesheet" href="/main/stylesheets/reset.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link rel="stylesheet" href="/main/stylesheets/common.css" />
   <link rel="stylesheet" href="/main/stylesheets/main.css" />
   <link rel="stylesheet" href="/main/stylesheets/font.css" />
@@ -16,27 +17,28 @@
   <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
   {% block css %} {% endblock %}
 </head>
-  <body>
-    <header id="header">
-      <div id="header-logo">
-        <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
-      </div>
 
-      <nav class="mynav">
-        <ul>
-          <li class="nav-item">
-            <a class="nav-link link" href="/">ABOUT US</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" href="/club">도전클럽</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link" href="/community">게시판</a>
-          </li>
-          <!-- <li class="nav-item">
+<body>
+  <header id="header">
+    <div id="header-logo">
+      <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
+    </div>
+
+    <nav class="mynav">
+      <ul>
+        <li class="nav-item">
+          <a class="nav-link link" href="/">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/club">도전클럽</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/infomountain">100대 명산 정보</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link" href="/community">게시판</a>
+        </li>
+        <!-- <li class="nav-item">
             <a class="nav-link link" href="/">캠페인</a>
           </li> -->
         </ul>
@@ -68,18 +70,19 @@
           </div>
         </div>
       </div>
-    </header>
-    {% block content %} {% endblock %}
-    <footer>
-      <div id="footer-container">
-        <div id="footer-logo"></div>
-        <div id="footer-menu-container"></div>
-      </div>
-    </footer>
-  </body>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/main/javascripts/weatherAPI.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    </div>
+  </header>
+  {% block content %} {% endblock %}
+  <footer>
+    <div id="footer-container">
+      <div id="footer-logo"></div>
+      <div id="footer-menu-container"></div>
+    </div>
+  </footer>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/main/javascripts/weatherAPI.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {% block script %}
 {% endblock %}
 

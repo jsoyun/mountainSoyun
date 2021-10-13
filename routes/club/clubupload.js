@@ -40,12 +40,12 @@ const upload = multer({
 
 router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
   console.log("파일" + req.file);
-  let urlArr = new Array(); 
-  for (let i = 0; i < req.files.length; i++) { 
-    urlArr.push(`/img/${req.files[i].filename}`); 
-    console.log(urlArr[i]); 
-  } 
-  let jsonUrl = JSON.stringify(urlArr); 
+  let urlArr = new Array();
+  for (let i = 0; i < req.files.length; i++) {
+    urlArr.push(`/img/${req.files[i].filename}`);
+    console.log(urlArr[i]);
+  }
+  let jsonUrl = JSON.stringify(urlArr);
   res.json(jsonUrl);
 });
 
@@ -70,7 +70,7 @@ router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
         clubImgId: club.id,
       })
     };
-    
+
     const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
     console.log(hashtags);
     if (hashtags) {
