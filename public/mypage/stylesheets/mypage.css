@@ -1,6 +1,6 @@
 :root {
-  --btn-main-font: Cafe24SsurroundAir;
-  --btn-font-family: Cafe24SsurroundAir;
+  /* --btn-main-font: Cafe24SsurroundAir;
+  --btn-font-family: Cafe24SsurroundAir; */
   --search-bg-color: white;
   --btn-radius: 10px;
   --btn-height: 1vw;
@@ -14,7 +14,7 @@
 }
 .timeline {
   margin: 0;
-  padding: 10%;
+  padding: 3% 10% 0 10%;
   display: grid;
 
   /* width: 100vmin; */
@@ -24,7 +24,7 @@
 }
 
 .user-name {
-  font-size: 5vw;
+  font-size: vw;
   color: black;
   font-weight: bold;
   display: inline-block;
@@ -38,7 +38,8 @@ section a {
   text-align: right;
   display: inline-block;
   text-decoration: none;
-  font-size: 1vw;
+  font-size: 1.5vw;
+  color: #bababa;
 }
 footer {
   text-align: right;
@@ -48,7 +49,7 @@ footer {
 #modify {
   font-size: 1.5vw;
   color: #bababa;
-  margin-bottom: 5vw;
+  margin-bottom: 3vw;
 }
 .half {
   text-align: left;
@@ -58,13 +59,16 @@ footer {
 #follow-List {
   line-height: normal;
   vertical-align: middle;
-  font-size: 2.5vw;
-}
-/* #userImg img {
-  size: 20px;
-  background-color: brown;
+  font-size: 1.5vw;
   float: left;
-} */
+  display: inline-block;
+  margin-top: 2vw;
+}
+#userImg {
+  size: 20vw;
+
+  float: left;
+}
 
 .userImg {
   width: 10vw;
@@ -73,9 +77,17 @@ footer {
   border-radius: 3rem;
 }
 
-footer a {
+/* footer a {
   font-size: 1.5vw;
   margin-top: 3vw;
   text-decoration: none;
   color: #bababa;
+} */
+
+h2 {
+  display: inline-block;
+  color: #55b1a3;
+  border-radius: 2px;
+  font-size: 1.8vw;
+  font-weight: bolder;
 }

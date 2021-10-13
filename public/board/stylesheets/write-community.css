@@ -21,7 +21,7 @@
 }
 
 .upload-title-text {
-  margin: 5vw 0 0.8vw 0;
+  margin: 3vw 0 0.8vw 0;
 }
 
 /*  게시글 버튼 */
@@ -52,12 +52,16 @@
   text-decoration-line: none;
   color: silver;
   margin: 10px;
+  width: 100px;
 }
+
 #submit-btn-cancel {
-  /* margin: 0;
-  padding: 0; */
-  margin-left: 10px;
-  margin-right: 10px;
+  width: 105px;
+  padding: 0em;
+  border-radius: 10px;
+  color: #000;
+  margin-top: 5vh;
+  margin-left: 75vw;
 }
 
 .submit-btn:hover .cancel-btn {
