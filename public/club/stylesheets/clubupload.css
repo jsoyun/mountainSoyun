@@ -41,6 +41,25 @@ h3 {
   color: #55b1a3;
 }
 
+.image-input-background {
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    background: url("/images/uploadicon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .img-preview input[type=file] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 5vw;
+    opacity: 0;
+  }
+
 .post_form_container {
   max-width: 60vw;
   max-height: 100vw;
@@ -86,10 +105,10 @@ h3 {
   overflow: hidden;
 }
 
-.file_input_hidden {
+/* .file_input_hidden {
   position: relative;
   opacity: 0;
-}
+} */
 
 .plus_icon {
   width: 80px;
