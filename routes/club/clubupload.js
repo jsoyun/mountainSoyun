@@ -54,17 +54,15 @@ router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
     if (req.body.url == false) {
       return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
     }
-
-    let URL = req.body.url;
     const club = await Club.create({
       content: req.body.content,
       hash: req.body.hashtag,
-      img: URL[0],
       star: req.body.star,
       userId: req.user.id,
     });
 
-    for (let i = 0; i < (URL.length-1); i++) {
+    let URL = req.body.url;
+    for (let i = 0; i < (URL.length); i++) {
       await Img.create({
         img: URL[i],
         clubImgId: club.id,
