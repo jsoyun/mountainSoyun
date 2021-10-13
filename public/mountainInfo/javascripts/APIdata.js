@@ -3,7 +3,7 @@ async function firstload() {
     const mountainList = document.querySelector('#mountain-list');
     let location = "경기";
     const apidata1 = await axios.post("/infomountain/location", { location });
-    console.log(apidata1);
+    console.log(apidata1.data);
     location = "인천";
     const apidata2 = await axios.post("/infomountain/location", { location });
     arrydata1 = JSON.stringify(apidata1.data);
@@ -13,46 +13,51 @@ async function firstload() {
     console.log(apidata);
     mountainList.innerHTML = "";
     for (let i = 0; i < apidata.length; i++) {
-        let listContainer = document.createElement("div")
-        listContainer.setAttribute('class', "mountain-list-container");
-        mountainList.appendChild(listContainer);
+        let mountainAdd = apidata[i].areanm;
+        let mountainname = apidata[i].mntnm;
+        const apidata3 = await axios.post("/infomountain/img", { mountainAdd })
+        const imgdata = apidata3.data;
+        if (imgdata.length == "undefined") {
 
-        let listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-name")
-        listItem.textContent = apidata[i].mntnm
-        listContainer.appendChild(listItem);
+            let listsummury = document.createElement("div");
+            listsummury.setAttribute('class', "mountain-list-summury");
+            let temp = `<div class="mountain-summury-img"><img src="${imgdata.mntnattchimageseq}"></div>
+        <div class="mountain-summury-container">
+        <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+        </div>`;
+            listsummury.innerHTML = temp;
+            mountainList.appendChild(listsummury);
 
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-height")
-        listItem.textContent = apidata[i].mntheight
-        listContainer.appendChild(listItem);
+        }
+        // else {
+        //     listsummury = document.createElement("div");
+        //     listsummury.setAttribute('class', "mountain-list-summury");
+        //     for (let j = 0; j < imgdata.length; j++) {
+        //         const findinfo = JSON.stringify(imgdata[j].hndfmsmtnslctnrson);
+        //         if (findinfo[0] != "&") {
+        //             let listsummury = document.createElement("div");
+        //             listsummury.setAttribute('class', "mountain-list-summury");
+        //             let temp = `<div class="mountain-summury-img"><img src="${imgdata[j].mntnattchimageseq}"></div>
+        // <div class="mountain-summury-container">
+        // <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        // <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
+        // <div class="mountain-summury-address">${apidata[i].areanm}</div>
+        // <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+        // </div>`;
+        //             listsummury.innerHTML = temp;
+        //             mountainList.appendChild(listsummury);
 
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-address")
-        listItem.innerHTML = apidata[i].areanm
-        listContainer.appendChild(listItem);
 
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-overview")
-        listItem.innerHTML = apidata[i].overview
-        listContainer.appendChild(listItem);
+        //         }
 
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-transport")
-        listItem.innerHTML = apidata[i].transport
-        listContainer.appendChild(listItem);
+        //     }
+        // }
 
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-tour")
-        listItem.innerHTML = apidata[i].tourisminf
-        listContainer.appendChild(listItem);
-
-        listItem = document.createElement("div");
-        listItem.setAttribute('class', "mountain-etctour")
-        listItem.innerHTML = apidata[i].etccourse
-        listContainer.appendChild(listItem);
     }
-    return
+
 };
 
 document.querySelectorAll(".kor-location").forEach(element => {
