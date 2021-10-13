@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 const { CommunityPost } = require('../../models');
 const { isLoggedIn } = require("../middlewares");
@@ -20,15 +22,19 @@ try {
   fs.mkdirSync('uploads');
 }
 
+AWS.config.update({
+  accessKeyId: process.env.S3_Access_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
 /* multer 기본 설정 */
 const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, cb) {
-      cb(null, 'uploads/');
-    },
-    filename(req, file, cb) {
-      const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'wenode',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
     },
   }),
   limits: { fieldSize: 5 * 1024 * 1024 },
@@ -37,7 +43,7 @@ const upload = multer({
 /* 게시글 IMG CREATE */
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
+  res.json({ url: req.file.location });
 });
 
 /* 게시글 TEXT CREATE */

@@ -23,14 +23,18 @@ router.get("/", async (req, res, next) => {
       },
       order: [["createdAt", "DESC"]],
     });
-    const clubImgs = await Img.findAll({
-      order: [["id", "DESC"]],
-    });
-    console.log(clubImgs);
+    // console.log(clubs);
+    // const clubImgs = await Img.findAll({
+    //   order: [["id", "DESC"]],
+    // });
+    // console.log('///////////////////////////////');
+    // console.log(clubImgs[0]);
+    // console.log('///////////////////////////////');
+
     res.render("club/club", {
       title: "mountain feed",
       twits: clubs,
-      clubImgs,
+      // clubImgs: clubImgs,
     });
   } catch (error) {
     console.error(error);
@@ -42,9 +46,6 @@ router.get("/", async (req, res, next) => {
 router.get("/hashtag", async (req, res, next) => {
   let queryData = url.parse(req.url, true).query;
   let search = queryData.hashtag;
-
-  console.log('///////////////////////');
-  console.log(search)
   if (!search) {
     return res.redirect("/club");
   }
