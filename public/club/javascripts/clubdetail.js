@@ -130,7 +130,7 @@ async function clubDetail() {
       if (document.querySelector("#my-id") !== null) {
         const myId = document.querySelector("#my-id").value;
         row = document.createElement("div");
-        row.textContent = "//////댓글작성창을 아래에 넣는다//////";
+        // row.textContent = "//////댓글작성창을 아래에 넣는다//////";
         clubTable.appendChild(row);
 
         const inputForm = document.createElement("form");
@@ -148,12 +148,13 @@ async function clubDetail() {
         let inputItem = document.createElement("input");
         inputItem.setAttribute("type", "text");
         inputItem.setAttribute("name", "comment");
+        inputItem.placeholder = "댓글달기..";
         inputForm.appendChild(inputItem);
 
         let commentInputCheck = document.createElement("button");
         commentInputCheck.setAttribute("class", "input-button");
         commentInputCheck.setAttribute("type", "submit");
-        commentInputCheck.textContent = "확인";
+        commentInputCheck.textContent = "게시";
         inputForm.appendChild(commentInputCheck);
 
         commentInputCheck = document.createElement("button");
