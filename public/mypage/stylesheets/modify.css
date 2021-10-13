@@ -28,3 +28,13 @@
 h2 {
   font-family: var(--btn-font-family), sans-serif;
 }
+
+#img-label {
+  border: 1px solid black;
+  padding: 0.2em;
+  display: inline-block;
+}
+
+#img-label:hover {
+  background-color: #bababa;
+}
