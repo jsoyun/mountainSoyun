@@ -1,0 +1,40 @@
+/* h1 {
+  font-weight: bold;
+  font-size: 2vw;
+  /* padding: 3vw; */
+
+.community-a-click a {
+  text-decoration-line: none;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.community-view-title {
+  /* display: flex;
+  position: relative; */
+  display: flex;
+  position: relative;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  /* width: 100%;
+  height: 20%; */
+  /* max-height: 150px; */
+  /* padding: 1%; */
+  margin-top: 3vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  border-bottom: solid grey;
+}
+
+body {
+  text-align: center;
+}
+
+.communitytwit-contents-title {
+  display: flex;
+  position: relative;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
