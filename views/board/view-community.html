@@ -1,21 +1,25 @@
 {% extends "layout.html" %}
 
 {% block css %}
+<link rel="stylesheet" href="/board/stylesheets/view-community.css">
 {% endblock %}
 
 {% block content %}
 <section class="community-view-box">
-    <header>
+    <div class="community-view-title">
         <h1>커뮤니티</h1>
+        <div class="community-a-click">
         <a href="/community/page?offset=0&limit=5">목록으로</a>
         <a href="/edit/{{communityTwits.id}}">수정하기</a>
         <a href="/view/{{communityTwits.id}}/delete">삭제하기</a>
-    </header>
+       </div>
+    </div>
 
     <body>
-        <div>
-            <i class="fas fa-thumbs-up"></i>
-            <i class="far fa-thumbs-up"></i>
+        <div id="community-contents">
+            <!-- <i class="fas fa-thumbs-up"></i>
+            <i class="far fa-thumbs-up"></i> -->
+          <div class="communitytwit-contents-title">
             <p>{{communityTwits.id}}</p> <!-- 확인 차 넣은 수 -->
             <p>{{communityTwits.title}}</p>
             <p>
@@ -25,8 +29,9 @@
             <div class="board-createdAt">{{communityTwits.createdAt}}</div>
             </p>
             <p>조회수 : {{communityTwits.views}}</p>
+          </div>
         </div>
-        <div>
+        <div id="board-content-img">
             <p>
             <div class="board-content">{{communityTwits.content}}</div>
             </p>

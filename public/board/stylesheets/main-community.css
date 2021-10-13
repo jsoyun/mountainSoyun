@@ -9,7 +9,7 @@
   --search-btn-width: 1vw;
   --search-bg-width: 10vw;
   --select-border-color: #bababa;
-  --select-width: 6vw; 
+  --select-width: 6vw;
   --tb-font-family: SpoqaHanSansNeo-Regular;
 }
 
@@ -38,7 +38,7 @@
 
 .com-write:hover {
   color: black;
-} 
+}
 
 /* 태그 검색 */
 .text-search {
@@ -127,7 +127,11 @@ select:focus {
   border-bottom: 1px solid var(--select-border-color);
 }
 
-h1, thead, tbody, tr, th {
+h1,
+thead,
+tbody,
+tr,
+th {
   font-size: 1.5vw;
   width: 8em;
   height: 3em;
@@ -138,6 +142,8 @@ h1, thead, tbody, tr, th {
   font-size: 2vw;
   font-weight: bolder;
   margin: 0 0 1.4vw 10vw;
+  margin-top: 1.5vh;
+
   height: auto;
 }
 
@@ -187,6 +193,6 @@ h1, thead, tbody, tr, th {
   font-size: 1.7vw;
 }
 
-.page-link{
+.page-link {
   text-decoration-line: none;
 }
