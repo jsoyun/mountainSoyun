@@ -13,12 +13,7 @@
           <option value="content">내용</option>
           <option value="user">작성자</option>
         </select>
-        <input
-          class="text-search"
-          type="text"
-          name="search"
-          placeholder="검색"
-        />
+        <input class="text-search" type="text" name="search" placeholder="검색" />
         <button class="text-search-btn btn">
           <i class="fas fa-search"></i>
         </button>
@@ -63,7 +58,7 @@
             </div>
           </td>
           <td>{{communityTwit.views}}</td>
-          <td>2</td>
+          <td>{{communityTwit.Communitycomments.length}}</td>
         </tr>
         {% endfor %}
       </tbody>
@@ -94,7 +89,8 @@
                   href="/community/page?offset={{(nowPage-1)*5}}&limit=5">{{nowPage - 1}}</a></li>
               <li class="page-num"><a class="page-link"
                   href="/community/page?offset={{(nowPage-1)*5}}&limit=5">{{nowPage}}</a></li>
-              <li class="page-num"><a class="page-link" href="/community/page?offset={{nowPage*5}}&limit=5">{{nowPage + 1}}</a></li>
+              <li class="page-num"><a class="page-link" href="/community/page?offset={{nowPage*5}}&limit=5">{{nowPage +
+                  1}}</a></li>
               <li class="page-num"><a class="page-link"
                   href="/community/page?offset={{(nowPage+1)*5}}&limit=5">{{nowPage + 2}}</a></li>
               <li class="page-num"><a class="page-link"
