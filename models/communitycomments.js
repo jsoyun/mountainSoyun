@@ -1,14 +1,14 @@
 const Sequelize = require("sequelize");
 
-module.exports = class ClubComment extends Sequelize.Model {
+module.exports = class Communitycomment extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        clubId: {
+        postId: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        writerId: {
+        commenterId: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
@@ -21,8 +21,8 @@ module.exports = class ClubComment extends Sequelize.Model {
         sequelize,
         timestamps: true,
         underscored: false,
-        modelName: "ClubComment",
-        tableName: "clubcomments",
+        modelName: "Communitycomment",
+        tableName: "communitycomments",
         paranoid: false,
         charset: "utf8mb4",
         collate: "utf8mb4_general_ci",
@@ -30,12 +30,12 @@ module.exports = class ClubComment extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.ClubComment.belongsTo(db.Club, {
-      foreignKey: "clubId",
+    db.Communitycomment.belongsTo(db.CommunityPost, {
+      foreignKey: "postId",
       targetKey: "id",
     });
-    db.ClubComment.belongsTo(db.User, {
-      foreignKey: "writerId",
+    db.Communitycomment.belongsTo(db.User, {
+      foreignKey: "commenterId",
       targetKey: "id",
     });
   }
