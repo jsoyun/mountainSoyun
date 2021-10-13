@@ -132,9 +132,9 @@ footer {
 }
 
 .weather-api {
-  font-size: 0.852em;
-  margin-left: 1.85vw;
-  margin-top: 5vw;
+  font-size: 0.795em;
+  margin-left: 2vw;
+  margin-top: 4.5vw;
   display: inlinek;
   display: flex;
   flex-wrap: wrap;
@@ -174,13 +174,15 @@ h6 {
 }
 
 h1 {
-  font-size: 1.8em;
+  font-size: 1.52em;
   margin: 0.563em 0;
   color: #000000;
+  text-shadow: -1px 0 rgb(13, 139, 76);
 }
 h2 {
   font-size: 1.4em;
   margin: 0.625em 0;
+  text-align: center;
 }
 h3 {
   font-size: 1.215em;
@@ -199,24 +201,23 @@ h6 {
   margin: 0.75em 0;
 }
 P {
-  line-height: 1.27em;
-  font-size: 1em;
+  line-height: 1.52em;
+  font-size: 0.952em;
   padding-bottom: 3vh;
+  text-align: left;
 }
 
 legend {
   font-size: 1.25em;
   margin: 1.12em 0.25em;
-  margin-top: 5vw;
-  margin-left: 12vw;
+  text-align: center;
 }
 
 pre {
   line-height: 0.95em;
   font-size: 1em;
-  margin-top: 3vw;
   padding-bottom: 3vh;
-  margin-left: 7vw;
+  text-align: center;
 }
 
 .content {
@@ -236,20 +237,23 @@ pre {
   background-color: #454746;
   background-image: url(../../images/main0.jpg);
   background-position: 0 50%;
-  width: 96vw;
-  height: 78vh;
+  width: 97vw;
+  min-height: 75vh;
+  background-attachment: fixed;
 }
 .illustration_02 {
   background-color: #3d5745;
   background-image: url(../../images/walking1.jpg);
   background-position: 100% 50%;
+  width: 97vw;
+  height: 60vh;
 }
 .illustration_03 {
   background-color: #3d4357;
   background-image: url(../../images/hiking.jpg);
   background-position: 0% 100%;
   width: 97vw;
-  height: 50vw;
+  height: 40vw;
 }
 .separator {
   padding: 1.8em 1.2em;
