@@ -42,6 +42,11 @@ async function clubDetail() {
       clubContainer.appendChild(row);
 
       row = document.createElement("div");
+      row.setAttribute("class", "star-box");
+      row.textContent = club.star + "점";
+      clubContainer.appendChild(row);
+
+      row = document.createElement("div");
       row.setAttribute("class", "comment-box");
       row.textContent = club.content;
       clubContainer.appendChild(row);

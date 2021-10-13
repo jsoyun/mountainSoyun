@@ -45,5 +45,6 @@ module.exports = class Club extends Sequelize.Model {
     db.Club.belongsToMany(db.User, { through: "Stars" }); // 별점
     db.Club.hasMany(db.ClubComment, { foreignKey: "clubId", sourceKey: "id" });
     db.Club.hasMany(db.Img, { foreignKey: "clubImgId", sourceKey: "id" });
+    db.Club.belongsToMany(db.Hashtag, { through: 'postHashtag' });
   }
 };
