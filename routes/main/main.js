@@ -23,7 +23,8 @@ router.get("/", async (req, res, next) => {
         model: User,
         attribute: ["id", "nick"],
       },
-      // order: [["createdAt", "DESC"]],
+      order: [["id", "DESC"]],
+      limit: 6,
     });
     res.render("main/main", {
       title: "into the mountain",

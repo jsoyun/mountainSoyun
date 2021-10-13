@@ -246,7 +246,9 @@ pre {
   background-image: url(../../images/walking1.jpg);
   background-position: 100% 50%;
   width: 97vw;
-  height: 60vh;
+  height: 70vh;
+  position: relative;
+  padding-bottom: 10vh;
 }
 .illustration_03 {
   background-color: #3d4357;
@@ -259,6 +261,22 @@ pre {
   padding: 1.8em 1.2em;
   text-align: center;
   font-size: 0.715em;
+}
+
+.illustration_02 .img_section {
+  display: inline-flex;
+}
+
+.illustration_02 .trans_inner {
+  display: inline-flex;
+}
+
+.illustration_02 .trans_inner img {
+  width: 20vw;
+  height: 15vh;
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* position: absolute; */
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
