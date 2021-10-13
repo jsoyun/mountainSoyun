@@ -1,6 +1,6 @@
 h1 {
   font-weight: bolder;
-  font-size: 3vw;
+  font-size: 2vw;
   color: rgba(85, 177, 163, 0.884);
   padding-left: 3vw;
 }
@@ -45,6 +45,10 @@ body {
   margin-left: 14vw;
   margin-right: 14vw;
   font-size: 1vw;
+}
+
+p {
+  padding: 0;
 }
 
 .board-content {

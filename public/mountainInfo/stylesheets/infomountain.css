@@ -30,8 +30,11 @@ h1 {
   font-family: "Noto Sans KR", sans-serif;
   text-align: center;
   margin: 5vh;
+
+  font-weight: bolder;
   font-size: 3vw;
-  font-weight: bold;
+  color: rgba(85, 177, 163, 0.884);
+  padding-left: 3vw;
 }
 
 .mountain-name {
