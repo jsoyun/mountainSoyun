@@ -1,14 +1,17 @@
 h3 {
   font-size: 1.2em;
   margin: 1.125em 0;
+  margin-left: 20px;
 }
 
-#twit-form legend {
-  margin-left: 17vw;
+#twit-form h4 {
+  margin-top: 5vw;
+  margin-left: 20vw;
 }
 #twit-form h5 {
+  margin-top: 1vw;
   font-size: 0.8em;
-  margin-left: 17vw;
+  margin-left: 20vw;
 }
 
 .post_form_container {
@@ -18,9 +21,9 @@ h3 {
 }
 
 .post_form {
-  padding: 40px;
+  padding: 4vw;
   max-width: 75vw;
-  max-height: 100vw;
+  max-height: 150vw;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   margin: 0 0 10px;
@@ -30,22 +33,35 @@ h3 {
   margin: 0 10px 40px;
   font-weight: 400;
   font-size: 30px;
+  margin-top: 50px;
+  margin-bottom: 35px;
   text-align: center;
 }
 
-.post_form .preview {
-  margin-bottom: 30px;
+.post_form .img-preview {
+  margin-bottom: 50px;
+  margin-top: 40px;
 }
 
 .post_form .preview .upload {
-  max-width: 300px;
-  height: 300px;
+  max-width: 50vw;
+  height: 150vw;
   border: 1px solid #e6e6e6;
-  margin: 0 auto;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.file-input-div {
+  position: relative;
+  overflow: hidden;
+}
+
+.file_input_hidden {
+  position: relative;
+  opacity: 0;
 }
 
 .plus_icon {
@@ -53,7 +69,7 @@ h3 {
   height: 80px;
   border-radius: 50%;
   margin: 0 auto 10px;
-  border: 1px solid dodgerblue;
+  border: 1px solid #55b1a3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +80,7 @@ h3 {
   display: block;
   width: 2px;
   height: 30px;
-  background: dodgerblue;
+  background: #55b1a3;
 }
 
 .plus_icon span:nth-child(2) {
@@ -85,14 +101,43 @@ h3 {
 }
 
 .post_form_container #img {
-  width: 300px;
-  height: 300px;
+  width: 50vw;
+  height: 100vw;
   margin-right: 5%;
   margin-top: 500px;
   display: block;
   align-items: center;
 }
+
+.input-group {
+  margin-left: 12vw;
+}
+
+#twit-btn {
+  margin-top: 7vh;
+  margin-left: 35%;
+  font-size: 15px;
+  font-weight: bold;
+  background: #55b1a3;
+  width: 15vw;
+  height: 3vw;
+  padding: 5px;
+  margin-bottom: 10vh;
+  text-align: center;
+  text-decoration: none;
+}
+
 /* 별점기능 */
+.rating-wrap {
+  margin-top: 10vh;
+  margin-left: 12vw;
+}
+
+textarea {
+  width: 30vw;
+  overflow: visible;
+}
+
 .rating {
   display: flex;
   padding: 0;
