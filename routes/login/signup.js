@@ -9,6 +9,14 @@ const { isNotLoggedIn } = require("../middlewares");
 
 const router = express.Router();
 
+/* uploads 폴더 */
+try {
+  fs.readdirSync('uploads');
+} catch (error) {
+  console.error('uploads 폴더가 없어 폴더를 생성합니다.');
+  fs.mkdirSync('uploads');
+}
+
 router.get("/", (req, res, next) => {
   res.render("login/signup", { title: "회원가입" });
 });
