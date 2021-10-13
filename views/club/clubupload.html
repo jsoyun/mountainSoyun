@@ -8,7 +8,7 @@
     <h3>인증 신규 등록</h3>
   
     <form id="twit-form" method="post" enctype="multipart/form-data">
-      <legend>명산100</legend>
+      <h4>명산100</h4>
       <h5>지금 등록 가능한 인증지 입니다.</h5>
   
       <div class="post_form_container">
@@ -22,11 +22,13 @@
                   <div class="post_btn" for="img">
                     <br />
                     <br />
-                    <div class="plus_icon" for="img">
+                    <div class="plus_icon" for="img" accept="image/*" >
                       <sapn></sapn>
                       <span></span>
                       <img id="img-preview" src="" style="display: none" width="200" alt="미리보기" />
-                      <input id="img" type="file" accept="image/*" /><br />
+                      <div class="file-input-div">
+                      <input id="img" type="file" accept="image/*" class="file_input_hidden" />
+                    </div>
                   <sapn></sapn>
                   <span></span>
                 </div>
