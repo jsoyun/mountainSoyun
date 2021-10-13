@@ -28,6 +28,10 @@ router.get('/:id', async (req, res, next) => {
       },
       where: { id: `${req.params.id}` },
     })
+    await CommunityPost.update(
+      { views: texts.views + 1 },
+      { where: { id: `${req.params.id}` } }
+    );
     res.render('board/view-community', {
       title: 'mountain 커뮤니티',
       communityTwits: texts,
