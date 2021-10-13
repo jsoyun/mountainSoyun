@@ -37,7 +37,8 @@
 }
 
 .com-write:hover {
-  color: black;
+  /* color: black; */
+  color: #55b1a3;
 }
 
 /* 태그 검색 */
@@ -49,6 +50,7 @@
   font-size: 1vw;
   font-family: var(--btn-font-family), sans-serif;
   padding-left: 1em;
+  padding: 10px;
   -webkit-box-shadow: 0 0 0px 1000px var(--search-bg-color) inset !important;
   -webkit-text-fill-color: var(--btn-bg-color) !important;
 }
@@ -70,6 +72,7 @@ input:focus {
   width: var(--search-btn-width);
   height: var(--btn-height);
   font-size: 0.9vw;
+  padding-bottom: 3vw;
 }
 
 .text-search-btn {
@@ -110,6 +113,7 @@ select:focus {
 
 .table-item-box td {
   padding: 1em;
+  background-color: #55b1a3;
 }
 
 .com-box {
@@ -119,7 +123,7 @@ select:focus {
 }
 
 .table-head {
-  border-top: 1px solid var(--select-border-color);
+  border-top: 2px solid var(--select-border-color);
   border-bottom: 1px solid var(--select-border-color);
 }
 
@@ -145,6 +149,10 @@ th {
   margin-top: 1.5vh;
 
   height: auto;
+
+  color: rgba(85, 177, 163);
+
+  padding-left: 3vw;
 }
 
 .com-table {
@@ -195,4 +203,10 @@ th {
 
 .page-link {
   text-decoration-line: none;
+}
+
+#search-form {
+  background-color: #55b1a3;
+  border-radius: 10px;
+  padding: 3px;
 }
