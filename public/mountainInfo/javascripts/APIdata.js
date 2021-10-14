@@ -24,6 +24,65 @@ async function firstload() {
     }
 
 };
+/////////////////////////////////////////////////////////////////////////////
+document.querySelectorAll(".kor-location").forEach(element => {
+    element.addEventListener('click', async function () {
+        let location = await this.textContent;
+        const mountainList = document.querySelector('#mountain-list');
+        if (location == "서울/경기") {
+            location = "경기";
+            const apidata1 = await axios.post("/infomountain/location", { location });
+            location = "인천";
+            const apidata2 = await axios.post("/infomountain/location", { location });
+            arrydata1 = JSON.stringify(apidata1.data);
+            arrydata2 = JSON.stringify(apidata2.data);
+            sumarrydata = arrydata1.slice(0, -1) + "," + arrydata2 + "]";
+            const apidata = JSON.parse(sumarrydata);
+            console.log(apidata);
+            mountainList.innerHTML = "";
+            for (let i = 0; i < apidata.length; i++) {
+
+                let listsummury = document.createElement("div");
+                listsummury.setAttribute('class', "mountain-list-summury");
+                let temp = `<div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        <div class="mountain-summury-height">높이: ${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">주소지: ${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">소개: ${apidata[i].subnm}</div>`;
+                listsummury.innerHTML = temp;
+                mountainList.appendChild(listsummury);
+            }
+
+        } else {
+            const apidata1 = await axios.post("/infomountain/location", { location });
+            const apidata = apidata1.data
+            console.log(apidata);
+            console.log(apidata.length);
+            mountainList.innerHTML = "";
+            if (apidata.length == undefined) {
+                let listsummury = document.createElement("div");
+                listsummury.setAttribute('class', "mountain-list-summury");
+                let temp = `<div class="mountain-summury-name">${apidata.mntnm}</div>
+        <div class="mountain-summury-height">높이: ${apidata.mntheight}m</div>
+        <div class="mountain-summury-address">주소지: ${apidata.areanm}</div>
+        <div class="mountain-summury-overview">소개: ${apidata.subnm}</div>`;
+                listsummury.innerHTML = temp;
+                mountainList.appendChild(listsummury);
+            } else {
+                for (let i = 0; i < apidata.length; i++) {
+                    let listsummury = document.createElement("div");
+                    listsummury.setAttribute('class', "mountain-list-summury");
+                    let temp = `<div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        <div class="mountain-summury-height">높이: ${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">주소지: ${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">소개: ${apidata[i].subnm}</div>`;
+                    listsummury.innerHTML = temp;
+                    mountainList.appendChild(listsummury);
+                }
+            };
+        };
+    })
+});
+////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener('click', async function (e) {
     let clicktarget = e.target.getAttribute("class");
