@@ -62,6 +62,7 @@ async function postComments(id) {
             commentTable.setAttribute("class", "comment-table");
 
             let commentrow = document.createElement("div");
+            commentrow.setAttribute("class", "commenter-id");
             commentrow.textContent = comments.User.nick;
             commentTable.appendChild(commentrow);
 
@@ -76,7 +77,7 @@ async function postComments(id) {
                 }
             });
             editForm.setAttribute("class", "edit-form");
-            commentrow.appendChild(editForm);
+            commentTable.appendChild(editForm);
 
             commentrow = document.createElement("input");
             commentrow.setAttribute("readonly", "");
