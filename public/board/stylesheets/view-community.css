@@ -74,3 +74,57 @@ p {
   margin-right: 10vw;
   padding-bottom: 3vh;
 }
+
+.comments-box {
+  width: 70vw;
+  border: 1px solid #dadada;
+  padding: 0.6em 0;
+  margin: 0 auto;
+}
+
+.comments-box-input {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  border-color: #dadada;
+  width: 40vw;
+}
+
+input:focus {
+  outline: none;
+}
+
+.comments-box-title {
+  font-size: 1.5vw;
+  display: inline-block;
+}
+
+.comment-table div {
+  display: inline-block;
+  font-size: 1.5vw;
+}
+
+.edit-form input[type="text"] {
+  border-color: transparent;
+  font-size: 2vw;
+}
+
+.edit-form button {
+  background-color: transparent;
+  border-color: transparent;
+  color: #dadada;
+  font-size: 1vw;
+}
+
+.edit-form button:hover {
+  color: #000;
+  text-decoration-line: underline;
+}
+
+.comments-button {
+  border: none;
+  font-size: 1.5vw;
+}
+
+.comments-button:hover {
+  background-color: #dadada;
+}
