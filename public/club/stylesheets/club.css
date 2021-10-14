@@ -37,7 +37,7 @@ h6 {
   font-size: 1em;
   margin: 0.75em 0;
 }
-p{
+p {
   font-size: 0.7em;
 }
 
@@ -174,9 +174,9 @@ input:focus {
   flex-flow: column wrap;
 }
 .twit-author {
-font-size: 2vw;
+  font-size: 1.5vw;
+  color: #09492b;
 }
-
 
 .con {
   position: relative;
