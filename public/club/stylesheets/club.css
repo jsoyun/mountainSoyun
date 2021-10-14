@@ -37,10 +37,7 @@ h6 {
   font-size: 1em;
   margin: 0.75em 0;
 }
-/* P {
-  font-size: 0.75em;
-  margin: 0.75em 0;
-} */
+
 /* 상단 */
 .feed-header {
   text-align: center;
@@ -50,7 +47,51 @@ h6 {
   font-size: var(--title-font-size);
   font-weight: bolder;
   color: var(--btn-main-font), sans-serif;
-  font-family: "Noto Sans KR", sans-serif;
+}
+#feed-btn {
+  display: inline-flexbox;
+  align-items: center;
+  border: none;
+  background-color: #fff;
+  margin-left: 15vw;
+  margin-bottom: 7vh;
+  text-decoration: underline;
+  text-shadow: 1px 1px 1px rgb(96, 114, 105);
+  /* font-family: Cafe24SsurroundAir, sans-serif; */
+}
+
+/* 태그 검색 */
+.tag-search {
+  border: transparent;
+  width: var(--search-bg-width);
+  height: var(--btn-height);
+  border-radius: var(--btn-radius);
+  font-size: 1vw;
+  font-family: var(--btn-font-family), sans-serif;
+  padding-left: 1em;
+  -webkit-box-shadow: 0 0 0px 1000px var(--search-bg-color) inset !important;
+  -webkit-text-fill-color: var(--btn-bg-color) !important;
+}
+
+input:focus {
+  outline: none;
+}
+
+.tag-search-btn .fa-search {
+  width: var(--search-btn-width);
+  height: var(--btn-height);
+  font-size: 0.9vw;
+}
+
+.tag-search-btn {
+  position: relative;
+  /* display: inline-block; */
+  background-color: var(--search-bg-color);
+  right: 0.01em;
+}
+
+.tag-search-btn:hover {
+  cursor: pointer;
 }
 
 .container {
@@ -115,82 +156,65 @@ h6 {
 }
 
 /* 본문 */
-/* 사진 업로드 아이콘 */
-.picture-uploads {
-  text-align: none;
-  position: fixed;
-  right: 6vw;
-  bottom: 5vw;
-  font-size: 2.5vw;
-  background-color: white;
-  padding: 0.2em;
-  border-radius: 50%;
-}
-
-.picture-uploads:hover {
-  color: black;
-}
-/* 
-.uploads-btn {
-  background-color: transparent;
-  padding: 1vw;
-  font-size: 1.2vw;
-  display: block;
-  border-color: transparent;
-} */
-
-.black {
-  display: block;
-}
-
 /* 사진 게시물 */
 .twit {
-  /* width: 15vw;
-  height: 15vw; */
-  margin: 2px;
-  padding: 2px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.con {
-  border: 1px solid #999;
-  border-radius: 7px;
-  width: 12vw;
-  height: 12vw;
-  display: flex;
-  flex-direction: column;
+  width: 18vw;
+  height: 18vw;
+  margin: 1px;
+  padding: 1px;
+  display: inline-block;
+  margin-top: 1vw;
+  background-color: #fff;
 }
 
-.twit-img {
-  width: 100%;
-  height: 100%;
+.twit .con {
+  display: flex;
+  flex: initial;
+  position: relative;
 }
-.twit-img img {
-  width: 100%;
-  height: 100%;
+.twit .con .twit-author {
+  position: absolute;
+  display: inline-flexbox;
+  margin-left: 2vw;
+  width: 18vw;
+  height: 2.8vh;
 }
 
-.like,
+.twit .con .twit-img img {
+  position: absolute;
+  margin-top: 3vh;
+  margin-left: 2vw;
+  width: 55vw;
+  height: 24vh;
+  display: flex;
+}
+
+.twit .con button.twit-follow-btn {
+  display: inline-block;
+  position: absolute;
+  width: 37px;
+  height: 37px;
+  margin-top: 15em;
+  margin-left: 2vw;
+  border-radius: 20%;
+  background: url("../imgs/background01.png") no-repeat -272px -182px;
+  background-color: #55b1a3;
+}
+
+.twit .con .like,
 .unlike {
   background-color: transparent;
-  border-color: transparent;
-  font-size: 15px;
+  display: inline-block;
+  position: absolute;
+  background: url("../imgs/background01.png") no-repeat -52px -261px;
+  border-radius: 20%;
+  margin-top: 4vh;
+  margin-left: 11vw;
 }
 
 .picture-search {
   border: none;
   padding: 1em 15%;
-}
-
-#feed-btn {
-  border: none;
-  background-color: #fff;
-  padding: 5px;
-  margin-left: 25vw;
-  text-decoration: underline;
-  text-shadow: 1px 1px 1px rgb(96, 114, 105);
-  /* font-family: Cafe24SsurroundAir, sans-serif; */
 }
 
 /* 위 수정 전 css 아래 수정중 css */
@@ -204,17 +228,19 @@ h6 {
   text-align: center;
 }
 
+/* 인증하기 버튼 효과*/
+
 #feed-btn a {
   position: relative;
   display: inline-block;
-  width: 14.512em;
-  padding: 1em 1em;
+  /* width: 14.512em; */
+  /* padding: 1em 1em; */
   color: #09492b;
   text-transform: uppercase;
   text-decoration: underline;
   letter-spacing: 4px;
   text-decoration: none;
-  font-size: 1.175rem;
+  font-size: 1.8em;
   overflow: hidden;
   transition: 0.2s;
   border: none;
