@@ -21,20 +21,12 @@ header {
   height: 20%;
   max-height: 150px;
   padding: 1%;
-  border: 1px solid red;
 }
 
 header #header-logo {
   height: 100%;
-  border: 1px solid red;
-}
-header #header-logo img {
-  height: 10vh;
 }
 
-.mynav {
-  border: 1px solid red;
-}
 .mynav ul {
   display: flex;
   flex-flow: row;
@@ -99,10 +91,37 @@ header .hello {
 }
 
 .hi {
-  font-size: 1.7vh;
+  display: inline-block;
   position: absolute;
-  top: 2.47em;
-  right: 8.8em;
+  top: 1.47em;
+  right: 1.8em;
+  font-size: 1.2vw;
+}
+
+.hello-item-fa {
+  font-size: 1.8vw;
+  font-weight: bolder;
+  color: black;
+}
+
+.hello-item-fa:hover {
+  color: #55b1a3;
+}
+
+.logout-text {
+  position: absolute;
+  top: 4.47em;
+  right: 1.8em;
+  font-size: 1vw;
+}
+
+.logout-text a {
+  color: #000000;
+  text-decoration-line: none;
+}
+
+.logout-text:hover a {
+  text-decoration-line: underline;
 }
 
 .hello-item-logout {
@@ -129,6 +148,15 @@ section {
 footer {
   width: 100%;
   height: 10%;
+}
+
+#weather {
+  font-size: 1.3vw;
+}
+
+.logo-img {
+  width: 15vw;
+  height: 7.5vw;
 }
 
 .weather-api {
@@ -229,15 +257,15 @@ pre {
 }
 .right {
   padding: 1.618em 6.472em 3.236em 53%;
+  text-align: center;
 }
 .left {
-  padding: 1.618em 53% 3.236em 6.472em;
+  padding: 2.618em 53% 4.236em 2.272em;
 }
 .illustration_01 {
   background-color: #454746;
   background-image: url(../../images/main0.jpg);
   background-position: 0 50%;
-  width: 97vw;
   min-height: 75vh;
   background-attachment: fixed;
 }
@@ -245,7 +273,6 @@ pre {
   background-color: #3d5745;
   background-image: url(../../images/walking1.jpg);
   background-position: 100% 50%;
-  width: 97vw;
   height: 70vh;
   position: relative;
   padding-bottom: 10vh;
@@ -254,13 +281,14 @@ pre {
   background-color: #3d4357;
   background-image: url(../../images/hiking.jpg);
   background-position: 0% 100%;
-  width: 97vw;
+  /* width: 97vw; */
   height: 40vw;
 }
 .separator {
   padding: 1.8em 1.2em;
   text-align: center;
-  font-size: 0.715em;
+  font-size: 1vw;
+  
 }
 
 .illustration_02 .img_section {
@@ -271,12 +299,26 @@ pre {
   display: inline-flex;
 }
 
-.illustration_02 .trans_inner img {
-  width: 20vw;
-  height: 15vh;
-  display: inline-flex;
-  flex-wrap: wrap;
-  /* position: absolute; */
+.content-t2 {
+  font-size: 3vw;
+  margin-bottom: 2em;
+}
+.box-title {
+  font-size: 2.6vw;
+  width: 40vw;
+  font-weight: bolder;
+}
+
+.box-text {
+  font-size: 1.6vw;
+  width: 40vw;
+}
+
+.img-club {
+  width: 10vw;
+  height: 5vw;
+  margin-left: 1em;
+  margin-bottom: 1em;
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -460,10 +502,56 @@ pre {
   }
 }
 
-/* .sprite_heart_icon_outline.on {
-  background: url("../../images/background01.png") no-repeat -1em -10em;
-  position: absolute;
-  right: 1.7em;
-  font-size: 1vw;
-  padding: 2em 2em;
-} */
+
+@media screen and (max-width:1123px) {
+  .illustration_01 {
+    background-position: 0 0%;
+    min-height: 35vh;
+  }
+  .illustration_02 {
+    background-position: 100% 50%;
+    background-image: url(../../images/KakaoTalk_20211014_140513252.jpg);
+    /* min-height: 40vh; */
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width:1123px) {
+  .mynav a {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width:800px) { 
+  .separator-header {
+    display: none;
+  }
+  .illustration_03 {
+    display: none;
+  }
+  .illustration_02 {
+    background-position: 100% 100%;
+    height: 45vh;
+  }
+}
+
+@media screen and (max-width:580px) { 
+  .illustration_01 {
+    background-image: url();
+    min-height: 35vh;
+  }  
+  .illustration_02 {
+    display: none;
+  }
+  .right {
+    padding: 0;
+  }
+  .box-title {
+    margin: 0 auto;
+    padding: 1em 0;
+  }
+  .box-text {
+    margin: 0 auto;
+    padding: 1em 0;
+  }
+}

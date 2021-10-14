@@ -19,13 +19,6 @@
   height: 23px;
 }
 
-.sprite_user_icon_outline {
-  display: inline-block;
-  background: url("../../images/background01.png") no-repeat -272px -182px;
-  width: 22px;
-  height: 24px;
-}
-
 .sprite_heart_icon_outline {
   display: inline-block;
   background: url("../../images/background01.png") no-repeat -52px -261px;

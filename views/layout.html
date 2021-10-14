@@ -21,7 +21,7 @@
 <body>
   <header id="header">
     <div id="header-logo">
-      <a href="/"><img class="logo-img" src="/images/logo.png" alt="" /></a>
+      <a href="/"><img class="logo-img" src="/images/logo.png" alt="in to the mountain" /></a>
     </div>
 
     <nav class="mynav">
@@ -46,21 +46,21 @@
       <div id="header-right-container">
         {% if user and user.id %}
         <p class="hello">
-          <span class="hello-item"
-            ><a href="/mypage" class="sprite_user_icon_outline">
-             </a></span>
-             <div class="hi"> {{'안녕하세요! ' + user.nick + '님'}}</div>
-          <span class="hello-item-logout"
-            ><a href="/logout">[로그아웃]</a><i class="fas fa-sign-out-alt"></i
-          ></span>
+          <div class="hi">
+            {{'안녕하세요! ' + user.nick + '님'}}
+            <span class="hello-item">
+              <a class="hello-item-fa" href="/login" class="sprite_user_icon_outline"><i class="far fa-user"></i></a>
+            </span>
+          </div>
+          <div class="logout-text">
+            <a href="/logout">로그아웃</a>
+          </div>
           <input id="my-id" type="hidden" value="{{user.id}}" />
         </p>
         {% else %}
-        <p class="hello">
-          <span class="hello-item">
-            <a href="/login" class="sprite_user_icon_outline"></a>
-          </span>
-        </p>
+        <div class="logout-text">
+          <a href="/login">로그인</a>
+        </div>
         {% endif %}
         <div class="icons-box">
           <div class="weather-api">
