@@ -22,11 +22,11 @@
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.2vw;
   margin-top: 3vw;
 }
 h4 {
-  font-size: 0.9em;
+  font-size: 1vw;
   margin: 1.313em 0;
 }
 h5 {
@@ -36,6 +36,9 @@ h5 {
 h6 {
   font-size: 1em;
   margin: 0.75em 0;
+}
+p{
+  font-size: 0.7em;
 }
 
 /* 상단 */
@@ -50,6 +53,7 @@ h6 {
 }
 #feed-btn {
   display: inline-flexbox;
+  font-size: 1vw;
   align-items: center;
   border: none;
   background-color: #fff;
@@ -169,6 +173,10 @@ input:focus {
   margin-top: 5vw;
   flex-flow: column wrap;
 }
+.twit-author {
+font-size: 2vw;
+}
+
 
 .con {
   position: relative;

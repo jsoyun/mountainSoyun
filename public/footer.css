@@ -8,10 +8,7 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-<<<<<<< HEAD
-  height: 130px;
-=======
-  height: 200px;
+  height: 150px;
 }
 nav {
   padding: 2vw;
@@ -24,5 +21,4 @@ nav {
   nav {
     line-height: 4vw;
   }
->>>>>>> soyunCss1014Test
 }
