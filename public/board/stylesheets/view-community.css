@@ -114,8 +114,7 @@ input:focus {
   top: 0.3em;
   left: 1em;
   width: 45vw;
-  text-overflow:clip;
-
+  text-overflow: clip;
 }
 
 .edit-form button {
@@ -151,4 +150,7 @@ input:focus {
 
 .comments-button:hover {
   background-color: #dadada;
+}
+.community-view-box {
+  margin-bottom: 80vw;
 }

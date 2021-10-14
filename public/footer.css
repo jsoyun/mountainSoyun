@@ -10,3 +10,9 @@
   text-align: center;
   height: 130px;
 }
+nav {
+  padding: 2vw;
+  text-align: left;
+  line-height: 2vw;
+  color: rgba(201, 201, 201, 0.733);
+}
