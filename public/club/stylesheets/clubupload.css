@@ -61,6 +61,14 @@ h3 {
   /* opacity: 0; */
 }
 
+#img-preview0 {
+  margin-left: 30%;
+}
+
+#img-url {
+  margin-left: 50%;
+}
+
 .post_form_container {
   max-width: 60vw;
   max-height: 100vw;
@@ -185,7 +193,7 @@ textarea {
 textarea::placeholder {
   color: #55b1a3;
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 1.2vw;
 }
 
 .rating {
