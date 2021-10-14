@@ -174,7 +174,7 @@ input:focus {
   position: absolute;
   width: 37px;
   height: 37px;
-  margin-top: 14.2vw;
+  margin-top: 15em;
   margin-left: 2vw;
   border-radius: 20%;
   background: url("../imgs/background01.png") no-repeat -272px -182px;
