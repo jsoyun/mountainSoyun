@@ -196,12 +196,12 @@ input:focus {
 
 .con .twit-follow-btn {
   position: absolute;
-  left: 5vw;
-  bottom: 5vw;
+  width: 8vw;
+  height: 3vw;
   margin-left: 5vw;
-  margin-bottom: 10vw;
-  border: none;
-  background: url("../imgs/background01.png") no-repeat -272px -182px;
+  margin-bottom: 20vw;
+  background-color: cadetblue;
+  background: url("../../images/팔로우이모지.JPG");
 }
 .picture-search {
   border: none;
@@ -335,6 +335,12 @@ input:focus {
     display: none;
   }
   .tag-container input {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .con .twit-follow-btn {
     display: none;
   }
 }
