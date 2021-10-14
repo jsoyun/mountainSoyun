@@ -98,24 +98,23 @@ input:focus {
 }
 
 .comments-box-title {
-  font-size: 1.5vw;
+  font-size: 1vw;
   display: inline-block;
 }
 
 .comment-table div {
   display: inline-block;
-  font-size: 1.5vw;
+  font-size: 1vw;
 }
 
 .edit-form input[type="text"] {
   border-color: transparent;
-  font-size: 2vw;
+  font-size: 1.4vw;
   position: relative;
-  top: 0.3em;
+  top: 0.5em;
   left: 1em;
-  width: 45vw;
+  width: 40vw;
   text-overflow:clip;
-
 }
 
 .edit-form button {
@@ -133,15 +132,15 @@ input:focus {
 .comment-table {
   border: 1px solid #bababa;
   width: 70vw;
-  height: 5vw;
+  height: 4vw;
   margin: 0.5em auto;
   position: relative;
 }
 
 .commenter-id {
   position: absolute;
-  top: 1em;
-  left: 1em;
+  top: 1.1em;
+  left: 1.3em;
 }
 
 .comments-button {
