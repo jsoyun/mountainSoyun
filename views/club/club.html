@@ -38,10 +38,10 @@
         지급 내역 밒 멤버십 관련사항은 ITM 앱 내 [도전자 정보] > [마이페이지] 에서 확인이 가능합니다. (혜택사항은 변경 될 시 소급 적용되지 않으며, 운영정책에 따라 사전 고지 없이 중단 혹은 축소 될 수 있습니다.)
       </p>
     </div>
+    <div class="twit-container">
     {% for twit in twits %}
       <div class="twit">
         <div class="con">
-          
           <input type="hidden" value="{{twit.User.id}}" class="twit-user-id" />
           <input type="hidden" value="{{twit.id}}" class="twit-id" />
           <div class="twit-author">{{twit.User.nick}}</div>
@@ -52,14 +52,15 @@
           <button class="twit-unfollow btn"><i class="sprite_user_icon_outline"></i></button>
           {% endif %}
           <div class="twit-img">
-            <a href="/clubdetail"><img style="width: 180px;" src="{{twit.img}}" alt="섬네일" /></a>
+            <a href="/clubdetail"><img src="{{twit.img}}" alt="섬네일" /></a>
           </div>
-          <button class="like"><i class="sprite_heart_icon_outline"></i></button>
+          <!-- <button class="like"><i class="sprite_heart_icon_outline"></i></button> -->
   
           <!-- <div class="twit-content"></div> -->
         </div>
       </div>
       {% endfor %}
+    </div>
 </div>
 </section>
 {% endblock %} {% block script %}

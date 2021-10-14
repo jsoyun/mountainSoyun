@@ -1,64 +1,65 @@
 h3 {
-  font-size: 1.2em;
+  font-size: 2.2vw;
   margin: 1.125em 0;
   margin-left: 20px;
 }
-#twit-form fieldset{
+#twit-form fieldset {
   display: inline-block;
   direction: rtl; /* 이모지 순서 반전 */
   border: 0;
 }
-#twit-form input[type=radio]{
+#twit-form input[type="radio"] {
   display: none;
 }
-#twit-form .star-label{
-  font-size: 3em; /* 이모지 크기 */
-    color: transparent; /* 기존 이모지 컬러 제거 */
-    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+#twit-form .star-label {
+  font-size: 3.5vw; /* 이모지 크기 */
+  color: transparent; /* 기존 이모지 컬러 제거 */
+  text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
 }
-#twit-form .star-label:hover{
-  text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+#twit-form .star-label:hover {
+  text-shadow: 0 0 0 rgb(255, 174, 0); /* 마우스 호버 */
 }
-#twit-form .star-label:hover~.star-label{
-  text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+#twit-form .star-label:hover ~ .star-label {
+  text-shadow: 0 0 0 rgb(255, 174, 0); /* 마우스 호버 */
 }
-#twit-form input[type=radio]:checked~.star-label{
-  text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
+#twit-form input[type="radio"]:checked ~ .star-label {
+  text-shadow: 0 0 0 rgb(255, 174, 0); /* 마우스 클릭 체크 */
 }
-
 
 #twit-form h4 {
   margin-top: 5vw;
   margin-left: 20vw;
-  font-size: 1.7em;
+  font-size: 2vw;
   color: #55b1a3;
   text-shadow: rgb(0, 0, 0) 0px 0px 2px;
 }
 #twit-form h5 {
   margin-top: 1vw;
-  font-size: 1.4em;
+  font-size: 2vw;
   margin-left: 20vw;
   color: #55b1a3;
 }
 
-.image-input-background {
-    position: relative;
-    width: 10vw;
-    height: 10vw;
-    background: url("/images/uploadicon.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.sqyare-icon {
+  position: relative;
+  font-size: 12vw;
+  color: #55b1a3;
+  /* background: url("/images/uploadicon.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 25px;
+  margin-left: 35%;
+}
 
-  .img-preview input[type=file] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10vw;
-    height: 10vw;
-    border-radius: 5vw;
-    opacity: 0;
-  }
+.img-preview input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 5vw;
+  /* opacity: 0; */
+}
 
 .post_form_container {
   max-width: 60vw;
@@ -105,34 +106,6 @@ h3 {
   overflow: hidden;
 }
 
-/* .file_input_hidden {
-  position: relative;
-  opacity: 0;
-} */
-
-.plus_icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin: 0 auto 10px;
-  border: 1px solid #55b1a3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.plus_icon span {
-  position: absolute;
-  display: block;
-  width: 2px;
-  height: 30px;
-  background: #55b1a3;
-}
-
-.plus_icon span:nth-child(2) {
-  transform: rotate(90deg);
-}
-
 .click_file p {
   /* width: 200px;
   height: 200px;
@@ -160,15 +133,15 @@ h3 {
 }
 
 #twit-btn {
-  margin-top: 7vh;
+  margin-top: 7vw;
   margin-left: 35%;
-  font-size: 15px;
+  font-size: 1.2vw;
   font-weight: bold;
   background: #55b1a3;
   width: 15vw;
-  height: 3vw;
+  height: 5vh;
   padding: 5px;
-  margin-bottom: 10vh;
+  margin-bottom: 15vh;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -193,11 +166,26 @@ h3 {
 .rating-wrap {
   margin-top: 10vh;
   margin-left: 12vw;
+  margin-bottom: 3vh;
+}
+
+.rating-wrap p {
+  font-size: 1.5vw;
+}
+
+.input-group p {
+  font-size: 1.5vw;
 }
 
 textarea {
   width: 30vw;
   overflow: visible;
+}
+
+textarea::placeholder {
+  color: #55b1a3;
+  font-weight: bold;
+  font-size: 1vw;
 }
 
 .rating {
@@ -213,7 +201,7 @@ textarea {
 .rating-item {
   border: 1px solid #fff;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 2vw;
   color: rgb(255, 166, 0);
 }
 

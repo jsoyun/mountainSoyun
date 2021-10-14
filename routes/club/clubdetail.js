@@ -28,18 +28,20 @@ router.get("/", async (req, res, next) => {
 router.get("/comment", async (req, res, next) => {
   try {
     const reply = await Club.findAll({
-      include: [{
-        model: User,
-        attributes: ["id", "nick"],
-      },
-      {
-        model: ClubComment,
-        attributes: ["id", "comment", "createdAt"],
-        include: {
+      include: [
+        {
           model: User,
-          attributes: ["id", "nick"],
+          attributes: ["id", "nick", "img"],
         },
-      }],
+        {
+          model: ClubComment,
+          attributes: ["id", "comment", "createdAt"],
+          include: {
+            model: User,
+            attributes: ["id", "nick"],
+          },
+        },
+      ],
       order: [["createdAt", "DESC"]],
     });
     res.json(reply);
@@ -52,18 +54,21 @@ router.get("/comment", async (req, res, next) => {
 /* 댓글수정 */
 router.patch("/commentedit", isLoggedIn, async (req, res, next) => {
   try {
-    console.log(req.body)
-    const result = await ClubComment.update({
-      comment: req.body.comment,
-    }, {
-      where: { id: req.body.id },
-    });
+    console.log(req.body);
+    const result = await ClubComment.update(
+      {
+        comment: req.body.comment,
+      },
+      {
+        where: { id: req.body.id },
+      }
+    );
     res.json(result);
   } catch (err) {
     console.error(err);
     next(err);
   }
-})
+});
 
 /* 댓글삭제 */
 router.delete("/delete/:id", isLoggedIn, async (req, res, next) => {
@@ -75,7 +80,6 @@ router.delete("/delete/:id", isLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-
 
 /* 댓글추가 */
 router.post("/", isLoggedIn, async (req, res, next) => {
@@ -91,6 +95,5 @@ router.post("/", isLoggedIn, async (req, res, next) => {
     next(err);
   }
 });
-
 
 module.exports = router;
