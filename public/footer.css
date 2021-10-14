@@ -1,0 +1,12 @@
+#footer-container {
+  margin-top: 3vw;
+  background: grey;
+  color: white;
+  height: 60px;
+  /* position: fixed; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 130px;
+}
