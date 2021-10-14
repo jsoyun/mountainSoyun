@@ -67,8 +67,52 @@
     left: 70px;
     bottom: 20px;
   }
-</style>
+  #mountain-section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .mountain-list-summury{
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    height: 25vw;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    border: 3px solid #55b1a3;
+    padding: 1em;
+  }
+  .mountain-summury-img{
+    position: relative;
+    width: 30vw;
+    height: 100%;
+    border: 1px solid red;
+  }
+  .mountain-summury-img img{
+    position: absolute;
+    width: 30vw;
+    max-height: 100%;
+
+  }
+  .mountain-summury-container{
+    width: 30vw;
+    line-height: 130%;
+    height: 100%;
+    border: 1px solid red;
+    font-size: 2vh;
+  }
+  .mountain-summury-container div{
+    width: 100%;
+    margin-bottom: 0.5em;
+  }
+
+
+
+</style>
+<section id="mountain-section">
 <h1>100대명산게시판</h1>
 <button class="test">테스트버튼</button>
 
@@ -85,7 +129,7 @@
 </div>
 
 <div id="mountain-list"></div>
-
+</section>
 {% endblock %} {% block script %}
 <script src="/mountainInfo/javascripts/APIdata.js"></script>
 {% endblock %}
