@@ -1,5 +1,5 @@
 //팔로우
-document.querySelectorAll(".twit-follow-btn").forEach(function (tag) {
+document.querySelectorAll(".twit-follow").forEach(function (tag) {
   tag.addEventListener("click", function () {
     const myId = document.querySelector("#my-id");
     if (myId) {

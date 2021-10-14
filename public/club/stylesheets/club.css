@@ -194,15 +194,20 @@ input:focus {
   margin-top: 2vw;
 }
 
-.con .twit-follow-btn {
-  position: absolute;
-  width: 8vw;
-  height: 3vw;
-  margin-left: 5vw;
-  margin-bottom: 20vw;
-  background-color: cadetblue;
-  background: url("../../images/팔로우이모지.JPG");
+.con .twit-follow {
+  /* position: absolute; */
+  /* width: 8vw;
+  height: 3vw; */
+  margin-left: 1vw;
+  margin-bottom: 0.5vw;
+
+  /* background: url("../../images/팔로우이모지.JPG"); */
 }
+.con .twit-unfollow {
+  margin-left: 1vw;
+  margin-bottom: 0.5vw;
+}
+
 .picture-search {
   border: none;
   padding: 1em 15%;
@@ -325,7 +330,7 @@ input:focus {
 }
 
 @media screen and (max-width: 612px) {
-  .con .twit-follow-btn {
+  .con .twit-follow {
     display: none;
   }
 }
@@ -340,7 +345,7 @@ input:focus {
 }
 
 @media screen and (max-width: 699px) {
-  .con .twit-follow-btn {
+  .con .twit-follow {
     display: none;
   }
 }
