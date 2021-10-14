@@ -4,6 +4,8 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 const { CommunityPost, User } = require('../../models');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 /* 게시글 수정 전 READ */
 router.get('/:id', async (req, res, next) => {
@@ -26,24 +28,28 @@ router.get('/:id', async (req, res, next) => {
     };
 });
 
+AWS.config.update({
+  accessKeyId: process.env.S3_Access_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
 /* 게시글의 이미지 업로드 수정하기 */
 /* multer 기본 설정 */
 const upload = multer({
-    storage: multer.diskStorage({
-      destination(req, file, cb) {
-        cb(null, 'uploads/');
-      },
-      filename(req, file, cb) {
-        const ext = path.extname(file.originalname);
-        cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
-      },
-    }),
-    limits: { fieldSize: 5 * 1024 * 1024 },
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'wenode',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
+    },
+  }),
+  limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
 router.post('/:id/img', upload.single('img'), (req, res) => {
   console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
+  res.json({ url: `/img/${req.file.location}` });
 });
 
 /* 게시글 UPDATE */

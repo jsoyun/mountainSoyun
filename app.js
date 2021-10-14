@@ -10,6 +10,8 @@ const dotenv = require("dotenv");
 const passport = require("passport");
 const session = require("express-session");
 const passportConfig = require("./passport");
+const helmet = require('helmet');
+const hpp = require('hpp');
 
 dotenv.config();
 
@@ -44,6 +46,7 @@ const infoMountainRouter = require("./routes/mountainInfo/infomountain");
 const mypageRouter = require("./routes/mypage/mypage");
 const userRouter = require("./routes/mypage/user");
 const modifyRouter = require("./routes/mypage/modify");
+const morgan = require("morgan");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const app = express();
 passportConfig(); // 패스포트 설정
@@ -63,23 +66,32 @@ sequelize
     console.error(err);
   });
 ////미들웨어 추가할때마다 여기도 추가//////////////////////////////
-app.use(logger("dev"));
+if (process.env.NODE_ENV == 'production') {
+  app.enable('trust proxy');
+  app.use(logger("combined"));
+  app.use(helmet({ contentSecurityPolicy: false }));
+  app.use(hpp());
+} else {
+  app.use(morgan('dev'));
+}
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.COOKIE_SECRET,
-    cookie: {
-      httpOnly: true,
-      secure: false,
-    },
-  })
-);
+const sessionOption = {
+  resave: false,
+  saveUninitialized: false,
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  },
+};
+if (process.env.NODE_ENV == 'production') {
+  sessionOption.proxy = true;
+}
+app.use(session(sessionOption));
 app.use(passport.initialize());
 app.use(passport.session());
 ////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////

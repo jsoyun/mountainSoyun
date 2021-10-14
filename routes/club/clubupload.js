@@ -2,6 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 const { Club, Hashtag, Img } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
@@ -25,17 +27,21 @@ try {
   fs.mkdirSync("uploads");
 }
 
+AWS.config.update({
+  accessKeyId: process.env.S3_Access_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
 const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, cb) {
-      cb(null, "uploads/");
-    },
-    filename(req, file, cb) {
-      const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'wenode',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
     },
   }),
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fieldSize: 5 * 1024 * 1024 },
 });
 
 router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
@@ -43,7 +49,7 @@ router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
   // console.log(req.files);
   let urlArr = new Array();
   for (let i = 0; i < req.files.length; i++) {
-    urlArr.push(`/img/${req.files[i].filename}`);
+    urlArr.push(`/img/${req.files[i].location}`);
     console.log(urlArr[i]);
   }
   let jsonUrl = JSON.stringify(urlArr);

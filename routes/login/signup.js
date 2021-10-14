@@ -6,19 +6,46 @@ const fs = require("fs");
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const { isNotLoggedIn } = require("../middlewares");
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 const router = express.Router();
 
-/* uploads 폴더 */
-try {
-  fs.readdirSync('uploads');
-} catch (error) {
-  console.error('uploads 폴더가 없어 폴더를 생성합니다.');
-  fs.mkdirSync('uploads');
-}
-
 router.get("/", (req, res, next) => {
   res.render("login/signup", { title: "회원가입" });
+});
+
+// uploads 폴더
+try {
+  fs.readdirSync("uploads");
+} catch (error) {
+  console.error("uploads 폴더가 없어 폴더를 생성합니다.");
+  fs.mkdirSync("uploads");
+}
+
+AWS.config.update({
+  accessKeyId: process.env.S3_Access_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
+/* multer 기본 설정 */
+const upload = multer({
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'wenode',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
+    },
+  }),
+  limits: { fieldSize: 5 * 1024 * 1024 },
+});
+
+/* 프로필 IMG CREATE */
+router.post("/img", upload.single("img"), (req, res) => {
+  console.log(req.file);
+
+  res.json({ url: `/img/${req.file.location}` });
 });
 
 router.post("/", isNotLoggedIn, async (req, res, next) => {
@@ -53,80 +80,5 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
     return next(error);
   }
 });
-
-// uploads 폴더
-try {
-  fs.readdirSync("uploads");
-} catch (error) {
-  console.error("uploads 폴더가 없어 폴더를 생성합니다.");
-  fs.mkdirSync("uploads");
-}
-
-/* multer 기본 설정 */
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, cb) {
-      cb(null, "uploads/");
-    },
-    filename(req, file, cb) {
-      const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
-    },
-  }),
-  limits: { fieldSize: 5 * 1024 * 1024 },
-});
-
-/* 프로필 IMG CREATE */
-router.post("/img", upload.single("img"), (req, res) => {
-  console.log(req.file);
-
-  res.json({ url: `/img/${req.file.filename}` });
-});
-
-/* 프로필 TEXT CREATE */
-// router.post("/", upload.none(), async (req, res, next) => {
-//   try {
-//     await User.create({
-//       // nick: req.body.nick,
-//       img: req.body.url,
-//     });
-//     res.redirect("/signup");
-//   } catch (error) {
-//     console.error(error);
-//     next(error);
-//   }
-// });
-
-/* 비밀번호 찾기 이메일 전송 */
-// router.post("/", function(req, res, next){
-//   let email = req.body.email;
-
-//   let transporter = nodemailer.createTransport({
-//     service: 'Naver',
-//     host: 'smtp.naver.com',
-//     auth: {
-//       user: process.env.Node_Email,  // gmail 계정 아이디를 입력
-//       pass: process.env.Node_Pwd,          // gmail 계정의 비밀번호를 입력
-//     }
-//   });
-
-//   let mailOptions = {
-//     from: process.env.Node_Email,    // 발송 메일 주소 (위에서 작성한 gmail 계정 아이디)
-//     to: email ,                     // 수신 메일 주소
-//     subject: 'Sending Email using Node.js',   // 제목
-//     text: 'That was easy!'  // 내용
-//   };
-
-//   transporter.sendMail(mailOptions, function(error, info){
-//     if (error) {
-//       console.log(error);
-//     }
-//     else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   });
-
-//   res.redirect("/");
-// })
 
 module.exports = router;
