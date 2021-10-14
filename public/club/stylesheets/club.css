@@ -57,7 +57,7 @@ p {
   align-items: center;
   border: none;
   background-color: #fff;
-  margin-left: 15vw;
+  margin-left: 17vw;
   margin-bottom: 7vh;
   text-decoration: underline;
   text-shadow: 1px 1px 1px rgb(96, 114, 105);
@@ -177,6 +177,7 @@ input:focus {
   font-size: 1.5vw;
   color: #09492b;
   float: left;
+  position: relative;
 }
 
 .con {
@@ -189,11 +190,16 @@ input:focus {
 }
 
 .twit .twit-img img {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   width: 17vw;
   height: 15vw;
   margin-top: 2vw;
 }
+
+/* .twit-img img {
+  position: relative;
+} */
 
 .twit-follow {
   position: absolute;
@@ -204,13 +210,15 @@ input:focus {
   background-color: #55b1a3;
   border: 0;
   border-radius: 5px;
+  padding-top: -1vw;
 
   /* background: url("../../images/팔로우이모지.JPG"); */
 }
 
 .con .twit-follow:hover {
+  border-color: #55b1a3;
   color: white;
-  background-color: #55b1a3;
+  background-color: #1c3632;
 }
 
 .con .twit-unfollow {
