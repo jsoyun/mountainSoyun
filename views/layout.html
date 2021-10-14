@@ -12,6 +12,7 @@
     integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
   <link rel="stylesheet" href="/main/stylesheets/common.css" />
   <link rel="stylesheet" href="/main/stylesheets/main.css" />
+  <link rel="stylesheet" href="/footer.css">
   <link rel="stylesheet" href="/main/stylesheets/font.css" />
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
   <!-- <link rel="stylesheet" href="/main/stylesheets/layout.css" /> -->
@@ -73,11 +74,17 @@
     </div>
   </header>
   {% block content %} {% endblock %}
-  <footer>
-    <div id="footer-container">
-      <div id="footer-logo"></div>
-      <div id="footer-menu-container"></div>
-    </div>
+  <footer id="footer-container">
+    
+      <!-- <div id="footer-logo"></div>
+      <div id="footer-menu-container"></div> -->
+      <nav>
+        <ul>
+          <li>About Us</li>
+          <li>너도나도노트팀</li>
+        </ul>
+      </nav>
+    
   </footer>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
