@@ -20,15 +20,15 @@ router.use((req, res, next) => {
 //프로필 사진 읽기
 router.get("/", async (req, res, next) => {
   try {
-    const getLike = await Club.findAll({
-      include: {
-        model : User,
-        attributes:["id"],
-      },
-  });
+    // const getLike = await Club.findAll({
+    //   include: {
+    //     model: User,
+    //     attributes: ["id"],
+    //   },
+    // });
 
     console.log("////////////////////////////////////////////////////");
-    console.log(getLike);
+    // console.log(getLike);
     console.log("////////////////////////////////////////////////////");
     const getImage = await User.findOne({
       // where: { id: req.user.id }, // 여기서 id 에러창뜨고 로그인됨
@@ -45,17 +45,16 @@ router.get("/", async (req, res, next) => {
 });
 
 //회원계정 삭제 //가입되지않은 회원이라뜨는데db에는 남아있음..
-router.get('/:id/delete',async (req,res,next)=>{
+router.get("/:id/delete", async (req, res, next) => {
+  try {
+    const getID = await User.findOne({ where: { id: `${req.user.id}` } });
+    await getID.destroy({ where: { id: `${req.user.id}` } });
 
-   try{
-     const getID = await User.findOne({ where:{id: `${req.user.id}`}});
-     await getID.destroy({ where:{id: `${req.user.id}`}});
-     
-     res.redirect('/');
-   } catch (err){
-     console.error(err);
-     next(err);
-   }
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
 });
 
 // //회원계정 삭제 //가입되지않은 회원이라뜨는데db에는 남아있음..
@@ -64,7 +63,7 @@ router.get('/:id/delete',async (req,res,next)=>{
 //    try{
 //      const getID = await User.findOne({ where:{id: `${req.user.id}`}});
 //      await getID.destroy({ id: req.user.id});
-     
+
 //      res.redirect('/');
 //    }.then(()=>{
 //      req.session.destroy((err)=>{
@@ -81,6 +80,5 @@ router.get('/:id/delete',async (req,res,next)=>{
 
 // router.route('/:id')
 // .delete(User);
-
 
 module.exports = router;
