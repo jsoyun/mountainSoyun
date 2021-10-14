@@ -1,9 +1,11 @@
 {% extends 'layout.html' %} {% block css %}
 <link rel="stylesheet" href="/board/stylesheets/write-community.css" />
 {% endblock %} {% block content %}
-<button class="submit-btn" type="button" id="submit-btn-cancel">
+<!-- <button class="submit-btn" type="button" id="submit-btn-cancel">
   <a class="cancel-btn" href="/community/page?offset=0&limit=5">등록취소</a>
-</button>
+</button> -->
+<a class="cancel-btn" href="/community/page?offset=0&limit=5">등록취소</a>
+
 <form class="community" method="POST" enctype="multipart/form-data">
   <fieldset class="community-upload">
     <div class="community-upload-title">
@@ -49,7 +51,6 @@
     <button class="submit-btn" type="submit">등록</button>
   </div>
 </form>
-
-{% endblock %} {% block script %}
+{%include "footer.html"%} {% endblock %} {% block script %}
 <script src="/board/javascripts/write-community.js"></script>
 {% endblock %}
