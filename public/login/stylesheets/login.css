@@ -34,7 +34,7 @@ input:focus {
 
 .login-btn {
   width: var(--search-width);
-  height: 2vw;
+  height: 2.3vw;
   margin-bottom: 1vw;
   border-color: transparent;
   background-color: #dadada;

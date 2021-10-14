@@ -1,6 +1,6 @@
 :root {
-  --btn-main-font: Cafe24SsurroundAir;
-  --btn-font-family: Cafe24SsurroundAir;
+  /* --btn-main-font: Cafe24SsurroundAir;
+  --btn-font-family: Cafe24SsurroundAir; */
   --search-bg-color: white;
   --btn-radius: 10px;
   --btn-height: 1vw;
@@ -16,7 +16,7 @@
 /* 버튼 공통 */
 .btn {
   border: none;
-  font-family: var(--btn-font-family), sans-serif;
+  /* font-family: var(--btn-font-family), sans-serif; */
   padding: 0.5vw;
   border-radius: var(--btn-radius);
   background-color: beige;
@@ -48,9 +48,10 @@
   height: var(--btn-height);
   border-radius: var(--btn-radius);
   font-size: 1vw;
-  font-family: var(--btn-font-family), sans-serif;
+  /* font-family: var(--btn-font-family), sans-serif; */
   padding-left: 1em;
-  padding: 10px;
+  /* padding: 10px; */
+  padding: 0.9vw;
   -webkit-box-shadow: 0 0 0px 1000px var(--search-bg-color) inset !important;
   -webkit-text-fill-color: var(--btn-bg-color) !important;
 }
@@ -62,6 +63,13 @@
   border-radius: 8px;
   position: absolute;
   right: 13vw;
+
+  margin-top: 3vw;
+}
+#search-form {
+  /* border: solid 2px #55b1a3; */
+  margin: 0;
+  padding: 0;
 }
 
 input:focus {
@@ -113,7 +121,7 @@ select:focus {
 
 .table-item-box td {
   padding: 1em;
-  background-color: #55b1a3;
+  background-color: #55b1a380;
 }
 
 .com-box {
@@ -210,8 +218,8 @@ h1 {
   text-decoration-line: none;
 }
 
-#search-form {
+/* #search-form {
   background-color: #55b1a3;
   border-radius: 10px;
   padding: 3px;
-}
+} */

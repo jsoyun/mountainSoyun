@@ -24,30 +24,27 @@
 }
 
 .user-name {
-  font-size: vw;
+  font-size: 2.5vw;
   color: black;
   font-weight: bold;
   display: inline-block;
+  border-bottom: solid #55b1a3;
+  padding-bottom: 2vw;
 }
 #followCount {
-  text-align: right;
-  font-size: 2vw;
-  margin-top: 5vw;
-}
-section a {
-  text-align: right;
-  display: inline-block;
-  text-decoration: none;
+  text-align: left;
   font-size: 1.5vw;
-  color: #bababa;
+  margin: 1vw 0 1vw 0;
+  /* margin-top: 3vw; */
 }
+
 footer {
   text-align: right;
   font-size: 1vw;
 }
 
 #modify {
-  font-size: 1.5vw;
+  font-size: 1vw;
   color: #bababa;
   margin-bottom: 3vw;
 }
@@ -65,7 +62,7 @@ footer {
   margin-top: 2vw;
 }
 #userImg {
-  size: 20vw;
+  size: 40vw;
 
   float: left;
 }
@@ -77,17 +74,28 @@ footer {
   border-radius: 3rem;
 }
 
-/* footer a {
-  font-size: 1.5vw;
-  margin-top: 3vw;
-  text-decoration: none;
-  color: #bababa;
-} */
-
 h2 {
   display: inline-block;
   color: #55b1a3;
   border-radius: 2px;
   font-size: 1.8vw;
   font-weight: bolder;
+}
+
+section {
+  margin: 0 3vw 0 3vw;
+}
+
+section a {
+  text-align: right;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1vw;
+  color: #bababa;
+}
+
+#modify:hover,
+section a:hover {
+  color: black;
+  border-radius: 3px;
 }

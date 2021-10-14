@@ -10,10 +10,12 @@
         <h1>커뮤니티</h1>
         <div class="community-a-click">
         <a href="/community/page?offset=0&limit=5">목록으로</a>
-        {% if communityTwits.id === user.id %}
+        <a >{{communityTwits.id}}</a>
+        <a >{{user.id}}</a>
+        <!-- {% if communityTwits.id = user.id %}
         <a href="/edit/{{communityTwits.id}}">수정하기</a>
         <a href="/view/{{communityTwits.id}}/delete">삭제하기</a>
-        {% endif %}
+        {% endif %} -->
        </div>
     </div>
 

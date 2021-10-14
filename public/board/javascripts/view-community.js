@@ -1,5 +1,5 @@
 if (document.querySelector("#comments-input-form") != null) {
-    const postId = document.querySelector(".board-id").getAttribute("value");
+    const postId = document.querySelector(".contents-id").textContent;
     postComments(postId);
     document.querySelector("#comments-input-form").addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -14,14 +14,16 @@ if (document.querySelector("#comments-input-form") != null) {
                 inputPostComment(postId, commenterId, comment);
                 document.querySelector("#comments-input").removeAttribute("placeholder");
             }
+            e.target.comment.value="";
         } catch (err) {
             console.log("에러났다");
         }
     });
 } else {
-    const postId = document.querySelector(".board-id").getAttribute("value");
+    const postId = document.querySelector(".contents-id").textContent;
     postComments(postId);
-}
+};
+
 async function inputPostComment(postId, commenterId, comment) {
     postId = postId;
     commenterId = commenterId;
@@ -36,7 +38,7 @@ async function inputPostComment(postId, commenterId, comment) {
 }
 
 async function editPostComment(id, comment) {
-    const postId = document.querySelector(".board-id").getAttribute("value");
+    const postId =document.querySelector(".contents-id").textContent;
     id = id;
     comment = comment;
     try {
@@ -49,7 +51,7 @@ async function editPostComment(id, comment) {
 
 async function postComments(id) {
     try {
-        const postId = document.querySelector(".board-id").getAttribute("value");
+        const postId = document.querySelector(".contents-id").textContent;
         const rawdata = await axios.get(`/view/${id}/comment`);
         const commentsdata = await rawdata.data[0].Communitycomments;
         const listbody = document.querySelector("#comments-list");
@@ -119,7 +121,7 @@ async function postComments(id) {
                     // 삭제 클릭 시
                     try {
                         await axios.delete(`/view/delete/${comments.id}`);
-                        // postComments(postId);
+                        postComments(postId);
                     } catch (err) {
                         console.error(err);
                     }

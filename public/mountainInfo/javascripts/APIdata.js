@@ -15,13 +15,14 @@ async function firstload() {
     for (let i = 0; i < apidata.length; i++) {
         let mountainAdd = apidata[i].areanm;
         let mountainname = apidata[i].mntnm;
-        const apidata3 = await axios.post("/infomountain/img", { mountainAdd })
+        const apidata3 = await axios.post("/infomountain/img", { mountainAdd });
         const imgdata = apidata3.data;
+        console.log(apidata3.data);
         if (imgdata.length == "undefined") {
 
             let listsummury = document.createElement("div");
             listsummury.setAttribute('class', "mountain-list-summury");
-            let temp = `<div class="mountain-summury-img"><img src="${imgdata.mntnattchimageseq}"></div>
+            let temp = `<div class="mountain-summury-img"><img src=""></div>
         <div class="mountain-summury-container">
         <div class="mountain-summury-name">${apidata[i].mntnm}</div>
         <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
@@ -30,7 +31,6 @@ async function firstload() {
         </div>`;
             listsummury.innerHTML = temp;
             mountainList.appendChild(listsummury);
-
         }
         // else {
         //     listsummury = document.createElement("div");
