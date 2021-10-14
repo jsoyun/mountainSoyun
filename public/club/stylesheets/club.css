@@ -37,7 +37,7 @@ h6 {
   font-size: 1em;
   margin: 0.75em 0;
 }
-p{
+p {
   font-size: 0.7em;
 }
 
@@ -57,7 +57,7 @@ p{
   align-items: center;
   border: none;
   background-color: #fff;
-  margin-left: 15vw;
+  margin-left: 17vw;
   margin-bottom: 7vh;
   text-decoration: underline;
   text-shadow: 1px 1px 1px rgb(96, 114, 105);
@@ -174,9 +174,11 @@ input:focus {
   flex-flow: column wrap;
 }
 .twit-author {
-font-size: 2vw;
+  font-size: 1.5vw;
+  color: #09492b;
+  float: left;
+  position: relative;
 }
-
 
 .con {
   position: relative;
@@ -188,21 +190,49 @@ font-size: 2vw;
 }
 
 .twit .twit-img img {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   width: 17vw;
   height: 15vw;
   margin-top: 2vw;
 }
 
-.con .twit-follow-btn {
+/* .twit-img img {
+  position: relative;
+} */
+
+.twit-follow {
   position: absolute;
-  left: 5vw;
-  bottom: 5vw;
-  margin-left: 5vw;
-  margin-bottom: 10vw;
-  border: none;
-  background: url("../imgs/background01.png") no-repeat -272px -182px;
+  /* width: 8vw;
+  height: 3vw; */
+  margin-left: 0.3vw;
+  color: white;
+  background-color: #55b1a3;
+  border: 0;
+  border-radius: 5px;
+  padding-top: -1vw;
+
+  /* background: url("../../images/팔로우이모지.JPG"); */
 }
+
+.con .twit-follow:hover {
+  border-color: #55b1a3;
+  color: white;
+  background-color: #1c3632;
+}
+
+.con .twit-unfollow {
+  margin-left: 0.3vw;
+  color: #55b1a3;
+  border: 0;
+  border-radius: 5px;
+}
+.con .twit-unfollow:hover {
+  border-color: #55b1a3;
+  color: white;
+  background-color: #1c3632;
+}
+
 .picture-search {
   border: none;
   padding: 1em 15%;
@@ -325,8 +355,8 @@ font-size: 2vw;
 }
 
 @media screen and (max-width: 612px) {
-  .con .twit-follow-btn {
-    display: none;
+  .con .twit-follow {
+    /* display: none; */
   }
 }
 
@@ -338,3 +368,9 @@ font-size: 2vw;
     display: none;
   }
 }
+/* 
+@media screen and (max-width: 699px) {
+  .con .twit-follow {
+    display: none;
+  }
+} */
