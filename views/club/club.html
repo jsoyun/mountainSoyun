@@ -47,17 +47,14 @@
           <div class="twit-author">{{twit.User.nick}}</div>
   
           {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
-          <button class="twit-follow btn"><i class="far fa-user"></i></button>
+          <button class="twit-follow-btn"><i class="sprite_user_icon_outline"></i></button>
           {% elif twit.User.id !== user.id%}
-          <button class="twit-unfollow btn"><i class="fas fa-user"></i></button>
+          <button class="twit-unfollow btn"><i class="sprite_user_icon_outline"></i></button>
           {% endif %}
-          <div class="twit-img">*
-            <a href="/clubdetail"><img style="width: 150px;" src="{{twit.img}}" alt="섬네일" /></a>
+          <div class="twit-img">
+            <a href="/clubdetail"><img style="width: 180px;" src="{{twit.img}}" alt="섬네일" /></a>
           </div>
-          <button class="like"><i class="far fa-heart"></i></button>
-  
-          <button class="unlike"><i class="fas fa-heart"></i></button>
-  
+          <button class="like"><i class="sprite_heart_icon_outline"></i></button>
   
           <!-- <div class="twit-content"></div> -->
         </div>

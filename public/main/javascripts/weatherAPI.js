@@ -38,7 +38,6 @@ async function WeatherAPI(lat, lon) {
     const temp = WeatherAPIData.main.temp;
     const weather = WeatherAPIData.weather[0].main;
     const weatherIconsrc = `https://openweathermap.org/img/wn/${WeatherAPIData.weather[0].icon}@2x.png`;
-    document.getElementById("city-name").innerHTML = cityName;
     document.getElementById("weather").innerHTML = weather + " , " + `${temp}&#176;C`;
     document.getElementById("weather-img").setAttribute("src", weatherIconsrc);
 

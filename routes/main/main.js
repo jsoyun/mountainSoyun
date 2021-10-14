@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
         attribute: ["id", "nick"],
       },
       order: [["id", "DESC"]],
-      limit: 3, // 페이지에 표시될 게시물 수
+      limit: 6,
     });
     res.render("main/main", {
       title: "into the mountain",

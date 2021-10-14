@@ -1,3 +1,65 @@
+firstload()
+async function firstload() {
+    const mountainList = document.querySelector('#mountain-list');
+    let location = "경기";
+    const apidata1 = await axios.post("/infomountain/location", { location });
+    console.log(apidata1.data);
+    location = "인천";
+    const apidata2 = await axios.post("/infomountain/location", { location });
+    arrydata1 = JSON.stringify(apidata1.data);
+    arrydata2 = JSON.stringify(apidata2.data);
+    sumarrydata = arrydata1.slice(0, -1) + "," + arrydata2 + "]";
+    const apidata = JSON.parse(sumarrydata);
+    console.log(apidata);
+    mountainList.innerHTML = "";
+    for (let i = 0; i < apidata.length; i++) {
+        let mountainAdd = apidata[i].areanm;
+        let mountainname = apidata[i].mntnm;
+        const apidata3 = await axios.post("/infomountain/img", { mountainAdd })
+        const imgdata = apidata3.data;
+        if (imgdata.length == "undefined") {
+
+            let listsummury = document.createElement("div");
+            listsummury.setAttribute('class', "mountain-list-summury");
+            let temp = `<div class="mountain-summury-img"><img src="${imgdata.mntnattchimageseq}"></div>
+        <div class="mountain-summury-container">
+        <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+        </div>`;
+            listsummury.innerHTML = temp;
+            mountainList.appendChild(listsummury);
+
+        }
+        // else {
+        //     listsummury = document.createElement("div");
+        //     listsummury.setAttribute('class', "mountain-list-summury");
+        //     for (let j = 0; j < imgdata.length; j++) {
+        //         const findinfo = JSON.stringify(imgdata[j].hndfmsmtnslctnrson);
+        //         if (findinfo[0] != "&") {
+        //             let listsummury = document.createElement("div");
+        //             listsummury.setAttribute('class', "mountain-list-summury");
+        //             let temp = `<div class="mountain-summury-img"><img src="${imgdata[j].mntnattchimageseq}"></div>
+        // <div class="mountain-summury-container">
+        // <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        // <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
+        // <div class="mountain-summury-address">${apidata[i].areanm}</div>
+        // <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+        // </div>`;
+        //             listsummury.innerHTML = temp;
+        //             mountainList.appendChild(listsummury);
+
+
+        //         }
+
+        //     }
+        // }
+
+    }
+
+};
+
 document.querySelectorAll(".kor-location").forEach(element => {
     element.addEventListener('click', async function () {
         let location = await this.textContent;

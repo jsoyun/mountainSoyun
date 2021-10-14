@@ -53,10 +53,6 @@ router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
 router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
   try {
     const URL = await req.body.url;
-    console.log("////////////////////////////////////////////")
-    console.log(typeof URL)
-    console.log(URL.length)
-    console.log("////////////////////////////////////////////")
     if (URL == false) {
       return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
     }
