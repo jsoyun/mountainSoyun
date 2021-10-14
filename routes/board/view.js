@@ -110,6 +110,7 @@ router.get("/:id/comment", async (req, res, next) => {
 /* 게시글 DELETE */
 router.get('/:id/delete', async (req, res, next) => {
   try { // 저장된 사진 DELETE
+    if(confirm("삭제하시겠습니까?")){
     const { img } = await CommunityPost.findOne({ where: { id: parseInt(req.params.id, 10) } });
     if (img) {
       const file = await fs2.readFile(img.replace('/img', './uploads'));
@@ -124,6 +125,7 @@ router.get('/:id/delete', async (req, res, next) => {
       where: { postId: parseInt(req.params.id, 10) },
     });
     res.redirect("/community/page?offset=0&limit=5");
+  }
   } catch (error) {
     console.error(error);
     next(error);
