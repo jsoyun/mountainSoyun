@@ -23,7 +23,8 @@ router.get("/", async (req, res, next) => {
         model: User,
         attribute: ["id", "nick"],
       },
-      // order: [["createdAt", "DESC"]],
+      order: [["id", "DESC"]],
+      limit: 3, // 페이지에 표시될 게시물 수
     });
     res.render("main/main", {
       title: "into the mountain",
@@ -44,7 +45,7 @@ router.get("/", async (req, res, next) => {
         attribute: ["id", "nick"],
       },
       order: [["id", "DESC"]],
-      limit: 5, // 페이지에 표시될 게시물 수
+      limit: 3, // 페이지에 표시될 게시물 수
     });
     res.render("main/main", {
       title: "into the mountain",
