@@ -21,6 +21,7 @@
   /* height: 100vmin; */
   font-family: var(--btn-font-family), sans-serif;
   color: black;
+  margin-bottom: 80vw;
 }
 
 .user-name {
@@ -38,10 +39,10 @@
   /* margin-top: 3vw; */
 }
 
-footer {
+/* footer {
   text-align: right;
   font-size: 1vw;
-}
+} */
 
 #modify {
   font-size: 1vw;

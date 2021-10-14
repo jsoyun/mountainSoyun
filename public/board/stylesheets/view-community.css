@@ -151,3 +151,6 @@ input:focus {
 .comments-button:hover {
   background-color: #dadada;
 }
+.community-view-box {
+  margin-bottom: 80vw;
+}

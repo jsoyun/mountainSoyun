@@ -3,34 +3,62 @@ async function firstload() {
     const mountainList = document.querySelector('#mountain-list');
     let location = "경기";
     const apidata1 = await axios.post("/infomountain/location", { location });
-    console.log(apidata1.data);
     location = "인천";
     const apidata2 = await axios.post("/infomountain/location", { location });
     arrydata1 = JSON.stringify(apidata1.data);
     arrydata2 = JSON.stringify(apidata2.data);
     sumarrydata = arrydata1.slice(0, -1) + "," + arrydata2 + "]";
     const apidata = JSON.parse(sumarrydata);
-    console.log(apidata);
     mountainList.innerHTML = "";
     for (let i = 0; i < apidata.length; i++) {
         let mountainAdd = apidata[i].areanm;
         let mountainname = apidata[i].mntnm;
         const apidata3 = await axios.post("/infomountain/img", { mountainAdd });
         const imgdata = apidata3.data;
-        console.log(apidata3.data);
-        if (imgdata.length == "undefined") {
+        console.log(imgdata.length);
+        if (imgdata.length == undefined) {
+            console.log("위에꺼")
 
             let listsummury = document.createElement("div");
             listsummury.setAttribute('class', "mountain-list-summury");
-            let temp = `<div class="mountain-summury-img"><img src=""></div>
+            let temp = `<div class="mountain-summury-img"><img src="${imgdata.mntnattchimageseq}"></div>
         <div class="mountain-summury-container">
         <div class="mountain-summury-name">${apidata[i].mntnm}</div>
-        <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
-        <div class="mountain-summury-address">${apidata[i].areanm}</div>
-        <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+        <div class="mountain-summury-height">높이: ${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">주소지: ${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">소개: ${apidata[i].subnm}</div>
         </div>`;
             listsummury.innerHTML = temp;
             mountainList.appendChild(listsummury);
+        } else{
+            console.log("아래꺼")
+            let listsummury = document.createElement("div");
+            listsummury.setAttribute('class', "mountain-list-summury");
+            let temp = `<div class="mountain-summury-img"><img src="${imgdata[0].mntnattchimageseq}"></div>
+        <div class="mountain-summury-container">
+        <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+        <div class="mountain-summury-height">높이: ${apidata[i].mntheight}m</div>
+        <div class="mountain-summury-address">주소지: ${apidata[i].areanm}</div>
+        <div class="mountain-summury-overview">소개: ${apidata[i].subnm}</div>
+        </div>`;
+            listsummury.innerHTML = temp;
+            mountainList.appendChild(listsummury);
+
+            //     let listsummury = document.createElement("div");
+            //     listsummury.setAttribute('class', "mountain-list-summury");
+
+
+
+            //     let temp = `<div class="mountain-summury-img"><img src="${apidata[i].hndfmsmtnmapimageseq}"></div>
+            // <div class="mountain-summury-container">
+            // <div class="mountain-summury-name">${apidata[i].mntnm}</div>
+            // <div class="mountain-summury-height">${apidata[i].mntheight}m</div>
+            // <div class="mountain-summury-address">${apidata[i].areanm}</div>
+            // <div class="mountain-summury-overview">${apidata[i].subnm}</div>
+            // </div>`;
+            //     listsummury.innerHTML = temp;
+            //     mountainList.appendChild(listsummury);
+
         }
         // else {
         //     listsummury = document.createElement("div");
