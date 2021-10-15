@@ -222,10 +222,12 @@ input:focus {
 }
 
 .con .twit-unfollow {
+  position: absolute;
   margin-left: 0.3vw;
   color: #55b1a3;
   border: 0;
   border-radius: 5px;
+  padding-top: -1vw;
 }
 .con .twit-unfollow:hover {
   border-color: #55b1a3;

@@ -64,11 +64,20 @@ h2 {
   color: #55b1a3;
 }
 
-.input-group input {
+.input-group #modify-email {
   height: auto;
   line-height: normal;
   padding: 0.5em 0.5em;
   background-color: #bababa;
+  border: none;
+  border-radius: 3px;
+}
+
+.input-group #modify-nick {
+  height: auto;
+  line-height: normal;
+  padding: 0.5em 0.5em;
+  background-color: #55b1a370;
   border: none;
   border-radius: 3px;
 }
