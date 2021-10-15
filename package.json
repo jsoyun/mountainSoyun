@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production PORT=80 pm2 start server.js"
+    "start": "cross-env NODE_ENV=production PORT=80 pm2 start www",
+    "dev": "nodemon server"
   },
   "dependencies": {
     "aws-sdk": "^2.1006.0",
