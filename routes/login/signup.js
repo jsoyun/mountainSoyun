@@ -11,10 +11,10 @@ const router = express.Router();
 
 /* uploads 폴더 */
 try {
-  fs.readdirSync('uploads');
+  fs.readdirSync("uploads");
 } catch (error) {
-  console.error('uploads 폴더가 없어 폴더를 생성합니다.');
-  fs.mkdirSync('uploads');
+  console.error("uploads 폴더가 없어 폴더를 생성합니다.");
+  fs.mkdirSync("uploads");
 }
 
 router.get("/", (req, res, next) => {
@@ -28,17 +28,21 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
     const exUser = await User.findOne({ where: { email } });
 
     if (exUser) {
-      return res.send("<script>alert('이미 가입한 이메일 입니다.'); location.href='/signup';</script>");
+      return res.send(
+        "<script>alert('이미 가입한 이메일 입니다.'); location.href='/signup';</script>"
+      );
     }
     if (pwd != pwdcheck) {
-      return res.send("<script>alert('비밀번호를 확인해주세요.'); location.href='/signup';</script>");
+      return res.send(
+        "<script>alert('비밀번호를 확인해주세요.'); location.href='/signup';</script>"
+      );
     }
 
     const hash = await bcrypt.hash(pwd, 12);
-    console.log('이미지' + url);
+    console.log("이미지" + url);
     if (url == false) {
       console.log(1);
-      url = '/img/basic.png';
+      url = "/img/basic.png";
     }
     console.log(url);
     User.create({
