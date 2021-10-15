@@ -4,8 +4,6 @@ function getCoords() {
     if (loadedCoords === null) {
         navigator.geolocation.getCurrentPosition(GetSucces, GetError);
     } else {
-        console.log("저장완료 그냥불러오세요");
-        console.log(loadedCoords)
         const latitude = JSON.parse(loadedCoords).latitude;
         const longitude = JSON.parse(loadedCoords).longitude;
         WeatherAPI(latitude, longitude)

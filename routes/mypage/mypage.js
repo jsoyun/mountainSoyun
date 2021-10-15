@@ -35,15 +35,16 @@ router.get("/", async (req, res, next) => {
 
 //회원계정 삭제 //가입되지않은 회원이라뜨는데db에는 남아있음..
 router.get("/:id/delete", async (req, res, next) => {
-  try {
-    const getID = await User.findOne({ where: { id: `${req.user.id}` } });
-    await getID.destroy({ where: { id: `${req.user.id}` } });
+  if (confirm("계정을 삭제하시겠습니까?")) {
+    try {
+      const getID = await User.findOne({ where: { id: `${req.user.id}` } });
+      await getID.destroy({ where: { id: `${req.user.id}` } });
 
-    res.redirect("/");
-  } catch (err) {
-    console.error(err);
-    next(err);
+      res.redirect("/");
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
   }
 });
-
 module.exports = router;
