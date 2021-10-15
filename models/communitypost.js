@@ -24,11 +24,15 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
           type: Sequelize.STRING(200),
           allowNull: true,
         },
+        views: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
         createdAt: {
           type: Sequelize.DATEONLY,         // DATE 는 DateOnly
           allowNull: false,
           defaultValue: Sequelize.NOW,    // now() 는 Sequelize.NOW
-        }, 
+        },
         updatedAt: {
           type: Sequelize.DATE,         // DATE 는 DateOnly
           allowNull: false,
@@ -51,5 +55,6 @@ module.exports = class CommunityPost extends Sequelize.Model {   // 객체 Seque
   static associate(db) {  // 이 범위(associate)를 index.js 에서 사용해서 부른다. 
     db.CommunityPost.belongsTo(db.User);
     db.CommunityPost.belongsToMany(db.User, { through: 'Recommends' });  // 좋아요
+    db.CommunityPost.hasMany(db.Communitycomment, { foreignKey: "postId", sourceKey: "id" });
   }
 };

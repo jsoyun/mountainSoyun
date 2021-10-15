@@ -1,6 +1,4 @@
 :root {
-  --btn-main-font: Cafe24SsurroundAir;
-  --btn-font-family: Cafe24SsurroundAir;
   --search-bg-color: white;
   --btn-radius: 10px;
   --btn-height: 1vw;
@@ -9,14 +7,13 @@
   --search-btn-width: 1vw;
   --search-bg-width: 10vw;
   --select-border-color: #bababa;
-  --select-width: 6vw; 
+  --select-width: 6vw;
   --tb-font-family: SpoqaHanSansNeo-Regular;
 }
 
 /* 버튼 공통 */
 .btn {
   border: none;
-  font-family: var(--btn-font-family), sans-serif;
   padding: 0.5vw;
   border-radius: var(--btn-radius);
   background-color: beige;
@@ -28,7 +25,8 @@
   text-align: none;
   position: fixed;
   right: 6vw;
-  bottom: 9vw;
+  bottom: 3vw;
+  margin-bottom: 160px;
   font-size: 2.5vw;
   background-color: white;
   padding: 0.8em;
@@ -37,8 +35,8 @@
 }
 
 .com-write:hover {
-  color: black;
-} 
+  color: #55b1a3;
+}
 
 /* 태그 검색 */
 .text-search {
@@ -47,8 +45,8 @@
   height: var(--btn-height);
   border-radius: var(--btn-radius);
   font-size: 1vw;
-  font-family: var(--btn-font-family), sans-serif;
   padding-left: 1em;
+  padding: 0.9vw;
   -webkit-box-shadow: 0 0 0px 1000px var(--search-bg-color) inset !important;
   -webkit-text-fill-color: var(--btn-bg-color) !important;
 }
@@ -60,6 +58,13 @@
   border-radius: 8px;
   position: absolute;
   right: 13vw;
+
+  margin-top: 3vw;
+}
+#search-form {
+  /* border: solid 2px #55b1a3; */
+  margin: 0;
+  padding: 0;
 }
 
 input:focus {
@@ -70,6 +75,7 @@ input:focus {
   width: var(--search-btn-width);
   height: var(--btn-height);
   font-size: 0.9vw;
+  padding-bottom: 3vw;
 }
 
 .text-search-btn {
@@ -110,16 +116,23 @@ select:focus {
 
 .table-item-box td {
   padding: 1em;
+  background-color: #55b1a380;
+  vertical-align: middle;
+  
+}
+.table-item-box p {
+ padding-bottom: 0;
 }
 
 .com-box {
   font-family: var(--tb-font-family), sans-serif;
   text-align: center;
   padding-top: 2vw;
+  margin-bottom: 200px;
 }
 
 .table-head {
-  border-top: 1px solid var(--select-border-color);
+  border-top: 2px solid var(--select-border-color);
   border-bottom: 1px solid var(--select-border-color);
 }
 
@@ -127,10 +140,19 @@ select:focus {
   border-bottom: 1px solid var(--select-border-color);
 }
 
-h1, thead, tbody, tr, th {
+h1,
+thead,
+tbody,
+tr,
+th {
   font-size: 1.5vw;
   width: 8em;
   height: 3em;
+}
+
+h1 {
+  margin-left: 38vw;
+  width: 20vw;
 }
 
 .com-title {
@@ -138,7 +160,13 @@ h1, thead, tbody, tr, th {
   font-size: 2vw;
   font-weight: bolder;
   margin: 0 0 1.4vw 10vw;
+  margin-top: 1.5vh;
+
   height: auto;
+
+  color: rgba(85, 177, 163);
+
+  padding-left: 3vw;
 }
 
 .com-table {
@@ -187,6 +215,12 @@ h1, thead, tbody, tr, th {
   font-size: 1.7vw;
 }
 
-.page-link{
+.page-link {
   text-decoration-line: none;
 }
+
+/* #search-form {
+  background-color: #55b1a3;
+  border-radius: 10px;
+  padding: 3px;
+} */

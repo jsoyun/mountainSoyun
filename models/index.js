@@ -9,6 +9,8 @@ const ClubComment = require("./clubcomments");
 const CommunityPost = require("./communitypost");
 const User = require("./user");
 const Mountain = require("./mountain");
+const Img = require("./clubimg");
+const Communitycomment = require("./communitycomments");
 
 /* db 객체 선언 */
 const db = {};
@@ -33,6 +35,8 @@ db.ClubComment = ClubComment;
 db.CommunityPost = CommunityPost;
 db.User = User;
 db.Mountain = Mountain;
+db.Img = Img;
+db.Communitycomment = Communitycomment;
 
 /* 해당 DB 안의 init 불러서 넣기 (여기서 sequelize 는 연결 객체, 말그대로 모델이랑 MySQL 이랑 연결한 것) */
 Club.init(sequelize);
@@ -41,6 +45,8 @@ ClubComment.init(sequelize);
 CommunityPost.init(sequelize);
 User.init(sequelize);
 Mountain.init(sequelize);
+Img.init(sequelize);
+Communitycomment.init(sequelize);
 
 /* 해당 DB 안의 associate 불러서 넣기 */
 User.associate(db);
@@ -49,6 +55,8 @@ Hashtag.associate(db);
 ClubComment.associate(db);
 CommunityPost.associate(db);
 Mountain.associate(db);
+Img.associate(db);
+Communitycomment.associate(db);
 
 /* module.exports 에 넣기 */
 module.exports = db;

@@ -1,57 +1,15 @@
 {% extends "layout.html" %} 
-{% block css %} 
-<link rel="stylesheet" href="/club/stylesheets/clubdetail.css" />
-{% endblock %}
-{% block content %}
-<section class="community-view-box">
-    <header>
-        <div class="title">상세페이지</div>
-    </header>
 
-    <body>
-        {% for twit in twits %}
-        <div class="img_section">
-            <div class="trans_inner">
-                <div>
-                    <p>{{twit.id}}</p>
-                    <p>{{twit.User.nick}}</p>
-                    <p>
-                    <div class="club-createdAt">{{twit.createdAt}}</div>
-                    </p>
-                </div>
-                <div>
-                    <img style="width: 250px" src="{{twit.img}}" alt="상세이미지" />
-                    <p>
-                    <div class="club-content">{{twit.content}}</div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <form class="comment-form" method="post">
-            <fieldset>
-                <legend>댓글 등록</legend>
-                <div>
-                    <input class="listNum" name="clubId" type="text" value="{{twit.id}}" readonly>
-                    <input name="comment" type="text" placeholder="댓글">
-                    <button class="submit_reply" type="submit">등록</button>
-                </div>
-            </fieldset>
-        </form>
-        <table class="comment-list{{twit.id}}">
-            <thead>
-                <tr>
-                  <th>아이디</th>
-                  <th>댓글</th>
-                </tr>
-                </thead>
-            <tbody>
-            </tbody>
-        </table>
-        {% endfor %}
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </body>
+{% block css %}
+<link rel="stylesheet" href="/club/stylesheets/clubdetail.css" />
+{% endblock %} {% block content %}
+<section class="community-view-box">
+  <div class="title">상세페이지</div>
+  <div id="club-list"></div>
 </section>
-{% endblock %}
+
+{% endblock %} 
+
 {% block script %}
-<script src="/club/javascripts/sequelize.js"></script>
+<script src="/club/javascripts/clubdetail.js"></script>
 {% endblock %}

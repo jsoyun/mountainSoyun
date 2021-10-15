@@ -3,10 +3,15 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const { Club, Hashtag } = require("../../models");
+const { Club, Hashtag, Img } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
+
+router.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
 /* GET page. */
 router.get("/", (req, res) => {
@@ -33,33 +38,84 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-router.post("/img", isLoggedIn, upload.single("img"), (req, res) => {
-  console.log(req.file);
-  res.json({ url: `/img/${req.file.filename}` });
+router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
+  // console.log("//////////////////////////////////////////////////////////");
+  // console.log(req.files);
+  let urlArr = new Array();
+  for (let i = 0; i < req.files.length; i++) {
+    urlArr.push(`/img/${req.files[i].filename}`);
+    console.log(urlArr[i]);
+  }
+  let jsonUrl = JSON.stringify(urlArr);
+  res.json(jsonUrl);
 });
 
-router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
+router.post("/", isLoggedIn, upload.array("img", 4), async (req, res, next) => {
   try {
-    const club = await Club.create({
-      content: req.body.content,
-      img: req.body.url,
-      hash: req.body.hashtag,
-      userId: req.user.id,
-    });
-    const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
-    console.log(hashtags);
-    if (hashtags) {
-      const result = await Promise.all(
-        hashtags.map((tag) => {
-          return Hashtag.findOrCreate({
-            where: { title: tag.slice(1).toLowerCase() },
-          });
-        })
-      );
-      console.log(result);
-      await club.addHashtag(result.map((r) => r[0]));
+    const URL = await req.body.url;
+    if (URL == false) {
+      return res.send("<script>alert('이미지를 업로드해주세요.'); location.href='/clubupload';</script>");
     }
-    res.redirect("/club");
+    if (typeof URL == "object") {
+      console.log("오브젝트코드실행")
+      const club = await Club.create({
+        content: req.body.content,
+        hash: req.body.hashtag,
+        img: URL[0],
+        star: req.body.star,
+        userId: req.user.id,
+      });
+
+      for (let i = 0; i < (URL.length - 1); i++) {
+        await Img.create({
+          img: URL[i],
+          clubImgId: club.id,
+        })
+      };
+
+      const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
+      console.log(hashtags);
+      if (hashtags) {
+        const result = await Promise.all(
+          hashtags.map((tag) => {
+            return Hashtag.findOrCreate({
+              where: { title: tag.slice(1).toLowerCase() },
+            });
+          })
+        );
+        console.log(result);
+        await club.addHashtag(result.map((r) => r[0]));
+      }
+      res.redirect("/club");
+      return
+    } else {
+      console.log("스트링코드실행")
+      const club = await Club.create({
+        content: req.body.content,
+        hash: req.body.hashtag,
+        img: URL,
+        star: req.body.star,
+        userId: req.user.id,
+      });
+      await Img.create({
+        img: URL,
+        clubImgId: club.id,
+      })
+      const hashtags = req.body.hashtag.match(/#[^\s#]*/g);
+      console.log(hashtags);
+      if (hashtags) {
+        const result = await Promise.all(
+          hashtags.map((tag) => {
+            return Hashtag.findOrCreate({
+              where: { title: tag.slice(1).toLowerCase() },
+            });
+          })
+        );
+        console.log(result);
+        await club.addHashtag(result.map((r) => r[0]));
+      }
+      res.redirect("/club");
+    }
   } catch (error) {
     console.error(error);
     next(error);

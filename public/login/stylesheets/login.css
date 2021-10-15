@@ -34,15 +34,15 @@ input:focus {
 
 .login-btn {
   width: var(--search-width);
-  height: 2vw;
+  height: 2.3vw;
   margin-bottom: 1vw;
   border-color: transparent;
-  background-color: #FFDEE9;
+  background-color: #dadada;
   font-size: 1vw;
 }
 
 .login-btn:hover {
-  background-color: #B5FFFC;
+  background-color: #55b1a3;
   cursor: pointer;
 }
 
@@ -55,12 +55,22 @@ input:focus {
   font-size: 0.9vw;
   text-decoration-line: none;
   color: #000;
+  margin: 0px auto;
+  padding-left: 3.5vw;
 }
 
 .caption-text:hover {
   text-decoration-line: underline;
 }
-
+/* 
 .caption-box {
   margin-bottom: 1vw;
+  font-size: 2vw;
+} */
+
+/* 추가해보 */
+#caption {
+  /* margin-left: 40vw; */
+  display: block;
+  margin: 0vw auto;
 }
