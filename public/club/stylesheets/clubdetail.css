@@ -13,7 +13,8 @@
 }
 
 #club-list {
-  padding: 4.125vw 20vw;
+  padding: 4.125vw 23vw;
+
   width: 92.5vw;
   /* height: 100vh; */
   display: flex;
@@ -111,6 +112,7 @@
   border: 0.5px solid #09492b;
   border-color: transparent;
   background-color: #fff;
+  font-size: 1vw;
 }
 
 .input-form input {
@@ -120,6 +122,8 @@
   padding: 5px 5px;
   margin-left: 27%;
   margin-bottom: 5px;
+  font-size: 1vw;
+  border-color: transparent;
   background: rgb(255, 255, 255);
   /* border: 0.5px solid #09492b; */
 }
@@ -143,17 +147,6 @@
 
 input:focus {
   outline: none;
-}
-
-.input-form input {
-  position: relative;
-  width: 20vw;
-  height: 2.32vw;
-  margin-left: 20%;
-  background: rgb(255, 255, 255);
-  border: 0.5px solid #09492b;
-  border-color: transparent;
-  background-color: #fff;
 }
 
 .img-section img {

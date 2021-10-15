@@ -316,6 +316,14 @@ pre {
   margin-bottom: 1em;
 }
 
+@media screen and (max-width: 800px) {
+  .img-club {
+    /* height: 5vw; */
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 #stories-wrapper {

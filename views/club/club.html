@@ -48,7 +48,7 @@
           {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id and user.id %}
           <button class="twit-follow btn">팔로우</button>
           {% elif twit.User.id !== user.id and user.id%}
-          <button class="twit-unfollow btn">팔로우끊기</button>
+          <button class="twit-unfollow btn">끊기</button>
           {% endif %}
           <div class="twit-img">
             <a href="/clubdetail"><img src="{{twit.img}}" alt="섬네일" /></a>
