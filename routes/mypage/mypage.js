@@ -1,9 +1,5 @@
 const express = require("express");
-const { User, Club } = require("../../models");
-const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
-// const fs = require('fs');
-// const app : Express = express();
-
+const { User } = require("../../models");
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -17,11 +13,10 @@ router.use((req, res, next) => {
   next();
 });
 
-//프로필 사진 읽기
 router.get("/", async (req, res, next) => {
   try {
     const getImage = await User.findOne({
-      where: { id: `${req.user.id}` }, // 문자로 바꿈. 아마도. 암튼 개선함
+      where: { id: `${req.user.id}` },
     });
     res.render("mypage/mypage", {
       title: "mountain 커뮤니티",
@@ -33,7 +28,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//회원계정 삭제 //가입되지않은 회원이라뜨는데db에는 남아있음..
 router.get("/:id/delete", async (req, res, next) => {
   if (confirm("계정을 삭제하시겠습니까?")) {
     try {
@@ -47,4 +41,5 @@ router.get("/:id/delete", async (req, res, next) => {
     }
   }
 });
+
 module.exports = router;

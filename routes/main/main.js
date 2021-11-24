@@ -1,5 +1,4 @@
 const express = require("express");
-const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
 const { Club, User } = require("../../models");
 const router = express.Router();
 
@@ -10,11 +9,6 @@ router.use((req, res, next) => {
   res.locals.followerIdList = [];
   next();
 });
-
-/* GET page. */
-// router.get("/", (req, res) => {
-//   res.render("main/main", { title: "into the mountain" });
-// });
 
 router.get("/", async (req, res, next) => {
   try {
@@ -58,4 +52,5 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
 module.exports = router;

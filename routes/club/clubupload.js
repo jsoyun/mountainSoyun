@@ -39,8 +39,6 @@ const upload = multer({
 });
 
 router.post("/img", isLoggedIn, upload.array("img", 4), (req, res) => {
-  // console.log("//////////////////////////////////////////////////////////");
-  // console.log(req.files);
   let urlArr = new Array();
   for (let i = 0; i < req.files.length; i++) {
     urlArr.push(`/img/${req.files[i].filename}`);

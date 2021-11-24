@@ -1,10 +1,9 @@
 const express = require("express");
 const passport = require("passport");
 const { isLoggedIn, isNotLoggedIn } = require("../middlewares");
-const { User } = require("../../models");
 
 const router = express.Router();
-//로그인창 띄우기
+
 router.get("/", (req, res, next) => {
   res.render("login/login", { title: "mountain - 로그인" });
 });

@@ -106,10 +106,6 @@ async function clubDetail() {
               });
               editForm.appendChild(commentEditCheck);
 
-              // await axios.patch(`/clubdetail/edit/${comment.id}`);
-              // const editCommentInput = document.createElement('input');
-              // editCommentInput.setAttribute("id", "edit-comment-input");
-              // editCommentInput.textContent = "//////////////////////////////////////////"
               console.log(prevTag);
             } catch (err) {
               console.error(err);
@@ -135,7 +131,6 @@ async function clubDetail() {
       if (document.querySelector("#my-id") !== null) {
         const myId = document.querySelector("#my-id").value;
         row = document.createElement("div");
-        // row.textContent = "//////댓글작성창을 아래에 넣는다//////";
         clubTable.appendChild(row);
 
         const inputForm = document.createElement("form");

@@ -1,6 +1,4 @@
-const { next } = require("cheerio/lib/api/traversing");
 const express = require("express");
-const path = require("path");
 const { Club, User, ClubComment } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 
@@ -42,7 +40,6 @@ router.get("/comment", async (req, res, next) => {
       }],
       order: [["createdAt", "DESC"]],
     });
-    console.log("//////////////////////////////////////////////////////////////////////////")
     res.json(reply);
   } catch (err) {
     console.error(err);
@@ -53,7 +50,6 @@ router.get("/comment", async (req, res, next) => {
 /* 댓글수정 */
 router.patch("/commentedit", isLoggedIn, async (req, res, next) => {
   try {
-    console.log(req.body)
     const result = await ClubComment.update({
       comment: req.body.comment,
     }, {

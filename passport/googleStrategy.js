@@ -20,10 +20,8 @@ module.exports = () => {
         done(null, exUser);
        }else {
         const newUser = await User.create({
-          // id : 2,  //랜덤값 필요시, npm shortid 설치 후 shortid.generate() 활용
           provider : profile.provider,
           snsId : profile.id,
-          // token : accessToken,
           nick : profile.displayName,
           email : profile.emails[0].value,
           img: '/img/basic.png',

@@ -25,7 +25,7 @@ function GetSucces(position) {
 function GetError() {
     console.log("Can't access geo location");
 }
-//////날씨가져오기
+
 async function WeatherAPI(lat, lon) {
     const API_KEY = "31509aa101a3c82af7f1d764258072ec";
     const result = await axios.get(

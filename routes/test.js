@@ -16,7 +16,6 @@ const apidata = async (i) => {
     const apiData1 = result1.data.response.body.items.item;
     console.log('위쪽');
     if (apiData1.length == undefined) {
-      // console.log(apiData1)
       let url2 = 'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoImgOpenAPI';
       var queryParams = '?' + encodeURIComponent('ServiceKey') + '=' + servicekey; /* Service Key*/
       queryParams += '&' + encodeURIComponent('mntiListNo') + '=' + encodeURIComponent(apiData1.mntilistno);; /* */
@@ -86,7 +85,6 @@ const apidata = async (i) => {
   }
 
 };
-// apidata(10);
 async function saveApiData() {
   for (let i = 0; i < 100; i++) {
     console.log(i + '번째줄이다///////')

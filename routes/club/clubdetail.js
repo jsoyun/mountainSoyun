@@ -1,6 +1,4 @@
-const { next } = require("cheerio/lib/api/traversing");
 const express = require("express");
-const path = require("path");
 const { Club, User, ClubComment } = require("../../models");
 const { isLoggedIn } = require("../middlewares");
 

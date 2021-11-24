@@ -1,4 +1,3 @@
-////모듈 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -12,8 +11,6 @@ const session = require("express-session");
 const passportConfig = require("./passport");
 
 dotenv.config();
-
-////라우터 추가할때마다 여기도 추가합니다합니다추가합니다.//////////////////////////////////////////////////////////
 
 /* board 폴더 (게시글) */
 const communityRouter = require("./routes/board/community");
@@ -44,7 +41,7 @@ const infoMountainRouter = require("./routes/mountainInfo/infomountain");
 const mypageRouter = require("./routes/mypage/mypage");
 const userRouter = require("./routes/mypage/user");
 const modifyRouter = require("./routes/mypage/modify");
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const app = express();
 passportConfig(); // 패스포트 설정
 
@@ -62,7 +59,7 @@ sequelize
   .catch((err) => {
     console.error(err);
   });
-////미들웨어 추가할때마다 여기도 추가//////////////////////////////
+
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/img", express.static(path.join(__dirname, "uploads")));
@@ -82,7 +79,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-////라우터 추가할때마다 여기도 추가//////////////////////////////////////////////////////////
 
 /* board 폴더 (게시글) */
 app.use("/community", communityRouter);
@@ -113,8 +109,6 @@ app.use("/infomountain", infoMountainRouter);
 app.use("/mypage", mypageRouter);
 app.use("/user", userRouter);
 app.use("/modify", modifyRouter);
-
-////////////////////////////////////////////////////////////////
 
 /* 404 처리 */
 app.use((req, res, next) => {
