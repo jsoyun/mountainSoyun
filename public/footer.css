@@ -1,10 +1,11 @@
 #footer-container {
-position: fixed;
+  position: fixed;
   background: grey;
   color: white;
   height: 60px;
-  /* position: fixed; */
-  bottom: 0;
+  position: relative;
+  margin-top: 100px;
+  /* bottom: 0; */
   width: 100%;
   text-align: center;
   height: 150px;
