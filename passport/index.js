@@ -34,7 +34,7 @@ module.exports = () => {
       .catch((err) => done(err));
   });
   local();
-  kakao();
-  google();
-  naver();
+  // kakao();
+  // google();
+  // naver();
 };

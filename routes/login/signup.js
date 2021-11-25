@@ -34,19 +34,17 @@ router.post("/", isNotLoggedIn, async (req, res, next) => {
     }
 
     const hash = await bcrypt.hash(pwd, 12);
-    console.log('이미지' + url);
     if (url == false) {
       console.log(1);
       url = '/img/basic.png';
     }
-    console.log(url);
     User.create({
       nick,
       email,
       password: hash,
       img: url,
     });
-    return res.redirect("/");
+    return res.redirect("/login");
   } catch (error) {
     console.error(error);
     return next(error);
