@@ -64,9 +64,10 @@
 
 ![KakaoTalk_20211125_085357264_01](https://user-images.githubusercontent.com/89543695/143537017-1cd0c3fd-128a-4874-988b-b1b67c6f6781.gif)
 
+![KakaoTalk_20211125_090237103](https://user-images.githubusercontent.com/89543695/143537035-58d89a12-3933-473c-9f6e-c72aa88a4909.gif)
+
 ![KakaoTalk_20211125_085357264_06](https://user-images.githubusercontent.com/89543695/143537068-94dc0bbb-6ee6-4f6b-b67b-9515b436a44b.gif)
 
-![KakaoTalk_20211125_090237103](https://user-images.githubusercontent.com/89543695/143537035-58d89a12-3933-473c-9f6e-c72aa88a4909.gif)
 
 
 
