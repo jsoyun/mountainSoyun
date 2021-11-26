@@ -59,11 +59,27 @@
 ### 카카오, 네이버, 구글 로그인
 
 ### 회원가입/로그인 중복 방지, 유효성 검사
-![KakaoTalk_20211125_085357264](https://user-images.githubusercontent.com/89543695/143536905-ca2d4186-8f66-4e51-93b5-6d2278c40648.gif)
 
 ### 제목/내용/작성자 검색 기능!
 
+![KakaoTalk_20211125_085357264_01](https://user-images.githubusercontent.com/89543695/143537017-1cd0c3fd-128a-4874-988b-b1b67c6f6781.gif)
+
+![KakaoTalk_20211125_085357264_06](https://user-images.githubusercontent.com/89543695/143537068-94dc0bbb-6ee6-4f6b-b67b-9515b436a44b.gif)
+
+![KakaoTalk_20211125_090237103](https://user-images.githubusercontent.com/89543695/143537035-58d89a12-3933-473c-9f6e-c72aa88a4909.gif)
 
 
 
+
+![KakaoTalk_20211125_085357264_07](https://user-images.githubusercontent.com/89543695/143537081-9437a63e-729d-47f1-ba2c-13e862c81025.gif)
+
+![KakaoTalk_20211125_085357264_08](https://user-images.githubusercontent.com/89543695/143537094-d46206f6-5fa4-4a55-bf0c-6d57b7c27bf4.gif)
+
+![KakaoTalk_20211125_085357264_09](https://user-images.githubusercontent.com/89543695/143537103-445acca8-48d9-40e1-8b95-38dd58b03bb6.gif)
+
+![KakaoTalk_20211125_085357264_11](https://user-images.githubusercontent.com/89543695/143537198-47a7aea8-1644-4c12-8d20-e5c17827ce90.gif)
+
+![KakaoTalk_20211125_085357264_10](https://user-images.githubusercontent.com/89543695/143537189-fdf2cdc6-b9b5-4f18-ae97-d3bf78f90fc1.gif)
+
+![KakaoTalk_20211125_090237103](https://user-images.githubusercontent.com/89543695/143537203-b54e1ebc-6c78-4158-bf5c-8f6fa9aece62.gif)
 
